@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Camera, Upload, CheckCircle2, ChevronRight, ChevronLeft, Save } from "lucide-react";
+import { Camera, Upload, CheckCircle2, ChevronRight, ChevronLeft, Save, UserCircle } from "lucide-react";
 import SignatureCanvas from 'react-signature-canvas';
 import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
