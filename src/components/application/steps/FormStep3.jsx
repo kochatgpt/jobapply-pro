@@ -186,28 +186,25 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                                         <div className="flex flex-col gap-3">
                                             <Label className="text-base font-medium">ท่านจะยินดีหรือไม่หากทางการบริษัทฯ จะติดต่อสอบถามไปยังบริษัทฯเดิม (บริษัทที่ท่านเคยปฏิบัติงาน)</Label>
                                             <div className="flex flex-col gap-3">
-                                                <div className="flex gap-6 items-center">
+                                                <RadioGroup
+                                                    value={experienceData?.contact_previous_employer?.status}
+                                                    onValueChange={(val) => {
+                                                        updateData('experience_data', 'contact_previous_employer', { 
+                                                            status: val, 
+                                                            reason: val === 'allowed' ? '' : experienceData?.contact_previous_employer?.reason 
+                                                        });
+                                                    }}
+                                                    className="flex gap-6 items-center"
+                                                >
                                                     <div className="flex items-center space-x-2">
-                                                        <Checkbox 
-                                                            id="contact_allowed" 
-                                                            checked={experienceData?.contact_previous_employer?.status === 'allowed'}
-                                                            onCheckedChange={(c) => {
-                                                                if (c) updateData('experience_data', 'contact_previous_employer', { status: 'allowed', reason: '' });
-                                                            }}
-                                                        />
+                                                        <RadioGroupItem value="allowed" id="contact_allowed" />
                                                         <Label htmlFor="contact_allowed" className="font-normal cursor-pointer">ไม่ขัดข้อง</Label>
                                                     </div>
                                                     <div className="flex items-center space-x-2">
-                                                        <Checkbox 
-                                                            id="contact_not_allowed" 
-                                                            checked={experienceData?.contact_previous_employer?.status === 'not_allowed'}
-                                                            onCheckedChange={(c) => {
-                                                                if (c) updateData('experience_data', 'contact_previous_employer', { ...experienceData?.contact_previous_employer, status: 'not_allowed' });
-                                                            }}
-                                                        />
+                                                        <RadioGroupItem value="not_allowed" id="contact_not_allowed" />
                                                         <Label htmlFor="contact_not_allowed" className="font-normal cursor-pointer">ขัดข้อง</Label>
                                                     </div>
-                                                </div>
+                                                </RadioGroup>
                                                 {experienceData?.contact_previous_employer?.status === 'not_allowed' && (
                                                     <div className="flex items-center gap-2 max-w-lg">
                                                         <Label className="whitespace-nowrap">โปรดระบุสาเหตุ:</Label>
