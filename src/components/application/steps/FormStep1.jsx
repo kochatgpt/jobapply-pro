@@ -25,10 +25,10 @@ export default function FormStep1({ data, updateData, photo }) {
     };
 
     return (
-    <div className="space-y-6">
-        <h3 className="text-xl font-bold text-slate-900 border-b pb-2 mb-4">ส่วนที่ 1: ประวัติส่วนตัว</h3>
+    <div className="space-y-3">
+        <h3 className="text-xl font-bold text-slate-900 border-b pb-2 mb-3">ส่วนที่ 1: ประวัติส่วนตัว</h3>
 
-        <div className="space-y-4 bg-slate-50 p-4 rounded-lg border">
+        <div className="space-y-2 bg-slate-50 p-3 rounded-lg border">
             <div className="space-y-2">
                 <Label>วันที่ยื่นใบสมัคร</Label>
                 <Input type="date" value={data.application_date} onChange={(e) => updateData('personal_data', 'application_date', e.target.value)} />
@@ -38,18 +38,18 @@ export default function FormStep1({ data, updateData, photo }) {
             </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4">
-            <div className="space-y-2">
+        <div className="grid md:grid-cols-3 gap-2">
+            <div className="space-y-1">
                 <Label>สมัครงานในตำแหน่ง 1</Label>
-                <Input value={data.position_1} onChange={(e) => updateData('personal_data', 'position_1', e.target.value)} />
+                <Input className="h-9" value={data.position_1} onChange={(e) => updateData('personal_data', 'position_1', e.target.value)} />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
                 <Label>สมัครงานในตำแหน่ง 2</Label>
-                <Input value={data.position_2} onChange={(e) => updateData('personal_data', 'position_2', e.target.value)} />
+                <Input className="h-9" value={data.position_2} onChange={(e) => updateData('personal_data', 'position_2', e.target.value)} />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
                 <Label>อัตราเงินเดือนที่ต้องการ</Label>
-                <Input value={data.expected_salary} onChange={(e) => updateData('personal_data', 'expected_salary', e.target.value)} />
+                <Input className="h-9" value={data.expected_salary} onChange={(e) => updateData('personal_data', 'expected_salary', e.target.value)} />
             </div>
         </div>
 
@@ -90,48 +90,48 @@ export default function FormStep1({ data, updateData, photo }) {
             )}
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-             <div className="space-y-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+             <div className="space-y-1">
                 <Label>วัน/เดือน/ปีเกิด</Label>
-                <Input type="date" value={data.dob} onChange={handleDobChange} />
+                <Input className="h-9" type="date" value={data.dob} onChange={handleDobChange} />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
                 <Label>อายุ</Label>
-                <Input value={data.age} onChange={(e) => updateData('personal_data', 'age', e.target.value)} readOnly className="bg-slate-50" />
+                <Input className="h-9 bg-slate-50" value={data.age} onChange={(e) => updateData('personal_data', 'age', e.target.value)} readOnly />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
                 <Label>น้ำหนัก (กก.)</Label>
-                <Input value={data.weight} onChange={(e) => updateData('personal_data', 'weight', e.target.value)} />
+                <Input className="h-9" value={data.weight} onChange={(e) => updateData('personal_data', 'weight', e.target.value)} />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
                 <Label>ส่วนสูง (ซม.)</Label>
-                <Input value={data.height} onChange={(e) => updateData('personal_data', 'height', e.target.value)} />
+                <Input className="h-9" value={data.height} onChange={(e) => updateData('personal_data', 'height', e.target.value)} />
             </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div className="space-y-2">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+            <div className="space-y-1">
                 <Label>เชื้อชาติ</Label>
-                <Input value={data.race} onChange={(e) => updateData('personal_data', 'race', e.target.value)} />
+                <Input className="h-9" value={data.race} onChange={(e) => updateData('personal_data', 'race', e.target.value)} />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
                 <Label>สัญชาติ</Label>
-                <Input value={data.nationality} onChange={(e) => updateData('personal_data', 'nationality', e.target.value)} />
+                <Input className="h-9" value={data.nationality} onChange={(e) => updateData('personal_data', 'nationality', e.target.value)} />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
                 <Label>ศาสนา</Label>
-                <Input value={data.religion} onChange={(e) => updateData('personal_data', 'religion', e.target.value)} />
+                <Input className="h-9" value={data.religion} onChange={(e) => updateData('personal_data', 'religion', e.target.value)} />
             </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-            <div className="space-y-2">
+        <div className="grid md:grid-cols-2 gap-2">
+            <div className="space-y-1">
                 <Label>(Email) อีเมล์ที่ติดต่อได้</Label>
-                <Input value={data.email} onChange={(e) => updateData('personal_data', 'email', e.target.value)} />
+                <Input className="h-9" value={data.email} onChange={(e) => updateData('personal_data', 'email', e.target.value)} />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
                 <Label>โทรศัพท์มือถือที่ติดต่อได้สะดวก</Label>
-                <Input value={data.mobile_phone} onChange={(e) => updateData('personal_data', 'mobile_phone', e.target.value)} />
+                <Input className="h-9" value={data.mobile_phone} onChange={(e) => updateData('personal_data', 'mobile_phone', e.target.value)} />
             </div>
         </div>
 
