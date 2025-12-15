@@ -271,6 +271,14 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                     <div className="flex items-center space-x-2">
                         <Label htmlFor="legal_ever" className="font-normal">เคย</Label>
                         <RadioGroupItem value="ever" id="legal_ever" />
+                        {statementData?.has_legal_cases === 'ever' && (
+                            <Input 
+                                className="h-8 w-40 ml-2"
+                                placeholder="ระบุรายละเอียด"
+                                value={statementData?.has_legal_cases_details || ''}
+                                onChange={(e) => updateStatement('has_legal_cases_details', e.target.value)}
+                            />
+                        )}
                     </div>
                 </RadioGroup>
             </div>
@@ -290,18 +298,26 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                     <div className="flex items-center space-x-2">
                         <Label htmlFor="drug_ever" className="font-normal">เคย</Label>
                         <RadioGroupItem value="ever" id="drug_ever" />
+                        {statementData?.has_drug_history === 'ever' && (
+                            <Input 
+                                className="h-8 w-40 ml-2"
+                                placeholder="ระบุรายละเอียด"
+                                value={statementData?.has_drug_history_details || ''}
+                                onChange={(e) => updateStatement('has_drug_history_details', e.target.value)}
+                            />
+                        )}
                     </div>
                 </RadioGroup>
             </div>
 
             {/* 4. Smoking */}
             <div className="space-y-2">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 flex-wrap">
                     <Label className="text-base">4. ในปัจจุบันท่านสูบบุหรี่หรือไม่</Label>
                     <RadioGroup 
                         value={statementData?.smoking_habit?.status} 
                         onValueChange={(val) => updateStatementObj('smoking_habit', 'status', val)}
-                        className="flex gap-6"
+                        className="flex gap-6 items-center"
                     >
                         <div className="flex items-center space-x-2">
                             <Label htmlFor="smoke_no" className="font-normal">ไม่สูบ</Label>
@@ -310,20 +326,17 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                         <div className="flex items-center space-x-2">
                             <Label htmlFor="smoke_yes" className="font-normal">สูบประจำ</Label>
                             <RadioGroupItem value="yes" id="smoke_yes" />
+                            {statementData?.smoking_habit?.status === 'yes' && (
+                                <Input 
+                                    className="h-8 w-32 ml-2"
+                                    placeholder="ระบุจำนวน/วัน"
+                                    value={statementData?.smoking_habit?.amount || ''}
+                                    onChange={(e) => updateStatementObj('smoking_habit', 'amount', e.target.value)}
+                                />
+                            )}
                         </div>
                     </RadioGroup>
                 </div>
-                {statementData?.smoking_habit?.status === 'yes' && (
-                    <div className="flex items-center justify-end gap-2">
-                        <Label className="whitespace-nowrap font-normal">เฉลี่ยต่อวัน:</Label>
-                        <Input 
-                            className="h-8 w-40"
-                            placeholder="ระบุจำนวน"
-                            value={statementData?.smoking_habit?.amount || ''}
-                            onChange={(e) => updateStatementObj('smoking_habit', 'amount', e.target.value)}
-                        />
-                    </div>
-                )}
             </div>
 
             {/* 5. Alcohol */}
@@ -401,6 +414,14 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                     <div className="flex items-center space-x-2">
                         <Label htmlFor="ill_ever" className="font-normal">เคย</Label>
                         <RadioGroupItem value="ever" id="ill_ever" />
+                        {statementData?.recent_major_illness === 'ever' && (
+                            <Input 
+                                className="h-8 w-40 ml-2"
+                                placeholder="ระบุโรค"
+                                value={statementData?.recent_major_illness_details || ''}
+                                onChange={(e) => updateStatement('recent_major_illness_details', e.target.value)}
+                            />
+                        )}
                     </div>
                 </RadioGroup>
             </div>
@@ -420,6 +441,14 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                     <div className="flex items-center space-x-2">
                         <Label htmlFor="contagious_yes" className="font-normal">มี</Label>
                         <RadioGroupItem value="yes" id="contagious_yes" />
+                        {statementData?.has_contagious_disease === 'yes' && (
+                            <Input 
+                                className="h-8 w-40 ml-2"
+                                placeholder="ระบุโรค"
+                                value={statementData?.has_contagious_disease_details || ''}
+                                onChange={(e) => updateStatement('has_contagious_disease_details', e.target.value)}
+                            />
+                        )}
                     </div>
                 </RadioGroup>
             </div>
