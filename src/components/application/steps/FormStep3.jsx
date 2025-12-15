@@ -197,12 +197,12 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                                                     className="flex gap-6 items-center"
                                                 >
                                                     <div className="flex items-center space-x-2">
-                                                        <RadioGroupItem value="allowed" id="contact_allowed" />
                                                         <Label htmlFor="contact_allowed" className="font-normal cursor-pointer">ไม่ขัดข้อง</Label>
+                                                        <RadioGroupItem value="allowed" id="contact_allowed" />
                                                     </div>
                                                     <div className="flex items-center space-x-2">
-                                                        <RadioGroupItem value="not_allowed" id="contact_not_allowed" />
                                                         <Label htmlFor="contact_not_allowed" className="font-normal cursor-pointer">ขัดข้อง</Label>
+                                                        <RadioGroupItem value="not_allowed" id="contact_not_allowed" />
                                                     </div>
                                                 </RadioGroup>
                                                 {experienceData?.contact_previous_employer?.status === 'not_allowed' && (
@@ -231,10 +231,6 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                     </TableBody>
                 </Table>
             </div>
-
-
-
-
         </div>
 
         {/* Statement Section */}
@@ -242,193 +238,195 @@ export default function FormStep3({ data, experienceData, statementData, updateD
             <h3 className="text-lg font-bold text-slate-900 border-b pb-1">คำแถลง (กรุณาระบุตามความจริงเท่านั้น)</h3>
             
             {/* 1. Overtime */}
-            <div className="space-y-2">
-                <Label>1. ท่านสามารถปฏิบัติงานล่วงเวลาได้หรือไม่</Label>
+            <div className="flex items-center justify-between">
+                <Label className="text-base">1. ท่านสามารถปฏิบัติงานล่วงเวลาได้หรือไม่</Label>
                 <RadioGroup 
                     value={statementData?.can_work_overtime} 
                     onValueChange={(val) => updateStatement('can_work_overtime', val)}
                     className="flex gap-6"
                 >
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="ot_yes" className="font-normal">ได้</Label>
                         <RadioGroupItem value="yes" id="ot_yes" />
-                        <Label htmlFor="ot_yes">ได้</Label>
                     </div>
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="ot_no" className="font-normal">ไม่ได้</Label>
                         <RadioGroupItem value="no" id="ot_no" />
-                        <Label htmlFor="ot_no">ไม่ได้</Label>
                     </div>
                 </RadioGroup>
             </div>
 
             {/* 2. Legal Cases */}
-            <div className="space-y-2">
-                <Label>2. ท่านเคยเป็นผู้ต้องหาหรือต้องคำพิพากษาในคดีอาญา/แพ่งหรือไม่</Label>
+            <div className="flex items-center justify-between">
+                <Label className="text-base">2. ท่านเคยเป็นผู้ต้องหาหรือต้องคำพิพากษาในคดีอาญา/แพ่งหรือไม่</Label>
                 <RadioGroup 
                     value={statementData?.has_legal_cases} 
                     onValueChange={(val) => updateStatement('has_legal_cases', val)}
                     className="flex gap-6"
                 >
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="legal_never" className="font-normal">ไม่เคย</Label>
                         <RadioGroupItem value="never" id="legal_never" />
-                        <Label htmlFor="legal_never">ไม่เคย</Label>
                     </div>
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="legal_ever" className="font-normal">เคย</Label>
                         <RadioGroupItem value="ever" id="legal_ever" />
-                        <Label htmlFor="legal_ever">เคย</Label>
                     </div>
                 </RadioGroup>
             </div>
 
             {/* 3. Drugs */}
-            <div className="space-y-2">
-                <Label>3. ท่านเคยเสพสารเสพติดหรือเคยรับการบำบัด</Label>
+            <div className="flex items-center justify-between">
+                <Label className="text-base">3. ท่านเคยเสพสารเสพติดหรือเคยรับการบำบัด</Label>
                 <RadioGroup 
                     value={statementData?.has_drug_history} 
                     onValueChange={(val) => updateStatement('has_drug_history', val)}
                     className="flex gap-6"
                 >
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="drug_never" className="font-normal">ไม่เคย</Label>
                         <RadioGroupItem value="never" id="drug_never" />
-                        <Label htmlFor="drug_never">ไม่เคย</Label>
                     </div>
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="drug_ever" className="font-normal">เคย</Label>
                         <RadioGroupItem value="ever" id="drug_ever" />
-                        <Label htmlFor="drug_ever">เคย</Label>
                     </div>
                 </RadioGroup>
             </div>
 
             {/* 4. Smoking */}
             <div className="space-y-2">
-                <Label>4. ในปัจจุบันท่านสูบบุหรี่หรือไม่</Label>
-                <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-between">
+                    <Label className="text-base">4. ในปัจจุบันท่านสูบบุหรี่หรือไม่</Label>
                     <RadioGroup 
                         value={statementData?.smoking_habit?.status} 
                         onValueChange={(val) => updateStatementObj('smoking_habit', 'status', val)}
                         className="flex gap-6"
                     >
                         <div className="flex items-center space-x-2">
+                            <Label htmlFor="smoke_no" className="font-normal">ไม่สูบ</Label>
                             <RadioGroupItem value="no" id="smoke_no" />
-                            <Label htmlFor="smoke_no">ไม่สูบ</Label>
                         </div>
                         <div className="flex items-center space-x-2">
+                            <Label htmlFor="smoke_yes" className="font-normal">สูบประจำ</Label>
                             <RadioGroupItem value="yes" id="smoke_yes" />
-                            <Label htmlFor="smoke_yes">สูบประจำ</Label>
                         </div>
                     </RadioGroup>
-                    {statementData?.smoking_habit?.status === 'yes' && (
-                        <div className="flex items-center gap-2 max-w-sm mt-1 ml-6">
-                            <Label className="whitespace-nowrap font-normal">เฉลี่ยต่อวัน:</Label>
-                            <Input 
-                                className="h-8"
-                                placeholder="ระบุจำนวน"
-                                value={statementData?.smoking_habit?.amount || ''}
-                                onChange={(e) => updateStatementObj('smoking_habit', 'amount', e.target.value)}
-                            />
-                        </div>
-                    )}
                 </div>
+                {statementData?.smoking_habit?.status === 'yes' && (
+                    <div className="flex items-center justify-end gap-2">
+                        <Label className="whitespace-nowrap font-normal">เฉลี่ยต่อวัน:</Label>
+                        <Input 
+                            className="h-8 w-40"
+                            placeholder="ระบุจำนวน"
+                            value={statementData?.smoking_habit?.amount || ''}
+                            onChange={(e) => updateStatementObj('smoking_habit', 'amount', e.target.value)}
+                        />
+                    </div>
+                )}
             </div>
 
             {/* 5. Alcohol */}
-            <div className="space-y-2">
-                <Label>5. ท่านดื่มแอลกอฮอล์หรือไม่</Label>
+            <div className="flex items-center justify-between">
+                <Label className="text-base">5. ท่านดื่มแอลกอฮอล์หรือไม่</Label>
                 <RadioGroup 
                     value={statementData?.alcohol_habit} 
                     onValueChange={(val) => updateStatement('alcohol_habit', val)}
                     className="flex gap-6"
                 >
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="alc_no" className="font-normal">ไม่ดื่ม</Label>
                         <RadioGroupItem value="no" id="alc_no" />
-                        <Label htmlFor="alc_no">ไม่ดื่ม</Label>
                     </div>
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="alc_yes" className="font-normal">ดื่ม</Label>
                         <RadioGroupItem value="yes" id="alc_yes" />
-                        <Label htmlFor="alc_yes">ดื่ม</Label>
                     </div>
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="alc_some" className="font-normal">ดื่มบ้าง</Label>
                         <RadioGroupItem value="sometimes" id="alc_some" />
-                        <Label htmlFor="alc_some">ดื่มบ้าง</Label>
                     </div>
                 </RadioGroup>
             </div>
 
             {/* 6. Health Status */}
             <div className="space-y-2">
-                <Label>6. สุขภาพของท่าน</Label>
-                <div className="flex flex-col gap-2">
-                    <RadioGroup 
-                        value={statementData?.health_status?.status} 
-                        onValueChange={(val) => updateStatementObj('health_status', 'status', val)}
-                        className="flex flex-col gap-2"
-                    >
-                        <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="healthy" id="health_good" />
-                            <Label htmlFor="health_good">แข็งแรงสมบูรณ์ทุกอย่าง</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="no_chronic" id="health_no_chronic" />
-                            <Label htmlFor="health_no_chronic">ไม่มีโรคประจำตัว</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="chronic" id="health_chronic" />
-                            <Label htmlFor="health_chronic">มีโรคประจำตัว</Label>
-                        </div>
-                    </RadioGroup>
-                    {statementData?.health_status?.status === 'chronic' && (
-                        <div className="max-w-md ml-6">
-                            <Input 
-                                className="h-9"
-                                placeholder="ระบุโรคประจำตัว"
-                                value={statementData?.health_status?.details || ''}
-                                onChange={(e) => updateStatementObj('health_status', 'details', e.target.value)}
-                            />
-                        </div>
-                    )}
+                <div className="flex items-start justify-between">
+                    <Label className="text-base pt-1">6. สุขภาพของท่าน</Label>
+                    <div className="flex flex-col gap-2">
+                        <RadioGroup 
+                            value={statementData?.health_status?.status} 
+                            onValueChange={(val) => updateStatementObj('health_status', 'status', val)}
+                            className="flex flex-col gap-2 items-end"
+                        >
+                            <div className="flex items-center space-x-2">
+                                <Label htmlFor="health_good" className="font-normal">แข็งแรงสมบูรณ์ทุกอย่าง</Label>
+                                <RadioGroupItem value="healthy" id="health_good" />
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <Label htmlFor="health_no_chronic" className="font-normal">ไม่มีโรคประจำตัว</Label>
+                                <RadioGroupItem value="no_chronic" id="health_no_chronic" />
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <Label htmlFor="health_chronic" className="font-normal">มีโรคประจำตัว</Label>
+                                <RadioGroupItem value="chronic" id="health_chronic" />
+                            </div>
+                        </RadioGroup>
+                    </div>
                 </div>
+                {statementData?.health_status?.status === 'chronic' && (
+                    <div className="flex justify-end pt-2">
+                        <Input 
+                            className="h-9 w-1/2"
+                            placeholder="ระบุโรคประจำตัว"
+                            value={statementData?.health_status?.details || ''}
+                            onChange={(e) => updateStatementObj('health_status', 'details', e.target.value)}
+                        />
+                    </div>
+                )}
             </div>
 
             {/* 7. Recent Illness */}
-            <div className="space-y-2">
-                <Label>7. ท่านเคยล้มป่วยมากกว่า 3 วันติดต่อกันในรอบ 12 เดือนที่ผ่านมาหรือไม่</Label>
+            <div className="flex items-center justify-between">
+                <Label className="text-base">7. ท่านเคยล้มป่วยมากกว่า 3 วันติดต่อกันในรอบ 12 เดือนที่ผ่านมาหรือไม่</Label>
                 <RadioGroup 
                     value={statementData?.recent_major_illness} 
                     onValueChange={(val) => updateStatement('recent_major_illness', val)}
                     className="flex gap-6"
                 >
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="ill_never" className="font-normal">ไม่เคย</Label>
                         <RadioGroupItem value="never" id="ill_never" />
-                        <Label htmlFor="ill_never">ไม่เคย</Label>
                     </div>
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="ill_ever" className="font-normal">เคย</Label>
                         <RadioGroupItem value="ever" id="ill_ever" />
-                        <Label htmlFor="ill_ever">เคย</Label>
                     </div>
                 </RadioGroup>
             </div>
 
             {/* 8. Contagious Diseases */}
-            <div className="space-y-2">
-                <Label>8. ท่านมีโรคติดต่อร้ายแรงหรือไม่ เช่น กาฬโรค/HIV/Covid-19 อื่นๆ</Label>
+            <div className="flex items-center justify-between">
+                <Label className="text-base">8. ท่านมีโรคติดต่อร้ายแรงหรือไม่ เช่น กาฬโรค/HIV/Covid-19 อื่นๆ</Label>
                 <RadioGroup 
                     value={statementData?.has_contagious_disease} 
                     onValueChange={(val) => updateStatement('has_contagious_disease', val)}
                     className="flex gap-6"
                 >
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="contagious_no" className="font-normal">ไม่มี</Label>
                         <RadioGroupItem value="no" id="contagious_no" />
-                        <Label htmlFor="contagious_no">ไม่มี</Label>
                     </div>
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="contagious_yes" className="font-normal">มี</Label>
                         <RadioGroupItem value="yes" id="contagious_yes" />
-                        <Label htmlFor="contagious_yes">มี</Label>
                     </div>
                 </RadioGroup>
             </div>
 
             {/* 9. Physical Defects */}
             <div className="space-y-3">
-                <Label>9. ท่านมีข้อบกพร่องเกี่ยวกับร่างกาย หรือไม่</Label>
+                <Label className="text-base">9. ท่านมีข้อบกพร่องเกี่ยวกับร่างกาย หรือไม่</Label>
                 <div className="grid sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-lg border">
                     {/* Eyes */}
                     <div className="flex items-center gap-4">
@@ -439,12 +437,12 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                             className="flex gap-4"
                         >
                             <div className="flex items-center space-x-1">
-                                <RadioGroupItem value="normal" id="eyes_normal" />
                                 <Label htmlFor="eyes_normal" className="font-normal">ปกติ</Label>
+                                <RadioGroupItem value="normal" id="eyes_normal" />
                             </div>
                             <div className="flex items-center space-x-1">
-                                <RadioGroupItem value="abnormal" id="eyes_abnormal" />
                                 <Label htmlFor="eyes_abnormal" className="font-normal">ไม่ปกติ</Label>
+                                <RadioGroupItem value="abnormal" id="eyes_abnormal" />
                             </div>
                         </RadioGroup>
                     </div>
@@ -458,12 +456,12 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                             className="flex gap-4"
                         >
                             <div className="flex items-center space-x-1">
-                                <RadioGroupItem value="normal" id="hearing_normal" />
                                 <Label htmlFor="hearing_normal" className="font-normal">ปกติ</Label>
+                                <RadioGroupItem value="normal" id="hearing_normal" />
                             </div>
                             <div className="flex items-center space-x-1">
-                                <RadioGroupItem value="abnormal" id="hearing_abnormal" />
                                 <Label htmlFor="hearing_abnormal" className="font-normal">ไม่ปกติ</Label>
+                                <RadioGroupItem value="abnormal" id="hearing_abnormal" />
                             </div>
                         </RadioGroup>
                     </div>
@@ -477,12 +475,12 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                             className="flex gap-4"
                         >
                             <div className="flex items-center space-x-1">
-                                <RadioGroupItem value="normal" id="speak_normal" />
                                 <Label htmlFor="speak_normal" className="font-normal">ปกติ</Label>
+                                <RadioGroupItem value="normal" id="speak_normal" />
                             </div>
                             <div className="flex items-center space-x-1">
-                                <RadioGroupItem value="abnormal" id="speak_abnormal" />
                                 <Label htmlFor="speak_abnormal" className="font-normal">ไม่ปกติ</Label>
+                                <RadioGroupItem value="abnormal" id="speak_abnormal" />
                             </div>
                         </RadioGroup>
                     </div>
@@ -496,12 +494,12 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                             className="flex gap-4"
                         >
                             <div className="flex items-center space-x-1">
-                                <RadioGroupItem value="normal" id="move_normal" />
                                 <Label htmlFor="move_normal" className="font-normal">ปกติ</Label>
+                                <RadioGroupItem value="normal" id="move_normal" />
                             </div>
                             <div className="flex items-center space-x-1">
-                                <RadioGroupItem value="abnormal" id="move_abnormal" />
                                 <Label htmlFor="move_abnormal" className="font-normal">ไม่ปกติ</Label>
+                                <RadioGroupItem value="abnormal" id="move_abnormal" />
                             </div>
                         </RadioGroup>
                     </div>
@@ -582,39 +580,39 @@ export default function FormStep3({ data, experienceData, statementData, updateD
             </div>
 
             {/* 11. Criminal Record Consent */}
-            <div className="space-y-2">
-                <Label>11. ท่านยินยอมให้บริษัทฯตรวจสอบประวัติอาชญากรรมหรือไม่</Label>
+            <div className="flex items-center justify-between">
+                <Label className="text-base">11. ท่านยินยอมให้บริษัทฯตรวจสอบประวัติอาชญากรรมหรือไม่</Label>
                 <RadioGroup 
                     value={statementData?.criminal_record_check_consent} 
                     onValueChange={(val) => updateStatement('criminal_record_check_consent', val)}
                     className="flex gap-6"
                 >
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="crim_agree" className="font-normal">ยินยอม</Label>
                         <RadioGroupItem value="agree" id="crim_agree" />
-                        <Label htmlFor="crim_agree">ยินยอม</Label>
                     </div>
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="crim_disagree" className="font-normal">ไม่ยินยอม</Label>
                         <RadioGroupItem value="disagree" id="crim_disagree" />
-                        <Label htmlFor="crim_disagree">ไม่ยินยอม</Label>
                     </div>
                 </RadioGroup>
             </div>
 
             {/* 12. Credit Bureau Consent */}
-            <div className="space-y-2">
-                <Label>12. ท่านยินยอมให้บริษัทฯตรวจสอบเครดิตบูโรหรือไม่</Label>
+            <div className="flex items-center justify-between">
+                <Label className="text-base">12. ท่านยินยอมให้บริษัทฯตรวจสอบเครดิตบูโรหรือไม่</Label>
                 <RadioGroup 
                     value={statementData?.credit_bureau_check_consent} 
                     onValueChange={(val) => updateStatement('credit_bureau_check_consent', val)}
                     className="flex gap-6"
                 >
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="credit_agree" className="font-normal">ยินยอม</Label>
                         <RadioGroupItem value="agree" id="credit_agree" />
-                        <Label htmlFor="credit_agree">ยินยอม</Label>
                     </div>
                     <div className="flex items-center space-x-2">
+                        <Label htmlFor="credit_disagree" className="font-normal">ไม่ยินยอม</Label>
                         <RadioGroupItem value="disagree" id="credit_disagree" />
-                        <Label htmlFor="credit_disagree">ไม่ยินยอม</Label>
                     </div>
                 </RadioGroup>
             </div>
