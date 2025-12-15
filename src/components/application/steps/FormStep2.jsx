@@ -235,12 +235,17 @@ export default function FormStep2({ data, familyData, skillsData, trainingData, 
                                 ].map(item => (
                                     <TableRow key={item.k} className="hover:bg-transparent">
                                         <TableCell className={tdTextClass + " text-sm"}>{item.l}</TableCell>
-                                        <TableCell className={tdTextClass + " text-center"}>
-                                            <Checkbox 
-                                                className="h-4 w-4"
-                                                checked={skillsData?.office?.[item.k] || false} 
-                                                onCheckedChange={c => updateSkills('office', item.k, c)} 
-                                            />
+                                        <TableCell className="border border-slate-300 p-0 text-center align-middle">
+                                            <div 
+                                                className="flex items-center justify-center w-full h-full py-1 hover:bg-slate-50 cursor-pointer transition-colors"
+                                                onClick={() => updateSkills('office', item.k, !skillsData?.office?.[item.k])}
+                                            >
+                                                <Checkbox 
+                                                    className="h-5 w-5 border-2 border-slate-300 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600"
+                                                    checked={skillsData?.office?.[item.k] || false} 
+                                                    onCheckedChange={c => updateSkills('office', item.k, c)} 
+                                                />
+                                            </div>
                                         </TableCell>
                                     </TableRow>
                                 ))}
@@ -263,26 +268,62 @@ export default function FormStep2({ data, familyData, skillsData, trainingData, 
                             <TableBody>
                                 <TableRow className="hover:bg-transparent">
                                     <TableCell className={tdTextClass + " text-sm"}>จักรยานยนต์</TableCell>
-                                    <TableCell className={tdTextClass + " text-center"}>
-                                        <Checkbox className="h-4 w-4" checked={skillsData?.driving?.motorcycle || false} onCheckedChange={c => updateSkills('driving', 'motorcycle', c)} />
+                                    <TableCell className="border border-slate-300 p-0 text-center align-middle">
+                                        <div 
+                                            className="flex items-center justify-center w-full h-full py-1 hover:bg-slate-50 cursor-pointer transition-colors"
+                                            onClick={() => updateSkills('driving', 'motorcycle', !skillsData?.driving?.motorcycle)}
+                                        >
+                                            <Checkbox 
+                                                className="h-5 w-5 border-2 border-slate-300 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600"
+                                                checked={skillsData?.driving?.motorcycle || false} 
+                                                onCheckedChange={c => updateSkills('driving', 'motorcycle', c)} 
+                                            />
+                                        </div>
                                     </TableCell>
                                 </TableRow>
                                 <TableRow className="hover:bg-transparent">
                                     <TableCell className={tdTextClass + " text-sm"}>รถยนต์</TableCell>
-                                    <TableCell className={tdTextClass + " text-center"}>
-                                        <Checkbox className="h-4 w-4" checked={skillsData?.driving?.car || false} onCheckedChange={c => updateSkills('driving', 'car', c)} />
+                                    <TableCell className="border border-slate-300 p-0 text-center align-middle">
+                                        <div 
+                                            className="flex items-center justify-center w-full h-full py-1 hover:bg-slate-50 cursor-pointer transition-colors"
+                                            onClick={() => updateSkills('driving', 'car', !skillsData?.driving?.car)}
+                                        >
+                                            <Checkbox 
+                                                className="h-5 w-5 border-2 border-slate-300 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600"
+                                                checked={skillsData?.driving?.car || false} 
+                                                onCheckedChange={c => updateSkills('driving', 'car', c)} 
+                                            />
+                                        </div>
                                     </TableCell>
                                 </TableRow>
                                 <TableRow className="hover:bg-transparent">
                                     <TableCell className={tdTextClass + " text-sm"}>รถบรรทุก</TableCell>
-                                    <TableCell className={tdTextClass + " text-center"}>
-                                        <Checkbox className="h-4 w-4" checked={skillsData?.driving?.truck || false} onCheckedChange={c => updateSkills('driving', 'truck', c)} />
+                                    <TableCell className="border border-slate-300 p-0 text-center align-middle">
+                                        <div 
+                                            className="flex items-center justify-center w-full h-full py-1 hover:bg-slate-50 cursor-pointer transition-colors"
+                                            onClick={() => updateSkills('driving', 'truck', !skillsData?.driving?.truck)}
+                                        >
+                                            <Checkbox 
+                                                className="h-5 w-5 border-2 border-slate-300 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600"
+                                                checked={skillsData?.driving?.truck || false} 
+                                                onCheckedChange={c => updateSkills('driving', 'truck', c)} 
+                                            />
+                                        </div>
                                     </TableCell>
                                 </TableRow>
                                 <TableRow className="hover:bg-transparent">
                                     <TableCell className={tdClass}><Input placeholder="อื่นๆ" className={inputClass} value={skillsData?.driving?.other_name || ''} onChange={e => updateSkills('driving', 'other_name', e.target.value)} /></TableCell>
-                                    <TableCell className={tdTextClass + " text-center"}>
-                                        <Checkbox className="h-4 w-4" checked={skillsData?.driving?.other_check || false} onCheckedChange={c => updateSkills('driving', 'other_check', c)} />
+                                    <TableCell className="border border-slate-300 p-0 text-center align-middle">
+                                        <div 
+                                            className="flex items-center justify-center w-full h-full py-1 hover:bg-slate-50 cursor-pointer transition-colors"
+                                            onClick={() => updateSkills('driving', 'other_check', !skillsData?.driving?.other_check)}
+                                        >
+                                            <Checkbox 
+                                                className="h-5 w-5 border-2 border-slate-300 data-[state=checked]:bg-indigo-600 data-[state=checked]:border-indigo-600"
+                                                checked={skillsData?.driving?.other_check || false} 
+                                                onCheckedChange={c => updateSkills('driving', 'other_check', c)} 
+                                            />
+                                        </div>
                                     </TableCell>
                                 </TableRow>
                             </TableBody>
