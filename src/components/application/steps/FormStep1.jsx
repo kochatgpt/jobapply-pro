@@ -53,40 +53,41 @@ export default function FormStep1({ data, updateData, photo }) {
             </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 items-start">
-            <div className="space-y-4">
-                <div className="space-y-2">
-                    <Label>ชื่อ-สกุล (ภาษาไทย)</Label>
-                    <div className="flex gap-2">
-                         <Select value={data.prefix} onValueChange={(v) => updateData('personal_data', 'prefix', v)}>
-                            <SelectTrigger className="w-[80px]"><SelectValue placeholder="คำนำ" /></SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="นาย">นาย</SelectItem>
-                                <SelectItem value="นาง">นาง</SelectItem>
-                                <SelectItem value="นางสาว">น.ส.</SelectItem>
-                            </SelectContent>
-                        </Select>
-                        <Input placeholder="ชื่อ" value={data.first_name} onChange={(e) => updateData('personal_data', 'first_name', e.target.value)} />
-                        <Input placeholder="สกุล" value={data.last_name} onChange={(e) => updateData('personal_data', 'last_name', e.target.value)} />
+        <div className="flex flex-col md:flex-row gap-6 items-start">
+            <div className="flex-1 space-y-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <Label>ชื่อ-สกุล (ภาษาไทย)</Label>
+                        <div className="flex gap-2">
+                             <Select value={data.prefix} onValueChange={(v) => updateData('personal_data', 'prefix', v)}>
+                                <SelectTrigger className="w-[80px]"><SelectValue placeholder="คำนำ" /></SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="นาย">นาย</SelectItem>
+                                    <SelectItem value="นาง">นาง</SelectItem>
+                                    <SelectItem value="นางสาว">น.ส.</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <Input placeholder="ชื่อ" value={data.first_name} onChange={(e) => updateData('personal_data', 'first_name', e.target.value)} />
+                            <Input placeholder="สกุล" value={data.last_name} onChange={(e) => updateData('personal_data', 'last_name', e.target.value)} />
+                        </div>
+                    </div>
+                    <div className="space-y-2">
+                        <Label>ชื่อเล่น (ภาษาไทย)</Label>
+                        <Input value={data.thai_nickname} onChange={(e) => updateData('personal_data', 'thai_nickname', e.target.value)} />
                     </div>
                 </div>
-                <div className="space-y-2 col-span-2">
+
+                <div className="space-y-2">
                     <Label>Name in English</Label>
                     <Input placeholder="Firstname Lastname" value={data.english_name} onChange={(e) => updateData('personal_data', 'english_name', e.target.value)} />
                 </div>
             </div>
             
-            <div className="flex gap-4">
-                <div className="space-y-2 flex-1">
-                    <Label>ชื่อเล่น (ภาษาไทย)</Label>
-                    <Input value={data.thai_nickname} onChange={(e) => updateData('personal_data', 'thai_nickname', e.target.value)} />
+            {photo && (
+                <div className="w-32 h-40 bg-slate-100 border rounded-md overflow-hidden shrink-0 mt-1">
+                     <img src={photo} alt="Applicant" className="w-full h-full object-cover" />
                 </div>
-                {photo && (
-                  <div className="w-24 h-32 bg-slate-100 border rounded-md overflow-hidden shrink-0">
-                       <img src={photo} alt="Applicant" className="w-full h-full object-cover" />
-                  </div>
-                )}
-            </div>
+            )}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
