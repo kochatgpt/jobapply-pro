@@ -1,10 +1,17 @@
 import React from 'react';
 import { Input } from "@/components/ui/input";
+import { useQuery } from '@tanstack/react-query';
+import { base44 } from '@/api/base44Client';
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 
 export default function FormStep1({ data, updateData, photo }) {
+    const { data: positions = [] } = useQuery({
+        queryKey: ['jobPositions'],
+        queryFn: () => base44.entities.JobPosition.list()
+    });
+
     // Helper to update nested address fields
     const updateAddress = (type, field, value) => {
         const currentAddr = data[type] || {};
@@ -41,11 +48,25 @@ export default function FormStep1({ data, updateData, photo }) {
         <div className="grid md:grid-cols-3 gap-2">
             <div className="space-y-1">
                 <Label>สมัครงานในตำแหน่ง 1</Label>
-                <Input className="h-9" value={data.position_1} onChange={(e) => updateData('personal_data', 'position_1', e.target.value)} />
+                <Select value={data.position_1} onValueChange={(v) => updateData('personal_data', 'position_1', v)}>
+                    <SelectTrigger className="h-9"><SelectValue placeholder="เลือกตำแหน่ง" /></SelectTrigger>
+                    <SelectContent>
+                        {positions.filter(p => p.is_active !== false).map(p => (
+                            <SelectItem key={p.id} value={p.title}>{p.title}</SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
             </div>
             <div className="space-y-1">
                 <Label>สมัครงานในตำแหน่ง 2</Label>
-                <Input className="h-9" value={data.position_2} onChange={(e) => updateData('personal_data', 'position_2', e.target.value)} />
+                <Select value={data.position_2} onValueChange={(v) => updateData('personal_data', 'position_2', v)}>
+                    <SelectTrigger className="h-9"><SelectValue placeholder="เลือกตำแหน่ง" /></SelectTrigger>
+                    <SelectContent>
+                        {positions.filter(p => p.is_active !== false).map(p => (
+                            <SelectItem key={p.id} value={p.title}>{p.title}</SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
             </div>
             <div className="space-y-1">
                 <Label>อัตราเงินเดือนที่ต้องการ</Label>
