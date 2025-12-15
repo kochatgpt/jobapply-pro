@@ -39,6 +39,12 @@ export default function FormStep2({ data, familyData, skillsData, trainingData, 
         { key: 'current', label: 'กำลังศึกษา' },
     ];
 
+    // Styles for table with borders and borderless inputs
+    const thClass = "border border-slate-300 bg-slate-100 text-slate-700 h-9 px-2 font-semibold";
+    const tdClass = "border border-slate-300 p-0"; // No padding for input cells
+    const tdTextClass = "border border-slate-300 p-2"; // For text/checkbox cells
+    const inputClass = "border-none shadow-none focus-visible:ring-0 h-9 w-full rounded-none bg-transparent px-2";
+
     return (
     <div className="space-y-5">
         {/* 1. Family Status */}
@@ -142,27 +148,27 @@ export default function FormStep2({ data, familyData, skillsData, trainingData, 
         {/* 2. Education History */}
         <div className="space-y-3">
             <h3 className="text-lg font-bold text-slate-900 border-b pb-1">ประวัติการศึกษา</h3>
-            <div className="rounded-md border overflow-x-auto">
-                <Table className="min-w-[800px]">
+            <div className="rounded-md overflow-x-auto">
+                <Table className="min-w-[800px] border-collapse border border-slate-300">
                     <TableHeader>
-                        <TableRow className="bg-slate-50 hover:bg-slate-50">
-                            <TableHead className="w-[150px] py-2 h-9">ระดับ</TableHead>
-                            <TableHead className="py-2 h-9">ชื่อสถานศึกษา</TableHead>
-                            <TableHead className="py-2 h-9">สาขาวิชา</TableHead>
-                            <TableHead className="w-[100px] py-2 h-9">เริ่ม (พ.ศ.)</TableHead>
-                            <TableHead className="w-[100px] py-2 h-9">จบ (พ.ศ.)</TableHead>
-                            <TableHead className="w-[80px] py-2 h-9">เกรด</TableHead>
+                        <TableRow className="bg-slate-100 hover:bg-slate-100">
+                            <TableHead className={thClass + " w-[150px]"}>ระดับ</TableHead>
+                            <TableHead className={thClass}>ชื่อสถานศึกษา</TableHead>
+                            <TableHead className={thClass}>สาขาวิชา</TableHead>
+                            <TableHead className={thClass + " w-[100px]"}>เริ่ม (พ.ศ.)</TableHead>
+                            <TableHead className={thClass + " w-[100px]"}>จบ (พ.ศ.)</TableHead>
+                            <TableHead className={thClass + " w-[80px]"}>เกรด</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {eduLevels.map((level) => (
-                            <TableRow key={level.key}>
-                                <TableCell className="font-medium py-2">{level.label}</TableCell>
-                                <TableCell className="py-2"><Input className="h-8" value={data?.history?.[level.key]?.institute || ''} onChange={e => updateEdu(level.key, 'institute', e.target.value)} /></TableCell>
-                                <TableCell className="py-2"><Input className="h-8" value={data?.history?.[level.key]?.major || ''} onChange={e => updateEdu(level.key, 'major', e.target.value)} /></TableCell>
-                                <TableCell className="py-2"><Input className="h-8" value={data?.history?.[level.key]?.start_year || ''} onChange={e => updateEdu(level.key, 'start_year', e.target.value)} /></TableCell>
-                                <TableCell className="py-2"><Input className="h-8" value={data?.history?.[level.key]?.end_year || ''} onChange={e => updateEdu(level.key, 'end_year', e.target.value)} /></TableCell>
-                                <TableCell className="py-2"><Input className="h-8" value={data?.history?.[level.key]?.gpa || ''} onChange={e => updateEdu(level.key, 'gpa', e.target.value)} /></TableCell>
+                            <TableRow key={level.key} className="hover:bg-transparent">
+                                <TableCell className={tdTextClass + " bg-slate-50 font-medium"}>{level.label}</TableCell>
+                                <TableCell className={tdClass}><Input className={inputClass} value={data?.history?.[level.key]?.institute || ''} onChange={e => updateEdu(level.key, 'institute', e.target.value)} /></TableCell>
+                                <TableCell className={tdClass}><Input className={inputClass} value={data?.history?.[level.key]?.major || ''} onChange={e => updateEdu(level.key, 'major', e.target.value)} /></TableCell>
+                                <TableCell className={tdClass}><Input className={inputClass} value={data?.history?.[level.key]?.start_year || ''} onChange={e => updateEdu(level.key, 'start_year', e.target.value)} /></TableCell>
+                                <TableCell className={tdClass}><Input className={inputClass} value={data?.history?.[level.key]?.end_year || ''} onChange={e => updateEdu(level.key, 'end_year', e.target.value)} /></TableCell>
+                                <TableCell className={tdClass}><Input className={inputClass} value={data?.history?.[level.key]?.gpa || ''} onChange={e => updateEdu(level.key, 'gpa', e.target.value)} /></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -178,30 +184,30 @@ export default function FormStep2({ data, familyData, skillsData, trainingData, 
                 {/* 3.1 Language Skills */}
                 <div className="space-y-2">
                     <h4 className="font-semibold text-sm text-slate-700">1. ความรู้ภาษา</h4>
-                    <div className="border rounded-md overflow-hidden">
-                        <Table>
+                    <div className="rounded-md overflow-hidden">
+                        <Table className="border-collapse border border-slate-300">
                             <TableHeader>
-                                <TableRow className="bg-slate-50 hover:bg-slate-50">
-                                    <TableHead className="h-8 py-1">ภาษา</TableHead>
-                                    <TableHead className="h-8 py-1">ความสามารถ</TableHead>
+                                <TableRow className="bg-slate-100 hover:bg-slate-100">
+                                    <TableHead className={thClass}>ภาษา</TableHead>
+                                    <TableHead className={thClass}>ความสามารถ</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell className="py-1">ไทย</TableCell>
-                                    <TableCell className="py-1"><Input className="h-7" value={skillsData?.languages?.thai || ''} onChange={e => updateSkills('languages', 'thai', e.target.value)} /></TableCell>
+                                <TableRow className="hover:bg-transparent">
+                                    <TableCell className={tdTextClass}>ไทย</TableCell>
+                                    <TableCell className={tdClass}><Input className={inputClass} value={skillsData?.languages?.thai || ''} onChange={e => updateSkills('languages', 'thai', e.target.value)} /></TableCell>
                                 </TableRow>
-                                <TableRow>
-                                    <TableCell className="py-1">อังกฤษ</TableCell>
-                                    <TableCell className="py-1"><Input className="h-7" value={skillsData?.languages?.english || ''} onChange={e => updateSkills('languages', 'english', e.target.value)} /></TableCell>
+                                <TableRow className="hover:bg-transparent">
+                                    <TableCell className={tdTextClass}>อังกฤษ</TableCell>
+                                    <TableCell className={tdClass}><Input className={inputClass} value={skillsData?.languages?.english || ''} onChange={e => updateSkills('languages', 'english', e.target.value)} /></TableCell>
                                 </TableRow>
-                                <TableRow>
-                                    <TableCell className="py-1">จีน</TableCell>
-                                    <TableCell className="py-1"><Input className="h-7" value={skillsData?.languages?.chinese || ''} onChange={e => updateSkills('languages', 'chinese', e.target.value)} /></TableCell>
+                                <TableRow className="hover:bg-transparent">
+                                    <TableCell className={tdTextClass}>จีน</TableCell>
+                                    <TableCell className={tdClass}><Input className={inputClass} value={skillsData?.languages?.chinese || ''} onChange={e => updateSkills('languages', 'chinese', e.target.value)} /></TableCell>
                                 </TableRow>
-                                <TableRow>
-                                    <TableCell className="p-1"><Input placeholder="อื่นๆ" className="h-7" value={skillsData?.languages?.other_name || ''} onChange={e => updateSkills('languages', 'other_name', e.target.value)} /></TableCell>
-                                    <TableCell className="py-1"><Input className="h-7" value={skillsData?.languages?.other_level || ''} onChange={e => updateSkills('languages', 'other_level', e.target.value)} /></TableCell>
+                                <TableRow className="hover:bg-transparent">
+                                    <TableCell className={tdClass}><Input placeholder="อื่นๆ" className={inputClass} value={skillsData?.languages?.other_name || ''} onChange={e => updateSkills('languages', 'other_name', e.target.value)} /></TableCell>
+                                    <TableCell className={tdClass}><Input className={inputClass} value={skillsData?.languages?.other_level || ''} onChange={e => updateSkills('languages', 'other_level', e.target.value)} /></TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>
@@ -211,12 +217,12 @@ export default function FormStep2({ data, familyData, skillsData, trainingData, 
                 {/* 3.2 Office Equipment */}
                 <div className="space-y-2">
                     <h4 className="font-semibold text-sm text-slate-700">2. เครื่องใช้สำนักงาน</h4>
-                    <div className="border rounded-md overflow-hidden">
-                        <Table>
+                    <div className="rounded-md overflow-hidden">
+                        <Table className="border-collapse border border-slate-300">
                             <TableHeader>
-                                <TableRow className="bg-slate-50 hover:bg-slate-50">
-                                    <TableHead className="h-8 py-1">ประเภท</TableHead>
-                                    <TableHead className="text-center w-16 h-8 py-1">ใช้เป็น</TableHead>
+                                <TableRow className="bg-slate-100 hover:bg-slate-100">
+                                    <TableHead className={thClass}>ประเภท</TableHead>
+                                    <TableHead className={thClass + " text-center w-16"}>ใช้เป็น</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -227,9 +233,9 @@ export default function FormStep2({ data, familyData, skillsData, trainingData, 
                                     { k: 'fax_copier', l: 'เครื่องแฟกซ์/ถ่ายเอกสาร' },
                                     { k: 'computer', l: 'คอมพิวเตอร์' },
                                 ].map(item => (
-                                    <TableRow key={item.k}>
-                                        <TableCell className="py-1 text-sm">{item.l}</TableCell>
-                                        <TableCell className="text-center py-1">
+                                    <TableRow key={item.k} className="hover:bg-transparent">
+                                        <TableCell className={tdTextClass + " text-sm"}>{item.l}</TableCell>
+                                        <TableCell className={tdTextClass + " text-center"}>
                                             <Checkbox 
                                                 className="h-4 w-4"
                                                 checked={skillsData?.office?.[item.k] || false} 
@@ -246,36 +252,36 @@ export default function FormStep2({ data, familyData, skillsData, trainingData, 
                 {/* 3.3 Special Skills */}
                 <div className="space-y-2">
                     <h4 className="font-semibold text-sm text-slate-700">3. ความสามารถพิเศษอื่นๆ</h4>
-                    <div className="border rounded-md overflow-hidden">
-                        <Table>
+                    <div className="rounded-md overflow-hidden">
+                        <Table className="border-collapse border border-slate-300">
                             <TableHeader>
-                                <TableRow className="bg-slate-50 hover:bg-slate-50">
-                                    <TableHead className="h-8 py-1">ประเภท</TableHead>
-                                    <TableHead className="text-center w-16 h-8 py-1">ขับเป็น</TableHead>
+                                <TableRow className="bg-slate-100 hover:bg-slate-100">
+                                    <TableHead className={thClass}>ประเภท</TableHead>
+                                    <TableHead className={thClass + " text-center w-16"}>ขับเป็น</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell className="py-1 text-sm">จักรยานยนต์</TableCell>
-                                    <TableCell className="text-center py-1">
+                                <TableRow className="hover:bg-transparent">
+                                    <TableCell className={tdTextClass + " text-sm"}>จักรยานยนต์</TableCell>
+                                    <TableCell className={tdTextClass + " text-center"}>
                                         <Checkbox className="h-4 w-4" checked={skillsData?.driving?.motorcycle || false} onCheckedChange={c => updateSkills('driving', 'motorcycle', c)} />
                                     </TableCell>
                                 </TableRow>
-                                <TableRow>
-                                    <TableCell className="py-1 text-sm">รถยนต์</TableCell>
-                                    <TableCell className="text-center py-1">
+                                <TableRow className="hover:bg-transparent">
+                                    <TableCell className={tdTextClass + " text-sm"}>รถยนต์</TableCell>
+                                    <TableCell className={tdTextClass + " text-center"}>
                                         <Checkbox className="h-4 w-4" checked={skillsData?.driving?.car || false} onCheckedChange={c => updateSkills('driving', 'car', c)} />
                                     </TableCell>
                                 </TableRow>
-                                <TableRow>
-                                    <TableCell className="py-1 text-sm">รถบรรทุก</TableCell>
-                                    <TableCell className="text-center py-1">
+                                <TableRow className="hover:bg-transparent">
+                                    <TableCell className={tdTextClass + " text-sm"}>รถบรรทุก</TableCell>
+                                    <TableCell className={tdTextClass + " text-center"}>
                                         <Checkbox className="h-4 w-4" checked={skillsData?.driving?.truck || false} onCheckedChange={c => updateSkills('driving', 'truck', c)} />
                                     </TableCell>
                                 </TableRow>
-                                <TableRow>
-                                    <TableCell className="p-1"><Input placeholder="อื่นๆ" className="h-7" value={skillsData?.driving?.other_name || ''} onChange={e => updateSkills('driving', 'other_name', e.target.value)} /></TableCell>
-                                    <TableCell className="text-center py-1">
+                                <TableRow className="hover:bg-transparent">
+                                    <TableCell className={tdClass}><Input placeholder="อื่นๆ" className={inputClass} value={skillsData?.driving?.other_name || ''} onChange={e => updateSkills('driving', 'other_name', e.target.value)} /></TableCell>
+                                    <TableCell className={tdTextClass + " text-center"}>
                                         <Checkbox className="h-4 w-4" checked={skillsData?.driving?.other_check || false} onCheckedChange={c => updateSkills('driving', 'other_check', c)} />
                                     </TableCell>
                                 </TableRow>
@@ -300,23 +306,23 @@ export default function FormStep2({ data, familyData, skillsData, trainingData, 
         {/* 4. Training History */}
         <div className="space-y-3">
             <h3 className="text-lg font-bold text-slate-900 border-b pb-1">ประวัติการฝึกอบรม</h3>
-            <div className="rounded-md border overflow-hidden">
-                <Table>
+            <div className="rounded-md overflow-hidden">
+                <Table className="border-collapse border border-slate-300">
                     <TableHeader>
-                        <TableRow className="bg-slate-50 hover:bg-slate-50">
-                            <TableHead className="w-16 text-center h-9 py-2">ลำดับ</TableHead>
-                            <TableHead className="h-9 py-2">หลักสูตร</TableHead>
-                            <TableHead className="h-9 py-2">สถาบัน</TableHead>
-                            <TableHead className="h-9 py-2">ระยะเวลา</TableHead>
+                        <TableRow className="bg-slate-100 hover:bg-slate-100">
+                            <TableHead className={thClass + " w-16 text-center"}>ลำดับ</TableHead>
+                            <TableHead className={thClass}>หลักสูตร</TableHead>
+                            <TableHead className={thClass}>สถาบัน</TableHead>
+                            <TableHead className={thClass}>ระยะเวลา</TableHead>
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {[0, 1, 2, 3].map((index) => (
-                            <TableRow key={index}>
-                                <TableCell className="text-center py-2">{index + 1}</TableCell>
-                                <TableCell className="py-2"><Input className="h-8" value={trainingData?.history?.[index]?.course || ''} onChange={e => updateTraining(index, 'course', e.target.value)} /></TableCell>
-                                <TableCell className="py-2"><Input className="h-8" value={trainingData?.history?.[index]?.institute || ''} onChange={e => updateTraining(index, 'institute', e.target.value)} /></TableCell>
-                                <TableCell className="py-2"><Input className="h-8" value={trainingData?.history?.[index]?.duration || ''} onChange={e => updateTraining(index, 'duration', e.target.value)} /></TableCell>
+                            <TableRow key={index} className="hover:bg-transparent">
+                                <TableCell className={tdTextClass + " text-center"}>{index + 1}</TableCell>
+                                <TableCell className={tdClass}><Input className={inputClass} value={trainingData?.history?.[index]?.course || ''} onChange={e => updateTraining(index, 'course', e.target.value)} /></TableCell>
+                                <TableCell className={tdClass}><Input className={inputClass} value={trainingData?.history?.[index]?.institute || ''} onChange={e => updateTraining(index, 'institute', e.target.value)} /></TableCell>
+                                <TableCell className={tdClass}><Input className={inputClass} value={trainingData?.history?.[index]?.duration || ''} onChange={e => updateTraining(index, 'duration', e.target.value)} /></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
