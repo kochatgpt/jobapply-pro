@@ -353,11 +353,11 @@ export default function FormStep3({ data, experienceData, statementData, updateD
             <div className="space-y-2">
                 <div className="flex items-start gap-4">
                     <Label className="text-base pt-1">6. สุขภาพของท่าน</Label>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 w-full">
                         <RadioGroup 
                             value={statementData?.health_status?.status} 
                             onValueChange={(val) => updateStatementObj('health_status', 'status', val)}
-                            className="flex flex-col gap-2"
+                            className="flex flex-row gap-6 flex-wrap"
                         >
                             <div className="flex items-center space-x-2">
                                 <Label htmlFor="health_good" className="font-normal">แข็งแรงสมบูรณ์ทุกอย่าง</Label>
