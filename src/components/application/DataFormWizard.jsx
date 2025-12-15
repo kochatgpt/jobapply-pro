@@ -35,6 +35,8 @@ export default function DataFormWizard({ onComplete, globalData, setGlobalData }
                 personal_data: globalData.personal_data,
                 family_data: globalData.family_data,
                 education_data: globalData.education_data,
+                skills_data: globalData.skills_data,
+                training_data: globalData.training_data,
                 health_data: globalData.health_data,
                 experience_data: globalData.experience_data,
                 photo_url: globalData.photo_url,
@@ -74,7 +76,13 @@ export default function DataFormWizard({ onComplete, globalData, setGlobalData }
                 </CardHeader>
                 <CardContent className="flex-1">
                     {step === 1 && <FormStep1 data={globalData.personal_data} updateData={updateData} photo={globalData.photo_url} />}
-                    {step === 2 && <FormStep2 data={globalData.education_data} familyData={globalData.family_data} updateData={updateData} />}
+                    {step === 2 && <FormStep2 
+                        data={globalData.education_data} 
+                        familyData={globalData.family_data} 
+                        skillsData={globalData.skills_data}
+                        trainingData={globalData.training_data}
+                        updateData={updateData} 
+                    />}
                     {step === 3 && <FormStep3 data={globalData.health_data} updateData={updateData} />}
                     {step === 4 && <FormStep4 
                                         data={globalData.experience_data} 

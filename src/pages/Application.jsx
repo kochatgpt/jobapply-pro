@@ -41,7 +41,43 @@ export default function ApplicationPage() {
             ordination_status: ''
         },
         family_data: { marital_status: '', has_children: 'no' },
-        education_data: { university: '', faculty: '', major: '', gpa: '' },
+        education_data: [
+            { level: 'ประถมศึกษา', institution: '', major: '-', start_year: '', end_year: '', gpa: '' },
+            { level: 'มัธยมศึกษา', institution: '', major: '-', start_year: '', end_year: '', gpa: '' },
+            { level: 'ปวช.', institution: '', major: '', start_year: '', end_year: '', gpa: '' },
+            { level: 'ปวส.', institution: '', major: '', start_year: '', end_year: '', gpa: '' },
+            { level: 'ปริญญาตรี', institution: '', major: '', start_year: '', end_year: '', gpa: '' },
+            { level: 'ปริญญาโท', institution: '', major: '', start_year: '', end_year: '', gpa: '' },
+            { level: 'ปริญญาเอก', institution: '', major: '', start_year: '', end_year: '', gpa: '' },
+            { level: 'กำลังศึกษา', institution: '', major: '', start_year: '', end_year: '', gpa: '' },
+        ],
+        skills_data: {
+            languages: [
+                { language: 'ไทย', level: '' },
+                { language: 'อังกฤษ', level: '' },
+                { language: 'จีน', level: '' },
+                { language: '', level: '', is_other: true }
+            ],
+            office_equipment: [
+                { name: 'พิมพ์ดีดไทย/อังกฤษ', can_use: false },
+                { name: 'เครื่องคิดเลข', can_use: false },
+                { name: 'เครื่องแฟกซ์/เครื่องถ่ายเอกสาร', can_use: false },
+                { name: 'เครื่องคอมพิวเตอร์', can_use: false }
+            ],
+            driving: [
+                { name: 'ขับจักรยานยนต์', can_drive: false },
+                { name: 'ขับรถยนต์', can_drive: false },
+                { name: 'ขับรถบรรทุก', can_drive: false },
+                { name: 'อื่นๆ', can_drive: false, is_other: true, other_text: '' }
+            ],
+            computer_skills: ''
+        },
+        training_data: [
+            { no: 1, course: '', institution: '', duration: '' },
+            { no: 2, course: '', institution: '', duration: '' },
+            { no: 3, course: '', institution: '', duration: '' },
+            { no: 4, course: '', institution: '', duration: '' },
+        ],
         health_data: { diseases: '', smoking: '', alcohol: '', family_history: '' },
         experience_data: { last_company: '', position: '', years: '', motto: '' },
         signature_url: ''
