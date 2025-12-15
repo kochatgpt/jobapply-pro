@@ -38,6 +38,7 @@ export default function DataFormWizard({ onComplete, globalData, setGlobalData }
                 skills_data: globalData.skills_data,
                 training_data: globalData.training_data,
                 health_data: globalData.health_data,
+                statement_data: globalData.statement_data,
                 experience_data: globalData.experience_data,
                 photo_url: globalData.photo_url,
                 signature_url: globalData.signature_url,
@@ -86,6 +87,7 @@ export default function DataFormWizard({ onComplete, globalData, setGlobalData }
                     {step === 3 && <FormStep3 
                         data={globalData.health_data} 
                         experienceData={globalData.experience_data} 
+                        statementData={globalData.statement_data}
                         updateData={updateData} 
                     />}
                     {step === 4 && <FormStep4 
