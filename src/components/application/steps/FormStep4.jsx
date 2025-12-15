@@ -191,12 +191,12 @@ export default function FormStep4({ data, setGlobalData }) {
                     <p className="text-sm text-slate-700 leading-relaxed text-justify">
                         ข้าพเจ้าขอรับรองว่า ข้อความดังกล่าวทั้งหมดในใบสมัครงานและเอกสารแนบนี้เป็นความจริงทุกประการ หลังจากบริษัทฯได้เข้ามาทำงานแล้วหากปรากฏว่า ข้อความในใบสมัครงานและเอกสารแนบที่นำมาแสดงต่างๆ หรือรายละเอียดที่ให้ไว้ไม่เป็นความจริง หรือเป็นเท็จ บริษัทฯ มีสิทธิ์ที่เลิกจ้างข้าพเจ้าได้ โดยไม่ต้องจ่ายเงินชดเชยหรือค่าเสียหายใดๆ ทั้งสิ้น ข้าพเจ้ายินยอมให้บริษัทฯตรวจสอบ ข้อมูลย้อนหลังจากการทำงานที่เดิม รวมถึงยินยอมให้ตรวจสอบประวัติอาญากรรมและเครดิตบูโรทั้งสิ้น และข้าพเจ้ายินยอมให้แพทย์ หรือโรงพยาบาลให้ข้อมูลที่จำเป็นเกี่ยวกับสุขภาพของข้าพเจ้า ซึ่งมีผลกระทบต่อการปฏิบัติงานในบริษัท
                     </p>
-                    <p className="font-semibold text-slate-900 text-center pt-2">
+                    <p className="font-semibold text-slate-900 text-right pt-2 pr-4">
                         ข้าพเจ้าขอลงนามรับรองการให้ข้อมูลตามจริงทุกประการ
                     </p>
 
-                    <div className="flex flex-col items-center gap-6 pt-4">
-                        <div className="w-full max-w-md flex flex-col items-center gap-4">
+                    <div className="flex flex-col items-end gap-6 pt-4 pr-4">
+                        <div className="flex flex-col items-end gap-4">
                             {data.signature_url ? (
                                 <div className="relative group">
                                     <div className="border-2 border-slate-300 rounded-lg p-2 bg-white">
