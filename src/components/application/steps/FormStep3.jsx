@@ -206,13 +206,13 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                                                     </div>
                                                 </RadioGroup>
                                                 {experienceData?.contact_previous_employer?.status === 'not_allowed' && (
-                                                    <div className="flex items-center gap-2 max-w-lg">
+                                                    <div className="flex items-center gap-2 w-full">
                                                         <Label className="whitespace-nowrap">โปรดระบุสาเหตุ:</Label>
                                                         <Input 
                                                             value={experienceData?.contact_previous_employer?.reason || ''}
                                                             onChange={(e) => updateData('experience_data', 'contact_previous_employer', { ...experienceData?.contact_previous_employer, reason: e.target.value })}
                                                             placeholder="ระบุสาเหตุที่ขัดข้อง"
-                                                            className="h-9"
+                                                            className="h-9 flex-1"
                                                         />
                                                     </div>
                                                 )}
@@ -234,15 +234,7 @@ export default function FormStep3({ data, experienceData, statementData, updateD
 
 
 
-            <div className="space-y-2 max-w-2xl pt-2">
-                <Label>คติประจำใจในการทำงาน</Label>
-                <Textarea 
-                    value={experienceData?.motto || ''} 
-                    onChange={(e) => updateData('experience_data', 'motto', e.target.value)}
-                    placeholder="ระบุคติประจำใจ"
-                    className="bg-white"
-                />
-            </div>
+
         </div>
 
         {/* Statement Section */}
