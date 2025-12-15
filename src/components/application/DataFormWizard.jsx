@@ -83,12 +83,15 @@ export default function DataFormWizard({ onComplete, globalData, setGlobalData }
                         trainingData={globalData.training_data}
                         updateData={updateData} 
                     />}
-                    {step === 3 && <FormStep3 data={globalData.health_data} updateData={updateData} />}
+                    {step === 3 && <FormStep3 
+                        data={globalData.health_data} 
+                        experienceData={globalData.experience_data} 
+                        updateData={updateData} 
+                    />}
                     {step === 4 && <FormStep4 
-                                        data={globalData.experience_data} 
-                                        updateData={updateData} 
-                                        setSignature={(url) => setGlobalData(prev => ({...prev, signature_url: url}))}
-                                   />}
+                        data={globalData} // passing full data if needed for display, or just what's needed
+                        setSignature={(url) => setGlobalData(prev => ({...prev, signature_url: url}))}
+                    />}
                 </CardContent>
                 <div className="p-6 border-t flex justify-between bg-slate-50 rounded-b-xl">
                     <Button variant="ghost" onClick={handleBack} disabled={step === 1 || isSubmitting}>
