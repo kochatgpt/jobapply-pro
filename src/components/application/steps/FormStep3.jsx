@@ -356,26 +356,37 @@ export default function FormStep3({ data, experienceData, statementData, updateD
                     <RadioGroup 
                         value={statementData?.smoking_habit?.status} 
                         onValueChange={(val) => updateStatementObj('smoking_habit', 'status', val)}
-                        className="flex gap-6 items-center"
+                        className="flex gap-4 items-center flex-wrap"
                     >
                         <div className="flex items-center space-x-2">
                             <Label htmlFor="smoke_no" className="font-normal">ไม่สูบ</Label>
                             <RadioGroupItem value="no" id="smoke_no" />
                         </div>
                         <div className="flex items-center space-x-2">
+                            <Label htmlFor="smoke_social" className="font-normal">สูบเฉพาะเที่ยว</Label>
+                            <RadioGroupItem value="socially" id="smoke_social" />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <Label htmlFor="smoke_sometimes" className="font-normal">สูบบ้างบางครั้ง</Label>
+                            <RadioGroupItem value="sometimes" id="smoke_sometimes" />
+                        </div>
+                        <div className="flex items-center space-x-2">
                             <Label htmlFor="smoke_yes" className="font-normal">สูบประจำ</Label>
                             <RadioGroupItem value="yes" id="smoke_yes" />
-                            {statementData?.smoking_habit?.status === 'yes' && (
-                                <Input 
-                                    className="h-8 w-32 ml-2"
-                                    placeholder="ระบุจำนวน/วัน"
-                                    value={statementData?.smoking_habit?.amount || ''}
-                                    onChange={(e) => updateStatementObj('smoking_habit', 'amount', e.target.value)}
-                                />
-                            )}
                         </div>
                     </RadioGroup>
                 </div>
+                 {statementData?.smoking_habit?.status === 'yes' && (
+                    <div className="flex items-center gap-2 ml-4">
+                        <Label className="whitespace-nowrap font-normal">เฉลี่ยต่อวัน:</Label>
+                        <Input 
+                            className="h-8 w-40"
+                            placeholder="ม้วน/กล่อง"
+                            value={statementData?.smoking_habit?.amount || ''}
+                            onChange={(e) => updateStatementObj('smoking_habit', 'amount', e.target.value)}
+                        />
+                    </div>
+                )}
             </div>
 
             {/* 5. Alcohol */}
