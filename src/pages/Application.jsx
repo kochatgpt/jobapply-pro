@@ -40,6 +40,7 @@ export default function ApplicationPage() {
             military_status: '',
             ordination_status: ''
         },
+        family_data: { marital_status: '', has_children: 'no' },
         education_data: { university: '', faculty: '', major: '', gpa: '' },
         health_data: { diseases: '', smoking: '', alcohol: '', family_history: '' },
         experience_data: { last_company: '', position: '', years: '', motto: '' },
