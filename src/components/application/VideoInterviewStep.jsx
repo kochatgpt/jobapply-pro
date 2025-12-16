@@ -26,19 +26,19 @@ export default function VideoInterviewStep({ globalData, onFinish }) {
     // Fetch General Questions
     const { data: generalQuestions = [] } = useQuery({
         queryKey: ['generalQuestions'],
-        queryFn: () => base44.entities.Question.list({type: 'general', is_active: true}),
+        queryFn: () => base44.entities.Question.filter({type: 'general', is_active: true}),
     });
 
     // Fetch Jobs
     const { data: jobs = [] } = useQuery({
         queryKey: ['jobs'],
-        queryFn: () => base44.entities.JobPosition.list({is_active: true}),
+        queryFn: () => base44.entities.JobPosition.filter({is_active: true}),
     });
 
     // Fetch Specific Questions (only when job selected)
     const { data: specificQuestions = [] } = useQuery({
         queryKey: ['specificQuestions', selectedJob],
-        queryFn: () => base44.entities.Question.list({job_position_id: selectedJob, is_active: true}),
+        queryFn: () => base44.entities.Question.filter({job_position_id: selectedJob, is_active: true}),
         enabled: !!selectedJob
     });
 
