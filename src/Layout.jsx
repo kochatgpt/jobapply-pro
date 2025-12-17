@@ -4,6 +4,8 @@ import { base44 } from '@/api/base44Client';
 import { Button } from "@/components/ui/button";
 import { LogIn, UserCircle, LogOut } from "lucide-react";
 
+import { useQuery } from '@tanstack/react-query';
+
 export default function Layout({ children }) {
   const [user, setUser] = React.useState(null);
   const location = useLocation();
@@ -19,6 +21,28 @@ export default function Layout({ children }) {
     };
     checkAuth();
   }, [location]);
+  
+  // Fetch Logo
+  const { data: settings } = useQuery({
+      queryKey: ['system_settings_layout'],
+      queryFn: () => base44.entities.SystemSetting.list(),
+      staleTime: 1000 * 60 * 5 // 5 minutes
+  });
+  
+  const appLogo = settings?.find(s => s.key === 'app_logo')?.value;
+
+  // Listen for logo updates
+  React.useEffect(() => {
+      const handleLogoUpdate = () => {
+           // Basic reload query by invalidating or just rely on React Query refetch if we used the client
+           // Since we don't have the client instance here easily without passing it, 
+           // we'll just let the staleTime handle it or next page load. 
+           // Actually, we can just do nothing and wait for user to refresh, 
+           // OR we could use window.location.reload() if strictly needed, but better not.
+      };
+      window.addEventListener('logo-updated', handleLogoUpdate);
+      return () => window.removeEventListener('logo-updated', handleLogoUpdate);
+  }, []);
 
   const handleLogin = () => {
     base44.auth.redirectToLogin(window.location.origin + '/admin');
@@ -37,9 +61,13 @@ export default function Layout({ children }) {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">J</span>
-            </div>
+            {appLogo ? (
+                <img src={appLogo} alt="Logo" className="h-8 w-auto object-contain" />
+            ) : (
+                <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">J</span>
+                </div>
+            )}
             <span className="font-bold text-xl text-slate-800 tracking-tight">JobPortal</span>
           </Link>
 

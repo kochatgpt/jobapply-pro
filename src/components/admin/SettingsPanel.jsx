@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Plus, Trash, Briefcase, FileQuestion, ChevronDown, ChevronRight } from "lucide-react";
+import { Plus, Trash, Briefcase, FileQuestion, ChevronDown, ChevronRight, Image as ImageIcon, Upload } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
@@ -24,6 +24,44 @@ export default function SettingsPanel() {
         queryKey: ['questions_admin'],
         queryFn: () => base44.entities.Question.list()
     });
+
+    const { data: systemSettings } = useQuery({
+        queryKey: ['system_settings'],
+        queryFn: () => base44.entities.SystemSetting.list()
+    });
+
+    // Logo Management
+    const [uploadingLogo, setUploadingLogo] = useState(false);
+    
+    const updateLogo = useMutation({
+        mutationFn: async (file) => {
+            setUploadingLogo(true);
+            try {
+                const { file_url } = await base44.integrations.Core.UploadFile({ file });
+                const logoSetting = systemSettings?.find(s => s.key === 'app_logo');
+                
+                if (logoSetting) {
+                    await base44.entities.SystemSetting.update(logoSetting.id, { value: file_url });
+                } else {
+                    await base44.entities.SystemSetting.create({ 
+                        key: 'app_logo', 
+                        value: file_url,
+                        description: 'Application Logo'
+                    });
+                }
+                return file_url;
+            } finally {
+                setUploadingLogo(false);
+            }
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(['system_settings']);
+            // Force reload to update layout if needed, or rely on react-query if layout uses it
+             window.dispatchEvent(new Event('logo-updated'));
+        }
+    });
+
+    const appLogo = systemSettings?.find(s => s.key === 'app_logo')?.value;
 
     // Mutations
     const createJob = useMutation({
@@ -62,7 +100,10 @@ export default function SettingsPanel() {
             </div>
 
             <Tabs defaultValue="general" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 max-w-md mb-6">
+                <TabsList className="grid w-full grid-cols-3 max-w-xl mb-6">
+                    <TabsTrigger value="branding" className="gap-2">
+                        <ImageIcon className="w-4 h-4"/> โลโก้ (Branding)
+                    </TabsTrigger>
                     <TabsTrigger value="general" className="gap-2">
                         <FileQuestion className="w-4 h-4"/> คำถามทั่วไป (General)
                     </TabsTrigger>
@@ -70,6 +111,58 @@ export default function SettingsPanel() {
                         <Briefcase className="w-4 h-4"/> ตำแหน่งงาน (Positions)
                     </TabsTrigger>
                 </TabsList>
+
+                {/* Part 0: Branding */}
+                <TabsContent value="branding" className="space-y-4">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>ตั้งค่าโลโก้ (Default Logo)</CardTitle>
+                            <CardDescription>
+                                โลโก้นี้จะแสดงที่ส่วนหัวของเว็บไซต์และในเอกสาร PDF
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-6">
+                            <div className="flex items-center gap-8">
+                                <div className="w-32 h-32 rounded-lg border-2 border-dashed border-slate-300 flex items-center justify-center bg-slate-50 overflow-hidden relative group">
+                                    {appLogo ? (
+                                        <img src={appLogo} alt="App Logo" className="w-full h-full object-contain p-2" />
+                                    ) : (
+                                        <ImageIcon className="w-8 h-8 text-slate-300" />
+                                    )}
+                                    {uploadingLogo && (
+                                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white text-xs">
+                                            Uploading...
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="space-y-4">
+                                    <div>
+                                        <h4 className="font-medium text-slate-900">อัปโหลดโลโก้ใหม่</h4>
+                                        <p className="text-sm text-slate-500">แนะนำขนาด 512x512px หรือไฟล์ PNG พื้นหลังใส</p>
+                                    </div>
+                                    <div className="relative">
+                                        <Input 
+                                            type="file" 
+                                            accept="image/*"
+                                            className="hidden" 
+                                            id="logo-upload"
+                                            onChange={(e) => {
+                                                const file = e.target.files[0];
+                                                if (file) updateLogo.mutate(file);
+                                            }}
+                                        />
+                                        <Button asChild variant="outline" disabled={uploadingLogo}>
+                                            <label htmlFor="logo-upload" className="cursor-pointer">
+                                                <Upload className="w-4 h-4 mr-2" />
+                                                เลือกรูปภาพ
+                                            </label>
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
 
                 {/* Part 1: General Questions */}
                 <TabsContent value="general" className="space-y-4">
