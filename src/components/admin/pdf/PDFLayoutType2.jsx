@@ -32,10 +32,10 @@ export default function PDFLayoutType2({ applicant }) {
 
     const CheckBox = ({ label, checked }) => (
         <div className="flex items-center gap-1.5">
-            <div className={`w-3.5 h-3.5 border border-slate-500 flex items-center justify-center shrink-0 rounded-sm ${checked ? 'bg-slate-200' : 'bg-white'}`}>
-                {checked && <div className="w-2 h-2 bg-slate-800 rounded-[1px]" />}
+            <div className={`w-3 h-3 border border-slate-500 flex items-center justify-center shrink-0 rounded-sm ${checked ? 'bg-slate-200' : 'bg-white'}`}>
+                {checked && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
             </div>
-            <span className="text-[12px] text-slate-800 leading-none pt-0.5">{label}</span>
+            <span className="text-[12px] text-slate-800 leading-none">{label}</span>
         </div>
     );
 
@@ -161,7 +161,7 @@ export default function PDFLayoutType2({ applicant }) {
                 <div className="p-3 grid grid-cols-12 gap-4">
                     
                     {/* Left Details */}
-                    <div className="col-span-9 space-y-3">
+                    <div className="col-span-10 space-y-3">
                         <div className="flex gap-2">
                              <Field label="ชื่อ-สกุล (ภาษาไทย)" value={`${p.prefix || ''} ${p.first_name || ''} ${p.last_name || ''}`} width="60%" />
                              <Field label="ชื่อเล่น" value={p.thai_nickname} width="40%" />
@@ -184,12 +184,12 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
 
                     {/* Photo Box */}
-                    <div className="col-span-3">
-                        <div className="border border-slate-400 h-full min-h-[140px] flex items-center justify-center bg-slate-50 relative">
+                    <div className="col-span-2">
+                        <div className="border border-slate-400 w-[3.5cm] h-[4.5cm] flex items-center justify-center bg-slate-50 relative mx-auto">
                              {applicant.photo_url ? (
                                 <img src={applicant.photo_url} alt="Photo" className="w-full h-full object-cover absolute inset-0" />
                             ) : (
-                                <span className="text-slate-300">รูปภาพ</span>
+                                <span className="text-slate-300 text-[10px]">รูปภาพ</span>
                             )}
                         </div>
                     </div>
