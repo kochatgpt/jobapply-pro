@@ -137,7 +137,7 @@ export default function ApplicationPage() {
         attitude: '',
         signature_url: '',
         signature_date: getLocalDate(),
-        start_work_date: ''
+        start_work_date: getLocalDate()
     });
 
     const handleCompletion = () => {
