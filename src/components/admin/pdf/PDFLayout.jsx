@@ -17,7 +17,7 @@ export default function PDFLayout({ applicant }) {
     // Helper for dotted line values
     const DataField = ({ label, value, width = "auto", className = "" }) => (
         <div className={`flex items-end gap-2 ${className}`} style={{ width }}>
-            <span className="font-bold whitespace-nowrap text-[16px] leading-snug mb-0.5">{label}</span>
+            <span className="font-bold whitespace-nowrap text-[16px] leading-snug relative top-[4px]">{label}</span>
             <div className="border-b-[1.5px] border-dotted border-slate-400 px-2 flex-1 text-center text-[16px] leading-none self-end pb-1 relative top-[2px]">
                 {value || "-"}
             </div>
@@ -29,7 +29,7 @@ export default function PDFLayout({ applicant }) {
             <div className={`w-3.5 h-3.5 border border-slate-400 flex items-center justify-center relative top-[2px] ${checked ? 'bg-slate-200' : ''}`}>
                 {checked && <div className="w-2 h-2 bg-slate-600" />}
             </div>
-            <span className="text-[16px] leading-none relative -top-[2px]">{label}</span>
+            <span className="text-[16px] leading-none relative top-[2px]">{label}</span>
         </div>
     );
 
@@ -50,9 +50,9 @@ export default function PDFLayout({ applicant }) {
 
                 <div className="w-40 flex justify-end">
                     {appLogo ? (
-                        <img src={appLogo} alt="Logo" className="h-28 object-contain scale-110 origin-top-right" />
+                        <img src={appLogo} alt="Logo" className="h-20 object-contain origin-top-right" />
                     ) : (
-                        <div className="h-24 w-24 bg-slate-100 flex items-center justify-center text-[16px]">NO LOGO</div>
+                        <div className="h-20 w-20 bg-slate-100 flex items-center justify-center text-[16px]">NO LOGO</div>
                     )}
                 </div>
             </div>
