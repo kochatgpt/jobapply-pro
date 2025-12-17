@@ -30,12 +30,12 @@ export default function PDFLayoutType2({ applicant }) {
         </div>
     );
 
-    const CheckBox = ({ label, checked }) => (
+    const CheckBox = ({ label, checked, textSize="text-[11px]" }) => (
         <div className="flex items-center gap-1.5">
-            <div className={`w-3 h-3 border border-slate-500 flex items-center justify-center shrink-0 rounded-sm ${checked ? 'bg-slate-200' : 'bg-white'}`}>
+            <div className={`w-3 h-3 border border-slate-600 flex items-center justify-center shrink-0 rounded-[1px] ${checked ? 'bg-slate-200' : 'bg-white'}`}>
                 {checked && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
             </div>
-            <span className="text-[12px] text-slate-800 leading-none">{label}</span>
+            <span className={`${textSize} text-slate-900 leading-none mt-[1px]`}>{label}</span>
         </div>
     );
 
@@ -113,7 +113,7 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-x-2 gap-y-1.5 text-[11px]">
+                <div className="grid grid-cols-3 gap-x-1 gap-y-1 text-[11px]">
                     <CheckBox label="รูปถ่าย 1-3 รูป" />
                     <CheckBox label="สำเนาบัตรประชาชน 3 ฉบับ" />
                     <CheckBox label="สำเนาทะเบียนบ้าน" />
@@ -132,7 +132,10 @@ export default function PDFLayoutType2({ applicant }) {
                     
                     <CheckBox label="สำเนาบัญชีธนาคาร" />
                     <CheckBox label="หนังสือรับรองการทำงาน (ถ้ามี)" />
-                    <CheckBox label="หนังสือยินยอมเปิดเผยข้อมูลฯ (PDPA)" />
+                    <div className="flex items-start gap-1.5 col-span-1">
+                         <div className={`w-3 h-3 border border-slate-600 flex items-center justify-center shrink-0 rounded-[1px] bg-white mt-[1px]`}></div>
+                         <span className="text-[11px] text-slate-900 leading-tight">หนังสือยินยอมเปิดเผยข้อมูลฯ (PDPA)</span>
+                    </div>
                     
                     <CheckBox label="JD" />
                     <CheckBox label="เอกสาร Support อื่นๆ" />
@@ -161,7 +164,7 @@ export default function PDFLayoutType2({ applicant }) {
                 <div className="p-3 grid grid-cols-12 gap-4">
                     
                     {/* Left Details */}
-                    <div className="col-span-10 space-y-3">
+                    <div className="col-span-9 space-y-3">
                         <div className="flex gap-2">
                              <Field label="ชื่อ-สกุล (ภาษาไทย)" value={`${p.prefix || ''} ${p.first_name || ''} ${p.last_name || ''}`} width="60%" />
                              <Field label="ชื่อเล่น" value={p.thai_nickname} width="40%" />
@@ -184,12 +187,12 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
 
                     {/* Photo Box */}
-                    <div className="col-span-2">
-                        <div className="border border-slate-400 w-[3.5cm] h-[4.5cm] flex items-center justify-center bg-slate-50 relative mx-auto">
+                    <div className="col-span-3">
+                        <div className="border border-slate-400 h-full min-h-[140px] flex items-center justify-center bg-slate-50 relative">
                              {applicant.photo_url ? (
                                 <img src={applicant.photo_url} alt="Photo" className="w-full h-full object-cover absolute inset-0" />
                             ) : (
-                                <span className="text-slate-300 text-[10px]">รูปภาพ</span>
+                                <span className="text-slate-300">รูปภาพ</span>
                             )}
                         </div>
                     </div>
