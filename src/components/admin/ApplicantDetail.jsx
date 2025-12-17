@@ -8,6 +8,7 @@ import {
     FileText, Phone, MapPin, Calendar, Mail, FileDown, Eye, Loader2
 } from "lucide-react";
 import InfoGrid from './InfoGrid';
+import PDFLayout from './pdf/PDFLayout';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { useState } from 'react';
@@ -237,81 +238,8 @@ export default function ApplicantDetail({ applicant }) {
             </div>
             
             {/* Hidden Printable Content */}
-            <div id="printable-content" className="fixed left-[-9999px] top-0 w-[210mm] bg-white p-12 text-slate-900">
-                <div className="flex items-start justify-between border-b pb-8 mb-8">
-                    <div className="flex items-center gap-6">
-                        <div className="w-32 h-32 rounded-xl bg-slate-100 border overflow-hidden shrink-0">
-                            {applicant.photo_url ? (
-                                <img src={applicant.photo_url} className="w-full h-full object-cover" alt="Applicant" />
-                            ) : (
-                                <div className="w-full h-full flex items-center justify-center text-slate-300">
-                                    <User className="w-12 h-12" />
-                                </div>
-                            )}
-                        </div>
-                        <div>
-                            <h1 className="text-3xl font-bold text-slate-900">{applicant.full_name}</h1>
-                            <div className="mt-2 space-y-1 text-slate-500">
-                                <p>ตำแหน่งที่สมัคร: {personal_data?.position_1}</p>
-                                <p>วันที่สมัคร: {applicant.submission_date}</p>
-                                <p>Email: {personal_data?.email} | Tel: {personal_data?.mobile_phone}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="text-right">
-                         <div className="text-2xl font-bold text-indigo-600">JOB APPLICATION</div>
-                         <div className="text-sm text-slate-400">Ref: {applicant.id?.slice(0, 8)}</div>
-                    </div>
-                </div>
-
-                <div className="space-y-8">
-                    <section>
-                        <h2 className="text-xl font-bold border-b pb-2 mb-4">1. ข้อมูลส่วนตัว</h2>
-                        <div className="grid grid-cols-1 gap-4">
-                            <InfoGrid title="ข้อมูลพื้นฐาน" data={basicInfo} icon={User} />
-                            <InfoGrid title="ที่อยู่ตามทะเบียนบ้าน" data={personal_data?.registered_address} icon={MapPin} />
-                            <InfoGrid title="ที่อยู่ปัจจุบัน" data={personal_data?.current_address} icon={MapPin} />
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2 className="text-xl font-bold border-b pb-2 mb-4">2. ข้อมูลครอบครัว</h2>
-                        <div className="grid grid-cols-1 gap-4">
-                            <InfoGrid title="สถานะครอบครัว" data={applicant.family_data} icon={User} />
-                            <InfoGrid title="บิดา" data={applicant.parents_data?.father} icon={User} />
-                            <InfoGrid title="มารดา" data={applicant.parents_data?.mother} icon={User} />
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2 className="text-xl font-bold border-b pb-2 mb-4">3. การศึกษาและทักษะ</h2>
-                        <div className="grid grid-cols-1 gap-4">
-                            <InfoGrid title="ประวัติการศึกษา" data={applicant.education_data?.history} icon={GraduationCap} />
-                            <div className="grid grid-cols-2 gap-4">
-                                <InfoGrid title="ภาษา" data={applicant.skills_data?.languages} icon={FileText} />
-                                <InfoGrid title="ความสามารถอื่นๆ" data={{...applicant.skills_data?.driving, ...applicant.skills_data?.office}} icon={FileText} />
-                            </div>
-                        </div>
-                    </section>
-
-                    <section>
-                         <h2 className="text-xl font-bold border-b pb-2 mb-4">4. ประสบการณ์ทำงาน</h2>
-                         <InfoGrid title="ประวัติการทำงาน" data={applicant.experience_data} icon={Briefcase} />
-                    </section>
-                </div>
-                
-                <div className="mt-12 pt-8 border-t flex justify-between items-end">
-                    <div>
-                        <p className="font-bold text-lg">ลงชื่อผู้สมัคร</p>
-                        {applicant.signature_url && (
-                            <img src={applicant.signature_url} className="h-16 mt-2" alt="Signature" />
-                        )}
-                        <p className="mt-2 text-slate-500">วันที่: {applicant.signature_date}</p>
-                    </div>
-                    <div className="text-right text-sm text-slate-400">
-                        Generated by JobPortal System
-                    </div>
-                </div>
+            <div id="printable-content" className="fixed left-[-9999px] top-0">
+                <PDFLayout applicant={applicant} />
             </div>
         </div>
     );
