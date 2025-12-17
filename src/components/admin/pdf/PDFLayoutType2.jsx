@@ -164,7 +164,7 @@ export default function PDFLayoutType2({ applicant }) {
                 <div className="p-3 grid grid-cols-12 gap-4">
                     
                     {/* Left Details */}
-                    <div className="col-span-9 space-y-3">
+                    <div className="col-span-8 space-y-3">
                         <div className="flex gap-2">
                              <Field label="ชื่อ-สกุล (ภาษาไทย)" value={`${p.prefix || ''} ${p.first_name || ''} ${p.last_name || ''}`} width="60%" />
                              <Field label="ชื่อเล่น" value={p.thai_nickname} width="40%" />
