@@ -161,10 +161,10 @@ export default function PDFLayoutType2({ applicant }) {
                 </div>
 
                 {/* Personal Data & Photo */}
-                <div className="p-3 grid grid-cols-12 gap-4">
+                <div className="p-3 grid grid-cols-12 gap-2">
                     
                     {/* Left Details */}
-                    <div className="col-span-9 space-y-3">
+                    <div className="col-span-10 space-y-3">
                         <div className="flex gap-2">
                              <Field label="ชื่อ-สกุล (ภาษาไทย)" value={`${p.prefix || ''} ${p.first_name || ''} ${p.last_name || ''}`} className="flex-[3]" />
                              <Field label="ชื่อเล่น" value={p.thai_nickname} className="flex-[2]" />
@@ -187,7 +187,7 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
 
                     {/* Photo Box */}
-                    <div className="col-span-3 flex justify-end">
+                    <div className="col-span-2 flex justify-end">
                         <div className="border border-slate-400 w-[100px] h-[130px] flex items-center justify-center bg-slate-50 relative">
                              {applicant.photo_url ? (
                                 <img src={applicant.photo_url} alt="Photo" className="w-full h-full object-cover absolute inset-0" />
