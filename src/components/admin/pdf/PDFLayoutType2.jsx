@@ -16,7 +16,7 @@ export default function PDFLayoutType2({ applicant }) {
 
     // --- Helpers ---
     const DottedLine = ({ value, className = "", center = false }) => (
-        <div className={`border-b-[1.5px] border-dotted border-slate-400 px-1 pb-0.5 min-h-[1.4em] ${center ? 'text-center' : ''} ${className}`}>
+        <div className={`border-b-[1.5px] border-dotted border-slate-400 px-1 pb-1 min-h-[1.4em] ${center ? 'text-center' : ''} ${className}`}>
             {value || ""}
         </div>
     );
@@ -88,27 +88,27 @@ export default function PDFLayoutType2({ applicant }) {
                 <div className="absolute -top-2 left-2 bg-white px-1 font-bold text-[12px]">(สำหรับ จนท.)</div>
                 
                 <div className="grid grid-cols-12 gap-2 mb-3 mt-1">
-                    <div className="col-span-4 flex items-center">
-                        <span className="font-bold mr-2">รหัสพนักงาน</span>
+                    <div className="col-span-4 flex items-end">
+                        <span className="font-bold mr-2 pb-1">รหัสพนักงาน</span>
                         <DottedLine className="flex-1" />
                     </div>
-                    <div className="col-span-4 flex items-center">
-                        <span className="font-bold mr-2">วันที่เริ่มงานจริง</span>
+                    <div className="col-span-4 flex items-end">
+                        <span className="font-bold mr-2 pb-1">วันที่เริ่มงานจริง</span>
                         <DottedLine className="flex-1" />
                     </div>
-                    <div className="col-span-4 flex items-center">
-                        <span className="font-bold mr-2">หน่วยงาน/สังกัด</span>
+                    <div className="col-span-4 flex items-end">
+                        <span className="font-bold mr-2 pb-1">หน่วยงาน/สังกัด</span>
                         <DottedLine className="flex-1" />
                     </div>
                 </div>
 
                 <div className="flex gap-4 mb-3">
-                    <div className="flex items-center gap-2">
-                        <span className="font-bold">ไซด์เสื้อ</span>
+                    <div className="flex items-end gap-2">
+                        <span className="font-bold pb-1">ไซด์เสื้อ</span>
                         <DottedLine className="w-16 text-center" />
                     </div>
-                    <div className="flex items-center gap-2">
-                        <span className="font-bold">จำนวน</span>
+                    <div className="flex items-end gap-2">
+                        <span className="font-bold pb-1">จำนวน</span>
                         <DottedLine className="w-16 text-center" />
                     </div>
                 </div>
