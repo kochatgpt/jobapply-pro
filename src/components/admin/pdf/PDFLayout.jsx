@@ -34,10 +34,10 @@ export default function PDFLayout({ applicant }) {
     );
 
     return (
-        <div className="w-[210mm] min-h-[297mm] bg-white p-[15mm] text-slate-900 font-sans relative">
+        <div className="w-[210mm] min-h-[297mm] bg-white p-[10mm] pt-[15mm] text-slate-900 font-sans relative text-xs leading-none">
             {/* Header Section */}
-            <div className="flex justify-between items-start mb-4">
-                <div className="border border-slate-800 p-2 w-40 text-xs space-y-1">
+            <div className="flex justify-between items-start mb-2">
+                <div className="border border-slate-800 p-2 w-40 text-[10px] space-y-0.5">
                     <CheckBox label="Web HR" />
                     <CheckBox label="สปส.(เข้า)......" />
                     <CheckBox label="B-plus" />
@@ -50,20 +50,20 @@ export default function PDFLayout({ applicant }) {
 
                 <div className="w-40 flex justify-end">
                     {appLogo ? (
-                        <img src={appLogo} alt="Logo" className="h-16 object-contain" />
+                        <img src={appLogo} alt="Logo" className="h-24 object-contain scale-125 origin-top-right" />
                     ) : (
-                        <div className="h-16 w-16 bg-slate-100 flex items-center justify-center text-xs">NO LOGO</div>
+                        <div className="h-24 w-24 bg-slate-100 flex items-center justify-center text-xs">NO LOGO</div>
                     )}
                 </div>
             </div>
 
             {/* Application Date */}
-            <div className="mb-4">
-                <span className="font-bold text-sm">วันที่เขียนใบสมัคร</span> <span className="ml-2 border-b border-dotted border-slate-400 px-4">{applicant.submission_date || p.application_date}</span>
+            <div className="mb-2 text-xs">
+                <span className="font-bold">วันที่เขียนใบสมัคร</span> <span className="ml-2 border-b border-dotted border-slate-400 px-4">{applicant.submission_date || p.application_date}</span>
             </div>
 
             {/* Disclaimer Text */}
-            <div className="text-[10px] text-justify leading-relaxed mb-4">
+            <div className="text-[9px] text-justify leading-tight tracking-tight mb-2">
                 ใบสมัครงานเป็นส่วนหนึ่งในการพิจารณา โปรดกรอกข้อความตามจริงด้วยตัวเองให้ครบถ้วน อนึ่งในกรณีที่ท่าน ไม่ผ่าน การพิจารณา รับเข้าทำงาน 
                 ข้อมูลในใบสมัครจะถูกเก็บรักษาไว้เป็นระยะเวลา 1 เดือน หากมีการพิจารณาตำแหน่งอื่นๆ อีกครั้งตามความเหมาะสม อนึ่งในกรณีที่ท่านผ่าน การพิจารณารับเข้าทำงาน 
                 ข้อมูลในใบสมัครจะถูกเก็บรักษาไว้ตลอดระยะเวลาการเป็นพนักงาน/ลูกจ้างของ บริษัทฯและหากท่านพ้นสภาพจากการเป็นพนักงาน/ลูกจ้างแล้วนั้น บริษัทฯจะ
@@ -74,7 +74,7 @@ export default function PDFLayout({ applicant }) {
             </div>
 
             {/* HR Section (Admin Only) */}
-            <div className="border border-slate-800 p-2 mb-4 text-xs">
+            <div className="border border-slate-800 p-1.5 mb-2 text-[10px]">
                 <div className="grid grid-cols-12 gap-2 mb-2">
                     <div className="col-span-4 font-bold">(สำหรับ จนท.) รหัสพนักงาน EMP........</div>
                     <div className="col-span-4">วันที่เริ่มงานจริง ........................................</div>
@@ -83,7 +83,7 @@ export default function PDFLayout({ applicant }) {
                 <div className="mb-2">
                     ไซซ์เสื้อ <span className="mx-2">.........</span> จำนวน <span className="mx-2">.........</span>
                 </div>
-                <div className="grid grid-cols-3 gap-y-1 gap-x-2">
+                <div className="grid grid-cols-3 gap-y-0.5 gap-x-2">
                     <CheckBox label="รูปถ่าย 1-3 รูป" />
                     <CheckBox label="สำเนาบัตรประชาชน 3 ฉบับ" />
                     <CheckBox label="สำเนาทะเบียนบ้าน" />
@@ -105,10 +105,10 @@ export default function PDFLayout({ applicant }) {
             </div>
 
             {/* Personal History Header */}
-            <div className="text-center font-bold mb-2">ประวัติส่วนตัว</div>
+            <div className="text-center font-bold mb-1 text-sm">ประวัติส่วนตัว</div>
 
             {/* Position Box */}
-            <div className="border border-slate-800 p-2 mb-4 text-sm">
+            <div className="border border-slate-800 p-1.5 mb-2 text-xs">
                 <div className="grid grid-cols-12 gap-2 items-end">
                     <div className="col-span-4 flex items-end gap-2">
                         <span className="font-bold">สมัครงานในตำแหน่ง 1</span>
@@ -126,17 +126,17 @@ export default function PDFLayout({ applicant }) {
             </div>
 
             {/* Main Bio Data */}
-            <div className="border border-slate-800 p-2 mb-4 relative">
+            <div className="border border-slate-800 p-2 mb-2 relative text-xs">
                 {/* Photo Placeholder */}
-                <div className="absolute top-2 right-2 w-28 h-36 border border-slate-300 flex items-center justify-center bg-slate-50">
+                <div className="absolute top-2 right-2 w-24 h-32 border border-slate-300 flex items-center justify-center bg-slate-50">
                     {applicant.photo_url ? (
                         <img src={applicant.photo_url} className="w-full h-full object-cover" alt="Photo" />
                     ) : (
-                        <span className="text-xs text-slate-400">รูปภาพ</span>
+                        <span className="text-[10px] text-slate-400">รูปภาพ</span>
                     )}
                 </div>
 
-                <div className="space-y-3 text-sm pr-32"> {/* Right padding for photo */}
+                <div className="space-y-2 pr-28"> {/* Right padding for photo */}
                     <div className="grid grid-cols-12 gap-2">
                         <div className="col-span-8">
                              <DataField label="ชื่อ-สกุล (ภาษาไทย)" value={`${p.prefix || ''} ${p.first_name || ''} ${p.last_name || ''}`} width="100%" />
@@ -172,10 +172,10 @@ export default function PDFLayout({ applicant }) {
                     </div>
                 </div>
 
-                <hr className="my-3 border-slate-300" />
+                <hr className="my-2 border-slate-300" />
 
                 {/* Addresses */}
-                <div className="space-y-3 text-sm">
+                <div className="space-y-2">
                     {/* Registered Address */}
                     <div className="flex gap-1 items-end flex-wrap">
                         <span className="font-bold">ที่อยู่ตามทะเบียนบ้าน เลขที่</span>
@@ -223,25 +223,25 @@ export default function PDFLayout({ applicant }) {
                     </div>
                 </div>
 
-                <hr className="my-3 border-slate-300" />
+                <hr className="my-2 border-slate-300" />
 
                 {/* Status Section */}
-                <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <div className="font-bold mb-2 underline">สถานภาพ (ชาย)</div>
-                        <div className="space-y-2">
+                        <div className="font-bold mb-1 underline">สถานภาพ (ชาย)</div>
+                        <div className="space-y-1">
                             <CheckBox label="ได้รับการยกเว้นทางทหาร" checked={p.military_status === 'exempted'} />
                             <CheckBox label="เกณฑ์ทหารแล้ว" checked={p.military_status === 'conscripted'} />
                             <CheckBox label="ยังไม่ได้รับการเกณฑ์" checked={p.military_status === 'not_yet'} />
                         </div>
-                        <div className="mt-4 space-y-2">
+                        <div className="mt-2 space-y-1">
                              <CheckBox label="ยังไม่สมรส" checked={f.marital_status === 'single'} />
                              <CheckBox label="สมรสแล้ว" checked={f.marital_status === 'married'} />
                         </div>
                     </div>
                     <div>
-                        <div className="font-bold mb-2 underline">สถานภาพ (หญิง)</div>
-                        <div className="space-y-2">
+                        <div className="font-bold mb-1 underline">สถานภาพ (หญิง)</div>
+                        <div className="space-y-1">
                              <CheckBox label="ไม่อยู่ระหว่างการตั้งครรภ์" />
                              <CheckBox label="มีบุตรแล้ว" checked={f.has_children === 'yes'} />
                              <CheckBox label="ยังไม่มีบุตร" checked={f.has_children === 'no'} />
