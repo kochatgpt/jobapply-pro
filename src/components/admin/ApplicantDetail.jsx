@@ -5,11 +5,15 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { 
     Video, User, GraduationCap, Briefcase, HeartPulse, 
-    FileText, Phone, MapPin, Calendar, Mail
+    FileText, Phone, MapPin, Calendar, Mail, FileDown, Eye, Loader2
 } from "lucide-react";
 import InfoGrid from './InfoGrid';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+import { useState } from 'react';
 
 export default function ApplicantDetail({ applicant }) {
+    const [generatingPdf, setGeneratingPdf] = useState(false);
     if (!applicant) {
         return (
             <div className="flex-1 flex flex-col items-center justify-center h-full text-slate-400 bg-slate-50/50 p-8">
@@ -32,6 +36,52 @@ export default function ApplicantDetail({ applicant }) {
     // Let's just remove them from basicInfo for cleaner display.
     delete basicInfo.registered_address;
     delete basicInfo.current_address;
+
+    const handleGeneratePDF = async (action) => {
+        const input = document.getElementById('printable-content');
+        if (!input) return;
+
+        setGeneratingPdf(true);
+        try {
+            const canvas = await html2canvas(input, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                windowWidth: 1200 // Ensure layout is consistent
+            });
+
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const imgWidth = pdfWidth;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            let heightLeft = imgHeight;
+            let position = 0;
+
+            pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pdfHeight;
+
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                pdf.addPage();
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pdfHeight;
+            }
+
+            if (action === 'download') {
+                pdf.save(`${applicant.full_name}_Application.pdf`);
+            } else {
+                window.open(pdf.output('bloburl'), '_blank');
+            }
+        } catch (error) {
+            console.error("PDF Generation failed", error);
+            alert("เกิดข้อผิดพลาดในการสร้าง PDF");
+        } finally {
+            setGeneratingPdf(false);
+        }
+    };
 
     return (
         <div className="flex-1 flex flex-col h-full overflow-hidden bg-slate-50/30">
@@ -79,6 +129,22 @@ export default function ApplicantDetail({ applicant }) {
                 </div>
 
                 <div className="flex gap-2">
+                    <Button 
+                        variant="outline"
+                        onClick={() => handleGeneratePDF('preview')}
+                        disabled={generatingPdf}
+                    >
+                        {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Eye className="w-4 h-4 mr-2" />}
+                        Preview PDF
+                    </Button>
+                    <Button 
+                        variant="outline"
+                        onClick={() => handleGeneratePDF('download')}
+                        disabled={generatingPdf}
+                    >
+                        {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <FileDown className="w-4 h-4 mr-2" />}
+                        Create PDF
+                    </Button>
                     {applicant.video_response_url && (
                         <Button 
                             className="bg-indigo-600 hover:bg-indigo-700 shadow-sm"
@@ -168,6 +234,84 @@ export default function ApplicantDetail({ applicant }) {
                         </Tabs>
                     </div>
                 </ScrollArea>
+            </div>
+            
+            {/* Hidden Printable Content */}
+            <div id="printable-content" className="fixed left-[-9999px] top-0 w-[210mm] bg-white p-12 text-slate-900">
+                <div className="flex items-start justify-between border-b pb-8 mb-8">
+                    <div className="flex items-center gap-6">
+                        <div className="w-32 h-32 rounded-xl bg-slate-100 border overflow-hidden shrink-0">
+                            {applicant.photo_url ? (
+                                <img src={applicant.photo_url} className="w-full h-full object-cover" alt="Applicant" />
+                            ) : (
+                                <div className="w-full h-full flex items-center justify-center text-slate-300">
+                                    <User className="w-12 h-12" />
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <h1 className="text-3xl font-bold text-slate-900">{applicant.full_name}</h1>
+                            <div className="mt-2 space-y-1 text-slate-500">
+                                <p>ตำแหน่งที่สมัคร: {personal_data?.position_1}</p>
+                                <p>วันที่สมัคร: {applicant.submission_date}</p>
+                                <p>Email: {personal_data?.email} | Tel: {personal_data?.mobile_phone}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="text-right">
+                         <div className="text-2xl font-bold text-indigo-600">JOB APPLICATION</div>
+                         <div className="text-sm text-slate-400">Ref: {applicant.id?.slice(0, 8)}</div>
+                    </div>
+                </div>
+
+                <div className="space-y-8">
+                    <section>
+                        <h2 className="text-xl font-bold border-b pb-2 mb-4">1. ข้อมูลส่วนตัว</h2>
+                        <div className="grid grid-cols-1 gap-4">
+                            <InfoGrid title="ข้อมูลพื้นฐาน" data={basicInfo} icon={User} />
+                            <InfoGrid title="ที่อยู่ตามทะเบียนบ้าน" data={personal_data?.registered_address} icon={MapPin} />
+                            <InfoGrid title="ที่อยู่ปัจจุบัน" data={personal_data?.current_address} icon={MapPin} />
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 className="text-xl font-bold border-b pb-2 mb-4">2. ข้อมูลครอบครัว</h2>
+                        <div className="grid grid-cols-1 gap-4">
+                            <InfoGrid title="สถานะครอบครัว" data={applicant.family_data} icon={User} />
+                            <InfoGrid title="บิดา" data={applicant.parents_data?.father} icon={User} />
+                            <InfoGrid title="มารดา" data={applicant.parents_data?.mother} icon={User} />
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 className="text-xl font-bold border-b pb-2 mb-4">3. การศึกษาและทักษะ</h2>
+                        <div className="grid grid-cols-1 gap-4">
+                            <InfoGrid title="ประวัติการศึกษา" data={applicant.education_data?.history} icon={GraduationCap} />
+                            <div className="grid grid-cols-2 gap-4">
+                                <InfoGrid title="ภาษา" data={applicant.skills_data?.languages} icon={FileText} />
+                                <InfoGrid title="ความสามารถอื่นๆ" data={{...applicant.skills_data?.driving, ...applicant.skills_data?.office}} icon={FileText} />
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                         <h2 className="text-xl font-bold border-b pb-2 mb-4">4. ประสบการณ์ทำงาน</h2>
+                         <InfoGrid title="ประวัติการทำงาน" data={applicant.experience_data} icon={Briefcase} />
+                    </section>
+                </div>
+                
+                <div className="mt-12 pt-8 border-t flex justify-between items-end">
+                    <div>
+                        <p className="font-bold text-lg">ลงชื่อผู้สมัคร</p>
+                        {applicant.signature_url && (
+                            <img src={applicant.signature_url} className="h-16 mt-2" alt="Signature" />
+                        )}
+                        <p className="mt-2 text-slate-500">วันที่: {applicant.signature_date}</p>
+                    </div>
+                    <div className="text-right text-sm text-slate-400">
+                        Generated by JobPortal System
+                    </div>
+                </div>
             </div>
         </div>
     );
