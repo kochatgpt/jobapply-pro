@@ -26,10 +26,10 @@ export default function PDFLayout({ applicant }) {
 
     const CheckBox = ({ label, checked }) => (
         <div className="flex items-center gap-1.5">
-            <div className={`w-3.5 h-3.5 border border-slate-400 flex items-center justify-center ${checked ? 'bg-slate-200' : ''}`}>
+            <div className={`w-3.5 h-3.5 border border-slate-400 flex items-center justify-center relative top-[2px] ${checked ? 'bg-slate-200' : ''}`}>
                 {checked && <div className="w-2 h-2 bg-slate-600" />}
             </div>
-            <span className="text-[16px] leading-none pt-0.5">{label}</span>
+            <span className="text-[16px] leading-none relative -top-[2px]">{label}</span>
         </div>
     );
 
