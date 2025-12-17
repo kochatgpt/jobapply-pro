@@ -13,15 +13,28 @@ export default function VideoInterviewStep({ globalData, onFinish }) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [videoResponses, setVideoResponses] = useState([]);
     
-    // Recording states
+    // Response states
     const [isRecording, setIsRecording] = useState(false);
     const [videoBlob, setVideoBlob] = useState(null);
     const [videoUrl, setVideoUrl] = useState(null);
+    const [textAnswer, setTextAnswer] = useState("");
+    const [selectedOption, setSelectedOption] = useState("");
+    const [selectedOptions, setSelectedOptions] = useState([]);
     const [uploading, setUploading] = useState(false);
     
     const mediaRecorderRef = useRef(null);
     const videoPreviewRef = useRef(null);
     const chunksRef = useRef([]);
+
+    // Reset state for new question
+    const resetResponseState = () => {
+        setVideoBlob(null);
+        setVideoUrl(null);
+        setTextAnswer("");
+        setSelectedOption("");
+        setSelectedOptions([]);
+        setIsRecording(false);
+    };
 
     // Fetch General Questions
     const { data: generalQuestions = [] } = useQuery({
@@ -89,26 +102,66 @@ export default function VideoInterviewStep({ globalData, onFinish }) {
         }
     };
 
-    const handleUploadResponse = async (questionText) => {
-        if (!videoBlob) return;
+    const handleSaveResponse = async (question) => {
         setUploading(true);
-        
         try {
-            const fileName = `interview_${Date.now()}.webm`;
-            const file = new File([videoBlob], fileName, { type: "video/webm" });
-            const { file_url } = await base44.integrations.Core.UploadFile({ file });
-            
-            const newResponse = { question: questionText, url: file_url };
-            const updatedResponses = [...videoResponses, newResponse];
+            let responseData = {
+                question: question.text,
+                type: question.answer_type || 'text'
+            };
+
+            // Handle Video
+            if (question.answer_type === 'video') {
+                if (!videoBlob) {
+                    alert("กรุณาอัดวิดีโอคำตอบก่อนส่ง");
+                    setUploading(false);
+                    return null;
+                }
+                const fileName = `interview_${Date.now()}.webm`;
+                const file = new File([videoBlob], fileName, { type: "video/webm" });
+                const { file_url } = await base44.integrations.Core.UploadFile({ file });
+                responseData.url = file_url;
+                responseData.answer = "Video Response";
+            } 
+            // Handle Text
+            else if (question.answer_type === 'text') {
+                if (!textAnswer.trim()) {
+                    alert("กรุณากรอกคำตอบ");
+                    setUploading(false);
+                    return null;
+                }
+                responseData.answer = textAnswer;
+            }
+            // Handle Single Choice
+            else if (question.answer_type === 'single_choice') {
+                if (!selectedOption) {
+                    alert("กรุณาเลือกคำตอบ");
+                    setUploading(false);
+                    return null;
+                }
+                responseData.answer = selectedOption;
+            }
+            // Handle Multiple Choice
+            else if (question.answer_type === 'multiple_choice') {
+                if (selectedOptions.length === 0) {
+                    alert("กรุณาเลือกอย่างน้อย 1 ข้อ");
+                    setUploading(false);
+                    return null;
+                }
+                responseData.answer = selectedOptions.join(', ');
+            } else {
+                // Default fallback
+                responseData.answer = textAnswer;
+            }
+
+            const updatedResponses = [...videoResponses, responseData];
             setVideoResponses(updatedResponses);
-            
-            setVideoBlob(null);
-            setVideoUrl(null);
+            resetResponseState();
             
             return updatedResponses;
         } catch (error) {
-            console.error("Upload failed", error);
-            alert("เกิดข้อผิดพลาดในการอัปโหลดวิดีโอ");
+            console.error("Save failed", error);
+            alert("เกิดข้อผิดพลาดในการบันทึกคำตอบ");
             return null;
         } finally {
             setUploading(false);
@@ -117,31 +170,31 @@ export default function VideoInterviewStep({ globalData, onFinish }) {
 
     const handleNextGeneral = async () => {
         const currentQ = generalQuestions[currentQuestionIndex];
-        const result = await handleUploadResponse(currentQ.text);
+        const result = await handleSaveResponse(currentQ);
         if (!result) return;
 
         if (currentQuestionIndex < generalQuestions.length - 1) {
             setCurrentQuestionIndex(prev => prev + 1);
         } else {
-            // Finished general questions -> Go to Job Selection
             setPhase('job-selection');
-            setCurrentQuestionIndex(0); // Reset for next phase
+            setCurrentQuestionIndex(0);
         }
     };
 
     const handleNextSpecific = async () => {
         const currentQ = specificQuestions[currentQuestionIndex];
-        const result = await handleUploadResponse(currentQ.text);
-        if (!result) return; // Upload failed
+        const result = await handleSaveResponse(currentQ);
+        if (!result) return;
 
         if (currentQuestionIndex < specificQuestions.length - 1) {
             setCurrentQuestionIndex(prev => prev + 1);
         } else {
-            // Finished all questions -> Submit final
+            // Finished
             await base44.entities.Applicant.update(globalData.applicant_id, {
                 job_position_id: selectedJob,
-                video_response_url: result[result.length - 1].url, // Keep last as main (legacy)
-                video_responses: result, // Store all responses
+                responses: result, // Save to new field
+                // Legacy support just in case
+                video_response_url: result.find(r => r.type === 'video')?.url || '', 
                 status: 'pending'
             });
             onFinish();
@@ -266,15 +319,26 @@ export default function VideoInterviewStep({ globalData, onFinish }) {
     if (phase === 'specific-questions') {
         const question = specificQuestions[currentQuestionIndex];
         return (
-            <RecordingInterface 
+            <QuestionInterface 
                 title={`คำถามเฉพาะข้อที่ ${currentQuestionIndex + 1} / ${specificQuestions.length}`}
-                questionText={question.text}
+                question={question}
+                
+                // Video props
                 videoUrl={videoUrl}
                 videoPreviewRef={videoPreviewRef}
                 isRecording={isRecording}
                 onStart={startRecording}
                 onStop={stopRecording}
                 onRetry={() => { setVideoUrl(null); setVideoBlob(null); }}
+                
+                // Text/Choice props
+                textAnswer={textAnswer}
+                setTextAnswer={setTextAnswer}
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+                selectedOptions={selectedOptions}
+                setSelectedOptions={setSelectedOptions}
+                
                 onSubmit={handleNextSpecific}
                 uploading={uploading}
                 btnText={currentQuestionIndex < specificQuestions.length - 1 ? "ข้อถัดไป" : "ส่งใบสมัคร"}
@@ -285,51 +349,134 @@ export default function VideoInterviewStep({ globalData, onFinish }) {
     return null;
 }
 
-// Reusable UI for Recording
-function RecordingInterface({ title, questionText, videoUrl, videoPreviewRef, isRecording, onStart, onStop, onRetry, onSubmit, uploading, btnText }) {
+// Reusable UI for different question types
+function QuestionInterface({ 
+    title, question, 
+    videoUrl, videoPreviewRef, isRecording, onStart, onStop, onRetry, 
+    textAnswer, setTextAnswer,
+    selectedOption, setSelectedOption,
+    selectedOptions, setSelectedOptions,
+    onSubmit, uploading, btnText 
+}) {
+    const { answer_type = 'text', options = [] } = question;
+
+    const renderInput = () => {
+        switch(answer_type) {
+            case 'video':
+                return (
+                    <div className="w-full flex flex-col items-center gap-4">
+                        <div className="w-full aspect-video bg-black rounded-lg overflow-hidden relative max-w-2xl">
+                            {!videoUrl ? (
+                                <video ref={videoPreviewRef} autoPlay muted playsInline className="w-full h-full object-cover" />
+                            ) : (
+                                <video src={videoUrl} controls className="w-full h-full object-cover" />
+                            )}
+                            
+                            {isRecording && (
+                                <div className="absolute top-4 right-4 flex items-center gap-2 bg-red-500/80 text-white px-3 py-1 rounded-full text-sm animate-pulse">
+                                    <div className="w-2 h-2 bg-white rounded-full" /> REC
+                                </div>
+                            )}
+                        </div>
+                        <div className="flex gap-4">
+                            {!videoUrl ? (
+                                !isRecording ? (
+                                    <Button onClick={onStart} className="bg-red-600 hover:bg-red-700 w-32">
+                                        <Camera className="mr-2 h-4 w-4" /> อัดวิดีโอ
+                                    </Button>
+                                ) : (
+                                    <Button onClick={onStop} variant="outline" className="border-red-600 text-red-600 hover:bg-red-50 w-32">
+                                        <div className="w-3 h-3 bg-red-600 rounded-sm mr-2" /> หยุด
+                                    </Button>
+                                )
+                            ) : (
+                                <Button variant="outline" onClick={onRetry}>อัดใหม่</Button>
+                            )}
+                        </div>
+                    </div>
+                );
+            
+            case 'text':
+                return (
+                    <div className="w-full max-w-2xl">
+                        <textarea 
+                            className="w-full h-40 p-4 border rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none resize-none"
+                            placeholder="พิมพ์คำตอบของคุณที่นี่..."
+                            value={textAnswer}
+                            onChange={(e) => setTextAnswer(e.target.value)}
+                        />
+                    </div>
+                );
+            
+            case 'single_choice':
+                return (
+                    <div className="w-full max-w-xl space-y-3">
+                        {options && options.map((opt, i) => (
+                            <label key={i} className={`flex items-center p-4 border rounded-xl cursor-pointer transition-all ${selectedOption === opt ? 'bg-indigo-50 border-indigo-500 ring-1 ring-indigo-500' : 'hover:bg-slate-50'}`}>
+                                <input 
+                                    type="radio" 
+                                    name="choice" 
+                                    value={opt} 
+                                    checked={selectedOption === opt}
+                                    onChange={(e) => setSelectedOption(e.target.value)}
+                                    className="w-5 h-5 text-indigo-600 mr-3"
+                                />
+                                <span className="text-lg">{opt}</span>
+                            </label>
+                        ))}
+                    </div>
+                );
+
+            case 'multiple_choice':
+                return (
+                    <div className="w-full max-w-xl space-y-3">
+                        {options && options.map((opt, i) => {
+                            const isChecked = selectedOptions.includes(opt);
+                            return (
+                                <label key={i} className={`flex items-center p-4 border rounded-xl cursor-pointer transition-all ${isChecked ? 'bg-indigo-50 border-indigo-500 ring-1 ring-indigo-500' : 'hover:bg-slate-50'}`}>
+                                    <input 
+                                        type="checkbox" 
+                                        value={opt}
+                                        checked={isChecked}
+                                        onChange={(e) => {
+                                            if (e.target.checked) {
+                                                setSelectedOptions([...selectedOptions, opt]);
+                                            } else {
+                                                setSelectedOptions(selectedOptions.filter(item => item !== opt));
+                                            }
+                                        }}
+                                        className="w-5 h-5 text-indigo-600 mr-3 rounded"
+                                    />
+                                    <span className="text-lg">{opt}</span>
+                                </label>
+                            );
+                        })}
+                    </div>
+                );
+
+            default:
+                return <div>Unknown question type</div>;
+        }
+    };
+
     return (
         <div className="max-w-3xl mx-auto py-10 px-4">
             <Card>
                 <CardHeader>
                     <CardTitle className="text-xl text-indigo-700">{title}</CardTitle>
-                    <p className="text-lg font-medium mt-2">{questionText}</p>
+                    <p className="text-lg font-medium mt-2">{question.text}</p>
+                    <div className="text-sm text-slate-400 mt-1 capitalize">
+                         Type: {answer_type?.replace('_', ' ')}
+                    </div>
                 </CardHeader>
                 <CardContent className="flex flex-col items-center space-y-6">
-                    <div className="w-full aspect-video bg-black rounded-lg overflow-hidden relative">
-                        {!videoUrl ? (
-                            <video ref={videoPreviewRef} autoPlay muted playsInline className="w-full h-full object-cover" />
-                        ) : (
-                            <video src={videoUrl} controls className="w-full h-full object-cover" />
-                        )}
-                        
-                        {isRecording && (
-                            <div className="absolute top-4 right-4 flex items-center gap-2 bg-red-500/80 text-white px-3 py-1 rounded-full text-sm animate-pulse">
-                                <div className="w-2 h-2 bg-white rounded-full" /> REC
-                            </div>
-                        )}
-                    </div>
+                    
+                    {renderInput()}
 
-                    <div className="flex gap-4">
-                        {!videoUrl ? (
-                            !isRecording ? (
-                                <Button onClick={onStart} className="bg-red-600 hover:bg-red-700 w-32">
-                                    <Camera className="mr-2 h-4 w-4" /> อัดวิดีโอ
-                                </Button>
-                            ) : (
-                                <Button onClick={onStop} variant="outline" className="border-red-600 text-red-600 hover:bg-red-50 w-32">
-                                    <div className="w-3 h-3 bg-red-600 rounded-sm mr-2" /> หยุด
-                                </Button>
-                            )
-                        ) : (
-                            <>
-                                <Button variant="outline" onClick={onRetry}>
-                                    อัดใหม่
-                                </Button>
-                                <Button onClick={onSubmit} disabled={uploading} className="bg-green-600 hover:bg-green-700">
-                                    {uploading ? "กำลังส่ง..." : btnText}
-                                </Button>
-                            </>
-                        )}
+                    <div className="flex gap-4 pt-4">
+                        <Button onClick={onSubmit} disabled={uploading} className="bg-green-600 hover:bg-green-700 w-full md:w-auto px-8">
+                            {uploading ? "กำลังบันทึก..." : btnText}
+                        </Button>
                     </div>
                 </CardContent>
             </Card>
