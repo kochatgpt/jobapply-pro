@@ -23,7 +23,7 @@ export default function PDFLayoutType2({ applicant }) {
 
     const Field = ({ label, value, width = "auto", labelWidth="auto", className = "" }) => (
         <div className={`flex items-end text-[12px] leading-tight ${className}`} style={{ width: className ? 'auto' : width }}>
-            <span className="font-bold text-slate-800 mr-1 whitespace-nowrap" style={{ width: labelWidth }}>{label}</span>
+            <span className="font-bold text-slate-800 mr-1 whitespace-nowrap pb-1" style={{ width: labelWidth }}>{label}</span>
             <div className="flex-1 border-b-[1.5px] border-dotted border-slate-400 text-slate-900 px-2 pb-1 text-center truncate">
                 {value || "-"}
             </div>
@@ -150,11 +150,11 @@ export default function PDFLayoutType2({ applicant }) {
                 {/* Position Row */}
                 <div className="p-3 border-b border-slate-800 bg-slate-50/50">
                     <div className="flex gap-4 items-end text-[12px] leading-tight">
-                        <div className="font-bold whitespace-nowrap">สมัครงานในตำแหน่ง 1</div>
+                        <div className="font-bold whitespace-nowrap pb-1">สมัครงานในตำแหน่ง 1</div>
                         <div className="border-b-[1.5px] border-dotted border-slate-400 flex-1 px-2 pb-1 text-center font-medium truncate">{p.position_1}</div>
-                        <div className="font-bold whitespace-nowrap">2</div>
+                        <div className="font-bold whitespace-nowrap pb-1">2</div>
                         <div className="border-b-[1.5px] border-dotted border-slate-400 flex-1 px-2 pb-1 text-center font-medium truncate">{p.position_2}</div>
-                        <div className="font-bold whitespace-nowrap">อัตราเงินเดือนที่ต้องการ</div>
+                        <div className="font-bold whitespace-nowrap pb-1">อัตราเงินเดือนที่ต้องการ</div>
                         <div className="border-b-[1.5px] border-dotted border-slate-400 w-32 px-2 pb-1 text-center font-medium truncate">{p.expected_salary}</div>
                     </div>
                 </div>
