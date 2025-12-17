@@ -16,7 +16,7 @@ export default function PDFLayout({ applicant }) {
 
     // Helper for dotted line values
     const DataField = ({ label, value, width = "auto", className = "" }) => (
-        <div className={`flex items-end gap-2 mb-[10px] ${className}`} style={{ width }}>
+        <div className={`flex items-end gap-2 ${className}`} style={{ width }}>
             <span className="font-bold whitespace-nowrap text-[16px] leading-snug mb-0.5">{label}</span>
             <div className="border-b-[1.5px] border-dotted border-slate-400 px-2 flex-1 text-center text-[16px] leading-none self-end pb-1 relative top-[2px]">
                 {value || "-"}
@@ -25,7 +25,7 @@ export default function PDFLayout({ applicant }) {
     );
 
     const CheckBox = ({ label, checked }) => (
-        <div className="flex items-center gap-1.5 mb-[10px]">
+        <div className="flex items-center gap-1.5">
             <div className={`w-3.5 h-3.5 border border-slate-400 flex items-center justify-center relative top-[2px] ${checked ? 'bg-slate-200' : ''}`}>
                 {checked && <div className="w-2 h-2 bg-slate-600" />}
             </div>
@@ -128,7 +128,7 @@ export default function PDFLayout({ applicant }) {
             {/* Main Bio Data */}
             <div className="border border-slate-800 p-1.5 mb-1.5 relative text-[16px]">
                 {/* Photo Placeholder */}
-                <div className="absolute top-1.5 right-1.5 w-20 h-28 border border-slate-300 flex items-center justify-center bg-slate-50 z-10">
+                <div className="absolute top-1.5 right-1.5 w-24 h-32 border border-slate-300 flex items-center justify-center bg-slate-50 z-10">
                     {applicant.photo_url ? (
                         <img src={applicant.photo_url} className="w-full h-full object-cover" alt="Photo" />
                     ) : (
