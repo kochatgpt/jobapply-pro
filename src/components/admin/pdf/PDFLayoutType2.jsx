@@ -54,19 +54,19 @@ export default function PDFLayoutType2({ applicant }) {
                 <div className="border border-slate-800 p-2 w-[40mm] text-[11px] space-y-1">
                     <div className="relative pl-5 h-4 flex items-center">
                         <div className="absolute left-0 top-0.5 w-3 h-3 border border-slate-600 bg-white rounded-[1px]"></div>
-                        <span className="leading-none">Web HR</span>
+                        <span className="leading-none absolute bottom-5">Web HR</span>
                     </div>
                     <div className="relative pl-5 h-4 flex items-center">
                         <div className="absolute left-0 top-0.5 w-3 h-3 border border-slate-600 bg-white rounded-[1px]"></div>
-                        <span className="leading-none">สปส.(เข้า)......</span>
+                        <span className="leading-none absolute bottom-5">สปส.(เข้า)......</span>
                     </div>
                     <div className="relative pl-5 h-4 flex items-center">
                         <div className="absolute left-0 top-0.5 w-3 h-3 border border-slate-600 bg-white rounded-[1px]"></div>
-                        <span className="leading-none">B-plus</span>
+                        <span className="leading-none absolute bottom-5">B-plus</span>
                     </div>
                     <div className="relative pl-5 h-4 flex items-center">
                         <div className="absolute left-0 top-0.5 w-3 h-3 border border-slate-600 bg-white rounded-[1px]"></div>
-                        <span className="leading-none">สปส.(ออก)......</span>
+                        <span className="leading-none absolute bottom-5">สปส.(ออก)......</span>
                     </div>
                 </div>
 
