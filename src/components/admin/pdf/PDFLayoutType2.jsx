@@ -524,9 +524,9 @@ export default function PDFLayoutType2({ applicant }) {
                                     return (
                                         <tr key={i} className="h-[28px]">
                                             <td className="border-[0.5px] border-slate-400 p-1 text-center">{i + 1}.</td>
-                                            <td className="border-[0.5px] border-slate-400 p-1"><DottedLine value={tr.course} className="border-0 border-b" /></td>
-                                            <td className="border-[0.5px] border-slate-400 p-1"><DottedLine value={tr.institute} className="border-0 border-b" /></td>
-                                            <td className="border-[0.5px] border-slate-400 p-1 text-center"><DottedLine value={tr.duration} className="border-0 border-b text-center" /></td>
+                                            <td className="border-[0.5px] border-slate-400 p-1">{tr.course || ""}</td>
+                                            <td className="border-[0.5px] border-slate-400 p-1">{tr.institute || ""}</td>
+                                            <td className="border-[0.5px] border-slate-400 p-1 text-center">{tr.duration || ""}</td>
                                         </tr>
                                     );
                                 })}
