@@ -52,10 +52,22 @@ export default function PDFLayoutType2({ applicant }) {
             <div className="flex justify-between items-start mb-4">
                 {/* Top Left Box */}
                 <div className="border border-slate-800 p-2 w-[40mm] text-[11px] space-y-1">
-                    <CheckBox label="Web HR" />
-                    <CheckBox label="สปส.(เข้า)......" />
-                    <CheckBox label="B-plus" />
-                    <CheckBox label="สปส.(ออก)......" />
+                    <div className="flex items-center gap-1.5">
+                        <div className="w-3 h-3 border border-slate-600 shrink-0 rounded-[1px] bg-white"></div>
+                        <span className="leading-none pt-[2px]">Web HR</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                        <div className="w-3 h-3 border border-slate-600 shrink-0 rounded-[1px] bg-white"></div>
+                        <span className="leading-none pt-[2px]">สปส.(เข้า)......</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                        <div className="w-3 h-3 border border-slate-600 shrink-0 rounded-[1px] bg-white"></div>
+                        <span className="leading-none pt-[2px]">B-plus</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                        <div className="w-3 h-3 border border-slate-600 shrink-0 rounded-[1px] bg-white"></div>
+                        <span className="leading-none pt-[2px]">สปส.(ออก)......</span>
+                    </div>
                 </div>
 
                 {/* Center Title */}
