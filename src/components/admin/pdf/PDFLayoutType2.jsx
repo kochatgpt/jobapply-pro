@@ -229,8 +229,18 @@ export default function PDFLayoutType2({ applicant }) {
                      <div className="flex flex-wrap gap-x-2 gap-y-1 items-end pt-2">
                         <span className="font-bold whitespace-nowrap">ที่อยู่ปัจจุบัน เป็น</span>
                         <div className="flex items-center gap-4 px-2">
-                            <CheckBox label="บ้านตนเอง" checked={p.current_address_type === 'own'} width="w-[150px]" />
-                            <CheckBox label="บ้านเช่า / หอพัก" checked={p.current_address_type === 'rent'} width="w-[150px]" />
+                            <div className="relative pl-5 h-4 flex items-center w-[60px]">
+                                <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-600 flex items-center justify-center rounded-[1px] ${p.current_address_type === 'own' ? 'bg-slate-200' : 'bg-white'}`}>
+                                    {p.current_address_type === 'own' && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
+                                </div>
+                                <span className="leading-none absolute bottom-2.5 text-[11px] text-slate-900">บ้านตนเอง</span>
+                            </div>
+                            <div className="relative pl-5 h-4 flex items-center w-[150px]">
+                                <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-600 flex items-center justify-center rounded-[1px] ${p.current_address_type === 'rent' ? 'bg-slate-200' : 'bg-white'}`}>
+                                    {p.current_address_type === 'rent' && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
+                                </div>
+                                <span className="leading-none absolute bottom-2.5 text-[11px] text-slate-900">บ้านเช่า / หอพัก</span>
+                            </div>
                         </div>
                      </div>
                      <div className="flex flex-wrap gap-x-2 gap-y-1 items-end">
