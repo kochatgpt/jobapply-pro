@@ -79,7 +79,7 @@ export default function PDFLayoutType2({ applicant }) {
     };
 
     const LogoHeader = () => (
-         <div className="absolute top-[5mm] right-[10mm] w-[40mm] flex justify-end">
+         <div className="absolute top-[2mm] right-[10mm] w-[40mm] flex justify-end">
              {appLogo ? (
                 <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[60px] w-auto object-contain" />
             ) : (
