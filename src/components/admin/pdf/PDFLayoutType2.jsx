@@ -378,12 +378,12 @@ export default function PDFLayoutType2({ applicant }) {
                         <table className="w-full border-collapse text-[11px]">
                             <thead>
                                 <tr className="bg-slate-50 text-center">
-                                    <th className="border-[0.5px] border-slate-400 p-1 w-[15%]">ระดับ</th>
-                                    <th className="border-[0.5px] border-slate-400 p-1 w-[30%]">ชื่อสถานศึกษา</th>
-                                    <th className="border-[0.5px] border-slate-400 p-1 w-[25%]">สาขาวิชา</th>
-                                    <th className="border-[0.5px] border-slate-400 p-1 w-[10%]">เริ่มปีพ.ศ.</th>
-                                    <th className="border-[0.5px] border-slate-400 p-1 w-[10%]">สำเร็จปีพ.ศ.</th>
-                                    <th className="border-[0.5px] border-slate-400 p-1 w-[10%]">เกรด<br/>เฉลี่ย</th>
+                                    <th className=" p-1 w-[15%]">ระดับ</th>
+                                    <th className=" p-1 w-[30%]">ชื่อสถานศึกษา</th>
+                                    <th className=" p-1 w-[25%]">สาขาวิชา</th>
+                                    <th className=" p-1 w-[10%]">เริ่มปีพ.ศ.</th>
+                                    <th className=" p-1 w-[10%]">สำเร็จปีพ.ศ.</th>
+                                    <th className=" p-1 w-[10%]">เกรด<br/>เฉลี่ย</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -399,12 +399,12 @@ export default function PDFLayoutType2({ applicant }) {
                                     const ed = e.history?.[row.k] || {};
                                     return (
                                         <tr key={row.k}>
-                                            <td className="border-[0.5px] border-slate-400 p-1 bg-slate-50">{row.label}</td>
-                                            <td className="border-[0.5px] border-slate-400 p-1"><DottedLine value={ed.institute} className="border-0 border-b border-dotted" /></td>
-                                            <td className="border-[0.5px] border-slate-400 p-1"><DottedLine value={ed.major} className="border-0 border-b border-dotted" /></td>
-                                            <td className="border-[0.5px] border-slate-400 p-1 text-center"><DottedLine value={ed.start_year} className="border-0 border-b border-dotted text-center" /></td>
-                                            <td className="border-[0.5px] border-slate-400 p-1 text-center"><DottedLine value={ed.end_year} className="border-0 border-b border-dotted text-center" /></td>
-                                            <td className="border-[0.5px] border-slate-400 p-1 text-center"><DottedLine value={ed.gpa} className="border-0 border-b border-dotted text-center" /></td>
+                                            <td className=" p-1 bg-slate-50">{row.label}</td>
+                                            <td className=" p-1"><DottedLine value={ed.institute} className="border-0 border-b border-dotted" /></td>
+                                            <td className=" p-1"><DottedLine value={ed.major} className="border-0 border-b border-dotted" /></td>
+                                            <td className=" p-1 text-center"><DottedLine value={ed.start_year} className="border-0 border-b border-dotted text-center" /></td>
+                                            <td className=" p-1 text-center"><DottedLine value={ed.end_year} className="border-0 border-b border-dotted text-center" /></td>
+                                            <td className=" p-1 text-center"><DottedLine value={ed.gpa} className="border-0 border-b border-dotted text-center" /></td>
                                         </tr>
                                     );
                                 })}
