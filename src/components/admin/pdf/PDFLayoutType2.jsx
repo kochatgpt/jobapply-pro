@@ -547,59 +547,63 @@ export default function PDFLayoutType2({ applicant }) {
                 <div className="mt-[5mm] space-y-2">
                      {/* --- Work History --- */}
                      <div>
-                        <div className="text-center font-bold text-[14px] border-[0.5px] border-slate-400 bg-slate-50 py-1 mb-[-0.5px]">ประวัติการทำงาน</div>
-                        <div className="border-[0.5px] border-slate-400 p-2 mb-[-0.5px]">
-                            <div className="flex gap-8 mb-2">
-                                <CheckBox label="ไม่มีประสบการณ์ทำงาน" checked={exp.has_experience === 'no'} />
-                                <CheckBox label="มีประสบการณ์ทำงานระบุ (เรียงลำดับจากล่าสุด)" checked={exp.has_experience === 'yes'} width="w-auto" />
-                            </div>
-                            
-                            <table className="w-full border-collapse text-[10px]">
-                                <thead>
-                                    <tr className="bg-slate-50 text-center">
-                                        <th rowSpan={2} className="border-[0.5px] border-slate-400 p-1 w-[12%]">วัน/เดือน/ปี<br/>เริ่มงาน - ออก</th>
-                                        <th rowSpan={2} className="border-[0.5px] border-slate-400 p-1 w-[18%]">ชื่อสถานที่ทำงาน</th>
-                                        <th rowSpan={2} className="border-[0.5px] border-slate-400 p-1 w-[18%]">ชื่อ - เบอร์โทร<br/>(นายจ้าง)</th>
-                                        <th rowSpan={2} className="border-[0.5px] border-slate-400 p-1 w-[15%]">ตำแหน่งสุดท้าย</th>
-                                        <th rowSpan={2} className="border-[0.5px] border-slate-400 p-1 w-[15%]">สาเหตุที่ลาออก</th>
-                                        <th colSpan={2} className="border-[0.5px] border-slate-400 p-1">เงินเดือน/บาท</th>
-                                    </tr>
-                                    <tr className="bg-slate-50 text-center">
-                                        <th className="border-[0.5px] border-slate-400 p-1 w-[11%]">เข้า/บาท</th>
-                                        <th className="border-[0.5px] border-slate-400 p-1 w-[11%]">ออก/บาท</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {[0, 1, 2, 3].map((i) => {
-                                        const job = exp.history?.[i] || {};
-                                        return (
-                                            <tr key={i} className="h-[24px]">
-                                                <td className="border-[0.5px] border-slate-400 p-1 text-center">{job.period || ""}</td>
-                                                <td className="border-[0.5px] border-slate-400 p-1">{job.workplace || ""}</td>
-                                                <td className="border-[0.5px] border-slate-400 p-1">{job.employer || ""}</td>
-                                                <td className="border-[0.5px] border-slate-400 p-1 text-center">{job.position || ""}</td>
-                                                <td className="border-[0.5px] border-slate-400 p-1">{job.reason || ""}</td>
-                                                <td className="border-[0.5px] border-slate-400 p-1 text-center">{job.salary_in || ""}</td>
-                                                <td className="border-[0.5px] border-slate-400 p-1 text-center">{job.salary_out || ""}</td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="border-[0.5px] border-slate-400 p-2 text-[11px]">
-                             <div className="flex gap-2 items-center">
-                                 <span>ท่านจะขัดข้องหรือไม่ถ้าหากทางบริษัทฯ จะติดต่อสอบถามไปยังบริษัทฯ(เดิม)หรือบริษัทฯปัจจุบัน</span>
-                                 <CheckBox label="ไม่ขัดข้อง" checked={exp.contact_previous_employer?.status === 'allowed'} width="w-auto" />
-                                 <CheckBox label="ขัดข้อง" checked={exp.contact_previous_employer?.status === 'not_allowed'} width="w-auto" />
-                             </div>
-                             <div className="flex items-end mt-1">
-                                 <span className="mr-2">เพราะ.......................................................................................................................................................................................................</span>
-                                 {exp.contact_previous_employer?.status === 'not_allowed' && (
-                                     <span className="absolute left-[80mm] -translate-y-1">{exp.contact_previous_employer?.reason}</span>
-                                 )}
-                             </div>
-                        </div>
+                        <table className="w-full border-collapse border-[0.5px] border-slate-400 text-[10px]">
+                            <thead>
+                                <tr>
+                                    <th colSpan={5} className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-2">
+                                        <div className="text-center font-bold text-[12px] underline mb-2">ประวัติการทำงาน</div>
+                                        <div className="flex justify-center gap-6 font-normal">
+                                            <CheckBox label="ไม่มีประสบการณ์ทำงาน" checked={exp.has_experience === 'no'} width="w-auto" />
+                                            <CheckBox label="มีประสบการณ์ทำงานระบุ (เรียงลำดับจากล่าสุด)" checked={exp.has_experience === 'yes'} width="w-auto" />
+                                        </div>
+                                    </th>
+                                    <th colSpan={2} className="border-b-[0.5px] border-slate-400 p-1 align-middle text-center font-bold text-[11px]">
+                                        เงินเดือน/บาท
+                                    </th>
+                                </tr>
+                                <tr className="text-center bg-slate-50">
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[12%]">วัน/เดือน/ปี<br/>เริ่มงาน - ออก</th>
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[18%]">ชื่อสถานที่ทำงาน</th>
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[18%]">ชื่อ - เบอร์โทร<br/>(นายจ้าง)</th>
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[15%]">ตำแหน่งสุดท้าย</th>
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[15%]">สาเหตุที่ลาออก</th>
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[11%]">เข้า/บาท</th>
+                                    <th className="border-b-[0.5px] border-slate-400 p-1 w-[11%]">ออก/บาท</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {[0, 1, 2, 3].map((i) => {
+                                    const job = exp.history?.[i] || {};
+                                    return (
+                                        <tr key={i} className="h-[24px]">
+                                            <td className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 text-center">{job.period || ""}</td>
+                                            <td className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1">{job.workplace || ""}</td>
+                                            <td className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1">{job.employer || ""}</td>
+                                            <td className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 text-center">{job.position || ""}</td>
+                                            <td className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1">{job.reason || ""}</td>
+                                            <td className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 text-center">{job.salary_in || ""}</td>
+                                            <td className="border-b-[0.5px] border-slate-400 p-1 text-center">{job.salary_out || ""}</td>
+                                        </tr>
+                                    );
+                                })}
+                                {/* Footer / Consent Row */}
+                                <tr>
+                                    <td colSpan={7} className="p-2 align-top h-[60px]">
+                                        <div className="flex gap-2 items-center flex-wrap mb-1">
+                                             <span>ท่านจะขัดข้องหรือไม่ถ้าหากทางบริษัทฯ จะติดต่อสอบถามไปยังบริษัทฯ(เดิม)หรือบริษัทฯปัจจุบัน</span>
+                                             <div className="flex gap-4 ml-2">
+                                                 <CheckBox label="ไม่ขัดข้อง" checked={exp.contact_previous_employer?.status === 'allowed'} width="w-auto" />
+                                                 <CheckBox label="ขัดข้อง" checked={exp.contact_previous_employer?.status === 'not_allowed'} width="w-auto" />
+                                             </div>
+                                        </div>
+                                        <div className="flex items-end w-full">
+                                             <span className="mr-2 whitespace-nowrap">เพราะ</span>
+                                             <DottedLine value={exp.contact_previous_employer?.status === 'not_allowed' ? exp.contact_previous_employer?.reason : ''} className="flex-1" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                      </div>
 
                      {/* --- Statement --- */}
