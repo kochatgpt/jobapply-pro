@@ -32,10 +32,10 @@ export default function PDFLayoutType2({ applicant }) {
 
     const CheckBox = ({ label, checked, textSize="text-[11px]", width="w-[300px]" }) => (
         <div className={`relative pl-5 h-4 flex items-center ${width}`}>
-            <div className={`absolute left-0 top-2 w-3 h-3 border border-slate-600 flex items-center justify-center rounded-[1px] ${checked ? 'bg-slate-200' : 'bg-white'}`}>
+            <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-600 flex items-center justify-center rounded-[1px] ${checked ? 'bg-slate-200' : 'bg-white'}`}>
                 {checked && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
             </div>
-            <span className={`${textSize} text-slate-900`}>{label}</span>
+            <span className={`leading-none absolute bottom-2.5 ${textSize} text-slate-900`}>{label}</span>
         </div>
     );
 
@@ -277,7 +277,7 @@ export default function PDFLayoutType2({ applicant }) {
                              <div className="font-bold underline mb-2">สถานภาพ (หญิง)</div>
                              <div className="space-y-1.5 pl-1">
                                  <div className="flex gap-4">
-                                     <CheckBox label="ไม่อยู่ระหว่างการตั้งครรภ์" width="w-[150px]" />
+                                     <CheckBox label="ไม่อยู่ระหว่างการตั้งครรภ์" width="w-[350px]" />
                                      <CheckBox label="มีบุตรแล้ว" checked={f.has_children === 'yes'} />
                                      <CheckBox label="ยังไม่มีบุตร" checked={f.has_children === 'no'} />
                                  </div>
