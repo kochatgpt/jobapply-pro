@@ -438,7 +438,7 @@ export default function PDFLayoutType2({ applicant }) {
                                              </div>
                                          </div>
                                      </div>
-                                     {['ไทย', 'อังกฤษ', 'จีน', 'อื่นๆ......'].map((lang, idx) => (
+                                     {['ไทย', 'อังกฤษ', 'จีน', <span key="other">อื่นๆ<span className="invisible">......</span></span>].map((lang, idx) => (
                                          <div key={idx} className="grid grid-cols-4 border-b-[0.5px] border-slate-400 last:border-b-0 h-[28px] items-center">
                                              <div className="pl-1 border-r-[0.5px] border-slate-400 font-medium truncate">{lang}</div>
                                              <div className="border-r-[0.5px] border-slate-400 h-full"></div>
@@ -480,7 +480,7 @@ export default function PDFLayoutType2({ applicant }) {
                                          {l: 'ขับจักรยานยนต์', k: 'motorcycle'},
                                          {l: 'ขับรถยนต์', k: 'car'},
                                          {l: 'ขับรถบรรทุก', k: 'truck'},
-                                         {l: 'อื่นๆ.............', k: 'other'}
+                                         {l: <span key="other">อื่นๆ<span className="invisible">.............</span></span>, k: 'other'}
                                      ].map((item, idx) => (
                                          <div key={idx} className="grid grid-cols-5 border-b-[0.5px] border-slate-400 last:border-b-0 h-[28px] items-center">
                                              <div className="col-span-3 pl-1 border-r-[0.5px] border-slate-400 truncate">{item.l}</div>
