@@ -266,7 +266,12 @@ export default function PDFLayoutType2({ applicant }) {
                                      <CheckBox label="ได้รับการยกเว้นทางทหาร" checked={p.military_status === 'exempted'} />
                                      <CheckBox label="เกณฑ์ทหารแล้ว" checked={p.military_status === 'served'} />
                                  </div>
-                                 <CheckBox label="ยังไม่ได้รับการเกณฑ์" checked={p.military_status === 'not_served'} />
+                                 <div className="relative pl-5 h-4 flex items-center">
+                                    <div className={`absolute left-0 top-2 w-3 h-3 border border-slate-600 flex items-center justify-center rounded-[1px] ${p.military_status === 'not_served' ? 'bg-slate-200' : 'bg-white'}`}>
+                                        {p.military_status === 'not_served' && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
+                                    </div>
+                                    <span className="text-[11px] text-slate-900">ยังไม่ได้รับการเกณฑ์</span>
+                                 </div>
                                  <div className="flex gap-4">
                                      <CheckBox label="ยังไม่สมรส" checked={f.marital_status === 'single'} />
                                      <CheckBox label="สมรสแล้ว" checked={f.marital_status === 'married'} />
@@ -281,7 +286,11 @@ export default function PDFLayoutType2({ applicant }) {
                                      <CheckBox label="มีบุตรแล้ว" checked={f.has_children === 'yes'} />
                                      <CheckBox label="ยังไม่มีบุตร" checked={f.has_children === 'no'} />
                                  </div>
-                                 <CheckBox label="อยู่ระหว่างการตั้งครรภ์ ระบุ สัปดาห์ที่ตั้งครรภ์" />
+                                 <div className="relative pl-5 h-4 flex items-center">
+                                    <div className={`absolute left-0 top-2 w-3 h-3 border border-slate-600 flex items-center justify-center rounded-[1px] bg-white`}>
+                                    </div>
+                                    <span className="text-[11px] text-slate-900">อยู่ระหว่างการตั้งครรภ์ ระบุ สัปดาห์ที่ตั้งครรภ์</span>
+                                 </div>
                              </div>
                         </div>
                     </div>
