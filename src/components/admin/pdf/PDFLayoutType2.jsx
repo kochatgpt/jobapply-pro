@@ -17,6 +17,11 @@ export default function PDFLayoutType2({ applicant }) {
     const s = applicant.skills_data || { languages: {}, office: {}, driving: {} };
     const t = applicant.training_data || { history: [] };
 
+    const exp = applicant.experience_data || { history: [], contact_previous_employer: {} };
+    const st = applicant.statement_data || {};
+    const ref = applicant.referral_data || {};
+    const par = applicant.parents_data || { father: {}, mother: {} };
+
     // --- Helpers ---
     const DottedLine = ({ value, className = "", center = false }) => (
         <div className={`border-b-[1.5px] border-dotted border-slate-400 px-1 pb-1 min-h-[1.4em] ${center ? 'text-center' : ''} ${className}`}>
