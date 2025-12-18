@@ -431,8 +431,8 @@ export default function PDFLayoutType2({ applicant }) {
                              <div className="grid grid-cols-12">
                                  {/* Language Table */}
                                  <div className="col-span-4 border-r-[0.5px] border-slate-400 text-[10px]">
-                                     <div className="grid grid-cols-4 border-b-[0.5px] border-slate-400 text-center bg-slate-50 h-[40px]">
-                                         <div className="p-1 border-r-[0.5px] border-slate-400 font-bold flex items-center justify-center">ภาษา</div>
+                                     <div className="grid grid-cols-5 border-b-[0.5px] border-slate-400 text-center bg-slate-50 h-[40px]">
+                                         <div className="col-span-2 p-1 border-r-[0.5px] border-slate-400 font-bold flex items-center justify-center">ภาษา</div>
                                          <div className="col-span-3 p-1 flex items-center justify-center font-bold">
                                              ระดับความสามารถ
                                          </div>
@@ -443,8 +443,8 @@ export default function PDFLayoutType2({ applicant }) {
                                          { l: 'จีน', k: 'chinese' },
                                          { l: <span key="other">อื่นๆ<span className="invisible">......</span></span>, k: 'other_level', n: 'other_name' }
                                      ].map((item, idx) => (
-                                         <div key={idx} className="grid grid-cols-4 border-b-[0.5px] border-slate-400 last:border-b-0 h-[28px]">
-                                             <div className="pl-1 border-r-[0.5px] border-slate-400 font-medium flex items-center h-full truncate">
+                                         <div key={idx} className="grid grid-cols-5 border-b-[0.5px] border-slate-400 last:border-b-0 h-[28px]">
+                                             <div className="col-span-2 pl-1 border-r-[0.5px] border-slate-400 font-medium flex items-center h-full truncate">
                                                  {item.l}
                                                  {item.n && s.languages?.[item.n] && <span className="ml-1 text-[9px] text-slate-600">({s.languages[item.n]})</span>}
                                              </div>
