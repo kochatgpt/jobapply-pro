@@ -302,7 +302,7 @@ export default function PDFLayoutType2({ applicant }) {
                              <div className="font-bold underline mb-2">สถานภาพ (หญิง)</div>
                              <div className="space-y-1.5 pl-1">
                                  <div className="flex gap-4">
-                                     <div className="relative pl-5 h-4 flex items-center mr-4 w-[125px]">
+                                     <div className="relative pl-5 h-4 flex items-center mr-4 w-[140px]">
                                         <div className={`absolute left-0 top-2 w-3 h-3 border border-slate-600 flex items-center justify-center rounded-[1px] bg-white`}>
                                         </div>
                                         <span className="text-[11px] text-slate-900">ไม่อยู่ระหว่างการตั้งครรภ์</span>
