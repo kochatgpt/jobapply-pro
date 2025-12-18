@@ -383,7 +383,7 @@ export default function PDFLayoutType2({ applicant }) {
                                     <th className="border-l-[0.5px] border-b-[0.5px] border-t-[0.5px] border-slate-400 p-1 w-[25%]">สาขาวิชา</th>
                                     <th className="border-l-[0.5px] border-b-[0.5px] border-t-[0.5px] border-slate-400 p-1 w-[10%]">เริ่มปีพ.ศ.</th>
                                     <th className="border-l-[0.5px] border-b-[0.5px] border-t-[0.5px] border-slate-400 p-1 w-[10%]">สำเร็จปีพ.ศ.</th>
-                                    <th className="border-l-[0.5px] border-b-[0.5px] border-t-[0.5px] border-slate-400 p-1 w-[10%]">เกรด<br/>เฉลี่ย</th>
+                                    <th className="border-[0.5px] border-slate-400 p-1 w-[10%]">เกรด<br/>เฉลี่ย</th>
                                 </tr>
                             </thead>
                             <tbody>
