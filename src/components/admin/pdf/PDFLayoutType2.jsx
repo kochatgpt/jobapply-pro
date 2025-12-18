@@ -342,13 +342,13 @@ export default function PDFLayoutType2({ applicant }) {
                              <span className="font-bold underline">สถานะทางครอบครัว</span>
                              <div className="flex gap-4 ml-4 items-end">
                                 <div className="relative pl-5 h-4 flex items-center w-[60px]">
-                                    <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-400 flex items-center justify-center rounded-[1px] ${f.marital_status === 'single' ? 'bg-slate-200' : 'bg-white'}`}>
+                                    <div className={`absolute left-0 top-2 w-3 h-3 border border-slate-400 flex items-center justify-center rounded-[1px] ${f.marital_status === 'single' ? 'bg-slate-200' : 'bg-white'}`}>
                                         {f.marital_status === 'single' && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
                                     </div>
                                     <span className="text-[11px] text-slate-900 pt-1">โสด</span>
                                 </div>
                                 <div className="relative pl-5 h-4 flex items-center w-[100px]">
-                                    <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-400 flex items-center justify-center rounded-[1px] ${f.marital_status === 'married' ? 'bg-slate-200' : 'bg-white'}`}>
+                                    <div className={`absolute left-0 top-2 w-3 h-3 border border-slate-400 flex items-center justify-center rounded-[1px] ${f.marital_status === 'married' ? 'bg-slate-200' : 'bg-white'}`}>
                                         {f.marital_status === 'married' && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
                                     </div>
                                     <span className="text-[11px] text-slate-900 pt-1">แต่งงานแล้ว</span>
