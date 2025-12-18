@@ -428,10 +428,11 @@ export default function PDFLayoutType2({ applicant }) {
                              <div className="grid grid-cols-12 min-h-[160px]">
                                  {/* Language Table */}
                                  <div className="col-span-4 border-r-[0.5px] border-slate-400 text-[10px]">
-                                     <div className="grid grid-cols-4 border-b-[0.5px] border-slate-400 text-center bg-slate-50">
-                                         <div className="p-1 border-r-[0.5px] border-slate-400 font-bold">ภาษา</div>
-                                         <div className="col-span-3 p-1">ระบุว่า (<u>ดี</u> <u>พอใช้</u> <u>น้อย</u>)<br/>
-                                             <div className="grid grid-cols-3 mt-1">
+                                     <div className="grid grid-cols-4 border-b-[0.5px] border-slate-400 text-center bg-slate-50 h-[50px]">
+                                         <div className="p-1 border-r-[0.5px] border-slate-400 font-bold flex items-center justify-center">ภาษา</div>
+                                         <div className="col-span-3 p-1 flex flex-col justify-center">
+                                             <div>ระบุว่า (<u>ดี</u> <u>พอใช้</u> <u>น้อย</u>)</div>
+                                             <div className="grid grid-cols-3 mt-1 w-full">
                                                  <span className="border-r border-slate-300">พูด</span>
                                                  <span className="border-r border-slate-300">เขียน</span>
                                                  <span>อ่าน</span>
@@ -439,8 +440,8 @@ export default function PDFLayoutType2({ applicant }) {
                                          </div>
                                      </div>
                                      {['ไทย', 'อังกฤษ', 'จีน', <span key="other">อื่นๆ<span className="invisible">......</span></span>].map((lang, idx) => (
-                                         <div key={idx} className="grid grid-cols-4 border-b-[0.5px] border-slate-400 last:border-b-0 h-[28px] items-center">
-                                             <div className="pl-1 border-r-[0.5px] border-slate-400 font-medium truncate">{lang}</div>
+                                         <div key={idx} className="grid grid-cols-4 border-b-[0.5px] border-slate-400 last:border-b-0 h-[35px]">
+                                             <div className="pl-1 border-r-[0.5px] border-slate-400 font-medium flex items-center h-full truncate">{lang}</div>
                                              <div className="border-r-[0.5px] border-slate-400 h-full"></div>
                                              <div className="border-r-[0.5px] border-slate-400 h-full"></div>
                                              <div className="h-full"></div>
@@ -450,10 +451,10 @@ export default function PDFLayoutType2({ applicant }) {
 
                                  {/* Office Equipment */}
                                  <div className="col-span-4 border-r-[0.5px] border-slate-400 text-[11px]">
-                                     <div className="grid grid-cols-5 border-b-[0.5px] border-slate-400 font-bold text-center bg-slate-50">
-                                         <div className="col-span-3 p-1 border-r-[0.5px] border-slate-400">ประเภท</div>
-                                         <div className="p-1 border-r-[0.5px] border-slate-400">ได้</div>
-                                         <div className="p-1">ไม่ได้</div>
+                                     <div className="grid grid-cols-5 border-b-[0.5px] border-slate-400 font-bold text-center bg-slate-50 h-[50px]">
+                                         <div className="col-span-3 p-1 border-r-[0.5px] border-slate-400 flex items-center justify-center">ประเภท</div>
+                                         <div className="p-1 border-r-[0.5px] border-slate-400 flex items-center justify-center">ได้</div>
+                                         <div className="p-1 flex items-center justify-center">ไม่ได้</div>
                                      </div>
                                      {[
                                          {l: 'พิมพ์ดีดไทย/อังกฤษ', k: 'typewriter'},
@@ -461,8 +462,8 @@ export default function PDFLayoutType2({ applicant }) {
                                          {l: 'เครื่องแฟกซ์/ถ่ายเอกสาร', k: 'fax_copier'},
                                          {l: 'เครื่องคอมพิวเตอร์', k: 'computer'}
                                      ].map((item, idx) => (
-                                         <div key={idx} className="grid grid-cols-5 border-b-[0.5px] border-slate-400 last:border-b-0 h-[28px] items-center">
-                                             <div className="col-span-3 pl-1 border-r-[0.5px] border-slate-400 truncate">{item.l}</div>
+                                         <div key={idx} className="grid grid-cols-5 border-b-[0.5px] border-slate-400 last:border-b-0 h-[35px]">
+                                             <div className="col-span-3 pl-1 border-r-[0.5px] border-slate-400 flex items-center h-full truncate">{item.l}</div>
                                              <div className="border-r-[0.5px] border-slate-400 h-full flex justify-center items-center">{s.office?.[item.k] ? <Check className="w-3 h-3"/> : ''}</div>
                                              <div className="h-full"></div>
                                          </div>
@@ -471,10 +472,10 @@ export default function PDFLayoutType2({ applicant }) {
 
                                  {/* Special Skills */}
                                  <div className="col-span-4 text-[11px]">
-                                     <div className="grid grid-cols-5 border-b-[0.5px] border-slate-400 font-bold text-center bg-slate-50">
-                                         <div className="col-span-3 p-1 border-r-[0.5px] border-slate-400">ประเภท</div>
-                                         <div className="p-1 border-r-[0.5px] border-slate-400">ได้</div>
-                                         <div className="p-1">ไม่ได้</div>
+                                     <div className="grid grid-cols-5 border-b-[0.5px] border-slate-400 font-bold text-center bg-slate-50 h-[50px]">
+                                         <div className="col-span-3 p-1 border-r-[0.5px] border-slate-400 flex items-center justify-center">ประเภท</div>
+                                         <div className="p-1 border-r-[0.5px] border-slate-400 flex items-center justify-center">ได้</div>
+                                         <div className="p-1 flex items-center justify-center">ไม่ได้</div>
                                      </div>
                                      {[
                                          {l: 'ขับจักรยานยนต์', k: 'motorcycle'},
@@ -482,8 +483,8 @@ export default function PDFLayoutType2({ applicant }) {
                                          {l: 'ขับรถบรรทุก', k: 'truck'},
                                          {l: <span key="other">อื่นๆ<span className="invisible">.............</span></span>, k: 'other'}
                                      ].map((item, idx) => (
-                                         <div key={idx} className="grid grid-cols-5 border-b-[0.5px] border-slate-400 last:border-b-0 h-[28px] items-center">
-                                             <div className="col-span-3 pl-1 border-r-[0.5px] border-slate-400 truncate">{item.l}</div>
+                                         <div key={idx} className="grid grid-cols-5 border-b-[0.5px] border-slate-400 last:border-b-0 h-[35px]">
+                                             <div className="col-span-3 pl-1 border-r-[0.5px] border-slate-400 flex items-center h-full truncate">{item.l}</div>
                                              <div className="border-r-[0.5px] border-slate-400 h-full flex justify-center items-center">{s.driving?.[item.k] ? <Check className="w-3 h-3"/> : ''}</div>
                                              <div className="h-full"></div>
                                          </div>
