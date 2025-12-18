@@ -402,12 +402,12 @@ export default function PDFLayoutType2({ applicant }) {
                                     const ed = e.history?.[row.k] || {};
                                     return (
                                         <tr key={row.k}>
-                                            <td className="border-l-[0.5px] border-b-[0.5px] border-slate-400 p-1 bg-slate-50">{row.label}</td>
-                                            <td className="border-l-[0.5px] border-b-[0.5px] border-slate-400 p-1">{ed.institute || ""}</td>
-                                            <td className="border-l-[0.5px] border-b-[0.5px] border-slate-400 p-1">{ed.major || ""}</td>
-                                            <td className="border-l-[0.5px] border-b-[0.5px] border-slate-400 p-1 text-center">{ed.start_year || ""}</td>
-                                            <td className="border-l-[0.5px] border-b-[0.5px] border-slate-400 p-1 text-center">{ed.end_year || ""}</td>
-                                            <td className="border-l-[0.5px] border-b-[0.5px] border-r-[0.5px] border-slate-400 p-1 text-center">{ed.gpa || ""}</td>
+                                            <td className="border-l-[0.5px] border-b-[0.5px] border-slate-400 p-1 pb-3 bg-slate-50">{row.label}</td>
+                                            <td className="border-l-[0.5px] border-b-[0.5px] border-slate-400 p-1 pb-3">{ed.institute || ""}</td>
+                                            <td className="border-l-[0.5px] border-b-[0.5px] border-slate-400 p-1 pb-3">{ed.major || ""}</td>
+                                            <td className="border-l-[0.5px] border-b-[0.5px] border-slate-400 p-1 pb-3 text-center">{ed.start_year || ""}</td>
+                                            <td className="border-l-[0.5px] border-b-[0.5px] border-slate-400 p-1 pb-3 text-center">{ed.end_year || ""}</td>
+                                            <td className="border-l-[0.5px] border-b-[0.5px] border-r-[0.5px] border-slate-400 p-1 pb-3 text-center">{ed.gpa || ""}</td>
                                         </tr>
                                     );
                                 })}
