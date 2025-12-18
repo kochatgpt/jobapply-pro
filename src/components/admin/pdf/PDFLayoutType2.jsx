@@ -430,21 +430,24 @@ export default function PDFLayoutType2({ applicant }) {
                                  <div className="col-span-4 border-r-[0.5px] border-slate-400 text-[10px]">
                                      <div className="grid grid-cols-4 border-b-[0.5px] border-slate-400 text-center bg-slate-50 h-[50px]">
                                          <div className="p-1 border-r-[0.5px] border-slate-400 font-bold flex items-center justify-center">ภาษา</div>
-                                         <div className="col-span-3 p-1 flex flex-col justify-center">
-                                             <div>ระบุว่า (<u>ดี</u> <u>พอใช้</u> <u>น้อย</u>)</div>
-                                             <div className="grid grid-cols-3 mt-1 w-full">
-                                                 <span className="border-r border-slate-300">พูด</span>
-                                                 <span className="border-r border-slate-300">เขียน</span>
-                                                 <span>อ่าน</span>
-                                             </div>
+                                         <div className="col-span-3 p-1 flex items-center justify-center font-bold">
+                                             ระดับความสามารถ
                                          </div>
                                      </div>
-                                     {['ไทย', 'อังกฤษ', 'จีน', <span key="other">อื่นๆ<span className="invisible">......</span></span>].map((lang, idx) => (
+                                     {[
+                                         { l: 'ไทย', k: 'thai' },
+                                         { l: 'อังกฤษ', k: 'english' },
+                                         { l: 'จีน', k: 'chinese' },
+                                         { l: <span key="other">อื่นๆ<span className="invisible">......</span></span>, k: 'other_level', n: 'other_name' }
+                                     ].map((item, idx) => (
                                          <div key={idx} className="grid grid-cols-4 border-b-[0.5px] border-slate-400 last:border-b-0 h-[35px]">
-                                             <div className="pl-1 border-r-[0.5px] border-slate-400 font-medium flex items-center h-full truncate">{lang}</div>
-                                             <div className="border-r-[0.5px] border-slate-400 h-full"></div>
-                                             <div className="border-r-[0.5px] border-slate-400 h-full"></div>
-                                             <div className="h-full"></div>
+                                             <div className="pl-1 border-r-[0.5px] border-slate-400 font-medium flex items-center h-full truncate">
+                                                 {item.l}
+                                                 {item.n && s.languages?.[item.n] && <span className="ml-1 text-[9px] text-slate-600">({s.languages[item.n]})</span>}
+                                             </div>
+                                             <div className="col-span-3 h-full flex items-center justify-center px-2">
+                                                 {s.languages?.[item.k] || ''}
+                                             </div>
                                          </div>
                                      ))}
                                  </div>
