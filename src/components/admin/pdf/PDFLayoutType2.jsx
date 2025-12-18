@@ -229,7 +229,7 @@ export default function PDFLayoutType2({ applicant }) {
                      <div className="flex flex-wrap gap-x-2 gap-y-1 items-end pt-2">
                         <span className="font-bold whitespace-nowrap">ที่อยู่ปัจจุบัน เป็น</span>
                         <div className="flex items-center gap-4 px-2">
-                            <div className="relative pl-5 h-4 flex items-center w-[60px]">
+                            <div className="relative pl-5 h-4 flex items-center w-[80px]">
                                 <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-600 flex items-center justify-center rounded-[1px] ${p.current_address_type === 'own' ? 'bg-slate-200' : 'bg-white'}`}>
                                     {p.current_address_type === 'own' && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
                                 </div>
