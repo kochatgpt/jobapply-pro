@@ -496,13 +496,13 @@ export default function PDFLayoutType2({ applicant }) {
                                          </div>
                                      ))}
                                  </div>
-                             </div>
-                             
-                             <div className="p-2 border-t-[0.5px] border-slate-400 bg-slate-50/30">
+                                 </div>
+
+                                 <div className="p-2 pb-4 border-t-[0.5px] border-slate-400 bg-slate-50/30">
                                  <div className="font-bold mb-1">ความรู้ความสามารถทางด้านภาษา/โปรแกรมคอมพิวเตอร์:</div>
                                  <DottedLine value={s.computer_capability} className="mb-2" />
                                  <DottedLine value="" />
-                             </div>
+                                 </div>
                          </div>
                     </div>
 
