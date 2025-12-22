@@ -840,7 +840,7 @@ export default function PDFLayoutType2({ applicant }) {
                             <span>คน</span>
                             <span className="ml-4">ข้าพเจ้าเป็นบุตรคนที่</span>
                             <DottedLine value={par.birth_order} className="w-[20mm] text-center" />
-                            <span className="flex-1 text-right">คน</span>
+                            <span>คน</span>
                          </div>
                      </div>
                 </div>
