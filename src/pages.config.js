@@ -1,13 +1,13 @@
+import Admin from './pages/Admin';
 import Application from './pages/Application';
 import Home from './pages/Home';
-import Admin from './pages/Admin';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
+    "Admin": Admin,
     "Application": Application,
     "Home": Home,
-    "Admin": Admin,
 }
 
 export const pagesConfig = {

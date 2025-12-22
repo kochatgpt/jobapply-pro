@@ -545,7 +545,7 @@ export default function PDFLayoutType2({ applicant }) {
             {/* ================= PAGE 3 ================= */}
             <PageContainer pageNum={3} totalPages={4}>
                 <LogoHeader />
-                <div className="mt-[5mm] space-y-0.5">
+                <div className="mt-[5mm] space-y-1">
 
                      {/* --- Work History --- */}
                      <div>
@@ -621,7 +621,7 @@ export default function PDFLayoutType2({ applicant }) {
                      {/* --- Statement --- */}
                      <div>
                         <div className="text-center font-bold text-[14px] border-[0.5px] border-slate-400 bg-slate-50 py-1 mb-[-0.5px]">คำแถลง (กรุณาระบุตามจริงเท่านั้น)</div>
-                        <div className="border-[0.5px] border-slate-400 p-2 text-[11px] space-y-1">
+                        <div className="border-[0.5px] border-slate-400 p-3 text-[11px] space-y-1.5">
                             <div className="flex gap-1 items-center flex-nowrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">1.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านสามารถปฏิบัติงานล่วงเวลาได้หรือไม่</span>
@@ -738,7 +738,7 @@ export default function PDFLayoutType2({ applicant }) {
                      </div>
 
                      {/* --- Referral --- */}
-                     <div className="border-[0.5px] border-slate-400 p-2 text-[11px] space-y-1">
+                     <div className="border-[0.5px] border-slate-400 p-2 pb-3 text-[11px] space-y-2">
                          <div className="flex items-end">
                             <span className="relative top-[1px]">ข้าพเจ้ายื่นใบสมัครโดยการแนะนำของ</span>
                             <DottedLine value={ref.referred_by} className="flex-1 text-center relative top-2" />
@@ -754,7 +754,7 @@ export default function PDFLayoutType2({ applicant }) {
                      </div>
 
                      {/* --- Parents --- */}
-                     <div className="border-[0.5px] border-slate-400 p-2 text-[11px] space-y-1">
+                     <div className="border-[0.5px] border-slate-400 p-2 text-[11px] space-y-2">
                          <div className="font-bold underline text-center text-[12px]">ประวัติครอบครัว</div>
                          
                          {/* Father - 3 lines */}
