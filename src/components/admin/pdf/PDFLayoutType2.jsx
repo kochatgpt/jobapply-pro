@@ -39,10 +39,10 @@ export default function PDFLayoutType2({ applicant }) {
 
     const CheckBox = ({ label, checked, textSize="text-[11px]", width="w-[300px]" }) => (
         <div className={`relative pl-5 h-4 flex items-center ${width}`}>
-            <div className={`absolute left-0 top-0.5 w-3 h-3 border-[0.5px] border-slate-400 flex items-center justify-center rounded-[1px] ${checked ? 'bg-slate-200' : 'bg-white'}`}>
+            <div className={`absolute left-0 top-2.5 w-3 h-3 border-[0.5px] border-slate-400 flex items-center justify-center rounded-[1px] ${checked ? 'bg-slate-200' : 'bg-white'}`}>
                 {checked && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
             </div>
-            <span className={`leading-none absolute bottom-2.5 ${textSize} text-slate-900`}>{label}</span>
+            <span className={`${textSize} text-slate-900 pt-1`}>{label}</span>
         </div>
     );
 
