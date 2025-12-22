@@ -845,48 +845,82 @@ export default function PDFLayoutType2({ applicant }) {
                 <LogoHeader />
                 <div className="mt-[5mm] space-y-2">
                     
-                    {/* Interview Results Table */}
-                    <table className="w-full border-collapse text-[11px] border-[0.5px] border-slate-400">
+                    {/* Emergency Contact Table */}
+                    <div className="text-[11px] mb-1">
+                        <span className="font-bold">กรณี <span className="underline">ฉุกเฉิน เร่งด่วน</span> สามารถติดต่อบุคคลอ้างอิงได้ที่</span>
+                    </div>
+                    <table className="w-full border-collapse text-[10px] border-[0.5px] border-slate-400">
                         <thead>
                             <tr className="bg-slate-50">
-                                <th className="border-[0.5px] border-slate-400 p-2 text-center w-[35%]">ผลการสอบสัมภาษณ์</th>
-                                <th className="border-[0.5px] border-slate-400 p-2 text-center">ความคิดเห็นและข้อเสนอแนะในการปรับปรุงผล (ถ้ามี)</th>
-                                <th className="border-[0.5px] border-slate-400 p-2 text-center w-[15%]">ผล</th>
-                                <th className="border-[0.5px] border-slate-400 p-2 text-center w-[20%]">ลายเซ็น</th>
+                                <th className="border-[0.5px] border-slate-400 p-1 text-center w-[20%]">ชื่อ-สกุล</th>
+                                <th className="border-[0.5px] border-slate-400 p-1 text-center w-[15%]">ความสัมพันธ์</th>
+                                <th className="border-[0.5px] border-slate-400 p-1 text-center w-[30%]">ที่อยู่/ที่ทำงาน</th>
+                                <th className="border-[0.5px] border-slate-400 p-1 text-center w-[20%]">โทรศัพท์</th>
+                                <th className="border-[0.5px] border-slate-400 p-1 text-center w-[15%]">ตำแหน่ง</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className="border-[0.5px] border-slate-400 p-2">ความคิดเห็นของผู้สอบสัมภาษณ์หรือผู้เกี่ยวข้องกับตำแหน่งงาน</td>
-                                <td className="border-[0.5px] border-slate-400 p-2 h-[40px]"></td>
-                                <td className="border-[0.5px] border-slate-400 p-2"></td>
-                                <td className="border-[0.5px] border-slate-400 p-2"></td>
-                            </tr>
+                            {applicant.emergency_contacts?.slice(0, 2).map((contact, idx) => (
+                                <tr key={idx} className="h-[24px]">
+                                    <td className="border-[0.5px] border-slate-400 p-1">{contact.name || ""}</td>
+                                    <td className="border-[0.5px] border-slate-400 p-1 text-center">{contact.relationship || ""}</td>
+                                    <td className="border-[0.5px] border-slate-400 p-1">{contact.address || ""}</td>
+                                    <td className="border-[0.5px] border-slate-400 p-1 text-center">{contact.phone || ""}</td>
+                                    <td className="border-[0.5px] border-slate-400 p-1 text-center">{contact.position || ""}</td>
+                                </tr>
+                            ))}
+                            {(!applicant.emergency_contacts || applicant.emergency_contacts.length < 2) && 
+                                [...Array(2 - (applicant.emergency_contacts?.length || 0))].map((_, idx) => (
+                                    <tr key={`empty-${idx}`} className="h-[24px]">
+                                        <td className="border-[0.5px] border-slate-400 p-1"></td>
+                                        <td className="border-[0.5px] border-slate-400 p-1"></td>
+                                        <td className="border-[0.5px] border-slate-400 p-1"></td>
+                                        <td className="border-[0.5px] border-slate-400 p-1"></td>
+                                        <td className="border-[0.5px] border-slate-400 p-1"></td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
 
-                    {/* Supervisor Comments */}
+                    {/* Attitude Section */}
                     <div className="border-[0.5px] border-slate-400 p-2">
-                        <div className="font-bold mb-1 text-[11px]">ความคิดเห็นของส่วนหัวหน้างานที่สัมภาษณ์หรือผู้บังคับบัญชา</div>
-                        <div className="min-h-[50px]"></div>
+                        <div className="font-bold mb-1 text-[11px]">ทัศนคติในที่ทำงานของท่านที่ทำให้บริษัทได้รู้จักท่านมากขึ้น</div>
+                        <div className="min-h-[40px] text-[10px] leading-relaxed">{applicant.attitude || ""}</div>
                     </div>
 
                     {/* Declaration Text */}
-                    <div className="border-[0.5px] border-slate-400 p-3 text-[10px] text-justify leading-snug">
+                    <div className="border-[0.5px] border-slate-400 p-2 text-[10px] text-justify leading-snug">
                         <p className="mb-2">
                             ข้าพเจ้าขอรับรองว่าข้อความที่กรอกในใบสมัครนี้เป็นความจริงทุกประการ และยินยอมให้บริษัทฯ ตรวจสอบประวัติและข้อเท็จจริงจากบุคคลหรือสถานที่ต่างๆ ที่ข้าพเจ้าระบุมาในใบสมัครนี้ ถ้าหากปรากฏในภายหลังว่า ข้าพเจ้าให้ข้อความอันเป็นเท็จ หรือปกปิดความจริงไว้ หรือบิดเบือนข้อเท็จจริง บริษัทฯ มีสิทธิ์บอกเลิกจ้างได้ทันที โดยข้าพเจ้าไม่มีสิทธิ์เรียกร้องค่าชดเชยหรือค่าเสียหายใดๆ ทั้งสิ้น หรือ มีสิทธิ์ไม่รับเข้าทำงาน ถ้าหากยังไม่ได้รับเข้าทำงาน อนึ่ง บริษัทฯ มีสิทธิ์เก็บใบสมัครนี้ไว้เป็นหลักฐานประกอบการพิจารณาได้
                         </p>
                     </div>
 
-                    {/* Applicant Signature */}
-                    <div className="grid grid-cols-2 gap-4 text-[11px] mb-2">
-                        <div className="flex items-end gap-2">
-                            <span className="whitespace-nowrap">ชื่อผู้สมัคร(พิมพ์ตัวบรรจง)</span>
-                            <DottedLine value={applicant.full_name} className="flex-1" />
+                    {/* Signature and Details */}
+                    <div className="grid grid-cols-2 gap-4 text-[10px]">
+                        <div>
+                            <div className="mb-1">ลงนาม</div>
+                            <div className="border border-slate-300 h-[60px] flex items-center justify-center bg-slate-50">
+                                {applicant.signature_url ? (
+                                    <img src={applicant.signature_url} alt="Signature" className="max-h-[50px] object-contain" />
+                                ) : (
+                                    <span className="text-slate-300 text-[9px]">ลายเซ็น</span>
+                                )}
+                            </div>
                         </div>
-                        <div className="flex items-end gap-2">
-                            <span className="whitespace-nowrap">ลงชื่อในใบสมัคร เมื่อวันที่</span>
-                            <DottedLine value={applicant.signature_date} className="flex-1" />
+                        <div className="space-y-2">
+                            <div className="flex items-end gap-2">
+                                <span className="whitespace-nowrap">ชื่อ (ตัวบรรจง)</span>
+                                <DottedLine value={applicant.full_name} className="flex-1" />
+                            </div>
+                            <div className="flex items-end gap-2">
+                                <span className="whitespace-nowrap">วันที่</span>
+                                <DottedLine value={applicant.signature_date} className="flex-1" />
+                            </div>
+                            <div className="flex items-end gap-2">
+                                <span className="whitespace-nowrap">พร้อมปฏิบัติงาน</span>
+                                <DottedLine value={applicant.start_work_date} className="flex-1" />
+                            </div>
                         </div>
                     </div>
 
