@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
@@ -626,7 +627,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ได้" checked={st.can_work_overtime === 'yes'} width="w-[50px]" />
                                 <CheckBox label="ไม่ได้" checked={st.can_work_overtime === 'no'} width="w-[60px]" />
                                 <span className="whitespace-nowrap">เพราะ</span>
-                                <span className="border-b border-dotted border-slate-400 flex-1 min-w-0 px-1 relative top-[2px]">{st.can_work_overtime === 'no' ? st.can_work_overtime_reason : ''}</span>
+                                <span className="border-b border-dotted border-slate-400 flex-1 min-w-0 px-1 pb-1">{st.can_work_overtime === 'no' ? st.can_work_overtime_reason : ''}</span>
                             </div>
 
                             <div className="flex gap-1 items-center flex-wrap">
@@ -669,7 +670,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="แข็งแรงสมบูรณ์ดีทุกอย่าง" checked={st.health_status?.status === 'good'} width="w-auto" />
                                 <CheckBox label="ไม่มีโรคประจำตัว" checked={st.health_status?.status === 'no_disease'} width="w-[130px]" />
                                 <CheckBox label="มีโรคประจำตัว ระบุ" checked={st.health_status?.status === 'has_disease'} width="w-auto" />
-                                <span className="border-b border-dotted border-slate-400 flex-1 min-w-[100px] relative top-[2px]">{st.health_status?.details}</span>
+                                <span className="border-b border-dotted border-slate-400 flex-1 min-w-[100px] pb-1">{st.health_status?.details}</span>
                             </div>
 
                             <div className="flex gap-1 items-center flex-wrap">
