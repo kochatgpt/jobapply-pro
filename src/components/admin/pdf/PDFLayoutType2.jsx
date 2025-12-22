@@ -736,7 +736,7 @@ export default function PDFLayoutType2({ applicant }) {
                      </div>
 
                      {/* --- Referral --- */}
-                     <div className="border-[0.5px] border-slate-400 p-2 text-[11px] space-y-2">
+                     <div className="border-[0.5px] border-slate-400 p-2 pb-3 text-[11px] space-y-2">
                          <div className="flex items-end">
                             <span className="relative top-[1px]">ข้าพเจ้ายื่นใบสมัครโดยการแนะนำของ</span>
                             <DottedLine value={ref.referred_by} className="flex-1 text-center relative top-2" />
