@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
@@ -344,6 +343,7 @@ export default function PDFLayoutType2({ applicant }) {
                 <LogoHeader />
                 <div className="mt-[5mm] space-y-1">
 
+
                     {/* --- Family Status --- */}
                     <div className="border-[0.5px] border-slate-400 p-2 rounded-sm text-[11px]">
                         <div className="flex items-center gap-2 mb-1">
@@ -552,6 +552,7 @@ export default function PDFLayoutType2({ applicant }) {
                     )}
                 </div>
                 <div className="mt-[calc(5mm-10px)] space-y-2">
+
                      {/* --- Work History --- */}
                      <div>
                         <table className="w-full border-collapse border-[0.5px] border-slate-400 text-[10px]">
