@@ -834,7 +834,7 @@ export default function PDFLayoutType2({ applicant }) {
                          </div>
 
                          {/* Siblings */}
-                         <div className="flex items-end gap-2 pt-2">
+                         <div className="flex gap-2 pt-2">
                             <span>ข้าพเจ้ามีพี่น้องร่วมบิดามารดา</span>
                             <DottedLine value={par.siblings_count} className="w-[20mm] text-center" />
                             <span>คน</span>
