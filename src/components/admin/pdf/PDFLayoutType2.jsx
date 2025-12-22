@@ -550,23 +550,23 @@ export default function PDFLayoutType2({ applicant }) {
                         <table className="w-full border-collapse border-[0.5px] border-slate-400 text-[10px]">
                             <thead>
                                 <tr>
-                                    <th colSpan={7} className="border-b-[0.5px] border-slate-400 p-2">
+                                    <th colSpan={5} className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-2">
                                         <div className="text-center font-bold text-[12px] underline mb-2">ประวัติการทำงาน</div>
-                                        <div className="flex justify-center gap-6 font-normal text-[11px]">
+                                        <div className="flex justify-center gap-6 font-normal">
                                             <CheckBox label="ไม่มีประสบการณ์ทำงาน" checked={exp.has_experience === 'no'} width="w-auto" />
                                             <CheckBox label="มีประสบการณ์ทำงานระบุ (เรียงลำดับจากล่าสุด)" checked={exp.has_experience === 'yes'} width="w-auto" />
                                         </div>
                                     </th>
+                                    <th colSpan={2} className="border-b-[0.5px] border-slate-400 p-1 align-middle text-center font-bold text-[11px]">
+                                        เงินเดือน/บาท
+                                    </th>
                                 </tr>
                                 <tr className="text-center bg-slate-50">
-                                    <th rowSpan={2} className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[12%]">วัน/เดือน/ปี<br/>เริ่มงาน - ออก</th>
-                                    <th rowSpan={2} className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[18%]">ชื่อสถานที่ทำงาน</th>
-                                    <th rowSpan={2} className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[18%]">ชื่อ - เบอร์โทร<br/>(นายจ้าง)</th>
-                                    <th rowSpan={2} className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[15%]">ตำแหน่งสุดท้าย</th>
-                                    <th rowSpan={2} className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[15%]">สาเหตุที่ลาออก</th>
-                                    <th colSpan={2} className="border-b-[0.5px] border-slate-400 p-1 font-bold">เงินเดือน/บาท</th>
-                                </tr>
-                                <tr className="text-center bg-slate-50">
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[12%]">วัน/เดือน/ปี<br/>เริ่มงาน - ออก</th>
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[18%]">ชื่อสถานที่ทำงาน</th>
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[18%]">ชื่อ - เบอร์โทร<br/>(นายจ้าง)</th>
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[15%]">ตำแหน่งสุดท้าย</th>
+                                    <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[15%]">สาเหตุที่ลาออก</th>
                                     <th className="border-r-[0.5px] border-b-[0.5px] border-slate-400 p-1 w-[11%]">เข้า/บาท</th>
                                     <th className="border-b-[0.5px] border-slate-400 p-1 w-[11%]">ออก/บาท</th>
                                 </tr>
