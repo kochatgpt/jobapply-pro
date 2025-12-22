@@ -625,7 +625,8 @@ export default function PDFLayoutType2({ applicant }) {
                                 <span className="whitespace-nowrap">ท่านสามารถปฏิบัติงานล่วงเวลาได้หรือไม่</span>
                                 <CheckBox label="ได้" checked={st.can_work_overtime === 'yes'} width="w-[50px]" />
                                 <CheckBox label="ไม่ได้" checked={st.can_work_overtime === 'no'} width="w-[60px]" />
-                                <span className="border-b border-dotted border-slate-400 flex-1 min-w-0 px-1 pb-1 relative top-2">เพราะ {st.can_work_overtime === 'no' ? st.can_work_overtime_reason : ''}</span>
+                                <span className="whitespace-nowrap">เพราะ</span>
+                                <span className="border-b border-dotted border-slate-400 flex-1 min-w-0 px-1 pb-1 relative top-2">{st.can_work_overtime === 'no' ? st.can_work_overtime_reason : ''}</span>
                             </div>
 
                             <div className="flex gap-1 items-center flex-wrap">
