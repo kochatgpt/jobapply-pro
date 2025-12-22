@@ -544,7 +544,7 @@ export default function PDFLayoutType2({ applicant }) {
 
             {/* ================= PAGE 3 ================= */}
             <PageContainer pageNum={3} totalPages={4}>
-                <div className="absolute top-[-12mm] right-[10mm] w-[40mm] flex justify-end">
+                <div className="absolute top-[-12mm] right-[10mm] w-[40mm] flex justify-end z-50">
                      {appLogo ? (
                         <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[60px] w-auto object-contain" />
                     ) : (
