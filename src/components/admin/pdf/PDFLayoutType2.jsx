@@ -589,14 +589,16 @@ export default function PDFLayoutType2({ applicant }) {
                                 {/* Footer / Consent Row */}
                                 <tr>
                                     <td colSpan={7} className="p-2 align-top">
-                                        <div className="mb-1">
-                                             <span>ท่านจะขัดข้องหรือไม่ถ้าหากทางบริษัทฯ จะติดต่อสอบถามไปยังบริษัทฯ(เดิม)หรือบริษัทฯปัจจุบัน</span>
-                                             <span className="ml-4"><CheckBox label="ไม่ขัดข้อง" checked={exp.contact_previous_employer?.status === 'allowed'} width="w-auto" /></span>
-                                             <span className="ml-4"><CheckBox label="ขัดข้อง" checked={exp.contact_previous_employer?.status === 'not_allowed'} width="w-auto" /></span>
-                                        </div>
-                                        <div className="mt-1">
-                                             <span>เพราะ</span>
-                                             <span className="border-b border-dotted border-slate-400 inline-block min-w-[500px] px-2">{exp.contact_previous_employer?.status === 'not_allowed' ? exp.contact_previous_employer?.reason : ''}</span>
+                                        <div className="text-[10px] space-y-1">
+                                             <div>
+                                                 <span>ท่านจะขัดข้องหรือไม่ถ้าหากทางบริษัทฯ จะติดต่อสอบถามไปยังบริษัทฯ(เดิม)หรือบริษัทฯปัจจุบัน</span>
+                                                 <span className="ml-4 inline-block align-middle"><CheckBox label="ไม่ขัดข้อง" checked={exp.contact_previous_employer?.status === 'allowed'} width="w-auto" textSize="text-[10px]" /></span>
+                                                 <span className="ml-4 inline-block align-middle"><CheckBox label="ขัดข้อง" checked={exp.contact_previous_employer?.status === 'not_allowed'} width="w-auto" textSize="text-[10px]" /></span>
+                                             </div>
+                                             <div>
+                                                 <span>เพราะ</span>
+                                                 <span className="border-b border-dotted border-slate-400 inline-block w-[700px] px-2">{exp.contact_previous_employer?.status === 'not_allowed' ? exp.contact_previous_employer?.reason : ''}</span>
+                                             </div>
                                         </div>
                                     </td>
                                 </tr>
