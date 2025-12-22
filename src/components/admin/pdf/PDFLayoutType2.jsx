@@ -892,44 +892,43 @@ export default function PDFLayoutType2({ applicant }) {
 
                     {/* Declaration with Signature */}
                     <div className="border-[0.5px] border-slate-400 p-2 text-[10px]">
-                        <div className="grid grid-cols-12 gap-2">
-                            <div className="col-span-7 text-justify leading-snug">
-                                <p>
-                                    ข้าพเจ้าขอรับรองว่า ข้อความดังกล่าวทั้งหมดในใบสมัครงานและเอกสารแนบนี้เป็นความจริงทุกประการ หลังจากบริษัทฯได้เข้ามาทำงานแล้วหากปรากฏว่า ข้อความในใบสมัครงานและเอกสารแนบที่นำมาแสดงต่างๆ หรือรายละเอียดที่ให้ไว้ไม่เป็นความจริง หรือเป็นเท็จ บริษัทฯ มีสิทธิ์ที่เลิกจ้างข้าพเจ้าได้ โดยไม่ต้องจ่ายเงินชดเชยหรือค่าเสียหายใดๆ ทั้งสิ้น ข้าพเจ้ายินยอมให้บริษัทฯตรวจสอบข้อมูลย้อนหลังจากการทำงานที่เดิม รวมถึงยินยอมให้ตรวจสอบประวัติอาญากรรมและเครดิตบูโรทั้งสิ้น และข้าพเจ้ายินยอมให้แพทย์หรือโรงพยาบาลให้ข้อมูลที่จำเป็นเกี่ยวกับสุขภาพของข้าพเจ้า ซึ่งมีผลกระทบต่อการปฏิบัติงานในบริษัท
-                                </p>
-                                <div className="mt-3 text-right text-[10px]">
-                                    <span>ลงนาม</span>
-                                    <DottedLine value="" className="inline-block w-32 ml-2" />
-                                    <span className="ml-2">ผู้สมัคร</span>
-                                </div>
-                            </div>
-                            <div className="col-span-5 space-y-2 pt-2">
-                                <div className="text-center mb-2">
-                                    <div className="font-bold mb-1">ข้าพเจ้าขอลงนามรับรองการให้ข้อมูลตามจริงทุกประการ</div>
-                                </div>
-                                <div className="border border-slate-300 h-[50px] flex items-center justify-center bg-slate-50 mb-2">
+                        <div className="text-justify leading-snug mb-4">
+                            <p>
+                                ข้าพเจ้าขอรับรองว่า ข้อความดังกล่าวทั้งหมดในใบสมัครงานและเอกสารแนบนี้เป็นความจริงทุกประการ หลังจากบริษัทฯได้เข้ามาทำงานแล้วหากปรากฏว่า ข้อความในใบสมัครงานและเอกสารแนบที่นำมาแสดงต่างๆ หรือรายละเอียดที่ให้ไว้ไม่เป็นความจริง หรือเป็นเท็จ บริษัทฯ มีสิทธิ์ที่เลิกจ้างข้าพเจ้าได้ โดยไม่ต้องจ่ายเงินชดเชยหรือค่าเสียหายใดๆ ทั้งสิ้น ข้าพเจ้ายินยอมให้บริษัทฯตรวจสอบข้อมูลย้อนหลังจากการทำงานที่เดิม รวมถึงยินยอมให้ตรวจสอบประวัติอาญากรรมและเครดิตบูโรทั้งสิ้น และข้าพเจ้ายินยอมให้แพทย์หรือโรงพยาบาลให้ข้อมูลที่จำเป็นเกี่ยวกับสุขภาพของข้าพเจ้า ซึ่งมีผลกระทบต่อการปฏิบัติงานในบริษัท
+                            </p>
+                        </div>
+                        
+                        <div className="text-center mb-3">
+                            <div className="font-bold mb-2">ข้าพเจ้าขอลงนามรับรองการให้ข้อมูลตามจริงทุกประการ</div>
+                        </div>
+
+                        <div className="text-center space-y-2">
+                            <div className="flex justify-center items-center gap-2">
+                                <span>ลงชื่อ</span>
+                                <div className="border border-slate-300 w-[200px] h-[50px] inline-flex items-center justify-center bg-slate-50">
                                     {applicant.signature_url ? (
                                         <img src={applicant.signature_url} alt="Signature" className="max-h-[40px] object-contain" />
                                     ) : (
                                         <span className="text-slate-300 text-[9px]">ลงชื่อ</span>
                                     )}
                                 </div>
-                                <div className="text-center mb-1">
-                                    <span className="text-[9px]">ตัวบรรจง</span>
-                                </div>
-                                <div className="flex items-end gap-1">
-                                    <span className="whitespace-nowrap text-[9px]">(</span>
-                                    <DottedLine value={applicant.full_name} className="flex-1" />
-                                    <span className="whitespace-nowrap text-[9px]">)</span>
-                                </div>
-                                <div className="flex items-end gap-1">
-                                    <span className="whitespace-nowrap text-[9px]">วันที่</span>
-                                    <DottedLine value={applicant.signature_date} className="flex-1" />
-                                </div>
-                                <div className="text-[9px] mt-2">
-                                    <span>ข้าพเจ้าพร้อมปฏิบัติงานกับบริษัทฯ ในวันที่</span>
-                                    <DottedLine value={applicant.start_work_date} className="inline-block w-32 ml-1" />
-                                </div>
+                                <span>ผู้สมัคร</span>
+                            </div>
+                            
+                            <div className="flex justify-center items-end gap-2">
+                                <span>ตัวบรรจง (</span>
+                                <DottedLine value={applicant.full_name} className="w-[250px]" />
+                                <span>)</span>
+                            </div>
+                            
+                            <div className="flex justify-center items-end gap-2">
+                                <span>วันที่</span>
+                                <DottedLine value={applicant.signature_date} className="w-[200px]" />
+                            </div>
+                            
+                            <div className="flex justify-center items-end gap-2">
+                                <span>ข้าพเจ้าพร้อมปฏิบัติงานกับบริษัทฯ ในวันที่</span>
+                                <DottedLine value={applicant.start_work_date} className="w-[200px]" />
                             </div>
                         </div>
                     </div>
