@@ -777,17 +777,17 @@ export default function PDFLayoutType2({ applicant }) {
                          </div>
                          <div className="flex flex-wrap items-end gap-1">
                              <span>อาชีพ</span>
-                             <DottedLine value={par.father?.occupation} className="w-[40mm]" />
+                             <DottedLine value={par.father?.occupation} className="w-[35mm]" />
                              <span>ที่อยู่เลขที่</span>
-                             <DottedLine value={par.father?.address?.number} className="w-[20mm]" />
+                             <DottedLine value={par.father?.address?.number} className="w-[18mm]" />
                              <span>หมู่</span>
-                             <DottedLine value={par.father?.address?.moo} className="w-[15mm]" />
-                             <span>ถนน</span>
-                             <DottedLine value={par.father?.address?.road} className="w-[35mm]" />
-                         </div>
-                         <div className="flex flex-wrap items-end gap-1">
+                             <DottedLine value={par.father?.address?.moo} className="w-[12mm]" />
                              <span>ตำบล/แขวง</span>
                              <DottedLine value={par.father?.address?.subdistrict} className="w-[30mm]" />
+                             <span>ถนน</span>
+                             <DottedLine value={par.father?.address?.road} className="w-[30mm]" />
+                         </div>
+                         <div className="flex flex-wrap items-end gap-1">
                              <span>อำเภอ/เขต</span>
                              <DottedLine value={par.father?.address?.district} className="w-[30mm]" />
                              <span>จังหวัด</span>
@@ -812,17 +812,17 @@ export default function PDFLayoutType2({ applicant }) {
                          </div>
                          <div className="flex flex-wrap items-end gap-1">
                              <span>อาชีพ</span>
-                             <DottedLine value={par.mother?.occupation} className="w-[40mm]" />
+                             <DottedLine value={par.mother?.occupation} className="w-[35mm]" />
                              <span>ที่อยู่เลขที่</span>
-                             <DottedLine value={par.mother?.address?.number} className="w-[20mm]" />
+                             <DottedLine value={par.mother?.address?.number} className="w-[18mm]" />
                              <span>หมู่</span>
-                             <DottedLine value={par.mother?.address?.moo} className="w-[15mm]" />
-                             <span>ถนน</span>
-                             <DottedLine value={par.mother?.address?.road} className="w-[35mm]" />
-                         </div>
-                         <div className="flex flex-wrap items-end gap-1">
+                             <DottedLine value={par.mother?.address?.moo} className="w-[12mm]" />
                              <span>ตำบล/แขวง</span>
                              <DottedLine value={par.mother?.address?.subdistrict} className="w-[30mm]" />
+                             <span>ถนน</span>
+                             <DottedLine value={par.mother?.address?.road} className="w-[30mm]" />
+                         </div>
+                         <div className="flex flex-wrap items-end gap-1">
                              <span>อำเภอ/เขต</span>
                              <DottedLine value={par.mother?.address?.district} className="w-[30mm]" />
                              <span>จังหวัด</span>
