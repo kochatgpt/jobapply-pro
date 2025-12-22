@@ -606,7 +606,7 @@ export default function PDFLayoutType2({ applicant }) {
                                                 <span className="ml-4 inline-block align-middle"><CheckBox label="ขัดข้อง" checked={exp.contact_previous_employer?.status === 'not_allowed'} width="w-[80px]" textSize="text-[10px]" /></span>
                                             </div>
                                             <div>
-                                                <span>เพราะ</span>
+                                                <span className="relative top-[-2px]">เพราะ</span>
                                                 <span className="border-b border-dotted border-slate-400 inline-block w-[700px] px-2">{exp.contact_previous_employer?.status === 'not_allowed' ? exp.contact_previous_employer?.reason : ''}</span>
                                             </div>
                                         </div>
