@@ -605,9 +605,9 @@ export default function PDFLayoutType2({ applicant }) {
                                                 <span className="ml-4 inline-block align-middle"><CheckBox label="ไม่ขัดข้อง" checked={exp.contact_previous_employer?.status === 'allowed'} width="w-[100px]" textSize="text-[10px]" /></span>
                                                 <span className="ml-4 inline-block align-middle"><CheckBox label="ขัดข้อง" checked={exp.contact_previous_employer?.status === 'not_allowed'} width="w-[80px]" textSize="text-[10px]" /></span>
                                             </div>
-                                            <div>
+                                            <div className="flex">
                                                 <span className="relative top-[-2px]">เพราะ</span>
-                                                <span className="border-b border-dotted border-slate-400 inline-block w-[700px] px-2 pb-0.5">{exp.contact_previous_employer?.status === 'not_allowed' ? exp.contact_previous_employer?.reason : ''}</span>
+                                                <span className="border-b border-dotted border-slate-400 inline-block w-[600px] px-2 pb-0.5">{exp.contact_previous_employer?.status === 'not_allowed' ? exp.contact_previous_employer?.reason : ''}</span>
                                             </div>
                                         </div>
                                     </td>
