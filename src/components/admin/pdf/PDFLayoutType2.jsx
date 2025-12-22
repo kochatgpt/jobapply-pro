@@ -885,125 +885,148 @@ export default function PDFLayoutType2({ applicant }) {
 
                     {/* Attitude Section */}
                     <div className="border-[0.5px] border-slate-400 p-2">
-                        <div className="font-bold mb-1 text-[11px]">ทัศนคติในที่ทำงานของท่านที่ทำให้บริษัทได้รู้จักท่านมากขึ้น</div>
-                        <div className="min-h-[40px] text-[10px] leading-relaxed">{applicant.attitude || ""}</div>
+                        <div className="font-bold mb-2 text-[11px]">ทัศนคติในการทำงานของท่านที่ทำให้บริษัทฯได้รู้จักท่านมากขึ้น</div>
+                        <DottedLine value={applicant.attitude} className="mb-1 w-full" />
+                        <DottedLine value="" className="w-full" />
                     </div>
 
-                    {/* Declaration Text */}
-                    <div className="border-[0.5px] border-slate-400 p-2 text-[10px] text-justify leading-snug">
-                        <p className="mb-2">
-                            ข้าพเจ้าขอรับรองว่าข้อความที่กรอกในใบสมัครนี้เป็นความจริงทุกประการ และยินยอมให้บริษัทฯ ตรวจสอบประวัติและข้อเท็จจริงจากบุคคลหรือสถานที่ต่างๆ ที่ข้าพเจ้าระบุมาในใบสมัครนี้ ถ้าหากปรากฏในภายหลังว่า ข้าพเจ้าให้ข้อความอันเป็นเท็จ หรือปกปิดความจริงไว้ หรือบิดเบือนข้อเท็จจริง บริษัทฯ มีสิทธิ์บอกเลิกจ้างได้ทันที โดยข้าพเจ้าไม่มีสิทธิ์เรียกร้องค่าชดเชยหรือค่าเสียหายใดๆ ทั้งสิ้น หรือ มีสิทธิ์ไม่รับเข้าทำงาน ถ้าหากยังไม่ได้รับเข้าทำงาน อนึ่ง บริษัทฯ มีสิทธิ์เก็บใบสมัครนี้ไว้เป็นหลักฐานประกอบการพิจารณาได้
-                        </p>
-                    </div>
-
-                    {/* Signature and Details */}
-                    <div className="grid grid-cols-2 gap-4 text-[10px]">
-                        <div>
-                            <div className="mb-1">ลงนาม</div>
-                            <div className="border border-slate-300 h-[60px] flex items-center justify-center bg-slate-50">
-                                {applicant.signature_url ? (
-                                    <img src={applicant.signature_url} alt="Signature" className="max-h-[50px] object-contain" />
-                                ) : (
-                                    <span className="text-slate-300 text-[9px]">ลายเซ็น</span>
-                                )}
+                    {/* Declaration with Signature */}
+                    <div className="border-[0.5px] border-slate-400 p-2 text-[10px]">
+                        <div className="grid grid-cols-12 gap-2">
+                            <div className="col-span-7 text-justify leading-snug">
+                                <p>
+                                    ข้าพเจ้าขอรับรองว่าข้อความที่กรอกในใบสมัครนี้เป็นความจริงทุกประการ และยินยอมให้บริษัทฯ ตรวจสอบประวัติและข้อเท็จจริงจากบุคคลหรือสถานที่ต่างๆ ที่ข้าพเจ้าระบุมาในใบสมัครนี้ ถ้าหากปรากฏในภายหลังว่า ข้าพเจ้าให้ข้อความอันเป็นเท็จ หรือปกปิดความจริงไว้ หรือบิดเบือนข้อเท็จจริง บริษัทฯ มีสิทธิ์บอกเลิกจ้างได้ทันที โดยข้าพเจ้าไม่มีสิทธิ์เรียกร้องค่าชดเชยหรือค่าเสียหายใดๆ ทั้งสิ้น หรือ มีสิทธิ์ไม่รับเข้าทำงาน ถ้าหากยังไม่ได้รับเข้าทำงาน อนึ่ง บริษัทฯ มีสิทธิ์เก็บใบสมัครนี้ไว้เป็นหลักฐานประกอบการพิจารณาได้
+                                </p>
+                                <div className="mt-3 text-right text-[10px]">
+                                    <span>ลงนาม</span>
+                                    <DottedLine value="" className="inline-block w-32 ml-2" />
+                                    <span className="ml-2">ผู้สมัคร</span>
+                                </div>
                             </div>
-                        </div>
-                        <div className="space-y-2">
-                            <div className="flex items-end gap-2">
-                                <span className="whitespace-nowrap">ชื่อ (ตัวบรรจง)</span>
-                                <DottedLine value={applicant.full_name} className="flex-1" />
-                            </div>
-                            <div className="flex items-end gap-2">
-                                <span className="whitespace-nowrap">วันที่</span>
-                                <DottedLine value={applicant.signature_date} className="flex-1" />
-                            </div>
-                            <div className="flex items-end gap-2">
-                                <span className="whitespace-nowrap">พร้อมปฏิบัติงาน</span>
-                                <DottedLine value={applicant.start_work_date} className="flex-1" />
+                            <div className="col-span-5 space-y-2 pt-2">
+                                <div className="text-center mb-2">
+                                    <div className="font-bold mb-1">ข้าพเจ้าขอลงนามรับรองการให้ข้อมูลตามจริงทุกประการ</div>
+                                </div>
+                                <div className="border border-slate-300 h-[50px] flex items-center justify-center bg-slate-50 mb-2">
+                                    {applicant.signature_url ? (
+                                        <img src={applicant.signature_url} alt="Signature" className="max-h-[40px] object-contain" />
+                                    ) : (
+                                        <span className="text-slate-300 text-[9px]">ลงชื่อ</span>
+                                    )}
+                                </div>
+                                <div className="flex items-end gap-1">
+                                    <span className="whitespace-nowrap text-[9px]">ชื่อ</span>
+                                    <DottedLine value={applicant.full_name} className="flex-1" />
+                                </div>
+                                <div className="flex items-end gap-1">
+                                    <span className="whitespace-nowrap text-[9px]">วันที่</span>
+                                    <DottedLine value={applicant.signature_date} className="flex-1" />
+                                </div>
+                                <div className="flex items-end gap-1">
+                                    <span className="whitespace-nowrap text-[9px]">วันที่เริ่มงาน</span>
+                                    <DottedLine value={applicant.start_work_date} className="flex-1" />
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     {/* HR Section */}
-                    <div className="text-center font-bold text-[12px] bg-slate-50 border-[0.5px] border-slate-400 py-1">
-                        ข้อมูลสำหรับเจ้าหน้าที่ฝ่ายบุคคล (Human Resources Department)
+                    <div className="text-center font-bold text-[11px] bg-slate-50 border-[0.5px] border-slate-400 py-1">
+                        สำหรับบริษัทฯ ใช้กรอกรายละเอียดบันทึกการสัมภาษณ์
                     </div>
 
-                    {/* HR Details Table */}
-                    <table className="w-full border-collapse text-[11px] border-[0.5px] border-slate-400">
-                        <tbody>
-                            <tr>
-                                <td className="border-[0.5px] border-slate-400 p-2 bg-slate-50 w-[30%]">สัมภาษณ์ครั้งที่ 1 เมื่อวันที่</td>
-                                <td className="border-[0.5px] border-slate-400 p-2" colSpan={2}></td>
-                                <td className="border-[0.5px] border-slate-400 p-2 bg-slate-50 w-[15%]">เวลา</td>
-                                <td className="border-[0.5px] border-slate-400 p-2 w-[20%]"></td>
-                            </tr>
-                            <tr>
-                                <td className="border-[0.5px] border-slate-400 p-2 bg-slate-50">สัมภาษณ์ครั้งที่ 2 เมื่อวันที่</td>
-                                <td className="border-[0.5px] border-slate-400 p-2" colSpan={2}></td>
-                                <td className="border-[0.5px] border-slate-400 p-2 bg-slate-50">เวลา</td>
-                                <td className="border-[0.5px] border-slate-400 p-2"></td>
-                            </tr>
-                            <tr>
-                                <td className="border-[0.5px] border-slate-400 p-2 bg-slate-50">ผลการพิจารณาทดลองงาน (ถ้ามี)</td>
-                                <td className="border-[0.5px] border-slate-400 p-2" colSpan={4}></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    {/* Final Decision Section */}
-                    <div className="border-[0.5px] border-slate-400 p-2">
-                        <div className="font-bold mb-2 text-[11px]">ผลการพิจารณา</div>
-                        <div className="grid grid-cols-3 gap-4 mb-3 text-[11px]">
+                    {/* Test Results */}
+                    <div className="border-[0.5px] border-slate-400 p-2 text-[10px]">
+                        <div className="font-bold mb-1">(ทดสอบผู้สมัครงาน)</div>
+                        <div className="space-y-1 ml-4">
                             <div className="flex items-end gap-2">
-                                <span className="whitespace-nowrap">วันที่รับเข้าทำงาน</span>
-                                <DottedLine value={applicant.start_work_date} className="flex-1" />
+                                <span>(บันทึกการทดสอบครั้งที่ 1)</span>
+                                <span>ตัวเลข</span><DottedLine className="w-20" />
+                                <span>ไทย</span><DottedLine className="w-20" />
+                                <span>อังกฤษ</span><DottedLine className="flex-1" />
                             </div>
                             <div className="flex items-end gap-2">
-                                <span className="whitespace-nowrap">ตำแหน่ง</span>
-                                <DottedLine className="flex-1" />
+                                <span>(บันทึกการทดสอบครั้งที่ 2)</span>
+                                <span>ตัวเลข</span><DottedLine className="w-20" />
+                                <span>ไทย</span><DottedLine className="w-20" />
+                                <span>อังกฤษ</span><DottedLine className="flex-1" />
                             </div>
                             <div className="flex items-end gap-2">
-                                <span className="whitespace-nowrap">อัตราเงินเดือน</span>
-                                <DottedLine className="flex-1" />
+                                <span>(ทดสอบอื่นๆ)</span>
+                                <span>ระบุ</span><DottedLine className="flex-1" />
                             </div>
-                        </div>
-
-                        <div className="flex gap-6 mb-3 text-[11px]">
-                            <CheckBox label="รับเข้าทำงาน" width="w-[120px]" />
-                            <CheckBox label="ไม่รับ" width="w-[80px]" />
-                            <CheckBox label="รอพิจารณา" width="w-[120px]" />
                         </div>
                     </div>
 
-                    {/* Authority Signatures */}
-                    <div className="grid grid-cols-3 gap-4 text-[11px] mt-4">
-                        <div className="text-center">
-                            <div className="mb-12"></div>
-                            <DottedLine className="mb-1" />
-                            <div>หัวหน้าฝ่าย</div>
-                            <div className="mt-1">
-                                <span>วันที่</span>
-                                <DottedLine className="inline-block w-24 ml-2" />
+                    {/* Interview Notes */}
+                    <div className="border-[0.5px] border-slate-400 border-t-0 p-2 text-[10px]">
+                        <div className="flex items-start gap-2 mb-1">
+                            <span className="font-bold">(บันทึกการผู้สัมภาษณ์)</span>
+                            <span>: ลงชื่อ ผู้สัมภาษณ์</span>
+                            <DottedLine className="w-32" />
+                            <span>รายละเอียดในการสัมภาษณ์</span>
+                            <DottedLine className="flex-1" />
+                        </div>
+                        <DottedLine value="" className="w-full mb-1" />
+                        <DottedLine value="" className="w-full" />
+                    </div>
+
+                    {/* Approval Section */}
+                    <div className="grid grid-cols-5 gap-2 text-[9px]">
+                        {/* First Row - 3 columns */}
+                        <div className="border-[0.5px] border-slate-400 p-2">
+                            <div className="font-bold text-center mb-2">เจ้าหน้าที่สรรหาว่าจ้าง</div>
+                            <div className="text-center mb-8">ผู้ดำเนินการ</div>
+                            <div className="mb-1">ลงชื่อ<DottedLine className="inline-block w-20 ml-1" /></div>
+                            <div className="mb-1">(<DottedLine className="inline-block w-full" />)</div>
+                            <div className="mb-2">วันที่<DottedLine className="inline-block w-16 ml-1" /></div>
+                            <div className="flex gap-2">
+                                <CheckBox label="อนุมัติรับ" width="w-auto" textSize="text-[9px]" />
+                                <CheckBox label="ไม่รับ" width="w-auto" textSize="text-[9px]" />
                             </div>
                         </div>
-                        <div className="text-center">
-                            <div className="mb-12"></div>
-                            <DottedLine className="mb-1" />
-                            <div>ผู้จัดการฝ่าย</div>
-                            <div className="mt-1">
-                                <span>วันที่</span>
-                                <DottedLine className="inline-block w-24 ml-2" />
+                        
+                        <div className="border-[0.5px] border-slate-400 border-l-0 p-2">
+                            <div className="font-bold text-center mb-10">กรรมการ</div>
+                            <div className="mb-1">ลงชื่อ<DottedLine className="inline-block w-20 ml-1" /></div>
+                            <div className="mb-1">(<DottedLine className="inline-block w-full" />)</div>
+                            <div className="mb-2">วันที่<DottedLine className="inline-block w-16 ml-1" /></div>
+                            <div className="flex gap-2">
+                                <CheckBox label="อนุมัติรับ" width="w-auto" textSize="text-[9px]" />
+                                <CheckBox label="ไม่รับ" width="w-auto" textSize="text-[9px]" />
                             </div>
                         </div>
-                        <div className="text-center">
-                            <div className="mb-12"></div>
-                            <DottedLine className="mb-1" />
-                            <div>ผู้มีอำนาจอนุมัติ</div>
-                            <div className="mt-1">
-                                <span>วันที่</span>
-                                <DottedLine className="inline-block w-24 ml-2" />
+                        
+                        <div className="border-[0.5px] border-slate-400 border-l-0 p-2">
+                            <div className="font-bold text-center mb-2">ผู้จัดการฝ่ายบุคคล</div>
+                            <div className="mb-1">ลงชื่อ<DottedLine className="inline-block w-20 ml-1" /></div>
+                            <div className="mb-1">(<DottedLine className="inline-block w-full" />)</div>
+                            <div className="mb-2">วันที่<DottedLine className="inline-block w-16 ml-1" /></div>
+                        </div>
+
+                        {/* Second Row - 2 columns */}
+                        <div className="border-[0.5px] border-slate-400 border-l-0 border-t-0 p-2">
+                            <div className="font-bold text-center mb-2">หัวหน้าแผนก/หัวหน้างานต้นสังกัด</div>
+                            <div className="flex gap-2 mb-2">
+                                <CheckBox label="อนุมัติรับ" width="w-auto" textSize="text-[9px]" />
+                                <CheckBox label="ไม่รับ" width="w-auto" textSize="text-[9px]" />
                             </div>
+                            <div className="mb-1">ลงชื่อ<DottedLine className="inline-block w-20 ml-1" /></div>
+                            <div className="mb-1">(<DottedLine className="inline-block w-full" />)</div>
+                            <div>วันที่<DottedLine className="inline-block w-16 ml-1" /></div>
+                        </div>
+
+                        <div className="border-[0.5px] border-slate-400 border-l-0 border-t-0 p-2 col-span-2">
+                            <div className="font-bold text-center mb-2">ความเห็นกรรมการผู้อนุมัติ หรือผู้ดำเนินการกระทำแทน</div>
+                            <div className="mb-1">
+                                <span>ผลการพิจารณา</span>
+                                <CheckBox label="ผ่าน" width="w-auto" textSize="text-[9px]" />
+                                <CheckBox label="ไม่ผ่าน" width="w-auto" textSize="text-[9px]" />
+                                <CheckBox label="รอพิจารณา" width="w-auto" textSize="text-[9px]" />
+                            </div>
+                            <div className="mb-1">สังกัด/แผนก<DottedLine className="inline-block w-24 ml-1" />รับพิจารณา ตำแหน่ง<DottedLine className="inline-block w-24 ml-1" /></div>
+                            <div className="mb-1">อัตราเงินเดือน<DottedLine className="inline-block w-full ml-1" /></div>
+                            <div>เหตุผลการพิจารณาอื่นๆ<DottedLine className="inline-block w-full ml-1" /></div>
                         </div>
                     </div>
 
