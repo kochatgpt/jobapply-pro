@@ -46,37 +46,37 @@ export default function PDFLayoutType2({ applicant }) {
         </div>
     );
 
-    const PageContainer = ({ children, pageNum, totalPages = 4 }) => {
-        const footerBottom = pageNum === 2 ? 'bottom-[20mm]' : pageNum === 3 ? 'bottom-[25mm]' : 'bottom-[10mm]';
-        return (
-            <div 
-                className="bg-white text-slate-900 p-[10mm] mx-auto relative text-[12px] font-sans mb-8 shadow-sm print:shadow-none print:mb-0"
-                style={{ 
-                    width: '210mm', 
-                    minHeight: '297mm',
-                    height: '297mm',
-                    fontFamily: 'Sarabun, sans-serif',
-                    pageBreakAfter: 'always',
-                    overflow: 'hidden'
-                }}
-            >
-                {children}
+    // const PageContainer = ({ children, pageNum, totalPages = 4 }) => {
+    //     const footerBottom = pageNum === 2 ? 'bottom-[20mm]' : pageNum === 3 ? 'bottom-[25mm]' : 'bottom-[10mm]';
+    //     return (
+    //         <div 
+    //             className="bg-white text-slate-900 p-[10mm] mx-auto relative text-[12px] font-sans mb-8 shadow-sm print:shadow-none print:mb-0"
+    //             style={{ 
+    //                 width: '210mm', 
+    //                 minHeight: '297mm',
+    //                 height: '297mm',
+    //                 fontFamily: 'Sarabun, sans-serif',
+    //                 pageBreakAfter: 'always',
+    //                 overflow: 'hidden'
+    //             }}
+    //         >
+    //             {children}
 
-                {/* Footer */}
-                <div className={`absolute ${footerBottom} left-[10mm] flex gap-2`}>
-                     <div className="h-8 w-8 rounded-full border border-slate-300"></div>
-                     <div className="h-8 w-8 rounded-full border border-slate-300"></div>
-                </div>
-                <div className={`absolute ${footerBottom} right-[10mm] text-[10px] text-slate-500`}>
-                    {pageNum} | {totalPages}
-                </div>
-                <div className={`absolute ${footerBottom} left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center`}>
-                     FM-HRD-10 Rev.03 10/10/66 <br/>
-                     www.ko.in.th Strategy . AI . DX . Sustainability
-                </div>
-            </div>
-        );
-    };
+    //             {/* Footer */}
+    //             <div className={`absolute ${footerBottom} left-[10mm] flex gap-2`}>
+    //                  <div className="h-8 w-8 rounded-full border border-slate-300"></div>
+    //                  <div className="h-8 w-8 rounded-full border border-slate-300"></div>
+    //             </div>
+    //             <div className={`absolute ${footerBottom} right-[10mm] text-[10px] text-slate-500`}>
+    //                 {pageNum} | {totalPages}
+    //             </div>
+    //             <div className={`absolute ${footerBottom} left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center`}>
+    //                  FM-HRD-10 Rev.03 10/10/66 <br/>
+    //                  www.ko.in.th Strategy . AI . DX . Sustainability
+    //             </div>
+    //         </div>
+    //     );
+    // };
 
     const LogoHeader = ({ topOffset = "top-[-2mm]", height = "h-[60px]", zIndex = "" }) => (
          <div className={`absolute ${topOffset} right-[10mm] w-[40mm] flex justify-end ${zIndex}`}>
