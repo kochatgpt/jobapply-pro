@@ -544,7 +544,7 @@ export default function PDFLayoutType2({ applicant }) {
             </PageContainer>
 
             {/* ================= PAGE 3 ================= */}
-            <PageContainer pageNum={3} totalPages={4} pageHeight="287mm">
+            <PageContainer pageNum={3} totalPages={4} pageHeight="292mm">
                 <LogoHeader />
                 <div className="mt-[5mm] space-y-1">
 
@@ -842,7 +842,7 @@ export default function PDFLayoutType2({ applicant }) {
             </PageContainer>
 
             {/* ================= PAGE 4 ================= */}
-            <PageContainer pageNum={4} totalPages={4} pageHeight="277mm">
+            <PageContainer pageNum={4} totalPages={4} pageHeight="285mm">
                 <LogoHeader />
                 <div className="mt-[15mm] space-y-1">
                     
