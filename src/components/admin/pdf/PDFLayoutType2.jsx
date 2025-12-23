@@ -53,8 +53,8 @@ export default function PDFLayoutType2({ applicant }) {
                 className="bg-white text-slate-900 p-[10mm] mx-auto relative text-[12px] font-sans mb-8 shadow-sm print:shadow-none print:mb-0"
                 style={{ 
                     width: '210mm', 
-                    minHeight: '297mm',
-                    height: '297mm',
+                    minHeight: '29mm',
+                    height: '29mm',
                     fontFamily: 'Sarabun, sans-serif',
                     pageBreakAfter: 'always',
                     overflow: 'hidden'
