@@ -917,18 +917,18 @@ export default function PDFLayoutType2({ applicant }) {
                             
                             <div className="flex justify-end items-end gap-2">
                                 <span>ตัวบรรจง (</span>
-                                <DottedLine value={applicant.full_name} className="w-[250px]" />
+                                <DottedLine value={applicant.full_name} className="w-[200px]" />
                                 <span>)</span>
                             </div>
                             
                             <div className="flex justify-end items-end gap-2">
                                 <span>วันที่</span>
-                                <DottedLine value={applicant.signature_date} className="w-[200px]" />
+                                <DottedLine value={applicant.signature_date} className="w-[120px]" />
                             </div>
                             
                             <div className="flex justify-end items-end gap-2">
                                 <span>ข้าพเจ้าพร้อมปฏิบัติงานกับบริษัทฯ ในวันที่</span>
-                                <DottedLine value={applicant.start_work_date} className="w-[200px]" />
+                                <DottedLine value={applicant.start_work_date} className="w-[120px]" />
                             </div>
                         </div>
                     </div>
