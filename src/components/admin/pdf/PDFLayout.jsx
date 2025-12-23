@@ -528,7 +528,7 @@ export default function PDFLayout({ applicant }) {
             </PageContainer>
 
             {/* ================= PAGE 3 ================= */}
-            <PageContainer pageNum={3} totalPages={4} pageHeight="297mm" showLogo={true}>
+            <PageContainer pageNum={3} totalPages={4} pageHeight="288mm" showLogo={true}>
                 <div className="mt-[5mm] space-y-1">
                      {/* --- Work History --- */}
                      <div>
