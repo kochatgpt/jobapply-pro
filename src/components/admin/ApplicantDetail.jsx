@@ -7,7 +7,7 @@ import {
     Video, User, GraduationCap, Briefcase, HeartPulse, 
     FileText, Phone, MapPin, Calendar, Mail, FileDown, Eye, Loader2, ExternalLink
 } from "lucide-react";
-import { createPageUrl } from '../utils';
+import { createPageUrl } from '@/utils';
 import InfoGrid from './InfoGrid';
 import PDFLayout from './pdf/PDFLayout';
 import PDFLayoutType2 from './pdf/PDFLayoutType2';
