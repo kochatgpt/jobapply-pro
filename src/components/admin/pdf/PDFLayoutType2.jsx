@@ -926,7 +926,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <DottedLine value={applicant.signature_date} className="w-[120px] relative top-1 text-center" />
                             </div>
                             
-                            <div className="flex justify-end items-end gap-2">
+                            <div className="flex justify-end items-end gap-2 mb-2">
                                 <span className="relative top-[1px]">ข้าพเจ้าพร้อมปฏิบัติงานกับบริษัทฯ ในวันที่</span>
                                 <DottedLine value={applicant.start_work_date} className="w-[120px] relative top-1 text-center" />
                             </div>
