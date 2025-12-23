@@ -159,10 +159,6 @@ export default function PDFLayoutType2({ applicant }) {
                         <CheckBox label="สำเนาใบ สด. (ชาย)" /><CheckBox label="สัญญาจ้าง" /><CheckBox label="บันทึกข้อตกลงเข้ารับการฝึกอบรม" />
                         <CheckBox label="แบบฟอร์มประเมินผล" /><CheckBox label="หนังสือยินยอมการตรวจสุขภาพ" /><CheckBox label="ใบรับรองแพทย์การตรวจสุขภาพ" />
                         <CheckBox label="สำเนาบัญชีธนาคาร" /> <CheckBox label="หนังสือยินยอมเปิดเผยข้อมูลฯ (PDPA)"/>  <CheckBox label="หนังสือรับรองการทำงาน (ถ้ามี)" />
-                        // <div className="relative pl-5 h-4 flex items-center col-span-1">
-                        //      <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-600 flex items-center justify-center rounded-[1px] bg-white`}></div>
-                        //      <span className="leading-none absolute bottom-2.5 text-[11px] text-slate-900">หนังสือยินยอมเปิดเผยข้อมูลฯ (PDPA)</span>
-                        // </div>
                         <CheckBox label="JD" /><CheckBox label="เอกสาร Support อื่นๆ" />
                     </div>
                 </div>
