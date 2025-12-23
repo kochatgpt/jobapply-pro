@@ -5,8 +5,9 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { 
     Video, User, GraduationCap, Briefcase, HeartPulse, 
-    FileText, Phone, MapPin, Calendar, Mail, FileDown, Eye, Loader2
+    FileText, Phone, MapPin, Calendar, Mail, FileDown, Eye, Loader2, ExternalLink
 } from "lucide-react";
+import { createPageUrl } from '../utils';
 import InfoGrid from './InfoGrid';
 import PDFLayout from './pdf/PDFLayout';
 import PDFLayoutType2 from './pdf/PDFLayoutType2';
@@ -145,11 +146,10 @@ export default function ApplicantDetail({ applicant }) {
                     </Select>
                     <Button 
                         variant="outline"
-                        onClick={() => handleGeneratePDF('preview')}
-                        disabled={generatingPdf}
+                        onClick={() => window.open(`${createPageUrl('PDFPreview')}?id=${applicant.id}`, '_blank')}
                     >
-                        {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Eye className="w-4 h-4 mr-2" />}
-                        Preview
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Preview HTML
                     </Button>
                     <Button 
                         variant="outline"
