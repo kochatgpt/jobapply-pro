@@ -47,7 +47,7 @@ export default function PDFLayoutType2({ applicant }) {
     );
 
     const PageContainer = ({ children, pageNum, totalPages = 4 }) => {
-        const footerBottom = pageNum === 2 ? 'bottom-[20mm]' : pageNum === 3 ? 'bottom-[25mm]' : 'bottom-[10mm]';
+        const footerBottom = pageNum === 2 ? 'bottom-[20mm]' : pageNum === 3 ? 'bottom-[25mm]' : pageNum === 4 ? 'bottom-[30mm]' : 'bottom-[10mm]';
         return (
             <div 
                 className="bg-white text-slate-900 p-[10mm] mx-auto relative text-[12px] font-sans mb-8 shadow-sm print:shadow-none print:mb-0"
