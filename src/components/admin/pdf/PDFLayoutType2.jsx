@@ -63,17 +63,17 @@ export default function PDFLayoutType2({ applicant }) {
                 {children}
 
                 {/* Footer */}
-                // <div className={`absolute ${footerBottom} left-[10mm] flex gap-2`}>
-                //      <div className="h-8 w-8 rounded-full border border-slate-300"></div>
-                //      <div className="h-8 w-8 rounded-full border border-slate-300"></div>
-                // </div>
-                // <div className={`absolute ${footerBottom} right-[10mm] text-[10px] text-slate-500`}>
-                //     {pageNum} | {totalPages}
-                // </div>
-                // <div className={`absolute ${footerBottom} left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center`}>
-                //      FM-HRD-10 Rev.03 10/10/66 <br/>
-                //      www.ko.in.th Strategy . AI . DX . Sustainability
-                // </div>
+                <div className={`absolute ${footerBottom} left-[10mm] flex gap-2`}>
+                     <div className="h-8 w-8 rounded-full border border-slate-300"></div>
+                     <div className="h-8 w-8 rounded-full border border-slate-300"></div>
+                </div>
+                <div className={`absolute ${footerBottom} right-[10mm] text-[10px] text-slate-500`}>
+                    {pageNum} | {totalPages}
+                </div>
+                <div className={`absolute ${footerBottom} left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center`}>
+                     FM-HRD-10 Rev.03 10/10/66 <br/>
+                     www.ko.in.th Strategy . AI . DX . Sustainability
+                </div>
             </div>
         );
     };
