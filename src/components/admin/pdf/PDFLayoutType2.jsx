@@ -93,7 +93,7 @@ export default function PDFLayoutType2({ applicant }) {
     return (
         <div className="flex flex-col items-center">
             {/* ================= PAGE 1 ================= */}
-            <PageContainer pageNum={1} totalPages={4} showLogo={true} pageHeight="300mm">
+            <PageContainer pageNum={1} totalPages={4} showLogo={true} pageHeight="300mm" logoTopOffset="top-[10mm]">
                  {/* --- Top Section --- */}
                 <div className="flex justify-between items-start mb-4">
                     {/* Top Left Box */}
