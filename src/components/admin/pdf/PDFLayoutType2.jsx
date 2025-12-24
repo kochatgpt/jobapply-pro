@@ -843,8 +843,8 @@ export default function PDFLayoutType2({ applicant }) {
             </PageContainer>
 
             {/* ================= PAGE 4 ================= */}
-            <PageContainer pageNum={4} totalPages={4} pageHeight={"297mm"} logoTopOffset="top-[-20mm]">
-                <div className="mt-[-18mm] space-y-0.5">
+            <PageContainer pageNum={4} totalPages={4} pageHeight={"290mm"} logoTopOffset="top-[-20mm]">
+                <div className="mt-[-15mm] space-y-1">
                     
                     {/* Emergency Contact Table */}
                     <div className="text-[11px] mb-1">
@@ -893,17 +893,17 @@ export default function PDFLayoutType2({ applicant }) {
 
                     {/* Declaration with Signature */}
                     <div className="border-[0.5px] border-slate-400 p-2 text-[10px]">
-                        <div className="text-justify leading-snug mb-3">
+                        <div className="text-justify leading-snug mb-4">
                             <p>
                                 ข้าพเจ้าขอรับรองว่า ข้อความดังกล่าวทั้งหมดในใบสมัครงานและเอกสารแนบนี้เป็นความจริงทุกประการ หลังจากบริษัทฯได้เข้ามาทำงานแล้วหากปรากฏว่า ข้อความในใบสมัครงานและเอกสารแนบที่นำมาแสดงต่างๆ หรือรายละเอียดที่ให้ไว้ไม่เป็นความจริง หรือเป็นเท็จ บริษัทฯ มีสิทธิ์ที่เลิกจ้างข้าพเจ้าได้ โดยไม่ต้องจ่ายเงินชดเชยหรือค่าเสียหายใดๆ ทั้งสิ้น ข้าพเจ้ายินยอมให้บริษัทฯตรวจสอบข้อมูลย้อนหลังจากการทำงานที่เดิม รวมถึงยินยอมให้ตรวจสอบประวัติอาญากรรมและเครดิตบูโรทั้งสิ้น และข้าพเจ้ายินยอมให้แพทย์หรือโรงพยาบาลให้ข้อมูลที่จำเป็นเกี่ยวกับสุขภาพของข้าพเจ้า ซึ่งมีผลกระทบต่อการปฏิบัติงานในบริษัท
                             </p>
                         </div>
                         
-                        <div className="text-right mb-2">
-                            <div className="font-bold mb-1">ข้าพเจ้าขอลงนามรับรองการให้ข้อมูลตามจริงทุกประการ</div>
+                        <div className="text-right mb-3">
+                            <div className="font-bold mb-2">ข้าพเจ้าขอลงนามรับรองการให้ข้อมูลตามจริงทุกประการ</div>
                         </div>
 
-                        <div className="text-right space-y-1">
+                        <div className="text-right space-y-2">
                             <div className="flex justify-end items-center gap-2">
                                 <span>ลงชื่อ</span>
                                 {applicant.signature_url ? (
@@ -941,9 +941,9 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
 
                     {/* Test Results */}
-                    <div className="border-[0.5px] border-slate-400 p-1.5 text-[10px]">
-                        <div className="font-bold mb-0.5">(ทดสอบผู้สมัครงาน)</div>
-                        <div className="space-y-0.5 ml-4">
+                    <div className="border-[0.5px] border-slate-400 p-2 text-[10px]">
+                        <div className="font-bold mb-1">(ทดสอบผู้สมัครงาน)</div>
+                        <div className="space-y-1 ml-4">
                             <div className="flex items-end gap-2">
                                 <span>(บันทึกการทดสอบครั้งที่ 1)</span>
                                 <span>ตัวเลข</span><DottedLine value={admin.test_results?.test1_number} className="w-20" />
@@ -964,15 +964,15 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
 
                     {/* Interview Notes */}
-                    <div className="border-[0.5px] border-slate-400 border-t-0 p-1.5 text-[10px]">
-                        <div className="flex items-start gap-2 mb-0.5">
+                    <div className="border-[0.5px] border-slate-400 border-t-0 p-2 text-[10px]">
+                        <div className="flex items-start gap-2 mb-1">
                             <span className="font-bold">(บันทึกการผู้สัมภาษณ์)</span>
                             <span>: ลงชื่อ ผู้สัมภาษณ์</span>
                             <DottedLine value={admin.interview?.interviewer_name} className="w-32" />
                             <span>รายละเอียดในการสัมภาษณ์</span>
                             <DottedLine value={admin.interview?.interview_details} className="flex-1" />
                         </div>
-                        <DottedLine value="" className="w-full mb-0.5" />
+                        <DottedLine value="" className="w-full mb-1" />
                         <DottedLine value="" className="w-full" />
                     </div>
 
