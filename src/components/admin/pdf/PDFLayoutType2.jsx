@@ -975,10 +975,10 @@ export default function PDFLayoutType2({ applicant }) {
                         <div className="border-[0.5px] border-slate-400 p-1.5">
                             <div className="font-bold text-center mb-1 pb-1 border-b border-slate-300">เจ้าหน้าที่สรรหาว่าจ้าง</div>
                             <div className="text-center mb-4">ผู้ดำเนินการ</div>
-                            <div className="mb-0.5">ลงชื่อ<DottedLine className="inline-block w-20 ml-1" /></div>
-                            <div className="mb-0.5">(<DottedLine className="inline-block w-full" />)</div>
-                            <div className="mb-1">วันที่<DottedLine className="inline-block w-16 ml-1" /></div>
-                            <div className="flex gap-2">
+                            <div className="mb-0.5 text-center">ลงชื่อ<DottedLine className="inline-block w-24 ml-1 text-center" /></div>
+                            <div className="mb-0.5 text-center">(<DottedLine className="inline-block w-full text-center" />)</div>
+                            <div className="mb-1 text-center">วันที่<DottedLine className="inline-block w-24 ml-1 text-center" /></div>
+                            <div className="flex gap-2 justify-center">
                                 <CheckBox label="อนุมัติรับ" width="w-auto" textSize="text-[9px]" />
                                 <CheckBox label="ไม่รับ" width="w-auto" textSize="text-[9px]" />
                             </div>
@@ -986,10 +986,10 @@ export default function PDFLayoutType2({ applicant }) {
                         
                         <div className="border-[0.5px] border-slate-400 border-l-0 p-1.5">
                             <div className="font-bold text-center mb-5 pb-1 border-b border-slate-300">กรรมการ</div>
-                            <div className="mb-0.5">ลงชื่อ<DottedLine className="inline-block w-20 ml-1" /></div>
-                            <div className="mb-0.5">(<DottedLine className="inline-block w-full" />)</div>
-                            <div className="mb-1">วันที่<DottedLine className="inline-block w-16 ml-1" /></div>
-                            <div className="flex gap-2">
+                            <div className="mb-0.5 text-center">ลงชื่อ<DottedLine className="inline-block w-24 ml-1 text-center" /></div>
+                            <div className="mb-0.5 text-center">(<DottedLine className="inline-block w-full text-center" />)</div>
+                            <div className="mb-1 text-center">วันที่<DottedLine className="inline-block w-24 ml-1 text-center" /></div>
+                            <div className="flex gap-2 justify-center">
                                 <CheckBox label="อนุมัติรับ" width="w-auto" textSize="text-[9px]" />
                                 <CheckBox label="ไม่รับ" width="w-auto" textSize="text-[9px]" />
                             </div>
@@ -997,21 +997,21 @@ export default function PDFLayoutType2({ applicant }) {
                         
                         <div className="border-[0.5px] border-slate-400 border-l-0 p-1.5">
                             <div className="font-bold text-center mb-1 pb-1 border-b border-slate-300">ผู้จัดการฝ่ายบุคคล</div>
-                            <div className="mb-0.5">ลงชื่อ<DottedLine className="inline-block w-20 ml-1" /></div>
-                            <div className="mb-0.5">(<DottedLine className="inline-block w-full" />)</div>
-                            <div className="mb-1">วันที่<DottedLine className="inline-block w-16 ml-1" /></div>
+                            <div className="mb-0.5 text-center">ลงชื่อ<DottedLine className="inline-block w-24 ml-1 text-center" /></div>
+                            <div className="mb-0.5 text-center">(<DottedLine className="inline-block w-full text-center" />)</div>
+                            <div className="mb-1 text-center">วันที่<DottedLine className="inline-block w-24 ml-1 text-center" /></div>
                         </div>
 
                         {/* Second Row - 2 columns */}
                         <div className="border-[0.5px] border-slate-400 border-t-0 p-1.5">
                             <div className="font-bold text-center mb-1 pb-1 border-b border-slate-300">หัวหน้าแผนก/หัวหน้างานต้นสังกัด</div>
-                            <div className="flex gap-2 mb-1">
+                            <div className="flex gap-2 mb-1 justify-center">
                                 <CheckBox label="อนุมัติรับ" width="w-auto" textSize="text-[9px]" />
                                 <CheckBox label="ไม่รับ" width="w-auto" textSize="text-[9px]" />
                             </div>
-                            <div className="mb-0.5">ลงชื่อ<DottedLine className="inline-block w-20 ml-1" /></div>
-                            <div className="mb-0.5">(<DottedLine className="inline-block w-full" />)</div>
-                            <div>วันที่<DottedLine className="inline-block w-16 ml-1" /></div>
+                            <div className="mb-0.5 text-center">ลงชื่อ<DottedLine className="inline-block w-24 ml-1 text-center" /></div>
+                            <div className="mb-0.5 text-center">(<DottedLine className="inline-block w-full text-center" />)</div>
+                            <div className="text-center">วันที่<DottedLine className="inline-block w-24 ml-1 text-center" /></div>
                         </div>
 
                         <div className="border-[0.5px] border-slate-400 border-l-0 border-t-0 p-1.5 col-span-2">
