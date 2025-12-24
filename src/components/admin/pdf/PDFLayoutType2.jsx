@@ -540,7 +540,7 @@ export default function PDFLayoutType2({ applicant }) {
             </PageContainer>
 
             {/* ================= PAGE 3 ================= */}
-            <PageContainer pageNum={3} totalPages={4}>
+            <PageContainer pageNum={3} totalPages={4} logoTopOffset="top-[-10px]">
                 <div className="mt-[5mm] space-y-1">
 
                      {/* --- Work History --- */}
