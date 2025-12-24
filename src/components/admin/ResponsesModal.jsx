@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+
 import { Badge } from "@/components/ui/badge";
 import { X, MessageSquare, Video, CheckSquare } from "lucide-react";
 
@@ -45,7 +45,7 @@ export default function ResponsesModal({ applicant, onClose }) {
                 </div>
 
                 {/* Content */}
-                <ScrollArea className="flex-1 p-6">
+                <div className="flex-1 p-6 overflow-y-auto">
                     {responses.length === 0 ? (
                         <div className="flex flex-col items-center justify-center py-12 text-slate-400">
                             <MessageSquare className="w-16 h-16 mb-4" />
@@ -102,7 +102,7 @@ export default function ResponsesModal({ applicant, onClose }) {
                             ))}
                         </div>
                     )}
-                </ScrollArea>
+                </div>
 
                 {/* Footer */}
                 <div className="sticky bottom-0 bg-white border-t border-slate-200 px-6 py-4 flex justify-end rounded-b-lg">
