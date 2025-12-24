@@ -991,8 +991,8 @@ export default function PDFLayoutType2({ applicant }) {
                             <div className="text-center">วันที่<DottedLine className="inline-block w-40 ml-1 align-middle relative top-[4px]" /></div>
                         </div>
                         
-                        <div className="border-[0.5px] border-slate-400 items-center border-l-0 p-1.5">
-                            <div className="font-bold text-center mb-1 pb-1 border-b border-slate-300">ผู้จัดการฝ่ายบุคคล</div>
+                        <div className="border-[0.5px] border-slate-400 border-l-0 p-1.5">
+                            <div className="font-bold text-center mb-3 pb-1 border-b border-slate-300">ผู้จัดการฝ่ายบุคคล</div>
                             <div className="mb-0.5 text-center">ลงชื่อ<DottedLine className="inline-block w-40 ml-1 align-middle relative top-[4px]" /></div>
                             <div className="mb-0.5 text-center">(<DottedLine className="inline-block w-40 ml-1 align-middle relative top-[4px]" />)</div>
                             <div className="mb-1 text-center">วันที่<DottedLine className="inline-block w-40 ml-1 align-middle relative top-[4px]" /></div>
