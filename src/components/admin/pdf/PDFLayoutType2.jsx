@@ -57,7 +57,7 @@ export default function PDFLayoutType2({ applicant }) {
                     height: pageHeight,
                     maxHeight: pageHeight,
                     fontFamily: 'Sarabun, sans-serif',
-                    pageBreakAfter: 'always',
+                    pageBreakAfter: pageNum < totalPages ? 'always' : 'auto',
                     overflow: 'visible'
                 }}
             >
