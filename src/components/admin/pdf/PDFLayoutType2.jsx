@@ -906,13 +906,14 @@ export default function PDFLayoutType2({ applicant }) {
                         <div className="text-right space-y-2">
                             <div className="flex justify-end items-center gap-2">
                                 <span>ลงชื่อ</span>
-                                <div className="border border-slate-300 w-[200px] h-[50px] inline-flex items-center justify-center bg-slate-50">
-                                    {applicant.signature_url ? (
-                                        <img src={applicant.signature_url} alt="Signature" className="max-h-[40px] object-contain" />
-                                    ) : (
-                                        <span className="text-slate-300 text-[9px]">ลงชื่อ</span>
-                                    )}
-                                </div>
+                                {applicant.signature_url ? (
+                                    <div className="inline-flex flex-col items-center w-[200px]">
+                                        <img src={applicant.signature_url} alt="Signature" crossOrigin="anonymous" className="max-h-[40px] object-contain mb-1" />
+                                        <div className="border-b-[1.5px] border-dotted border-slate-400 w-full"></div>
+                                    </div>
+                                ) : (
+                                    <div className="border-b-[1.5px] border-dotted border-slate-400 w-[200px] h-[50px] inline-block"></div>
+                                )}
                                 <span>ผู้สมัคร</span>
                             </div>
                             
