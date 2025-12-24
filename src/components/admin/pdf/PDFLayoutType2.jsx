@@ -1019,8 +1019,8 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="รอพิจารณา" width="w-auto" textSize="text-[9px]" />
                             </div>
                             <div className="mb-0.5">สังกัด/แผนก<DottedLine className="inline-block w-24 ml-1" />รับพิจารณา ตำแหน่ง<DottedLine className="inline-block w-24 ml-1" /></div>
-                            <div className="mb-0.5">อัตราเงินเดือน<DottedLine className="inline-block w-40 ml-1" /></div>
-                            <div>เหตุผลการพิจารณาอื่นๆ<DottedLine className="inline-block w-40 ml-1" /></div>
+                            <div className="mb-0.5">อัตราเงินเดือน<DottedLine className="inline-block w-60 ml-1" /></div>
+                            <div>เหตุผลการพิจารณาอื่นๆ<DottedLine className="inline-block w-60 ml-1" /></div>
                         </div>
                     </div>
 
