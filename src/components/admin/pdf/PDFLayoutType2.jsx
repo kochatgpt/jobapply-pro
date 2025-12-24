@@ -20,6 +20,7 @@ export default function PDFLayoutType2({ applicant }) {
     const st = applicant.statement_data || {};
     const ref = applicant.referral_data || {};
     const par = applicant.parents_data || { father: {}, mother: {} };
+    const admin = applicant.admin_data || { hr_systems: {}, hr_info: {}, documents: {}, test_results: {}, interview: {}, approvals: { recruiter: {}, committee: {}, hr_manager: {}, department_head: {}, final_decision: {} } };
 
     // --- Helpers ---
     const DottedLine = ({ value, className = "", center = false }) => (
@@ -99,20 +100,28 @@ export default function PDFLayoutType2({ applicant }) {
                     {/* Top Left Box */}
                     <div className="border-[0.5px] border-slate-400 p-2 w-[40mm] text-[11px] space-y-1">
                         <div className="relative pl-5 h-4 flex items-center">
-                            <div className="absolute left-0 top-0.5 w-3 h-3 border border-slate-600 bg-white rounded-[1px]"></div>
+                            <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-600 rounded-[1px] ${admin.hr_systems?.web_hr ? 'bg-slate-200' : 'bg-white'}`}>
+                                {admin.hr_systems?.web_hr && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
+                            </div>
                             <span className="leading-none absolute bottom-2.5">Web HR</span>
                         </div>
                         <div className="relative pl-5 h-4 flex items-center">
-                            <div className="absolute left-0 top-0.5 w-3 h-3 border border-slate-600 bg-white rounded-[1px]"></div>
-                            <span className="leading-none absolute bottom-2.5">สปส.(เข้า)......</span>
+                            <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-600 rounded-[1px] ${admin.hr_systems?.sps_in ? 'bg-slate-200' : 'bg-white'}`}>
+                                {admin.hr_systems?.sps_in && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
+                            </div>
+                            <span className="leading-none absolute bottom-2.5">สปส.(เข้า){admin.hr_systems?.sps_in_details ? admin.hr_systems.sps_in_details : '......'}</span>
                         </div>
                         <div className="relative pl-5 h-4 flex items-center">
-                            <div className="absolute left-0 top-0.5 w-3 h-3 border border-slate-600 bg-white rounded-[1px]"></div>
+                            <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-600 rounded-[1px] ${admin.hr_systems?.b_plus ? 'bg-slate-200' : 'bg-white'}`}>
+                                {admin.hr_systems?.b_plus && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
+                            </div>
                             <span className="leading-none absolute bottom-2.5">B-plus</span>
                         </div>
                         <div className="relative pl-5 h-4 flex items-center">
-                            <div className="absolute left-0 top-0.5 w-3 h-3 border border-slate-600 bg-white rounded-[1px]"></div>
-                            <span className="leading-none absolute bottom-2.5">สปส.(ออก)......</span>
+                            <div className={`absolute left-0 top-0.5 w-3 h-3 border border-slate-600 rounded-[1px] ${admin.hr_systems?.sps_out ? 'bg-slate-200' : 'bg-white'}`}>
+                                {admin.hr_systems?.sps_out && <div className="w-1.5 h-1.5 bg-slate-800 rounded-[0.5px]" />}
+                            </div>
+                            <span className="leading-none absolute bottom-2.5">สปส.(ออก){admin.hr_systems?.sps_out_details ? admin.hr_systems.sps_out_details : '......'}</span>
                         </div>
                     </div>
 
@@ -145,21 +154,32 @@ export default function PDFLayoutType2({ applicant }) {
                 <div className="border-[0.5px] border-slate-400 p-3 mb-2 rounded-sm relative">
                     <div className="absolute -top-2 left-2 bg-white px-1 font-bold text-[12px]">(สำหรับ จนท.)</div>
                     <div className="grid grid-cols-12 gap-2 mb-3 mt-1">
-                        <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">รหัสพนักงาน</span><DottedLine className="flex-1" /></div>
-                        <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">วันที่เริ่มงานจริง</span><DottedLine className="flex-1" /></div>
-                        <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">หน่วยงาน/สังกัด</span><DottedLine className="flex-1" /></div>
+                        <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">รหัสพนักงาน</span><DottedLine value={admin.hr_info?.employee_id} className="flex-1" /></div>
+                        <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">วันที่เริ่มงานจริง</span><DottedLine value={admin.hr_info?.actual_start_date} className="flex-1" /></div>
+                        <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">หน่วยงาน/สังกัด</span><DottedLine value={admin.hr_info?.department} className="flex-1" /></div>
                     </div>
                     <div className="flex gap-4 mb-3">
-                        <div className="flex items-end gap-2"><span className="font-bold pb-1">ไซด์เสื้อ</span><DottedLine className="w-16 text-center" /></div>
-                        <div className="flex items-end gap-2"><span className="font-bold pb-1">จำนวน</span><DottedLine className="w-16 text-center" /></div>
+                        <div className="flex items-end gap-2"><span className="font-bold pb-1">ไซด์เสื้อ</span><DottedLine value={admin.hr_info?.shirt_size} className="w-16 text-center" /></div>
+                        <div className="flex items-end gap-2"><span className="font-bold pb-1">จำนวน</span><DottedLine value={admin.hr_info?.shirt_quantity} className="w-16 text-center" /></div>
                     </div>
                     <div className="grid grid-cols-3 gap-x-1 gap-y-1 text-[11px]">
-                        <CheckBox label="รูปถ่าย 1-3 รูป" /><CheckBox label="สำเนาบัตรประชาชน 3 ฉบับ" /><CheckBox label="สำเนาทะเบียนบ้าน" />
-                        <CheckBox label="สำเนาวุฒิการศึกษา" /><CheckBox label="หนังสือรับรองการศึกษา" /><CheckBox label="หลักฐานการเปลี่ยนชื่อ-นามสกุล (ถ้ามี)" />
-                        <CheckBox label="สำเนาใบ สด. (ชาย)" /><CheckBox label="สัญญาจ้าง" /><CheckBox label="บันทึกข้อตกลงเข้ารับการฝึกอบรม" />
-                        <CheckBox label="แบบฟอร์มประเมินผล" /><CheckBox label="หนังสือยินยอมการตรวจสุขภาพ" /><CheckBox label="ใบรับรองแพทย์การตรวจสุขภาพ" />
-                        <CheckBox label="สำเนาบัญชีธนาคาร" /> <CheckBox label="หนังสือยินยอมเปิดเผยข้อมูลฯ (PDPA)"/>  <CheckBox label="หนังสือรับรองการทำงาน (ถ้ามี)" />
-                        <CheckBox label="JD" /><CheckBox label="เอกสาร Support อื่นๆ" />
+                        <CheckBox label="รูปถ่าย 1-3 รูป" checked={admin.documents?.photos} />
+                        <CheckBox label="สำเนาบัตรประชาชน 3 ฉบับ" checked={admin.documents?.id_card_copy} />
+                        <CheckBox label="สำเนาทะเบียนบ้าน" checked={admin.documents?.house_registration} />
+                        <CheckBox label="สำเนาวุฒิการศึกษา" checked={admin.documents?.education_cert} />
+                        <CheckBox label="หนังสือรับรองการศึกษา" checked={admin.documents?.education_confirmation} />
+                        <CheckBox label="หลักฐานการเปลี่ยนชื่อ-นามสกุล (ถ้ามี)" checked={admin.documents?.name_change_proof} />
+                        <CheckBox label="สำเนาใบเกณฑ์ทหาร (ชาย)" checked={admin.documents?.military_cert} />
+                        <CheckBox label="สัญญาจ้าง" checked={admin.documents?.employment_contract} />
+                        <CheckBox label="บันทึกข้อตกลงเข้ารับการฝึกอบรม" checked={admin.documents?.training_agreement} />
+                        <CheckBox label="แบบฟอร์มประกันสังคม" checked={admin.documents?.social_security_form} />
+                        <CheckBox label="หนังสือยินยอมการตรวจอาชญากรรม" checked={admin.documents?.criminal_check_consent} />
+                        <CheckBox label="ใบรับรองแพทย์การตรวจสุขภาพ" checked={admin.documents?.health_cert} />
+                        <CheckBox label="สำเนาบุ๊คแบงค์" checked={admin.documents?.bank_book_copy} />
+                        <CheckBox label="หนังสือรับรองการทำงาน (ถ้ามี)" checked={admin.documents?.work_cert} />
+                        <CheckBox label="หนังสือยินยอมข้อมตกลงให้ประมวลผลเก็บรวบรวมหรือเปิดเผยข้อมูลส่วนบุคคล (PDPA)" checked={admin.documents?.pdpa_consent} />
+                        <CheckBox label="JD" checked={admin.documents?.jd} />
+                        <CheckBox label={`เอกสาร Support อื่นๆ ${admin.documents?.other_support_details ? admin.documents.other_support_details : '.......................................'}`} checked={admin.documents?.other_support} />
                     </div>
                 </div>
 
@@ -939,19 +959,19 @@ export default function PDFLayoutType2({ applicant }) {
                         <div className="space-y-1 ml-4">
                             <div className="flex items-end gap-2">
                                 <span>(บันทึกการทดสอบครั้งที่ 1)</span>
-                                <span>ตัวเลข</span><DottedLine className="w-20" />
-                                <span>ไทย</span><DottedLine className="w-20" />
-                                <span>อังกฤษ</span><DottedLine className="flex-1" />
+                                <span>ตัวเลข</span><DottedLine value={admin.test_results?.test1_number} className="w-20" />
+                                <span>ไทย</span><DottedLine value={admin.test_results?.test1_thai} className="w-20" />
+                                <span>อังกฤษ</span><DottedLine value={admin.test_results?.test1_english} className="flex-1" />
                             </div>
                             <div className="flex items-end gap-2">
                                 <span>(บันทึกการทดสอบครั้งที่ 2)</span>
-                                <span>ตัวเลข</span><DottedLine className="w-20" />
-                                <span>ไทย</span><DottedLine className="w-20" />
-                                <span>อังกฤษ</span><DottedLine className="flex-1" />
+                                <span>ตัวเลข</span><DottedLine value={admin.test_results?.test2_number} className="w-20" />
+                                <span>ไทย</span><DottedLine value={admin.test_results?.test2_thai} className="w-20" />
+                                <span>อังกฤษ</span><DottedLine value={admin.test_results?.test2_english} className="flex-1" />
                             </div>
                             <div className="flex items-end gap-2">
                                 <span>(ทดสอบอื่นๆ)</span>
-                                <span>ระบุ</span><DottedLine className="flex-1" />
+                                <span>ระบุ</span><DottedLine value={admin.test_results?.other_test} className="flex-1" />
                             </div>
                         </div>
                     </div>
@@ -961,9 +981,9 @@ export default function PDFLayoutType2({ applicant }) {
                         <div className="flex items-start gap-2 mb-1">
                             <span className="font-bold">(บันทึกการผู้สัมภาษณ์)</span>
                             <span>: ลงชื่อ ผู้สัมภาษณ์</span>
-                            <DottedLine className="w-32" />
+                            <DottedLine value={admin.interview?.interviewer_name} className="w-32" />
                             <span>รายละเอียดในการสัมภาษณ์</span>
-                            <DottedLine className="flex-1" />
+                            <DottedLine value={admin.interview?.interview_details} className="flex-1" />
                         </div>
                         <DottedLine value="" className="w-full mb-1" />
                         <DottedLine value="" className="w-full" />

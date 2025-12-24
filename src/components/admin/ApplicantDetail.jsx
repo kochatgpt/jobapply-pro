@@ -8,16 +8,26 @@ import {
     FileText, Phone, MapPin, Calendar, Mail, FileDown, Eye, Loader2
 } from "lucide-react";
 import InfoGrid from './InfoGrid';
-import PDFLayout from './pdf/PDFLayout';
 import PDFLayoutType2 from './pdf/PDFLayoutType2';
+import AdminDataForm from './AdminDataForm';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { useState } from 'react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { base44 } from '@/api/base44Client';
 
 export default function ApplicantDetail({ applicant }) {
     const [generatingPdf, setGeneratingPdf] = useState(false);
-    const [pdfType, setPdfType] = useState('type2'); // Default to Type 2 as requested
+    const [showAdminForm, setShowAdminForm] = useState(false);
+    const queryClient = useQueryClient();
+
+    const updateAdminDataMutation = useMutation({
+        mutationFn: ({ id, adminData }) => base44.entities.Applicant.update(id, { admin_data: adminData }),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['applicants_list'] });
+            setShowAdminForm(false);
+        }
+    });
 
     if (!applicant) {
         return (
@@ -80,13 +90,17 @@ export default function ApplicantDetail({ applicant }) {
             } else {
                 window.open(pdf.output('bloburl'), '_blank');
             }
-        } catch (error) {
+            } catch (error) {
             console.error("PDF Generation failed", error);
             alert("เกิดข้อผิดพลาดในการสร้าง PDF");
-        } finally {
+            } finally {
             setGeneratingPdf(false);
-        }
-    };
+            }
+            };
+
+            const handleSaveAdminData = (adminData) => {
+            updateAdminDataMutation.mutate({ id: applicant.id, adminData });
+            };
 
     return (
         <div className="flex-1 flex flex-col h-full overflow-hidden bg-slate-50/30">
@@ -134,15 +148,13 @@ export default function ApplicantDetail({ applicant }) {
                 </div>
 
                 <div className="flex gap-2 items-center">
-                     <Select value={pdfType} onValueChange={setPdfType}>
-                        <SelectTrigger className="w-[140px] h-9">
-                            <SelectValue placeholder="PDF Format" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="type1">Format Standard</SelectItem>
-                            <SelectItem value="type2">Format KO AI</SelectItem>
-                        </SelectContent>
-                    </Select>
+                    <Button 
+                        variant="outline"
+                        onClick={() => setShowAdminForm(true)}
+                    >
+                        <FileText className="w-4 h-4 mr-2" />
+                        กรอกข้อมูล Admin
+                    </Button>
                     <Button 
                         variant="outline"
                         onClick={() => handleGeneratePDF('preview')}
@@ -252,12 +264,17 @@ export default function ApplicantDetail({ applicant }) {
             
             {/* Hidden Printable Content */}
             <div id="printable-content" className="fixed left-[-9999px] top-0">
-                {pdfType === 'type1' ? (
-                    <PDFLayout applicant={applicant} />
-                ) : (
-                    <PDFLayoutType2 applicant={applicant} />
-                )}
+                <PDFLayoutType2 applicant={applicant} />
             </div>
+
+            {/* Admin Data Form Modal */}
+            {showAdminForm && (
+                <AdminDataForm 
+                    applicant={applicant}
+                    onSave={handleSaveAdminData}
+                    onCancel={() => setShowAdminForm(false)}
+                />
+            )}
             </div>
             );
             }
