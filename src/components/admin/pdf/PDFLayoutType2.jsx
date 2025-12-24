@@ -58,7 +58,7 @@ export default function PDFLayoutType2({ applicant }) {
                     maxHeight: pageHeight,
                     fontFamily: 'Sarabun, sans-serif',
                     pageBreakAfter: 'always',
-                    overflow: 'hidden'
+                    overflow: 'visible'
                 }}
             >
                 {showLogo && (
