@@ -56,14 +56,14 @@ export default function UserDashboard() {
     };
 
     const documents = [
-        { id: 1, name: 'PDPA', description: 'หนังสือยินยอมข้อมูลส่วนบุคคล' },
-        { id: 2, name: 'FM-HRD-19', description: 'แบบฟอร์มการเข้าทำงาน' },
-        { id: 3, name: 'สัญญาจ้าง', description: 'สัญญาจ้างงาน' },
-        { id: 4, name: 'FM-HRD-27', description: 'แบบฟอร์มประเมินผล' },
-        { id: 5, name: 'FM-HRD-30', description: 'แบบฟอร์มข้อมูลพนักงาน' },
-        { id: 6, name: 'หนังสือมอบอำนาจในการตรวจประวัติอาชญากรรม', description: 'หนังสือมอบอำนาจตรวจประวัติ' },
-        { id: 7, name: 'แบบสปส.', description: 'แบบฟอร์มประกันสังคม' },
-        { id: 8, name: 'ใบขอเอาประกัน', description: 'แบบฟอร์มประกันสังคม' }
+        { id: 1, name: 'PDPA', description: 'หนังสือยินยอมข้อมูลส่วนบุคคล', link: '/pdpa-form' },
+        { id: 2, name: 'FM-HRD-19', description: 'แบบฟอร์มการเข้าทำงาน', link: null },
+        { id: 3, name: 'สัญญาจ้าง', description: 'สัญญาจ้างงาน', link: null },
+        { id: 4, name: 'FM-HRD-27', description: 'แบบฟอร์มประเมินผล', link: null },
+        { id: 5, name: 'FM-HRD-30', description: 'แบบฟอร์มข้อมูลพนักงาน', link: null },
+        { id: 6, name: 'หนังสือมอบอำนาจในการตรวจประวัติอาชญากรรม', description: 'หนังสือมอบอำนาจตรวจประวัติ', link: null },
+        { id: 7, name: 'แบบสปส.', description: 'แบบฟอร์มประกันสังคม', link: null },
+        { id: 8, name: 'ใบขอเอาประกัน', description: 'แบบฟอร์มประกันสังคม', link: null }
     ];
 
     return (
@@ -150,7 +150,8 @@ export default function UserDashboard() {
                             {documents.map((doc) => (
                                 <div 
                                     key={doc.id}
-                                    className="border border-slate-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer hover:border-indigo-300"
+                                    onClick={() => doc.link && navigate(doc.link)}
+                                    className={`border border-slate-200 rounded-lg p-4 hover:shadow-md transition-shadow ${doc.link ? 'cursor-pointer hover:border-indigo-300' : 'cursor-default opacity-60'}`}
                                 >
                                     <div className="flex items-start gap-3">
                                         <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center shrink-0 text-indigo-600 font-bold">
@@ -161,7 +162,7 @@ export default function UserDashboard() {
                                             <p className="text-sm text-slate-500 mb-3">{doc.description}</p>
                                             <div className="flex items-center gap-2">
                                                 <Badge variant="outline" className="text-amber-600 border-amber-300">
-                                                    รอดำเนินการ
+                                                    {doc.link ? 'คลิกเพื่อดำเนินการ' : 'รอดำเนินการ'}
                                                 </Badge>
                                             </div>
                                         </div>
