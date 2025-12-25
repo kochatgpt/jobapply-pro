@@ -62,26 +62,33 @@ export default function PDPAForm() {
     });
 
     const handleGeneratePDF = async (action) => {
-        const input = document.getElementById('pdpa-printable-content');
-        if (!input) return;
+        const pages = document.querySelectorAll('.pdpa-page');
+        if (!pages || pages.length === 0) return;
 
         setGeneratingPdf(true);
         try {
-            const canvas = await html2canvas(input, {
-                scale: 2,
-                useCORS: true,
-                logging: false,
-                windowWidth: 1200
-            });
-
-            const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'mm', 'a4');
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = pdf.internal.pageSize.getHeight();
-            const imgWidth = pdfWidth;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            for (let i = 0; i < pages.length; i++) {
+                const page = pages[i];
+                const canvas = await html2canvas(page, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    windowWidth: 1200
+                });
+
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = pdfWidth;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                if (i > 0) {
+                    pdf.addPage();
+                }
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            }
 
             if (action === 'download') {
                 pdf.save(`PDPA_${applicant?.full_name || 'Document'}.pdf`);

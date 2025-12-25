@@ -15,7 +15,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
     return (
         <>
         <div 
-            className="bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[20mm] shadow-sm print:shadow-none"
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[20mm] shadow-sm print:shadow-none"
             style={{ 
                 width: '210mm', 
                 minHeight: '297mm',
@@ -102,7 +102,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
         {/* Page 2 */}
         <div 
-            className="bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
             style={{ 
                 width: '210mm', 
                 minHeight: '297mm',
@@ -186,7 +186,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
         {/* Page 3 */}
         <div 
-            className="bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
             style={{ 
                 width: '210mm', 
                 minHeight: '297mm',
@@ -286,7 +286,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
         {/* Page 4 */}
         <div 
-            className="bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
             style={{ 
                 width: '210mm', 
                 minHeight: '297mm',
