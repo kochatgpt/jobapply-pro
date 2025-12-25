@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileDown, Eye, Loader2, ArrowLeft } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import PDPADocument from '@/components/application/pdf/PDPADocument';
+import SignaturePad from '@/components/admin/SignaturePad';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -47,7 +48,7 @@ export default function PDPAForm() {
     useEffect(() => {
         if (applicant) {
             setSignatureUrl(applicant.signature_url || '');
-            setSignatureDate(applicant.signature_date || new Date().toLocaleDateString('th-TH'));
+            setSignatureDate(applicant.signature_date || new Date().toISOString().split('T')[0]);
         }
     }, [applicant]);
 
@@ -205,6 +206,29 @@ export default function PDPAForm() {
                                             className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                             placeholder="Line ID ของคุณ"
                                         />
+                                    </div>
+                                </div>
+
+                                <div className="border-t pt-4">
+                                    <h3 className="font-semibold text-slate-800 mb-4">ลายเซ็น</h3>
+                                    <div className="space-y-4">
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">ลายเซ็นผู้ยินยอม</label>
+                                            <SignaturePad 
+                                                signatureUrl={signatureUrl}
+                                                onSave={(url) => setSignatureUrl(url)}
+                                                onDelete={() => setSignatureUrl('')}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ลงนาม</label>
+                                            <input
+                                                type="date"
+                                                value={signatureDate}
+                                                onChange={(e) => setSignatureDate(e.target.value)}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
 
