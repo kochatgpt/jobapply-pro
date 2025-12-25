@@ -15,7 +15,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
     return (
         <>
         <div 
-            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[12px] font-sans p-[20mm] shadow-sm print:shadow-none"
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[16px] font-sans p-[20mm] shadow-sm print:shadow-none"
             style={{ 
                 width: '210mm', 
                 minHeight: '297mm',
@@ -33,8 +33,8 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
             {/* Title */}
             <div className="text-center mb-6">
-                <h1 className="text-[14px] font-bold mb-1">หนังสือยินยอมข้อตกลงให้ประมวลผลเก็บรวบรวมหรือเปิดเผยข้อมูลส่วนบุคคล</h1>
-                <h2 className="text-[12px] font-semibold">Personal Data Protection Act (PDPA)</h2>
+                <h1 className="text-[18px] font-bold mb-1">หนังสือยินยอมข้อตกลงให้ประมวลผลเก็บรวบรวมหรือเปิดเผยข้อมูลส่วนบุคคล</h1>
+                <h2 className="text-[16px] font-semibold">Personal Data Protection Act (PDPA)</h2>
             </div>
 
             {/* Date and Place */}
@@ -102,7 +102,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
         {/* Page 2 */}
         <div 
-            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[12px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[16px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
             style={{ 
                 width: '210mm', 
                 minHeight: '297mm',
@@ -186,7 +186,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
         {/* Page 3 */}
         <div 
-            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[12px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[16px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
             style={{ 
                 width: '210mm', 
                 minHeight: '297mm',
