@@ -18,6 +18,8 @@ export default function PDPAForm() {
     const [signatureUrl, setSignatureUrl] = useState('');
     const [signatureDate, setSignatureDate] = useState('');
     const [showForm, setShowForm] = useState(false);
+    const [witness1Signature, setWitness1Signature] = useState('');
+    const [witness2Signature, setWitness2Signature] = useState('');
     const [formData, setFormData] = useState({
         writtenAt: '',
         writtenDate: '',
@@ -163,6 +165,8 @@ export default function PDPAForm() {
                                     signatureUrl={signatureUrl}
                                     signatureDate={signatureDate}
                                     formData={formData}
+                                    witness1Signature={witness1Signature}
+                                    witness2Signature={witness2Signature}
                                 />
                             </div>
                         </div>
@@ -234,15 +238,21 @@ export default function PDPAForm() {
 
                                 <div className="border-t pt-4">
                                     <h3 className="font-semibold text-slate-800 mb-4">ข้อมูลพยาน</h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="space-y-6">
                                         <div>
                                             <label className="block text-sm font-medium text-slate-700 mb-2">ชื่อพยานคนที่ 1</label>
                                             <input
                                                 type="text"
                                                 value={formData.witnessName1}
                                                 onChange={(e) => setFormData({ ...formData, witnessName1: e.target.value })}
-                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2"
                                                 placeholder="ชื่อ-สกุล พยานคนที่ 1"
+                                            />
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">ลายเซ็นพยานคนที่ 1</label>
+                                            <SignaturePad 
+                                                signatureUrl={witness1Signature}
+                                                onSave={(url) => setWitness1Signature(url)}
+                                                onDelete={() => setWitness1Signature('')}
                                             />
                                         </div>
                                         <div>
@@ -251,8 +261,14 @@ export default function PDPAForm() {
                                                 type="text"
                                                 value={formData.witnessName2}
                                                 onChange={(e) => setFormData({ ...formData, witnessName2: e.target.value })}
-                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2"
                                                 placeholder="ชื่อ-สกุล พยานคนที่ 2"
+                                            />
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">ลายเซ็นพยานคนที่ 2</label>
+                                            <SignaturePad 
+                                                signatureUrl={witness2Signature}
+                                                onSave={(url) => setWitness2Signature(url)}
+                                                onDelete={() => setWitness2Signature('')}
                                             />
                                         </div>
                                     </div>

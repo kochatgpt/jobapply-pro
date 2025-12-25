@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 
-export default function PDPADocument({ applicant, signatureUrl, signatureDate, formData = {} }) {
+export default function PDPADocument({ applicant, signatureUrl, signatureDate, formData = {}, witness1Signature, witness2Signature }) {
     const { data: settings } = useQuery({
         queryKey: ['system_settings_layout'],
         queryFn: () => base44.entities.SystemSetting.list(),
@@ -357,8 +357,17 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                 </p>
 
                 <div className="text-center mt-6 leading-relaxed">
-                    <p>ลงชื่อ........................................................................................ผู้ยินยอม</p>
-                    <p className="mt-2">(...........................................................)</p>
+                    <div className="mb-2">ลงชื่อ
+                        {signatureUrl ? (
+                            <span className="inline-block mx-2">
+                                <img src={signatureUrl} alt="Signature" crossOrigin="anonymous" className="inline-block max-h-[50px] object-contain" />
+                            </span>
+                        ) : (
+                            <span className="inline-block border-b border-dotted border-slate-400 w-[300px] h-[50px] mx-2"></span>
+                        )}
+                        ผู้ยินยอม
+                    </div>
+                    <p className="mt-2">({applicant?.full_name || '...........................................................'})</p>
                 </div>
 
                 <div className="text-center mt-6">
@@ -367,11 +376,29 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
                 <div className="grid grid-cols-2 gap-8 mt-6">
                     <div className="text-center">
-                        <p>ลงชื่อ................................................. พยาน</p>
+                        <div className="mb-2">ลงชื่อ
+                            {witness1Signature ? (
+                                <span className="inline-block mx-2">
+                                    <img src={witness1Signature} alt="Witness 1 Signature" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
+                                </span>
+                            ) : (
+                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2"></span>
+                            )}
+                            พยาน
+                        </div>
                         <p className="mt-2">({formData?.witnessName1 || '...........................................................'})</p>
                     </div>
                     <div className="text-center">
-                        <p>ลงชื่อ................................................. พยาน</p>
+                        <div className="mb-2">ลงชื่อ
+                            {witness2Signature ? (
+                                <span className="inline-block mx-2">
+                                    <img src={witness2Signature} alt="Witness 2 Signature" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
+                                </span>
+                            ) : (
+                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2"></span>
+                            )}
+                            พยาน
+                        </div>
                         <p className="mt-2">({formData?.witnessName2 || '...........................................................'})</p>
                     </div>
                 </div>
