@@ -376,7 +376,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                 </p>
 
                 <p className="text-center mt-8">
-                    ช้างตำจำดีทำแนะถิ้งเจ้าซออการบมีถำดีช่อที่ยนอองเบนริงมิถใด้นื่อเนอนดีส่อถั้งนให้มื่ท่จงผู้สมบดทอากบำนาน
+                    ข้าพเจ้าได้อ่านและเข้าใจข้อความดังกล่าวโดยตลอดแล้วจึงได้ลงลายมือชื่อไว้เป็นสำคัญต่อหน้าพยาน
                 </p>
 
                 <div className="text-center mt-6 leading-relaxed">
@@ -385,7 +385,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                 </div>
 
                 <div className="text-center mt-6">
-                    <p>ยอรับรองจำผู้มีชื่อถิเที่ยมเบิมันมอมให้ที่พิคอนอเบิมันมอมถี้อคำนามแจำริง</p>
+                    <p>ขอรับรองว่าผู้มีสิทธิให้ความยินยอมได้ให้ความยินยอมต่อหน้าพยานจริง</p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-8 mt-6">
