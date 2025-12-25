@@ -2,8 +2,8 @@ import Admin from './pages/Admin';
 import Application from './pages/Application';
 import Home from './pages/Home';
 import PDFPreview from './pages/PDFPreview';
-import UserDashboard from './pages/UserDashboard';
-import UserLogin from './pages/UserLogin';
+import userDashboard from './pages/user-dashboard';
+import userLogin from './pages/user-login';
 import __Layout from './Layout.jsx';
 
 
@@ -12,8 +12,8 @@ export const PAGES = {
     "Application": Application,
     "Home": Home,
     "PDFPreview": PDFPreview,
-    "UserDashboard": UserDashboard,
-    "UserLogin": UserLogin,
+    "user-dashboard": userDashboard,
+    "user-login": userLogin,
 }
 
 export const pagesConfig = {
