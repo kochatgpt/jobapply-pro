@@ -306,6 +306,109 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                 www.ko.in.th Strategy . AI . DX . Sustainability
             </div>
         </div>
+
+        {/* Page 4 */}
+        <div 
+            className="bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
+            style={{ 
+                width: '210mm', 
+                minHeight: '297mm',
+                fontFamily: 'Sarabun, sans-serif',
+                pageBreakBefore: 'always'
+            }}
+        >
+            {/* Header with Logo */}
+            <div className="flex justify-end mb-8">
+                {appLogo ? (
+                    <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[60px] w-auto object-contain" />
+                ) : (
+                    <div className="h-[60px] w-[100px] bg-slate-100 rounded flex items-center justify-center text-[10px] text-slate-400">LOGO</div>
+                )}
+            </div>
+
+            {/* Content */}
+            <div className="space-y-4">
+                <p className="text-justify leading-relaxed ml-4">
+                    มาตรการกำกับการสมอบและคุ้มครอบกับที่ซึ้ดึงดนนเขลึอส่งเอิบงนเบมณอย์ปอข้อมูลส่วนบุคคล โดยระนเวักงคามความสบท่ 
+                    บอองที่ตั้งเนื้อ อาที หวบเปมมเทมการที่มีประสิทธิภาพถึงนั่อเจับกบเบนับสิ้งข้อมูลส่วนบุคคลไบม่มีมิถิขี
+                </p>
+
+                <div>
+                    <p className="font-bold mb-2">3.2 การกำกับการสมมิใช้ของข้อมูลส่วนบุคคล</p>
+                    <p className="text-justify leading-relaxed ml-4">
+                        บอกเทนื่องการเที่มีการถามความสี้นตามที่งนใบ้มั่มถุนาลี่จ ผู้ประมวลผลข้อมูลส่วนบุคคลยืนที่รักการถามความสั้น 
+                        ของข้อมูลส่วนบุคคลกรทำนามรทำขุนาม้อให้ดอกงเจอชรทำดินขรู้ข้อความรับถิ้งต่งที่อนตั้นเบมหะนักนิกกรงา
+                    </p>
+                </div>
+
+                <div>
+                    <p className="font-bold mb-2">4. สิทธิในการร้องเสอบ</p>
+                    <p className="text-justify leading-relaxed ml-4">
+                        ผู้ประมวลผลข้อมูลส่วนบุคคลกรจะไม้ผู้ควบคมข้อมูลส่วนบุคคลยืนที่รักเบินการร้องเสอบ สอมที่อ วเอนมุมู้ธิทิยการ มาตราการแนะ 
+                        วเอนมิทิยการความเปอองตที่ของข้อมูลส่วนบุคคลกรอมผู้ประมวลผลข้อมูลส่วนบุคคลใจ้
+                    </p>
+                </div>
+
+                <p className="text-justify leading-relaxed">
+                    5. ในกรณีที่บริจิท ณณ แบนด์ ไดซิธเต็มส์ แบนด์ คอนซันติ้ง ตำดัถ มีการเข้าจับเก็บหกึ่งหรือเก็บข้อมูลส่วนบุคคลไม่ซำกำประมทร 
+                    (ต่างจ) ช้างตำจันมยอมไปจังบิจิท ณณ แบนด์ ไดซิธเต็มส์ แบนด์ คอนซันติ้ง ตำดัถ ท่านกะทำตำบั้งการจำส้องจงที่
+                </p>
+
+                <p className="text-justify leading-relaxed">
+                    6. ที่สิติ่ชอบควรจันมื่อมยและนะสออาทิติชอบความรื้อมันมอย ช้างตำจางถิติชอบความรื้อมยมอยท้งหมทนรีอส่งบไดส่งจงไบ้ซาม 
+                    หนักถีออลเบเนินตำต่างถพั้งมามแจ้งในไบจิท ณณ แบนด์ ไดซิธเต็มส์ แบนด์ คอนซันติ้ง ตำดัถ หวามเปินหนักถีแอะทริจิท ณณ แบนด์ 
+                    ไดซิธเต็มส์ แบนด์ คอนซันติ้ง ตำดัถ อาจงบมากันถ็อกข้อตามก้าวนัญ
+                </p>
+
+                <p className="text-justify leading-relaxed">
+                    7. การเที่ชอบควรจันมื่อมยนช้างตำเง้มใม่มีสอกระหบตอกรท์างำเบินกำใดๆ ท้งโดจิท ณณ แบนด์ ไดซิธเต็มส์ แบนด์ คอนซันติ้ง 
+                    ตำดัถ ได้กำเนินกำดำแน้จ
+                </p>
+
+                <p className="text-justify leading-relaxed">
+                    8. ในกรณีที่ กำถติชอบควรจันมื่อมยเมื่อติชอบกระหบตจิดเจิทริงหรีนอห์ที่เข้าสอบส่งทแจ้งจ ช้างตำจันมยนื้อมองกระหบตเบิ่อจึ้งท้จาง 
+                    กระนับใส้
+                </p>
+
+                <p className="text-justify leading-relaxed ml-4">
+                    ช้างตำต่อซื่อนื่อมการข้อมูลส่วนบุคคลที่ใย้รักเบนบิจิท ณณ แบนด์ ไดซิธเต็มส์ แบนด์ คอนซันติ้ง ตำดัถ เปินชีนัจผูงที่มองทดเจำริง 
+                    หากมีทิยการบัดใส้ นิบชีนัมองการที่ใย้มื่อมนสมที่เบมหำเดื่ท ช้างตำจับจันถิดตงเบเรถนในการบมีทางที่มี้อตันขื้อ
+                </p>
+
+                <p className="text-center mt-8">
+                    ช้างตำจำดีทำแนะถิ้งเจ้าซออการบมีถำดีช่อที่ยนอองเบนริงมิถใด้นื่อเนอนดีส่อถั้งนให้มื่ท่จงผู้สมบดทอากบำนาน
+                </p>
+
+                <div className="text-center mt-6 leading-relaxed">
+                    <p>ตงที่อ........................................................................................ผู้มีมือออย</p>
+                    <p className="mt-2">(...........................................................)</p>
+                </div>
+
+                <div className="text-center mt-6">
+                    <p>ยอรับรองจำผู้มีชื่อถิเที่ยมเบิมันมอมให้ที่พิคอนอเบิมันมอมถี้อคำนามแจำริง</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-8 mt-6">
+                    <div className="text-center">
+                        <p>ตงที่อ................................................. พยาม</p>
+                        <p className="mt-2">(...........................................................)</p>
+                    </div>
+                    <div className="text-center">
+                        <p>ตงที่อ................................................. พยาม</p>
+                        <p className="mt-2">(...........................................................)</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer */}
+            <div className="absolute bottom-[10mm] right-[10mm] text-[10px] text-slate-500">
+                หน้าที่ 4 | 4
+            </div>
+            <div className="absolute bottom-[10mm] left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center">
+                FM-HRD-14 Rev.04 03/05/66<br/>
+                www.ko.in.th Strategy . AI . DX . Sustainability
+            </div>
+        </div>
         </>
     );
 }
