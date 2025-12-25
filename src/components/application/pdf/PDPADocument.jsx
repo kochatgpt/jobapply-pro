@@ -88,32 +88,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                 </div>
             </div>
 
-            {/* Signature Section */}
-            <div className="mt-12">
-                <div className="flex justify-end items-center gap-4 mb-2">
-                    <span>ลงชื่อ</span>
-                    {signatureUrl ? (
-                        <div className="inline-flex flex-col items-center w-[200px]">
-                            <img src={signatureUrl} alt="Signature" crossOrigin="anonymous" className="max-h-[50px] object-contain mb-1" />
-                            <div className="border-b-[1.5px] border-dotted border-slate-400 w-full"></div>
-                        </div>
-                    ) : (
-                        <div className="border-b-[1.5px] border-dotted border-slate-400 w-[200px] h-[50px] inline-block"></div>
-                    )}
-                    <span>ผู้สมัคร</span>
-                </div>
-                
-                <div className="flex justify-end items-end gap-2 mb-2">
-                    <span>ตัวบรรจง (</span>
-                    <div className="border-b-[1.5px] border-dotted border-slate-400 w-[200px] text-center">{applicant?.full_name || ''}</div>
-                    <span>)</span>
-                </div>
-                
-                <div className="flex justify-end items-end gap-2">
-                    <span>วันที่</span>
-                    <div className="border-b-[1.5px] border-dotted border-slate-400 w-[150px] text-center">{signatureDate || ''}</div>
-                </div>
-            </div>
+
 
             {/* Footer */}
             <div className="absolute bottom-[10mm] right-[10mm] text-[10px] text-slate-500">
@@ -393,11 +368,11 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                 <div className="grid grid-cols-2 gap-8 mt-6">
                     <div className="text-center">
                         <p>ลงชื่อ................................................. พยาน</p>
-                        <p className="mt-2">(...........................................................)</p>
+                        <p className="mt-2">({formData?.witnessName1 || '...........................................................'})</p>
                     </div>
                     <div className="text-center">
                         <p>ลงชื่อ................................................. พยาน</p>
-                        <p className="mt-2">(...........................................................)</p>
+                        <p className="mt-2">({formData?.witnessName2 || '...........................................................'})</p>
                     </div>
                 </div>
             </div>

@@ -16,10 +16,13 @@ export default function PDPAForm() {
     const [generatingPdf, setGeneratingPdf] = useState(false);
     const [signatureUrl, setSignatureUrl] = useState('');
     const [signatureDate, setSignatureDate] = useState('');
+    const [showForm, setShowForm] = useState(false);
     const [formData, setFormData] = useState({
         writtenAt: '',
         writtenDate: '',
-        lineId: ''
+        lineId: '',
+        witnessName1: '',
+        witnessName2: ''
     });
 
     useEffect(() => {
@@ -122,6 +125,12 @@ export default function PDPAForm() {
                     </Button>
                     <div className="flex gap-2">
                         <Button 
+                            onClick={() => setShowForm(true)}
+                            className="bg-indigo-600 hover:bg-indigo-700"
+                        >
+                            กรอกข้อมูลและลงนาม
+                        </Button>
+                        <Button 
                             variant="outline"
                             onClick={() => handleGeneratePDF('preview')}
                             disabled={generatingPdf}
@@ -132,7 +141,7 @@ export default function PDPAForm() {
                         <Button 
                             onClick={() => handleGeneratePDF('download')}
                             disabled={generatingPdf}
-                            className="bg-indigo-600 hover:bg-indigo-700"
+                            className="bg-green-600 hover:bg-green-700"
                         >
                             {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <FileDown className="w-4 h-4 mr-2" />}
                             ดาวน์โหลด PDF
@@ -159,56 +168,96 @@ export default function PDPAForm() {
                     </CardContent>
                 </Card>
 
-                {/* Form Fields */}
-                <Card>
-                    <CardHeader className="border-b bg-slate-50">
-                        <CardTitle>กรอกข้อมูลเพิ่มเติม</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">เขียนที่</label>
-                                <input
-                                    type="text"
-                                    value={formData.writtenAt}
-                                    onChange={(e) => setFormData({ ...formData, writtenAt: e.target.value })}
-                                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                    placeholder="สถานที่เขียนเอกสาร"
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">วันที่เขียน</label>
-                                <input
-                                    type="date"
-                                    value={formData.writtenDate}
-                                    onChange={(e) => setFormData({ ...formData, writtenDate: e.target.value })}
-                                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-2">Line ID</label>
-                                <input
-                                    type="text"
-                                    value={formData.lineId}
-                                    onChange={(e) => setFormData({ ...formData, lineId: e.target.value })}
-                                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                    placeholder="Line ID ของคุณ"
-                                />
-                            </div>
-                        </div>
-                    </CardContent>
-                </Card>
+                {/* Form Modal */}
+                {showForm && (
+                    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                        <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+                            <CardHeader className="border-b bg-slate-50">
+                                <CardTitle>กรอกข้อมูลและลงนาม</CardTitle>
+                            </CardHeader>
+                            <CardContent className="p-6 space-y-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">เขียนที่</label>
+                                        <input
+                                            type="text"
+                                            value={formData.writtenAt}
+                                            onChange={(e) => setFormData({ ...formData, writtenAt: e.target.value })}
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                            placeholder="สถานที่เขียนเอกสาร"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">วันที่เขียน</label>
+                                        <input
+                                            type="date"
+                                            value={formData.writtenDate}
+                                            onChange={(e) => setFormData({ ...formData, writtenDate: e.target.value })}
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">Line ID</label>
+                                        <input
+                                            type="text"
+                                            value={formData.lineId}
+                                            onChange={(e) => setFormData({ ...formData, lineId: e.target.value })}
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                            placeholder="Line ID ของคุณ"
+                                        />
+                                    </div>
+                                </div>
 
-                {/* Instructions */}
-                <Card>
-                    <CardContent className="p-6">
-                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                            <p className="text-sm text-blue-800">
-                                <strong>คำแนะนำ:</strong> กรุณากรอกข้อมูลเพิ่มเติมให้ครบถ้วน จากนั้นดาวน์โหลด PDF เพื่อพิมพ์และลงนามจริง
-                            </p>
-                        </div>
-                    </CardContent>
-                </Card>
+                                <div className="border-t pt-4">
+                                    <h3 className="font-semibold text-slate-800 mb-4">ข้อมูลพยาน</h3>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">ชื่อพยานคนที่ 1</label>
+                                            <input
+                                                type="text"
+                                                value={formData.witnessName1}
+                                                onChange={(e) => setFormData({ ...formData, witnessName1: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                                placeholder="ชื่อ-สกุล พยานคนที่ 1"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">ชื่อพยานคนที่ 2</label>
+                                            <input
+                                                type="text"
+                                                value={formData.witnessName2}
+                                                onChange={(e) => setFormData({ ...formData, witnessName2: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                                placeholder="ชื่อ-สกุล พยานคนที่ 2"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                                    <p className="text-sm text-amber-800">
+                                        <strong>หมายเหตุ:</strong> กรุณากรอกข้อมูลให้ครบถ้วน หลังจากนั้นสามารถดาวน์โหลด PDF เพื่อพิมพ์และลงนามจริง
+                                    </p>
+                                </div>
+
+                                <div className="flex justify-end gap-2 pt-4">
+                                    <Button 
+                                        variant="outline"
+                                        onClick={() => setShowForm(false)}
+                                    >
+                                        ยกเลิก
+                                    </Button>
+                                    <Button 
+                                        onClick={() => setShowForm(false)}
+                                        className="bg-indigo-600 hover:bg-indigo-700"
+                                    >
+                                        บันทึก
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
+                )}
             </div>
         </div>
     );
