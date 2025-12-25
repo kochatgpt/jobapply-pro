@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 
-export default function PDPADocument({ applicant, signatureUrl, signatureDate }) {
+export default function PDPADocument({ applicant, signatureUrl, signatureDate, formData = {} }) {
     const { data: settings } = useQuery({
         queryKey: ['system_settings_layout'],
         queryFn: () => base44.entities.SystemSetting.list(),
@@ -38,8 +38,10 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate })
 
             {/* Date and Place */}
             <div className="mb-6 text-center leading-relaxed">
-                <div>เขียนที่ ................................................ ................ ................ ................ ................ ................ ................ ................ ................ ................ ................ ................ ................ .............</div>
-                <div>เมื่อวันที่ ............... เดือน ........................... พ.ศ ...........................</div>
+                <div>เขียนที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2">{formData.writtenAt || ''}</span></div>
+                <div>เมื่อวันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2">
+                    {formData.writtenDate ? new Date(formData.writtenDate).toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}
+                </span></div>
             </div>
 
             {/* Introduction */}
@@ -56,7 +58,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate })
                     เลขบัตรประจำตัวประชาชน <span className="border-b border-dotted border-slate-400 inline-block w-[150px] text-center">{p.id_card || ''}</span>
                 </p>
                 <p>
-                    เบอร์โทร <span className="border-b border-dotted border-slate-400 inline-block w-[100px] text-center">{p.mobile_phone || ''}</span> Line ID <span className="border-b border-dotted border-slate-400 inline-block w-[150px] text-center"></span> เป็นข้าพจจมูลผู้ส่วนบุคคล ข้าพเจ้า ยินยอมให้ทีทริทยข้อมูลส่วนบุคคล ไข่ให้ลงข่ามอื่นยหรือบุคคลสามที่จับความสำคัญส่วนตัวของข้าพเจ้าได้ ข้าพเจ้ายินยอมให้บริษัท งก แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด เป็นผู้ควบคุมข้อมูลส่วนบุคคล เก็บรวบรวมข้อมูลส่วนบุคคล รวมถึงข้อมูลที่มีความอ่อนไหวของข้าพเจ้าที่สูงของข้าพเจ้า เพื่อใช้ตามวัตถุประสงค์ที่เกี่ยวนามเว้นข้างต้นข้าพเจ้ายินยอมให้ประมวลผลเก็บรวบรวมหรือนางหรือเปิดเผยข้อมูลส่วนบุคคล เพื่อเสมือนพจก้าเวลางกตามช่อมตกพการประดูพรชส่วน Line ID ของข้าพเจ้าข้าให้เปินอยู่ในบรรดาที่ต้องข่อมนองเก็าทลาฉะบส่วนบุคคล
+                    เบอร์โทร <span className="border-b border-dotted border-slate-400 inline-block w-[100px] text-center">{p.mobile_phone || ''}</span> Line ID <span className="border-b border-dotted border-slate-400 inline-block w-[150px] text-center">{formData.lineId || ''}</span> เป็นข้าพจจมูลผู้ส่วนบุคคล ข้าพเจ้า ยินยอมให้ทีทริทยข้อมูลส่วนบุคคล ไข่ให้ลงข่ามอื่นยหรือบุคคลสามที่จับความสำคัญส่วนตัวของข้าพเจ้าได้ ข้าพเจ้ายินยอมให้บริษัท งก แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด เป็นผู้ควบคุมข้อมูลส่วนบุคคล เก็บรวบรวมข้อมูลส่วนบุคคล รวมถึงข้อมูลที่มีความอ่อนไหวของข้าพเจ้าที่สูงของข้าพเจ้า เพื่อใช้ตามวัตถุประสงค์ที่เกี่ยวนามเว้นข้างต้นข้าพเจ้ายินยอมให้ประมวลผลเก็บรวบรวมหรือนางหรือเปิดเผยข้อมูลส่วนบุคคล เพื่อเสมือนพจก้าเวลางกตามช่อมตกพการประดูพรชส่วน Line ID ของข้าพเจ้าข้าให้เปินอยู่ในบรรดาที่ต้องข่อมนองเก็าทลาฉะบส่วนบุคคล
                 </p>
             </div>
 

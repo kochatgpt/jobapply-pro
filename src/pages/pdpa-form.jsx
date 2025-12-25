@@ -16,6 +16,11 @@ export default function PDPAForm() {
     const [generatingPdf, setGeneratingPdf] = useState(false);
     const [signatureUrl, setSignatureUrl] = useState('');
     const [signatureDate, setSignatureDate] = useState('');
+    const [formData, setFormData] = useState({
+        writtenAt: '',
+        writtenDate: '',
+        lineId: ''
+    });
 
     useEffect(() => {
         const id = localStorage.getItem('user_applicant_id');
@@ -147,6 +152,47 @@ export default function PDPAForm() {
                                     applicant={applicant}
                                     signatureUrl={signatureUrl}
                                     signatureDate={signatureDate}
+                                    formData={formData}
+                                />
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                {/* Form Fields */}
+                <Card>
+                    <CardHeader className="border-b bg-slate-50">
+                        <CardTitle>กรอกข้อมูลเพิ่มเติม</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-2">เขียนที่</label>
+                                <input
+                                    type="text"
+                                    value={formData.writtenAt}
+                                    onChange={(e) => setFormData({ ...formData, writtenAt: e.target.value })}
+                                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    placeholder="สถานที่เขียนเอกสาร"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-2">วันที่เขียน</label>
+                                <input
+                                    type="date"
+                                    value={formData.writtenDate}
+                                    onChange={(e) => setFormData({ ...formData, writtenDate: e.target.value })}
+                                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-2">Line ID</label>
+                                <input
+                                    type="text"
+                                    value={formData.lineId}
+                                    onChange={(e) => setFormData({ ...formData, lineId: e.target.value })}
+                                    className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    placeholder="Line ID ของคุณ"
                                 />
                             </div>
                         </div>
@@ -158,7 +204,7 @@ export default function PDPAForm() {
                     <CardContent className="p-6">
                         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                             <p className="text-sm text-blue-800">
-                                <strong>คำแนะนำ:</strong> กรุณาตรวจสอบข้อมูลในเอกสารให้ถูกต้อง จากนั้นดาวน์โหลด PDF เพื่อพิมพ์และลงนามจริง
+                                <strong>คำแนะนำ:</strong> กรุณากรอกข้อมูลเพิ่มเติมให้ครบถ้วน จากนั้นดาวน์โหลด PDF เพื่อพิมพ์และลงนามจริง
                             </p>
                         </div>
                     </CardContent>
