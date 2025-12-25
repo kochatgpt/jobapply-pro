@@ -204,7 +204,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
             </div>
 
             {/* Continued Definitions */}
-            <div className="mb-6 ml-8 text-justify leading-relaxed space-y-3">
+            <div className="mb-6 ml-8 text-justify leading-[1.4] space-y-2">
                 <p>
                   <span className="font-bold">1.5 "ผู้ประมวลผลข้อมูลส่วนบุคคล"</span> หมายถึง บริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด ที่ดำเนินการเกี่ยวกับ
                   การเก็บรวบรวม ใช้ หรือเปิดเผยข้อมูลส่วนบุคคลตามคำสั่ง หรือในนามของผู้ควบคุมข้อมูลส่วนบุคคล
@@ -234,13 +234,13 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
             </div>
 
             {/* Section 2 */}
-            <div className="mb-6">
-                <p className="font-bold mb-3">2. สิทธิของเจ้าของข้อมูลส่วนบุคคล</p>
+            <div className="mb-4">
+                <p className="font-bold mb-2">2. สิทธิของเจ้าของข้อมูลส่วนบุคคล</p>
                 
-                <div className="ml-4 space-y-4">
+                <div className="ml-4 space-y-3">
                     <div>
-                        <p className="font-bold mb-2">2.1 การเข้าถึงข้อมูลส่วนบุคคล</p>
-                        <p className="ml-4 text-justify leading-relaxed">
+                        <p className="font-bold mb-1.5">2.1 การเข้าถึงข้อมูลส่วนบุคคล</p>
+                        <p className="ml-4 text-justify leading-[1.4]">
                           ผู ้ประมวลผลข้อมูลส่วนบุคคลจะสนับสนุนให้ผู ้ควบคุมข้อมูลส่วนบุคคลสามารถเข้าถึงข้อมูลส่วนบุคคลของเจ้าของ
                           ข้อมูลส่วนบุคคลได้ ทั้งนี้ เพื่อให้ผู้ควบคุมข้อมูลส่วนบุคคลสามารถดำเนินการใดๆ เพื ่อตอบสนองต่อคำร้องขอของ
                           เจ้าของข้อมูลส่วนบุคคลซึ่งอาจมีสิทธิที่จะเรียกดู แก้ไข หรือลบข้อมูลส่วนบุคคลของตนได้ตามกฎหมาย
@@ -248,8 +248,8 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                     </div>
                     
                     <div>
-                        <p className="font-bold mb-2">2.2 การร้องขอโดยเจ้าของข้อมูลส่วนบุคคล</p>
-                        <p className="ml-4 text-justify leading-relaxed">
+                        <p className="font-bold mb-1.5">2.2 การร้องขอโดยเจ้าของข้อมูลส่วนบุคคล</p>
+                        <p className="ml-4 text-justify leading-[1.4]">
                           หากเจ้าของข้อมูลส่วนบุคคล ต้องการยื่นคำขอใช้สิทธิใดๆ ที่เป็นสิทธิของเจ้าของข้อมูลส่วนบุคคลตามกฎหมายคุ้มครอง
                           ข้อมูลส่วนบุคคล ให้ผู้ประมวลผลข้อมูลส่วนบุคคลแจ้งวิธีการยื่นคำขอดังกล่าวแก่เจ้าของข้อมูลส่วนบุคคลและแจ้งให้ผู้
                           ควบคุมข้อมูลส่วนบุคคลทราบทันที ท Email: <span className="underline">hr@ko.in.th</span> ทั้งนี้ ผู้ประมวลผลข้อมูลส่วนบุคคลไม่มีสิทธิดำเนินการ
@@ -262,12 +262,12 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
             </div>
 
             {/* Section 3 */}
-            <div className="mb-6">
-                <p className="font-bold mb-3">3. มาตรการคุ้มครองความปลอดภัยของข้อมูลส่วนบุคคล</p>
+            <div className="mb-4">
+                <p className="font-bold mb-2">3. มาตรการคุ้มครองความปลอดภัยของข้อมูลส่วนบุคคล</p>
                 
                 <div className="ml-4">
-                    <p className="font-bold mb-2">3.1 มาตรการรักษาความปลอดภัย</p>
-                    <p className="ml-4 text-justify leading-relaxed">
+                    <p className="font-bold mb-1.5">3.1 มาตรการรักษาความปลอดภัย</p>
+                    <p className="ml-4 text-justify leading-[1.4]">
                       หากผู ้ประมวลผลข้อมูลส่วนบุคคลจะต้องจัดเก็บข้อมูลส่วนบุคคลใดๆ ตามที่ผู้ควบคุมข้อมูลส่วนบุคคลให้สิทธิ หรือมี
                       คำสั่งเป็นลายลักษณ์อักษร ให้ผู้ประมวลผลข้อมูลส่วนบุคคลจัดเก็บอย่างระมัดระวัง ต้องตรวจสอบ จัดให้มีและคงไว้ซึ่ง
                     </p>
