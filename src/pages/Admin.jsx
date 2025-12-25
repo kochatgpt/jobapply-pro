@@ -1,14 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Users, Settings as SettingsIcon, LayoutDashboard } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
+import { base44 } from '@/api/base44Client';
 
 import ApplicantList from '@/components/admin/ApplicantList';
 import ApplicantDetail from '@/components/admin/ApplicantDetail';
 import SettingsPanel from '@/components/admin/SettingsPanel';
+import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
 export default function AdminPage() {
+    const navigate = useNavigate();
     const [selectedApplicant, setSelectedApplicant] = useState(null);
     const [activeView, setActiveView] = useState("dashboard"); // dashboard, settings
+    const [isAuthorized, setIsAuthorized] = useState(null);
+
+    useEffect(() => {
+        const checkAccess = async () => {
+            // Check if employee is logged in
+            const employeeId = localStorage.getItem('user_applicant_id');
+            if (employeeId) {
+                // Employee logged in, redirect to user dashboard
+                navigate('/user-dashboard');
+                return;
+            }
+
+            // Check if admin is logged in
+            try {
+                const user = await base44.auth.me();
+                if (user) {
+                    setIsAuthorized(true);
+                } else {
+                    setIsAuthorized(false);
+                }
+            } catch (error) {
+                setIsAuthorized(false);
+            }
+        };
+        checkAccess();
+    }, [navigate]);
+
+    if (isAuthorized === null) {
+        return (
+            <div className="h-[calc(100vh-64px)] flex items-center justify-center">
+                <div className="text-slate-400">กำลังตรวจสอบสิทธิ์...</div>
+            </div>
+        );
+    }
+
+    if (isAuthorized === false) {
+        return <UserNotRegisteredError />;
+    }
 
     return (
         <div className="h-[calc(100vh-64px)] bg-slate-100 flex flex-col overflow-hidden">
