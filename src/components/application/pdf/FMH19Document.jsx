@@ -40,30 +40,30 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
 
             {/* Date */}
             <div className="mb-6 leading-[1.4] flex justify-end">
-                <div>วันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center px-2 ${formData.day ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.day && { minHeight: '1.2em' }) }}>{formData.day || '\u00A0'}</span> 
-                เดือน <span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 ${formData.month ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.month && { minHeight: '1.2em' }) }}>{formData.month || '\u00A0'}</span> 
-                พ.ศ. <span className={`border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center px-2 ${formData.year ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.year && { minHeight: '1.2em' }) }}>{formData.year || '\u00A0'}</span>
+                <div>วันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center px-2 align-baseline">{formData.day || ''}</span> 
+                เดือน <span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 align-baseline">{formData.month || ''}</span> 
+                พ.ศ. <span className="border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center px-2 align-baseline">{formData.year || ''}</span>
                 </div>
             </div>
 
             {/* Recipient */}
             <div className="mb-1 text-justify leading-[1.4]">
                 <p className="indent-8">
-                    ข้าพเจ้า นาย/นาง/นางสาว <span className={`border-b border-dotted border-slate-400 inline-block min-w-[400px] text-center px-2 ${applicant?.full_name ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!applicant?.full_name && { minHeight: '1.2em' }) }}>{applicant?.full_name || '\u00A0'}</span>
+                    ข้าพเจ้า นาย/นาง/นางสาว <span className="border-b border-dotted border-slate-400 inline-block min-w-[400px] text-center px-2">{applicant?.full_name || ''}</span>
                 </p>
                 <p>
                     ได้รับการว่าจ้างจาก บริษัท เค แอนด์โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด ที่ตั้งสำนักงานใหญ่ เลขที่ 15,17 ซอยกรุง 
                     ธนบุรี 4 ถนนกรุงธนบุรี แขวงบางลำภูล่าง เขตคลองสาน กรุงเทพมหานคร 10600 โทร. 662-860-6618
-                    FAX. 662-860-6617 ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า "บริษัท"ให้เริ่มปฏิบัติงานในวันที่<span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2" style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>&nbsp;</span> ตำแหน่ง
-                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2 ${formData.position ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.position && { minHeight: '1.2em' }) }}>{formData.position || '\u00A0'}</span> แผนก
-                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2 ${formData.department ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.department && { minHeight: '1.2em' }) }}>{formData.department || '\u00A0'}</span> ตกลงและ
+                    FAX. 662-860-6617 ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า “บริษัท”ให้เริ่มปฏิบัติงานในวันที่<span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2"></span> ตำแหน่ง
+                    <span className="border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2">{formData.position || ''}</span> แผนก
+                    <span className="border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2">{formData.department || ''}</span> ตกลงและ
                 </p>
             </div>
 
             {/* Terms */}
             <div className="mb-4 text-justify leading-[1.4] space-y-2">
                 <p className="indent-8">
-                    ยินยอมเข้ารับการฝึกอบรม "หลักสูตรปฐมนิเทศพนักงานใหม่" ตามระเบียบของบริษัทฯมีกำหนดระยะเวลาการฝึกอบรม 3 วัน(ไม่นับรวมวันหยุด) เริ่มตั้งแต่วันที่.................................ถึงวันที่..................................โดยไม่ได้รับค่าจ้างหรือค่าตอบแทนใดๆ เพื่อเป็นการเตรียมความพร้อมให้กับพนักงานใหม่ก่อนเริ่มปฏิบัติงานจริงโดยการฝึกอบรมแบ่ง
+                    ยินยอมเข้ารับการฝึกอบรม “หลักสูตรปฐมนิเทศพนักงานใหม่” ตามระเบียบของบริษัทฯมีกำหนดระยะเวลาการฝึกอบรม 3 วัน(ไม่นับรวมวันหยุด) เริ่มตั้งแต่วันที่.................................ถึงวันที่..................................โดยไม่ได้รับค่าจ้างหรือค่าตอบแทนใดๆ เพื่อเป็นการเตรียมความพร้อมให้กับพนักงานใหม่ก่อนเริ่มปฏิบัติงานจริงโดยการฝึกอบรมแบ่ง
                 </p>
                 
                 <p className="font-bold">ออกเป็น 4 หัวข้อหลัก ดังนี้</p>
@@ -90,7 +90,7 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                 <div className="grid grid-cols-2 gap-8">
                     <div className="text-center">
                         <div className="mb-2">ลงชื่อ
-                            <span className="inline-block border-b border-dotted border-slate-400 w-[150px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>
+                            <span className="inline-block border-b border-dotted border-slate-400 w-[160px] h-[40px] mx-2 align-baseline"></span>
                             บริษัท/นายจ้าง
                         </div>
                         <p>({formData.authorizedPerson || '...............................................'})</p>
@@ -98,11 +98,11 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                     <div className="text-center mb-2">
                         <div className="mb-2">ลงชื่อ
                             {signatureUrl ? (
-                                <span className="inline-block mx-2" style={{ verticalAlign: 'baseline' }}>
+                                <span className="inline-block mx-2 align-baseline">
                                     <img src={signatureUrl} alt="Employee Signature" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
                                 </span>
                             ) : (
-                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>
+                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2 align-baseline"></span>
                             )}
                             ลูกจ้าง
                         </div>
@@ -114,7 +114,7 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
             {/* HR Person Certification */}
             <div className="mb-8 text-center leading-[1.4]">
                 <p className="mb-8">
-                    โดย <span className={`border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2 ${formData.hrPerson ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.hrPerson && { minHeight: '1.2em' }) }}>{formData.hrPerson || '\u00A0'}</span> กรรมการผู้มีอำนาจลงนามแทน
+                    โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2 align-baseline">{formData.hrPerson || ''}</span> กรรมการผู้มีอำนาจลงนามแทน
                 </p>
             </div>
 
@@ -124,11 +124,11 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                     <div className="text-center">
                         <div className="mb-2">ลงชื่อ
                             {witness1Signature ? (
-                                <span className="inline-block mx-2" style={{ verticalAlign: 'baseline' }}>
+                                <span className="inline-block mx-2 align-baseline">
                                     <img src={witness1Signature} alt="Witness 1" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
                                 </span>
                             ) : (
-                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>
+                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2 align-baseline"></span>
                             )}
                             พยาน
                         </div>
@@ -137,11 +137,11 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                     <div className="text-center">
                         <div className="mb-2">ลงชื่อ
                             {witness2Signature ? (
-                                <span className="inline-block mx-2" style={{ verticalAlign: 'baseline' }}>
+                                <span className="inline-block mx-2 align-baseline">
                                     <img src={witness2Signature} alt="Witness 2" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
                                 </span>
                             ) : (
-                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>
+                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2 align-baseline"></span>
                             )}
                             พยาน
                         </div>
