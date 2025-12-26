@@ -33,14 +33,14 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
 
             {/* Title */}
             <div className="text-center mb-6">
-                <h1 className="text-[18px] font-bold mb-1">หนังสือตกลงเข้ารับการทำงานทดลองงาน</h1>
+                <h1 className="text-[18px] font-bold mb-1">หนังสือตกลงเข้ารับการทำเรียกอบรม</h1>
                 <h2 className="text-[18px] font-bold">"หลักสูตรปฐมนิเทศพนักงานใหม่"</h2>
-                <p className="text-[14px] mt-2">(ฉบับกรณีสำหรับพนักงานทำงาน)</p>
+                <p className="text-[14px] mt-2">(แบบคำขอแบบหนึ่งฉบับสูตร 14 ข้อ)</p>
             </div>
 
             {/* Date */}
             <div className="mb-6 leading-[1.4] flex justify-end">
-                <div>วัน <span className="border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2">{formData.day || ''}</span> 
+                <div>วันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2">{formData.day || ''}</span> 
                 เดือน <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2">{formData.month || ''}</span> 
                 พ.ศ. <span className="border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2">{formData.year || ''}</span>
                 </div>
@@ -49,35 +49,39 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
             {/* Recipient */}
             <div className="mb-4 text-justify leading-[1.4]">
                 <p className="indent-8">
-                    ได้รับความอนุเคราะห์จากท่าน นาย/นาง/นางสาว <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2">{applicant?.full_name || ''}</span> ได้รับ
+                    ข้าพเจ้า นาย/นาง/นางสาว <span className="border-b border-dotted border-slate-400 inline-block min-w-[400px] text-center px-2">{applicant?.full_name || ''}</span> ได้รับ
                 </p>
                 <p>
-                    การอนุมัติให้เข้ารับการทำงานกับบริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด (เลขที่ 76/00 เขตหนองแขม กรุงเทพฯ 10160 โทร. 662-860-6618 
-                    FAX. 662-860-6617) ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า "บริษัท"ให้เริ่มปฏิบัติงานในวันที่<span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2">{formData.startDate || ''}</span> 
-                    ตำแหน่ง <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2">{formData.position || ''}</span> แผนก <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2">{formData.department || ''}</span> ตกลงและ
-                </p>
-                <p>
-                    ยินยอมเข้ารับการฝึกอบรม "หลักสูตรปฐมนิเทศพนักงานใหม่" ตามระเบียบของบริษัทฯ มีกำหนดระยะเวลาการ
-                    ฝึกอบรม 3 วัน(ไม่นับรวมวันหยุด) เริ่มตั้งแต่วันที่<span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2">{formData.trainingStartDate || ''}</span> ถึง วันที่<span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2">{formData.trainingEndDate || ''}</span> โดยไม่ได้รับค่าจ้าง
-                    หรือค่าตอบแทนใดๆ เพื่อเป็นการเตรียมความพร้อมให้กับพนักงานใหม่ก่อนเริ่มปฏิบัติงานจริง โดยการฝึกอบรมแบ่ง
-                    ออกเป็น 4 หัวข้อหลัก ดังนี้
+                    การอนุมัติจากผู้มีอำนาจของหน่วยงาน/หน่วยทำงานของข้าพเจ้าให้เข้ารับการทำเรียกอบรมตามหลักสูตร 15 ท่วงมา 
+                    คอร์ซ0 ชั่วโมงทำงานต่อหน้าท่านผู้ควบคุมของหน่วยงานหรือหน่วยทำงานของข้าพเจ้าตามข้อ 7600 โดย 662-860-6618 
+                    FAX. 662-860-6617 ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า “บริษัท”ให้เริ่มปฏิบัติงานในวันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center px-2">ตำแหน่ง</span>
+                    <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center px-2">{formData.position || ''}</span> แผนก
+                    <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2">{formData.department || ''}</span>
                 </p>
             </div>
 
             {/* Terms */}
             <div className="mb-4 text-justify leading-[1.4] space-y-2">
+                <p className="indent-8">
+                    ตระหนักและเข้าข้อเปลี่ยนแปลงอบรมดำเนินการขัดในความรับผิดชอบของผู้จัดเองฝังผู้อำนวยความรู้จักดีในอบรม ต้องเหนื่อยต่างเหนื่อยด้วยใจศรัทธาแล้ว เพื่อให้บรรดาความรู้ความข่าวและเทคโนโลยีใหม่ทางได้ทำงานยังบริหารข้อมาบางใน งงเงียงถังหรือผู้งงทางหลักษกร่วมมำสุลยเบราฟอกอยล์ในทุลก่านบางหลังอคทักจากใจต่างข้างด้วยบงคปร้องย้อนด้วยทับยวดใจบวง
+                </p>
+                
+                <p className="font-bold">ข้าพเจ้าได้อ่านเระบบสรุปและเกณฑุณะดังนี้</p>
+
                 <div className="ml-6 space-y-1.5">
-                    <p>1. ความตั้งใจจริงในการเข้าทำงาน ซึ่งพร้อมจะปฏิบัติงานตามหน้าที่ให้ดีที่สุด</p>
-                    <p>2. ความเต็มใจในการเข้ารับอบรม ที่ทางบริษัทมีความจำเป็นด้านความรู้ ความเข้าใจและปฏิบัติงานอื่น</p>
-                    <p>3. กรณีเลิกจ้าง เพื่อผลจากผลการปฏิบัติงานที่ไม่เป็นไปตามเกณฑ์ว่าจะต้องมีการคืนเงินค่าอบรม</p>
-                    <p>4. พึงสำนึกการศีลธรรมในอันที่จะอยู่ร่วมกับองค์กร ภายใต้ประมวลจริยธรรมที่ดี ใส่ใจต่อสังคมและชุมชนอย่างสม่ำเสมอ</p>
+                    <p>1. ความสนใจในเรียบรับครงของสถิ พัฒนามาครุยหงสัปดกัตพัฒนา 4 ทุปหสกงและ อย่าปหนาก</p>
+                    <p>2. ความตุ้นในการต้นเปลี่ยงอนื่อง ที่ให้ ร้องได้ฐาประกอบการทัปคำอนหลายการงานอาหกรการปปฏิบัติฐกอน</p>
+                    <p>3. กรึกษกอนรันเว็บสะดับปรัทแบบปรันกรณ์ทั้งการกำฒนการวก้าทมุงทั้งแกน</p>
+                    <p>4. ปัจนแจับจริงการคอบอันแผนการบากจัดนับสผลุกแผยเพิดับพิดำให้ใครมาพครงงาน</p>
                 </div>
             </div>
 
             {/* Agreement Statement */}
             <div className="mb-6 text-justify leading-[1.4]">
                 <p className="indent-8">
-                    ข้าพเจ้าได้อ่านและเข้าใจเงื่อนไขดังกล่าวข้างต้นนี้เป็นอย่างดีแล้ว และยินดีพร้อมใจจะปฏิบัติตามข้อกำหนด ระเบียบ และเงื่อนไขการทำงานต่างๆ อันดังได้กล่าวนี้ทุกประการ โดยมิอาจปฏิเสธ คัดค้าน แก้ไขเปลี่ยนแปลงได้ทางหนึ่งทางใด ข้าพเจ้าจะทุ่มเทปฏิบัติหน้าที่อื่นใดเพราะมีศรัทธาต่อบริษัท ในทุกข้อกำหนดและยินดีรับผิดชอบหากทำผิดใดปรากฏขึ้น เป็นเหตุให้บริษัทพิจารณาสั่งเลิกจ้างได้ทันที
+                    ข้าพเจ้าได้อ่านและระบบสรุปดันมขับตรงตังนี้และยกีแปร็จปทการใจทับการคับจับครงมาระวายอย่นระตถหินถังดัคุปจัตจตจนี้ 
+                    ปจัปแบบยรกรขับแผยแบบจัดเหบครบอันแผยฐิตงรังคับย์ะ องปรมาจัดดำเนับการอ้อแผยปครงวการตถกกจัตังด์้กทั้งกรณ์ตับันจับไซหทัปะทัครันยขอ 
+                    ปถทกรับปันยินอันยัถุภกจปริ์บุควดับปวส์ตูป์ท์งกรงทันพับแผยจันดังตใจจักปทบับดัตใดปราก์กรแผยชุอปขับจัท เย็ยจับตงดันจับรัถ
                 </p>
             </div>
 
