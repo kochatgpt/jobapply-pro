@@ -95,8 +95,8 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                         </div>
                         <p>({formData.authorizedPerson || '...................................................'})</p>
                     </div>
-                    <div className="text-center">
-                        <div className="mb-4">ลงชื่อ
+                    <div className="text-center mb-2">
+                        <div className="mb-2">ลงชื่อ
                             {signatureUrl ? (
                                 <span className="inline-block mx-2 align-baseline">
                                     <img src={signatureUrl} alt="Employee Signature" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
