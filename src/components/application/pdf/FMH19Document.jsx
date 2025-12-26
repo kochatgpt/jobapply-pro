@@ -33,9 +33,9 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
 
             {/* Title */}
             <div className="text-center mb-6">
-                <h1 className="text-[16px] font-bold mb-1">หนังสือตกลงเข้ารับการทำเรียกอบรม</h1>
-                <h2 className="text-[16px] font-bold">"หลักสูตรปฐมนิเทศพนักงานใหม่"</h2>
-                <p className="text-[16px] mt-2">(แบบคำขอแบบหนึ่งฉบับสูตร 14 ข้อ)</p>
+                <h1 className="text-[18px] font-bold mb-1">หนังสือตกลงเข้ารับการทำเรียกอบรม</h1>
+                <h2 className="text-[18px] font-bold">"หลักสูตรปฐมนิเทศพนักงานใหม่"</h2>
+                <p className="text-[14px] mt-2">(แบบคำขอแบบหนึ่งฉบับสูตร 14 ข้อ)</p>
             </div>
 
             {/* Date */}
