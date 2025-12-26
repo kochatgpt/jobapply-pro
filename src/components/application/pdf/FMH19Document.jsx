@@ -182,6 +182,71 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                 www.ko.in.th Strategy . AI . DX . Sustainability
             </div>
         </div>
+
+        {/* Page 2 */}
+        <div 
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[16px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
+            style={{ 
+                width: '210mm', 
+                minHeight: '297mm',
+                fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
+                pageBreakBefore: 'always'
+            }}
+        >
+            {/* Header with Logo */}
+            <div className="flex justify-end mb-8">
+                {appLogo ? (
+                    <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[60px] w-auto object-contain" />
+                ) : (
+                    <div className="h-[60px] w-[100px] bg-slate-100 rounded flex items-center justify-center text-[10px] text-slate-400">LOGO</div>
+                )}
+            </div>
+
+            {/* HR Person Certification */}
+            <div className="mb-8 text-center leading-[1.4]">
+                <p className="mb-8">
+                    โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2">{formData.hrPerson || ''}</span> กรรมการผู้มีอำนาจลงนามแทน
+                </p>
+            </div>
+
+            {/* Witnesses */}
+            <div className="mb-6 leading-[1.4]">
+                <div className="grid grid-cols-2 gap-8">
+                    <div className="text-center">
+                        <div className="mb-2">ลงชื่อ
+                            {witness1Signature ? (
+                                <span className="inline-block mx-2">
+                                    <img src={witness1Signature} alt="Witness 1" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
+                                </span>
+                            ) : (
+                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2"></span>
+                            )}
+                            พยาน
+                        </div>
+                        <p>({formData?.witnessName1 || '...................................................'})</p>
+                    </div>
+                    <div className="text-center">
+                        <div className="mb-2">ลงชื่อ
+                            {witness2Signature ? (
+                                <span className="inline-block mx-2">
+                                    <img src={witness2Signature} alt="Witness 2" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
+                                </span>
+                            ) : (
+                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2"></span>
+                            )}
+                            พยาน
+                        </div>
+                        <p>({formData?.witnessName2 || '...................................................'})</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer */}
+            <div className="absolute bottom-[10mm] left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center">
+                FM-HRD-19 Rev.00<br/>
+                www.ko.in.th Strategy . AI . DX . Sustainability
+            </div>
+        </div>
         </>
     );
 }
