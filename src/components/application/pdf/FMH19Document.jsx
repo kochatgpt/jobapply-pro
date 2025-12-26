@@ -54,7 +54,7 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                 <p>
                     ได้รับการว่าจ้างจาก บริษัท เค แอนด์โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด ที่ตั้งสำนักงานใหญ่ เลขที่ 15,17 ซอยกรุง 
                     ธนบุรี 4 ถนนกรุงธนบุรี แขวงบางลำภูล่าง เขตคลองสาน กรุงเทพมหานคร 10600 โทร. 662-860-6618
-                    FAX. 662-860-6617 ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า “บริษัท”ให้เริ่มปฏิบัติงานในวันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center px-2">ตำแหน่ง</span>
+                    FAX. 662-860-6617 ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า “บริษัท”ให้เริ่มปฏิบัติงานในวันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center px-2"></span> ตำแหน่ง
                     <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center px-2">{formData.position || ''}</span> แผนก
                     <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2">{formData.department || ''}</span> ตกลงและ
                 </p>
@@ -86,7 +86,7 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
             </div>
 
             {/* Signatures */}
-            <div className="mb-8 leading-[1.4]">
+            <div className="mb-10 leading-[1.4]">
                 <div className="grid grid-cols-2 gap-8">
                     <div className="text-center">
                         <div className="mb-2">ลงชื่อ
@@ -111,9 +111,35 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                 </div>
             </div>
 
+            {/* Footer */}
+            <div className="absolute bottom-[10mm] left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center">
+                FM-HRD-19 Rev.00<br/>
+                www.ko.in.th Strategy . AI . DX . Sustainability
+            </div>
+        </div>
+
+        {/* Page 2 */}
+        <div 
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[16px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
+            style={{ 
+                width: '210mm', 
+                minHeight: '297mm',
+                fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
+                pageBreakBefore: 'always'
+            }}
+        >
+            {/* Header with Logo */}
+            <div className="flex justify-end mb-8">
+                {appLogo ? (
+                    <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[60px] w-auto object-contain" />
+                ) : (
+                    <div className="h-[60px] w-[100px] bg-slate-100 rounded flex items-center justify-center text-[10px] text-slate-400">LOGO</div>
+                )}
+            </div>
+
             {/* HR Person Certification */}
-            <div className="mb-6 text-center leading-[1.4]">
-                <p>
+            <div className="mb-8 text-center leading-[1.4]">
+                <p className="mb-8">
                     โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2">{formData.hrPerson || ''}</span> กรรมการผู้มีอำนาจลงนามแทน
                 </p>
             </div>
@@ -156,8 +182,6 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                 www.ko.in.th Strategy . AI . DX . Sustainability
             </div>
         </div>
-
-
         </>
     );
 }
