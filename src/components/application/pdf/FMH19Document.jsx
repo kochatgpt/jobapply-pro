@@ -40,9 +40,9 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
 
             {/* Date */}
             <div className="mb-6 leading-[1.4] flex justify-end">
-                <div>วันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2 align-baseline">{formData.day || ''}</span> 
-                เดือน <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 align-baseline">{formData.month || ''}</span> 
-                พ.ศ. <span className="border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2 align-baseline">{formData.year || ''}</span>
+                <div>วันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center px-2 align-baseline">{formData.day || ''}</span> 
+                เดือน <span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 align-baseline">{formData.month || ''}</span> 
+                พ.ศ. <span className="border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center px-2 align-baseline">{formData.year || ''}</span>
                 </div>
             </div>
 
@@ -90,7 +90,7 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                 <div className="grid grid-cols-2 gap-8">
                     <div className="text-center">
                         <div className="mb-2">ลงชื่อ
-                            <span className="inline-block border-b border-dotted border-slate-400 w-[180px] h-[40px] mx-2 align-baseline"></span>
+                            <span className="inline-block border-b border-dotted border-slate-400 w-[150px] h-[40px] mx-2 align-baseline"></span>
                             บริษัท/นายจ้าง
                         </div>
                         <p>({formData.authorizedPerson || '...................................................'})</p>
