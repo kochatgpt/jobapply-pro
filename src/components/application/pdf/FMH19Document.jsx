@@ -85,32 +85,7 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                 </p>
             </div>
 
-            {/* Signatures Section - Page 1 */}
-            <div className="mb-6 leading-[1.4]">
-                <div className="grid grid-cols-2 gap-8">
-                    <div className="text-center">
-                        <div className="mb-2">ลงชื่อ
-                            <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2"></span>
-                            บริษัท/นายจ้าง
-                        </div>
-                        <p className="text-sm">(บริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด)</p>
-                        <p className="mt-2">({formData.authorizedPerson || '...................................................'})</p>
-                    </div>
-                    <div className="text-center">
-                        <div className="mb-2">ลงชื่อ
-                            {signatureUrl ? (
-                                <span className="inline-block mx-2">
-                                    <img src={signatureUrl} alt="Employee Signature" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
-                                </span>
-                            ) : (
-                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2"></span>
-                            )}
-                            ลูกจ้าง
-                        </div>
-                        <p className="mt-2">({applicant?.full_name || '...................................................'})</p>
-                    </div>
-                </div>
-            </div>
+
 
             {/* Footer */}
             <div className="absolute bottom-[10mm] left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center">
