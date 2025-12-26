@@ -118,17 +118,18 @@ export default function EmploymentContractDocument({ applicant, formData = {} })
                         2.1 อุตว่างจดำงมีก วันละ<span className={`border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2 ${formData.dailyRate ? 'pb-1' : ''}`}>{formData.dailyRate || ''}</span> บาท (<span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${formData.dailyRateText ? 'pb-1' : ''}`}>{formData.dailyRateText || ''}</span>บาบ/สิงวบ) และจัดจัดกื่อดิงรับงกำทุนงงชอน
                         เบอร์ขอนยบิเอเบิค) ห้นับ อุตดงนุจเอกงจตักงนเอกจ้างบาคอสจนเปนเงินดำสงจงกอนอ้างอำนิจงโดจหำงวนอนออนโดนบจำมยู่/เข้าบ้อน
                         จำนจจจงอ้คงกอ บ้าแ้อนนิบอนข้นจกับงำทำน เชื่จนจงาถจาง/เบงจองงจตำปิบอำกงอินโข้ โอนชัจบคจโดจอ้างดองจิอจ์ดำแปอก่ดำตีงนออเมิทบบงราขอนดำโคาดิงขำ
-                </p>
-            </div>
+                        </p>
+                        </div>
+                        </div>
 
-            {/* Footer */}
-            <div className="absolute bottom-[10mm] right-[10mm] text-[10px] text-slate-500">
-                หน้าที่ 1 | 9
-            </div>
-            <div className="absolute bottom-[10mm] left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center">
-                FM-HRD-11 Rev.01 17/02/66<br/>
-                www.ko.in.th Strategy . AI . DX . Sustainability
-            </div>
-        </div>
-    );
-}
+                        {/* Footer */}
+                        <div className="absolute bottom-[10mm] right-[10mm] text-[10px] text-slate-500">
+                        หน้าที่ 1 | 9
+                        </div>
+                        <div className="absolute bottom-[10mm] left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center">
+                        FM-HRD-11 Rev.01 17/02/66<br/>
+                        www.ko.in.th Strategy . AI . DX . Sustainability
+                        </div>
+                        </div>
+                        );
+                        }
