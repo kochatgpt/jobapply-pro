@@ -54,16 +54,16 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                 <p>
                     ได้รับการว่าจ้างจาก บริษัท เค แอนด์โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด ที่ตั้งสำนักงานใหญ่ เลขที่ 15,17 ซอยกรุง 
                     ธนบุรี 4 ถนนกรุงธนบุรี แขวงบางลำภูล่าง เขตคลองสาน กรุงเทพมหานคร 10600 โทร. 662-860-6618
-                    FAX. 662-860-6617 ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า “บริษัท”ให้เริ่มปฏิบัติงานในวันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center px-2"></span> ตำแหน่ง
-                    <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center px-2">{formData.position || ''}</span> แผนก
-                    <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2">{formData.department || ''}</span> ตกลงและ
+                    FAX. 662-860-6617 ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า “บริษัท”ให้เริ่มปฏิบัติงานในวันที่<span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2"></span> ตำแหน่ง
+                    <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2">{formData.position || ''}</span> แผนก
+                    <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2">{formData.department || ''}</span>
                 </p>
             </div>
 
             {/* Terms */}
             <div className="mb-4 text-justify leading-[1.4] space-y-2">
                 <p className="indent-8">
-                    ยินยอมเข้ารับการฝึกอบรม “หลักสูตรปฐมนิเทศพนักงานใหม่” ตามระเบียบของบริษัทฯ มีกำหนดระยะเวลาการฝึกอบรม 3 วัน(ไม่นับรวมวันหยุด) เริ่มตั้งแต่วันที่.................................ถึง วันที่..................................โดยไม่ได้รับค่าจ้างหรือค่าตอบแทนใดๆ เพื่อเป็นการเตรียมความพร้อมให้กับพนักงานใหม่ก่อนเริ่มปฏิบัติงานจริง โดยการฝึกอบรมแบ่ง
+                    ตกลงและยินยอมเข้ารับการฝึกอบรม “หลักสูตรปฐมนิเทศพนักงานใหม่” ตามระเบียบของบริษัทฯ มีกำหนดระยะเวลาการฝึกอบรม 3 วัน(ไม่นับรวมวันหยุด) เริ่มตั้งแต่วันที่.................................ถึง วันที่..................................โดยไม่ได้รับค่าจ้างหรือค่าตอบแทนใดๆ เพื่อเป็นการเตรียมความพร้อมให้กับพนักงานใหม่ก่อนเริ่มปฏิบัติงานจริง โดยการฝึกอบรมแบ่ง
                 </p>
                 
                 <p className="font-bold">ออกเป็น 4 หัวข้อหลัก ดังนี้</p>
