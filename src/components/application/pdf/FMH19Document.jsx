@@ -86,7 +86,7 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
             </div>
 
             {/* Signatures */}
-            <div className="mb-10 leading-[1.4]">
+            <div className="mb-6 leading-[1.4]">
                 <div className="grid grid-cols-2 gap-8">
                     <div className="text-center">
                         <div className="mb-2">ลงชื่อ
