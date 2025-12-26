@@ -842,6 +842,92 @@ export default function EmploymentContractDocument({ applicant, formData = {} })
                 www.ko.in.th Strategy . AI . DX . Sustainability
             </div>
         </div>
+
+        {/* Page 9 - Final Signatures */}
+        <div 
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[12px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
+            style={{ 
+                width: '210mm', 
+                minHeight: '297mm',
+                fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
+                pageBreakBefore: 'always'
+            }}
+        >
+            {/* Header with Logo */}
+            <div className="flex justify-end mb-8">
+                {appLogo ? (
+                    <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[100px] w-auto object-contain" />
+                ) : (
+                    <div className="h-[100px] w-[100px] bg-slate-100 rounded flex items-center justify-center text-[10px] text-slate-400">LOGO</div>
+                )}
+            </div>
+
+            {/* Main Signatures Section */}
+            <div className="mb-12 leading-[1.4]">
+                <div className="grid grid-cols-2 gap-8">
+                    {/* Company Signature */}
+                    <div className="text-center">
+                        <div className="mb-2">ลงชื่อ<span className="inline-block border-b border-dotted border-slate-400 w-[125px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>บริษัทฯ/นายจ้าง</div>
+                        <p className="mb-2">(บริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด)</p>
+                        <p className="mb-4">โดย นายกฤษณ์พงษ์ สุคันโธ กรรมการผู้มีอำนาจลงนาม</p>
+                    </div>
+
+                    {/* Employee Signature */}
+                    <div className="text-center">
+                        <div className="mb-2">ลงชื่อ<span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>ลูกจ้าง</div>
+                        <p className="mb-2">({applicant?.full_name || '…………………………………..………………………'})</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Company Seal Area */}
+            <div className="flex justify-center mb-16">
+                <div className="w-[120px] h-[120px] rounded-full border-2 border-slate-300 flex items-center justify-center text-center">
+                    <div>
+                        <p className="text-[14px] font-bold">ประทับ</p>
+                        <p className="text-[14px]">ตราบริษัท</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Company Representative Details */}
+            <div className="mb-12 leading-[1.4] text-center">
+                <div className="grid grid-cols-2 gap-8">
+                    <div>
+                        <p>ลงชื่อ<span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>&nbsp;</span>นายจ้าง+นายจ้าง</p>
+                        <p>(บริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด)</p>
+                        <p>โดย <span className="font-bold underline">นายกฤษณ์พงษ์ สุคันโธ หรือนิล</span> กรรมการผู้มีอำนาจลงนาม</p>
+                    </div>
+                    <div>
+                        <p>ลงชื่อ<span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>&nbsp;</span>ลูกจ้าง</p>
+                        <p>({applicant?.full_name || '...................................................................'})</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Witnesses Section */}
+            <div className="mb-6 leading-[1.4] text-center">
+                <div className="grid grid-cols-2 gap-8">
+                    <div>
+                        <p>ลงชื่อ<span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>พยาน</p>
+                        <p>(....................................................................)</p>
+                    </div>
+                    <div>
+                        <p>ลงชื่อ<span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>พยาน</p>
+                        <p>(....................................................................)</p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer */}
+            <div className="absolute bottom-[10mm] right-[10mm] text-[10px] text-slate-500">
+                หน้าที่ 9 | 9
+            </div>
+            <div className="absolute bottom-[10mm] left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center">
+                FM-HRD-11 Rev.01 17/02/66<br/>
+                www.ko.in.th Strategy . AI . DX . Sustainability
+            </div>
+        </div>
         </>
     );
 }
