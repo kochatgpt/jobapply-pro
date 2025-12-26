@@ -8,6 +8,12 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
         queryFn: () => base44.entities.SystemSetting.list(),
         staleTime: 1000 * 60 * 5 
     });
+
+    const DottedLine = ({ value, className = "", center = false }) => (
+        <div className={`border-b-[1.5px] border-dotted border-slate-400 px-1 pb-2 min-h-[1.4em] ${center ? 'text-center' : ''} ${className}`}>
+            {value || ""}
+        </div>
+    );
     
     const appLogo = settings?.find(s => s.key === 'app_logo')?.value;
     const p = applicant?.personal_data || {};
@@ -39,7 +45,8 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
             {/* Date and Place */}
             <div className="mb-4 leading-[1.4] flex flex-col items-end">
-                <div>เขียนที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2 ${formData.writtenAt ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline' }}>{formData.writtenAt || ''}</span></div>
+                
+                <DottedLine value="เขียนที่"/>
                 <div>เมื่อวันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${formData.writtenDate ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline' }}>
                     {formData.writtenDate ? new Date(formData.writtenDate).toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}
                 </span></div>
