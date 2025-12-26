@@ -25,7 +25,7 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
             {/* Header with Logo */}
             <div className="flex justify-end mb-8">
                 {appLogo ? (
-                    <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[60px] w-auto object-contain" />
+                    <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[80px] w-auto object-contain" />
                 ) : (
                     <div className="h-[60px] w-[100px] bg-slate-100 rounded flex items-center justify-center text-[10px] text-slate-400">LOGO</div>
                 )}
