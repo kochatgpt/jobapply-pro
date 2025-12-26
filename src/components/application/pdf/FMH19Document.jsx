@@ -111,32 +111,6 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                 </div>
             </div>
 
-            {/* Footer */}
-            <div className="absolute bottom-[10mm] left-[50%] -translate-x-1/2 text-[9px] text-slate-400 text-center">
-                FM-HRD-19 Rev.00<br/>
-                www.ko.in.th Strategy . AI . DX . Sustainability
-            </div>
-        </div>
-
-        {/* Page 2 */}
-        <div 
-            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[16px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
-            style={{ 
-                width: '210mm', 
-                minHeight: '297mm',
-                fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
-                pageBreakBefore: 'always'
-            }}
-        >
-            {/* Header with Logo */}
-            <div className="flex justify-end mb-8">
-                {appLogo ? (
-                    <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[60px] w-auto object-contain" />
-                ) : (
-                    <div className="h-[60px] w-[100px] bg-slate-100 rounded flex items-center justify-center text-[10px] text-slate-400">LOGO</div>
-                )}
-            </div>
-
             {/* HR Person Certification */}
             <div className="mb-8 text-center leading-[1.4]">
                 <p className="mb-8">
