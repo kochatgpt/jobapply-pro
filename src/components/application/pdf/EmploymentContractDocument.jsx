@@ -884,7 +884,15 @@ export default function EmploymentContractDocument({ applicant, formData = {} })
 
                     {/* Employee Signature */}
                     <div className="text-center">
-                        <div className="mb-2">ลงชื่อ<span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>ลูกจ้าง</div>
+                        <div className="mb-2">
+                            ลงชื่อ
+                            {applicant?.signature_url ? (
+                                <img src={applicant.signature_url} alt="signature" crossOrigin="anonymous" className="inline-block h-[40px] object-contain mx-2" style={{ verticalAlign: 'baseline' }} />
+                            ) : (
+                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>
+                            )}
+                            ลูกจ้าง
+                        </div>
                         <p className="mb-2">({applicant?.full_name || '…………………………………..………………………'})</p>
                     </div>
                 </div>
