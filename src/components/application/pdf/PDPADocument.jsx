@@ -39,8 +39,8 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
             {/* Date and Place */}
             <div className="mb-4 leading-[1.4] flex flex-col items-end">
-                <div>เขียนที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2 ${formData.writtenAt ? 'pb-1' : 'pb-[-4]'}`} style={{ verticalAlign: 'baseline' }}>{formData.writtenAt || ''}</span></div>
-                <div>เมื่อวันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${formData.writtenDate ? 'pb-1' : 'pb-[-4]'}`} style={{ verticalAlign: 'baseline' }}>
+                <div>เขียนที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2 ${formData.writtenAt ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline' }}>{formData.writtenAt || ''}</span></div>
+                <div>เมื่อวันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${formData.writtenDate ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline' }}>
                     {formData.writtenDate ? new Date(formData.writtenDate).toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}
                 </span></div>
             </div>
@@ -55,11 +55,11 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
             {/* Applicant Information */}
             <div className="mb-4">
                 <p className="mb-3">
-                    ข้าพเจ้า (นาย/นาง/นางสาว) <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${applicant?.full_name ? 'pb-1' : 'pb-[-4]'}`} style={{ verticalAlign: 'baseline' }}>{applicant?.full_name || ''}</span> 
-                    เลขบัตรประจำตัวประชาชน <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${p.id_card ? 'pb-1' : 'pb-[-4]'}`} style={{ verticalAlign: 'baseline' }}>{p.id_card || ''}</span>
+                    ข้าพเจ้า (นาย/นาง/นางสาว) <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${applicant?.full_name ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline' }}>{applicant?.full_name || ''}</span> 
+                    เลขบัตรประจำตัวประชาชน <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${p.id_card ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline' }}>{p.id_card || ''}</span>
                 </p>
                 <p>
-                    เบอร์โทร <span className={`border-b border-dotted border-slate-400 inline-block w-[100px] text-center ${p.mobile_phone ? 'pb-1' : 'pb-[-4]'}`} style={{ verticalAlign: 'baseline' }}>{p.mobile_phone || ''}</span> Line ID <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${formData.lineId ? 'pb-1' : 'pb-[-4]'}`} style={{ verticalAlign: 'baseline' }}>{formData.lineId || ''}</span> เป็นเจ้าของมูลส่วนบุคคล ข้าพเจ้า ยินยอมให้ใช้หรือเปิดเผยข้อมูล ส่วนบุคคลที่เกี่ยวข้องกับข้าพเจ้า ถือเป็น ข้อตกลงให้ประมวลผลข้อมูลส่วนบุคคล ให้กับ บริษัท เค แอนด์ โอ ซิส เต็มส์ แอนด์ คอนซัลติ้ง จำกัด เพื่อจัดเก็บ รวบรวมข้อมูล ประกอบการพิจารณาคัดเลือกเข้าทำงาน รวมถึงตลอดระยะเวลาที่เป็น พนักงานบริษัทฯ และกรณีที่สิ้นสุดการเป็นพนักงานของบริษัทฯ เป็นระยะเวลาสองปี ดังต่อไปนี้
+                    เบอร์โทร <span className={`border-b border-dotted border-slate-400 inline-block w-[100px] text-center ${p.mobile_phone ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline' }}>{p.mobile_phone || ''}</span> Line ID <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${formData.lineId ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline' }}>{formData.lineId || ''}</span> เป็นเจ้าของมูลส่วนบุคคล ข้าพเจ้า ยินยอมให้ใช้หรือเปิดเผยข้อมูล ส่วนบุคคลที่เกี่ยวข้องกับข้าพเจ้า ถือเป็น ข้อตกลงให้ประมวลผลข้อมูลส่วนบุคคล ให้กับ บริษัท เค แอนด์ โอ ซิส เต็มส์ แอนด์ คอนซัลติ้ง จำกัด เพื่อจัดเก็บ รวบรวมข้อมูล ประกอบการพิจารณาคัดเลือกเข้าทำงาน รวมถึงตลอดระยะเวลาที่เป็น พนักงานบริษัทฯ และกรณีที่สิ้นสุดการเป็นพนักงานของบริษัทฯ เป็นระยะเวลาสองปี ดังต่อไปนี้
                 </p>
             </div>
 
