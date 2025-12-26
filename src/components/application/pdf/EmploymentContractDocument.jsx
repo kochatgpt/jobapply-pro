@@ -890,6 +890,21 @@ export default function EmploymentContractDocument({ applicant, formData = {} })
                 </div>
             </div>
 
+            {/* Company Representative Details */}
+            <div className="mb-12 leading-[1.4] text-center">
+                <div className="grid grid-cols-2 gap-8">
+                    <div>
+                        <p>ลงชื่อ<span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>&nbsp;</span>นายจ้าง+นายจ้าง</p>
+                        <p>(บริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด)</p>
+                        <p>โดย <span className="font-bold underline">นายกฤษณ์พงษ์ สุคันโธ หรือนิล</span> กรรมการผู้มีอำนาจลงนาม</p>
+                    </div>
+                    <div>
+                        <p>ลงชื่อ<span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>&nbsp;</span>ลูกจ้าง</p>
+                        <p>({applicant?.full_name || '...................................................................'})</p>
+                    </div>
+                </div>
+            </div>
+
             {/* Witnesses Section */}
             <div className="mb-6 leading-[1.4] text-center">
                 <div className="grid grid-cols-2 gap-8">
