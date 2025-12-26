@@ -85,30 +85,14 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
             </div>
 
             {/* Certification */}
-            <div className="mb-4 text-center leading-[1.4]">
-                <p className="mb-2">
-                    ลงช่อ
-                    {signatureUrl ? (
-                        <span className="inline-block mx-2">
-                            <img src={signatureUrl} alt="Signature" crossOrigin="anonymous" className="inline-block max-h-[50px] object-contain" />
-                        </span>
-                    ) : (
-                        <span className="inline-block border-b border-dotted border-slate-400 w-[300px] h-[50px] mx-2"></span>
-                    )}
-                    ปรัมปณ์์ปถบำกรพูตต์นประมัตัมนถกูต
+            <div className="mb-6 text-center leading-[1.4]">
+                <p className="mb-8">
+                    โดย <span className="font-bold">นายกฤษณ์พงษ์ สุ่มน์โอ</span> กรรมการผู้มีอำนาจลงนามแทน
                 </p>
-                <p className="mt-2">
-                    ลงท์อ <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2"></span> กำร์บักปัตนับบกล้บถ็ถปรคับตักรับบาระฐัตดำร์
-                </p>
-            </div>
-
-            {/* Witnesses */}
-            <div className="mt-8">
-                <p className="text-center mb-4">(ปจปันตัน จำแนณพีด โอ อันดำกลันปม แน้พตัล ครบถ์กรถดัปดำ ค์ำกใคฎ์)</p>
                 
                 <div className="grid grid-cols-2 gap-8">
                     <div className="text-center">
-                        <div className="mb-2">ลงช่อ
+                        <div className="mb-2">ลงชื่อ
                             {witness1Signature ? (
                                 <span className="inline-block mx-2">
                                     <img src={witness1Signature} alt="Witness 1" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
@@ -121,7 +105,7 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                         <p>({formData?.witnessName1 || '...................................................'})</p>
                     </div>
                     <div className="text-center">
-                        <div className="mb-2">ลงช่อ
+                        <div className="mb-2">ลงชื่อ
                             {witness2Signature ? (
                                 <span className="inline-block mx-2">
                                     <img src={witness2Signature} alt="Witness 2" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
