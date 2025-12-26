@@ -39,8 +39,8 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
             {/* Date and Place */}
             <div className="mb-4 leading-[1.4] flex flex-col items-end">
-                <div>เขียนที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2 ${formData.writtenAt ? 'relative top-[-1.5px]' : 'pb-2'}`}>{formData.writtenAt || ''}</span></div>
-                <div>เมื่อวันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${formData.writtenDate ? 'relative top-[-1.5px]' : 'pb-2'}`}>
+                <div>เขียนที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2 align-baseline ${formData.writtenAt ? '' : 'pb-2'}`}>{formData.writtenAt || ''}</span></div>
+                <div>เมื่อวันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 align-baseline ${formData.writtenDate ? '' : 'pb-2'}`}>
                     {formData.writtenDate ? new Date(formData.writtenDate).toLocaleDateString('th-TH', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}
                 </span></div>
             </div>
@@ -55,11 +55,11 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
             {/* Applicant Information */}
             <div className="mb-4">
                 <p className="mb-3">
-                    ข้าพเจ้า (นาย/นาง/นางสาว) <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${applicant?.full_name ? 'relative top-[-1.5px]' : 'pb-2'}`}>{applicant?.full_name || ''}</span> 
-                    เลขบัตรประจำตัวประชาชน <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${p.id_card ? 'relative top-[-1.5px]' : 'pb-2'}`}>{p.id_card || ''}</span>
+                    ข้าพเจ้า (นาย/นาง/นางสาว) <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center align-baseline ${applicant?.full_name ? '' : 'pb-2'}`}>{applicant?.full_name || ''}</span> 
+                    เลขบัตรประจำตัวประชาชน <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center align-baseline ${p.id_card ? '' : 'pb-2'}`}>{p.id_card || ''}</span>
                 </p>
                 <p>
-                    เบอร์โทร <span className={`border-b border-dotted border-slate-400 inline-block w-[100px] text-center ${p.mobile_phone ? 'relative top-[-1.5px]' : 'pb-2'}`}>{p.mobile_phone || ''}</span> Line ID <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${formData.lineId ? 'relative top-[-1.5px]' : 'pb-2'}`}>{formData.lineId || ''}</span> เป็นเจ้าของมูลส่วนบุคคล ข้าพเจ้า ยินยอมให้ใช้หรือเปิดเผยข้อมูล ส่วนบุคคลที่เกี่ยวข้องกับข้าพเจ้า ถือเป็น ข้อตกลงให้ประมวลผลข้อมูลส่วนบุคคล ให้กับ บริษัท เค แอนด์ โอ ซิส เต็มส์ แอนด์ คอนซัลติ้ง จำกัด เพื่อจัดเก็บ รวบรวมข้อมูล ประกอบการพิจารณาคัดเลือกเข้าทำงาน รวมถึงตลอดระยะเวลาที่เป็น พนักงานบริษัทฯ และกรณีที่สิ้นสุดการเป็นพนักงานของบริษัทฯ เป็นระยะเวลาสองปี ดังต่อไปนี้
+                    เบอร์โทร <span className={`border-b border-dotted border-slate-400 inline-block w-[100px] text-center align-baseline ${p.mobile_phone ? '' : 'pb-2'}`}>{p.mobile_phone || ''}</span> Line ID <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center align-baseline ${formData.lineId ? '' : 'pb-2'}`}>{formData.lineId || ''}</span> เป็นเจ้าของมูลส่วนบุคคล ข้าพเจ้า ยินยอมให้ใช้หรือเปิดเผยข้อมูล ส่วนบุคคลที่เกี่ยวข้องกับข้าพเจ้า ถือเป็น ข้อตกลงให้ประมวลผลข้อมูลส่วนบุคคล ให้กับ บริษัท เค แอนด์ โอ ซิส เต็มส์ แอนด์ คอนซัลติ้ง จำกัด เพื่อจัดเก็บ รวบรวมข้อมูล ประกอบการพิจารณาคัดเลือกเข้าทำงาน รวมถึงตลอดระยะเวลาที่เป็น พนักงานบริษัทฯ และกรณีที่สิ้นสุดการเป็นพนักงานของบริษัทฯ เป็นระยะเวลาสองปี ดังต่อไปนี้
                 </p>
             </div>
 
@@ -351,11 +351,11 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                 <div className="text-center mt-4 leading-[1.4]">
                     <div className="mb-2">ลงชื่อ
                         {signatureUrl ? (
-                            <span className="inline-block mx-2 relative top-[-1.5px]">
+                            <span className="inline-block mx-2 align-baseline">
                                 <img src={signatureUrl} alt="Signature" crossOrigin="anonymous" className="inline-block max-h-[50px] object-contain" />
                             </span>
                         ) : (
-                            <span className="inline-block border-b border-dotted border-slate-400 w-[300px] h-[50px] mx-2 pb-2"></span>
+                            <span className="inline-block border-b border-dotted border-slate-400 w-[300px] h-[50px] mx-2 align-baseline pb-2"></span>
                         )}
                         ผู้ยินยอม
                     </div>
@@ -370,11 +370,11 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                     <div className="text-center">
                         <div className="mb-2">ลงชื่อ
                             {witness1Signature ? (
-                                <span className="inline-block mx-2 relative top-[-1.5px]">
+                                <span className="inline-block mx-2 align-baseline">
                                     <img src={witness1Signature} alt="Witness 1 Signature" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
                                 </span>
                             ) : (
-                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2 pb-2"></span>
+                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2 align-baseline pb-2"></span>
                             )}
                             พยาน
                         </div>
@@ -383,11 +383,11 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                     <div className="text-center">
                         <div className="mb-2">ลงชื่อ
                             {witness2Signature ? (
-                                <span className="inline-block mx-2 relative top-[-1.5px]">
+                                <span className="inline-block mx-2 align-baseline">
                                     <img src={witness2Signature} alt="Witness 2 Signature" crossOrigin="anonymous" className="inline-block max-h-[40px] object-contain" />
                                 </span>
                             ) : (
-                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2 pb-2"></span>
+                                <span className="inline-block border-b border-dotted border-slate-400 w-[200px] h-[40px] mx-2 align-baseline pb-2"></span>
                             )}
                             พยาน
                         </div>
