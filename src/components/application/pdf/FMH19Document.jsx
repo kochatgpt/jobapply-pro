@@ -15,11 +15,12 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
     return (
         <>
         <div 
-            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[16px] font-sans p-[20mm] shadow-sm print:shadow-none"
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[16px] font-sans shadow-sm print:shadow-none"
             style={{ 
                 width: '210mm', 
                 minHeight: '297mm',
-                fontFamily: 'TH Sarabun New, Sarabun, sans-serif'
+                fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
+                padding: '10mm 20mm 20mm 20mm'
             }}
         >
             {/* Header with Logo */}
