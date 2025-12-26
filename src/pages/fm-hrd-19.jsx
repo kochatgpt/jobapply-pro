@@ -26,6 +26,7 @@ export default function FMHRD19Form() {
         year: '',
         position: '',
         department: '',
+        authorizedPerson: '',
         witnessName1: '',
         witnessName2: ''
     });
@@ -237,6 +238,17 @@ export default function FMHRD19Form() {
                                             placeholder="แผนกที่สังกัด"
                                         />
                                     </div>
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-700 mb-2">กรรมการผู้มีอำนาจลงนามแทน</label>
+                                    <input
+                                        type="text"
+                                        value={formData.authorizedPerson}
+                                        onChange={(e) => setFormData({ ...formData, authorizedPerson: e.target.value })}
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        placeholder="ชื่อ-สกุล กรรมการผู้มีอำนาจ"
+                                    />
                                 </div>
 
                                 <div className="border-t pt-4">

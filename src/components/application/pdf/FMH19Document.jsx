@@ -87,7 +87,7 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
             {/* Certification */}
             <div className="mb-6 text-center leading-[1.4]">
                 <p className="mb-8">
-                    โดย <span className="font-bold">นายกฤษณ์พงษ์ สุ่มน์โอ</span> กรรมการผู้มีอำนาจลงนามแทน
+                    โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2">{formData.authorizedPerson || ''}</span> กรรมการผู้มีอำนาจลงนามแทน
                 </p>
                 
                 <div className="grid grid-cols-2 gap-8">
