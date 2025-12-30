@@ -3,14 +3,16 @@ import { base44 } from '@/api/base44Client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileDown, Eye, Loader2, ArrowLeft } from "lucide-react";
+import { FileDown, Eye, Loader2, ArrowLeft, Send } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 import EmploymentContractDocument from '@/components/application/pdf/EmploymentContractDocument';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import toast from 'react-hot-toast';
 
 export default function EmploymentContractPage() {
     const navigate = useNavigate();
+    const queryClient = useQueryClient();
     const [applicantId, setApplicantId] = useState(null);
     const [generatingPdf, setGeneratingPdf] = useState(false);
     const [showForm, setShowForm] = useState(false);
@@ -51,6 +53,31 @@ export default function EmploymentContractPage() {
         },
         enabled: !!applicantId
     });
+
+    const submitMutation = useMutation({
+        mutationFn: async (data) => {
+            return await base44.entities.Applicant.update(applicantId, data);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(['user_applicant', applicantId]);
+            toast.success('ส่งเอกสารเรียบร้อยแล้ว');
+            navigate('/user-dashboard');
+        },
+        onError: () => {
+            toast.error('เกิดข้อผิดพลาดในการส่งเอกสาร');
+        }
+    });
+
+    const handleSubmit = () => {
+        const contractData = {
+            employment_contract_document: {
+                status: 'submitted',
+                employee_data: formData,
+                submitted_date: new Date().toISOString()
+            }
+        };
+        submitMutation.mutate(contractData);
+    };
 
     const handleGeneratePDF = async (action) => {
         const pages = document.querySelectorAll('.pdpa-page');
@@ -119,7 +146,7 @@ export default function EmploymentContractPage() {
                             onClick={() => setShowForm(true)}
                             className="bg-indigo-600 hover:bg-indigo-700"
                         >
-                            กรอกข้อมูล
+                            กรอกเอกสาร
                         </Button>
                         <Button 
                             variant="outline"
@@ -130,12 +157,12 @@ export default function EmploymentContractPage() {
                             Preview
                         </Button>
                         <Button 
-                            onClick={() => handleGeneratePDF('download')}
-                            disabled={generatingPdf}
+                            onClick={handleSubmit}
+                            disabled={submitMutation.isPending}
                             className="bg-green-600 hover:bg-green-700"
                         >
-                            {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <FileDown className="w-4 h-4 mr-2" />}
-                            ดาวน์โหลด PDF
+                            {submitMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Send className="w-4 h-4 mr-2" />}
+                            ส่งเอกสาร
                         </Button>
                     </div>
                 </div>

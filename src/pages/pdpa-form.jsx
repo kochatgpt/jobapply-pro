@@ -3,7 +3,8 @@ import { base44 } from '@/api/base44Client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileDown, Eye, Loader2, ArrowLeft } from "lucide-react";
+import { FileDown, Eye, Loader2, ArrowLeft, Send } from "lucide-react";
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import PDPADocument from '@/components/application/pdf/PDPADocument';
 import SignaturePad from '@/components/admin/SignaturePad';
@@ -60,6 +61,37 @@ export default function PDPAForm() {
             queryClient.invalidateQueries({ queryKey: ['user_applicant', applicantId] });
         }
     });
+
+    const submitMutation = useMutation({
+        mutationFn: async (data) => {
+            return await base44.entities.Applicant.update(applicantId, data);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(['user_applicant', applicantId]);
+            toast.success('ส่งเอกสารเรียบร้อยแล้ว');
+            navigate('/user-dashboard');
+        },
+        onError: () => {
+            toast.error('เกิดข้อผิดพลาดในการส่งเอกสาร');
+        }
+    });
+
+    const handleSubmit = () => {
+        const pdpaData = {
+            pdpa_document: {
+                status: 'submitted',
+                employee_data: {
+                    signatureUrl,
+                    signatureDate,
+                    ...formData,
+                    witness1Signature,
+                    witness2Signature
+                },
+                submitted_date: new Date().toISOString()
+            }
+        };
+        submitMutation.mutate(pdpaData);
+    };
 
     const handleGeneratePDF = async (action) => {
         const pages = document.querySelectorAll('.pdpa-page');
@@ -138,7 +170,7 @@ export default function PDPAForm() {
                             onClick={() => setShowForm(true)}
                             className="bg-indigo-600 hover:bg-indigo-700"
                         >
-                            กรอกข้อมูลและลงนาม
+                            กรอกเอกสาร
                         </Button>
                         <Button 
                             variant="outline"
@@ -149,12 +181,12 @@ export default function PDPAForm() {
                             Preview
                         </Button>
                         <Button 
-                            onClick={() => handleGeneratePDF('download')}
-                            disabled={generatingPdf}
+                            onClick={handleSubmit}
+                            disabled={submitMutation.isPending}
                             className="bg-green-600 hover:bg-green-700"
                         >
-                            {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <FileDown className="w-4 h-4 mr-2" />}
-                            ดาวน์โหลด PDF
+                            {submitMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Send className="w-4 h-4 mr-2" />}
+                            ส่งเอกสาร
                         </Button>
                     </div>
                 </div>
