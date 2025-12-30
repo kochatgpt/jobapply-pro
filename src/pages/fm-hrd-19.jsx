@@ -345,12 +345,6 @@ export default function FMHRD19Form() {
                                     </div>
                                 </div>
 
-                                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                                    <p className="text-sm text-amber-800">
-                                        <strong>หมายเหตุ:</strong> กรุณากรอกข้อมูลให้ครบถ้วน ส่วนของพยานจะกรอกโดย Admin หลังจากส่งเอกสาร
-                                    </p>
-                                </div>
-
                                 <div className="flex justify-end gap-2 pt-4">
                                     <Button 
                                         variant="outline"
