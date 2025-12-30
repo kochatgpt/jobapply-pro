@@ -15,7 +15,10 @@ export default function FMHRD27Page() {
     const [generatingPdf, setGeneratingPdf] = useState(false);
     const [showForm, setShowForm] = useState(false);
     const [formData, setFormData] = useState({
-        contractDate: ''
+        contractDate: '',
+        signerName: '',
+        companySignDate: '',
+        employeeSignDate: ''
     });
 
     useEffect(() => {
@@ -155,6 +158,37 @@ export default function FMHRD27Page() {
                                         type="date"
                                         value={formData.contractDate}
                                         onChange={(e) => setFormData({ ...formData, contractDate: e.target.value })}
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-700 mb-2">ชื่อกรรมการผู้มีอำนาจลงนาม</label>
+                                    <input
+                                        type="text"
+                                        value={formData.signerName}
+                                        onChange={(e) => setFormData({ ...formData, signerName: e.target.value })}
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                        placeholder="ระบุชื่อกรรมการ"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ลงนาม (บริษัท)</label>
+                                    <input
+                                        type="date"
+                                        value={formData.companySignDate}
+                                        onChange={(e) => setFormData({ ...formData, companySignDate: e.target.value })}
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ลงนาม (พนักงาน)</label>
+                                    <input
+                                        type="date"
+                                        value={formData.employeeSignDate}
+                                        onChange={(e) => setFormData({ ...formData, employeeSignDate: e.target.value })}
                                         className="w-full px-3 py-2 border border-slate-300 rounded-md"
                                     />
                                 </div>
