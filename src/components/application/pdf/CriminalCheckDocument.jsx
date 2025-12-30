@@ -35,10 +35,10 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
                     </div>
                 </div>
                 
-                {/* Title and Date - Centered */}
-                <div className="text-center">
-                    <h1 className="text-[16px] font-bold mb-4">หนังสือมอบอำนาจ</h1>
-                    <div className="space-y-1">
+                {/* Title and Date */}
+                <div>
+                    <h1 className="text-[16px] font-bold text-center mb-4">หนังสือมอบอำนาจ</h1>
+                    <div className="text-right space-y-1">
                         <p>
                             ทำที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{companyData.companyLocation || formData.companyLocation || '\u00A0'}</span>
                         </p>
