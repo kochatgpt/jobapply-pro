@@ -19,8 +19,6 @@ export default function FMHRD19Form() {
     const [signatureUrl, setSignatureUrl] = useState('');
     const [signatureDate, setSignatureDate] = useState('');
     const [showForm, setShowForm] = useState(false);
-    const [witness1Signature, setWitness1Signature] = useState('');
-    const [witness2Signature, setWitness2Signature] = useState('');
     const [formData, setFormData] = useState({
         day: '',
         month: '',
@@ -31,9 +29,7 @@ export default function FMHRD19Form() {
         trainingStartDate: '',
         trainingEndDate: '',
         authorizedPerson: '',
-        hrPerson: '',
-        witnessName1: '',
-        witnessName2: ''
+        hrPerson: ''
     });
 
     useEffect(() => {
@@ -89,9 +85,7 @@ export default function FMHRD19Form() {
                 employee_data: {
                     signatureUrl,
                     signatureDate,
-                    ...formData,
-                    witness1Signature,
-                    witness2Signature
+                    ...formData
                 },
                 submitted_date: new Date().toISOString()
             }
@@ -204,8 +198,8 @@ export default function FMHRD19Form() {
                                     signatureUrl={signatureUrl}
                                     signatureDate={signatureDate}
                                     formData={formData}
-                                    witness1Signature={witness1Signature}
-                                    witness2Signature={witness2Signature}
+                                    witness1Signature={applicant?.fmhrd19_document?.company_data?.witness1Signature || ''}
+                                    witness2Signature={applicant?.fmhrd19_document?.company_data?.witness2Signature || ''}
                                 />
                             </div>
                         </div>
@@ -351,42 +345,10 @@ export default function FMHRD19Form() {
                                     </div>
                                 </div>
 
-                                <div className="border-t pt-4">
-                                    <h3 className="font-semibold text-slate-800 mb-4">ข้อมูลพยาน</h3>
-                                    <div className="space-y-6">
-                                        <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-2">ชื่อพยานคนที่ 1</label>
-                                            <input
-                                                type="text"
-                                                value={formData.witnessName1}
-                                                onChange={(e) => setFormData({ ...formData, witnessName1: e.target.value })}
-                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2"
-                                                placeholder="ชื่อ-สกุล พยานคนที่ 1"
-                                            />
-                                            <label className="block text-sm font-medium text-slate-700 mb-2">ลายเซ็นพยานคนที่ 1</label>
-                                            <SignaturePad 
-                                                signatureUrl={witness1Signature}
-                                                onSave={(url) => setWitness1Signature(url)}
-                                                onDelete={() => setWitness1Signature('')}
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-2">ชื่อพยานคนที่ 2</label>
-                                            <input
-                                                type="text"
-                                                value={formData.witnessName2}
-                                                onChange={(e) => setFormData({ ...formData, witnessName2: e.target.value })}
-                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2"
-                                                placeholder="ชื่อ-สกุล พยานคนที่ 2"
-                                            />
-                                            <label className="block text-sm font-medium text-slate-700 mb-2">ลายเซ็นพยานคนที่ 2</label>
-                                            <SignaturePad 
-                                                signatureUrl={witness2Signature}
-                                                onSave={(url) => setWitness2Signature(url)}
-                                                onDelete={() => setWitness2Signature('')}
-                                            />
-                                        </div>
-                                    </div>
+                                <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                                    <p className="text-sm text-amber-800">
+                                        <strong>หมายเหตุ:</strong> กรุณากรอกข้อมูลให้ครบถ้วน ส่วนของพยานจะกรอกโดย Admin หลังจากส่งเอกสาร
+                                    </p>
                                 </div>
 
                                 <div className="flex justify-end gap-2 pt-4">

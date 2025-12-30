@@ -14,6 +14,7 @@ import SettingsPanel from '@/components/admin/SettingsPanel';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import NDAReviewModal from '@/components/admin/NDAReviewModal';
 import PDPAReviewModal from '@/components/admin/PDPAReviewModal';
+import FMHRD19ReviewModal from '@/components/admin/FMHRD19ReviewModal';
 
 function DocumentsView({ onReviewNDA, onReviewPDPA, onReviewFMHRD19 }) {
     const { data: applicants = [], isLoading } = useQuery({
@@ -318,6 +319,13 @@ export default function AdminPage() {
                 applicant={reviewingPDPA}
                 isOpen={!!reviewingPDPA}
                 onClose={() => setReviewingPDPA(null)}
+            />
+
+            {/* FM-HRD-19 Review Modal */}
+            <FMHRD19ReviewModal 
+                applicant={reviewingFMHRD19}
+                isOpen={!!reviewingFMHRD19}
+                onClose={() => setReviewingFMHRD19(null)}
             />
         </div>
     );
