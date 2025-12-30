@@ -15,28 +15,19 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
 
     return (
         <>
-        {/* Page 1 - หนังสือมอบอำนาจ */}
+        {/* Single Page - Both Documents */}
         <div 
-            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[16px] font-sans p-[20mm] shadow-sm print:shadow-none"
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[20mm] shadow-sm print:shadow-none"
             style={{ 
                 width: '210mm', 
                 minHeight: '297mm',
                 fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
-                lineHeight: '1.6'
+                lineHeight: '1.5'
             }}
         >
-            {/* Header with Logo */}
-            <div className="flex justify-end mb-8">
-                {appLogo ? (
-                    <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[80px] w-auto object-contain" />
-                ) : (
-                    <div className="h-[60px] w-[100px] bg-slate-100 rounded flex items-center justify-center text-[10px] text-slate-400">LOGO</div>
-                )}
-            </div>
-
             {/* Title */}
-            <div className="text-center mb-8">
-                <h1 className="text-[18px] font-bold">หนังสือมอบอำนาจ</h1>
+            <div className="text-center mb-6">
+                <h1 className="text-[16px] font-bold">หนังสือมอบอำนาจ</h1>
             </div>
 
             {/* Content */}
@@ -71,7 +62,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Signatures */}
-            <div className="mt-16 grid grid-cols-2 gap-8">
+            <div className="mt-8 grid grid-cols-2 gap-8">
                 <div className="text-center">
                     <p className="mb-2">
                         (ลงชื่อ) 
@@ -99,7 +90,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Witnesses */}
-            <div className="mt-8 grid grid-cols-2 gap-8">
+            <div className="mt-4 grid grid-cols-2 gap-8">
                 <div className="text-center">
                     <p className="mb-2">
                         (ลงชื่อ) 
@@ -127,46 +118,22 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Note */}
-            <div className="mt-8 text-[14px]">
-                <p className="font-semibold">หมายเหตุ</p>
-                <p>กรุณาเขียนให้ชัดเจน พร้อมแนบสำเนาบัตรประชาชนผู้มอบและผู้รับมอบ อย่างละ 1 ฉบับ (พร้อมรับรองสำเนาถูกต้อง)</p>
-                <p>การมอบอำนาจให้มีพยานอย่างน้อย 1 คน ถ้าผู้มอบอำนาจพิมพ์ลายนิ้วมือ ต้องมีพยาน 2 คน</p>
+            <div className="mt-4 text-[12px]">
+                <p className="font-semibold">หมายเหตุ:</p>
+                <p>กรุณาเขียนให้ชัดเจน พร้อมแนบสำเนาบัตรประชาชนผู้มอบและผู้รับมอบ อย่างละ 1 ฉบับ (พร้อมรับรองสำเนาถูกต้อง) การมอบอำนาจให้มีพยานอย่างน้อย 1 คน ถ้าผู้มอบอำนาจพิมพ์ลายนิ้วมือ ต้องมีพยาน 2 คน</p>
             </div>
 
-            {/* Footer */}
-            <div className="absolute bottom-[10mm] right-[10mm] text-[10px] text-slate-500">
-                หน้าที่ 1 | 2
-            </div>
-        </div>
+            {/* Divider */}
+            <div className="my-6 border-t-2 border-slate-300"></div>
 
-        {/* Page 2 - หนังสือยินยอม */}
-        <div 
-            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[16px] font-sans p-[20mm] shadow-sm print:shadow-none mt-8"
-            style={{ 
-                width: '210mm', 
-                minHeight: '297mm',
-                fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
-                lineHeight: '1.6',
-                pageBreakBefore: 'always'
-            }}
-        >
-            {/* Header with Logo */}
-            <div className="flex justify-end mb-8">
-                {appLogo ? (
-                    <img src={appLogo} alt="Logo" crossOrigin="anonymous" className="h-[80px] w-auto object-contain" />
-                ) : (
-                    <div className="h-[60px] w-[100px] bg-slate-100 rounded flex items-center justify-center text-[10px] text-slate-400">LOGO</div>
-                )}
-            </div>
-
-            {/* Title */}
-            <div className="text-center mb-8">
-                <h1 className="text-[18px] font-bold">หนังสือยินยอมในการเข้าตรวจดูข้อมูลข่าวสารส่วนบุคคล (ประวัติอาชญากรรม)</h1>
-                <h2 className="text-[16px] font-bold">(ผ่านหน่วยงาน/บริษัท)</h2>
+            {/* Title for second document */}
+            <div className="text-center mb-4">
+                <h1 className="text-[16px] font-bold">หนังสือยินยอมในการเข้าตรวจดูข้อมูลข่าวสารส่วนบุคคล (ประวัติอาชญากรรม)</h1>
+                <h2 className="text-[14px] font-bold">(ผ่านหน่วยงาน/บริษัท)</h2>
             </div>
 
             {/* Content */}
-            <div className="space-y-4 text-justify">
+            <div className="space-y-2 text-justify">
                 <p>
                     ทำที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[400px] text-center">{companyData.companyLocation || formData.companyLocation || '\u00A0'}</span>
                 </p>
@@ -202,7 +169,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Signature */}
-            <div className="mt-16 text-center">
+            <div className="mt-8 text-center">
                 <p className="mb-2">
                     (ลงชื่อ) 
                     {applicant?.signature_url ? (
@@ -216,14 +183,9 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Note */}
-            <div className="mt-8 text-[14px]">
-                <p className="font-semibold">หมายเหตุ</p>
+            <div className="mt-4 text-[12px]">
+                <p className="font-semibold">หมายเหตุ:</p>
                 <p>กรุณากรอกรายละเอียดให้ครบทุกช่อง</p>
-            </div>
-
-            {/* Footer */}
-            <div className="absolute bottom-[10mm] right-[10mm] text-[10px] text-slate-500">
-                หน้าที่ 2 | 2
             </div>
         </div>
         </>
