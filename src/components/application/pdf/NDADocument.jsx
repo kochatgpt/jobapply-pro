@@ -39,9 +39,9 @@ export default function NDADocument({ applicant, formData = {} }) {
             </div>
 
             {/* Contract Date */}
-            <div className="mb-4 leading-[1.4]">
-                <p className="indent-8">สัญญาฉบับนี้ทำขึ้นที่ บริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด</p>
-                <p className="indent-8">เมื่อวันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${formData.contractDate ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.contractDate && { minHeight: '1.2em' }) }}>{formData.contractDate || ''}</span></p>
+            <div className="mb-4 leading-[1.4] text-right">
+                <p>สัญญาฉบับนี้ทำขึ้นที่ บริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด</p>
+                <p>เมื่อวันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${formData.contractDate ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.contractDate && { minHeight: '1.2em' }) }}>{formData.contractDate || ''}</span></p>
             </div>
 
             {/* Company Info */}
