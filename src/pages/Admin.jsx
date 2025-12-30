@@ -13,15 +13,24 @@ import ApplicantDetail from '@/components/admin/ApplicantDetail';
 import SettingsPanel from '@/components/admin/SettingsPanel';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import NDAReviewModal from '@/components/admin/NDAReviewModal';
+import PDPAReviewModal from '@/components/admin/PDPAReviewModal';
 
-function DocumentsView({ onReview }) {
+function DocumentsView({ onReviewNDA, onReviewPDPA, onReviewFMHRD19 }) {
     const { data: applicants = [], isLoading } = useQuery({
         queryKey: ['applicants'],
         queryFn: () => base44.entities.Applicant.list()
     });
 
-    const submittedDocs = applicants.filter(a => 
+    const ndaDocs = applicants.filter(a => 
         a.nda_document?.status === 'submitted' || a.nda_document?.status === 'completed'
+    );
+    
+    const pdpaDocs = applicants.filter(a => 
+        a.pdpa_document?.status === 'submitted' || a.pdpa_document?.status === 'completed'
+    );
+    
+    const fmhrd19Docs = applicants.filter(a => 
+        a.fmhrd19_document?.status === 'submitted' || a.fmhrd19_document?.status === 'completed'
     );
 
     if (isLoading) {
@@ -34,57 +43,165 @@ function DocumentsView({ onReview }) {
 
     return (
         <div className="h-full overflow-y-auto p-6">
-            <div className="max-w-6xl mx-auto space-y-4">
-                <h2 className="text-2xl font-bold text-slate-800">เอกสาร NDA ที่ส่งแล้ว</h2>
-                
-                {submittedDocs.length === 0 ? (
-                    <Card>
-                        <CardContent className="p-8 text-center text-slate-500">
-                            ยังไม่มีเอกสารที่ส่งมา
-                        </CardContent>
-                    </Card>
-                ) : (
-                    <div className="grid grid-cols-1 gap-4">
-                        {submittedDocs.map(applicant => (
-                            <Card key={applicant.id} className="hover:shadow-md transition-shadow">
-                                <CardContent className="p-6">
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
-                                                <FileCheck className="w-6 h-6 text-indigo-600" />
+            <div className="max-w-6xl mx-auto space-y-8">
+                {/* NDA Documents */}
+                <div>
+                    <h2 className="text-2xl font-bold text-slate-800 mb-4">เอกสาร NDA (FM-HRD-27)</h2>
+                    {ndaDocs.length === 0 ? (
+                        <Card>
+                            <CardContent className="p-8 text-center text-slate-500">
+                                ยังไม่มีเอกสารที่ส่งมา
+                            </CardContent>
+                        </Card>
+                    ) : (
+                        <div className="grid grid-cols-1 gap-4">
+                            {ndaDocs.map(applicant => (
+                                <Card key={applicant.id} className="hover:shadow-md transition-shadow">
+                                    <CardContent className="p-6">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
+                                                    <FileCheck className="w-6 h-6 text-indigo-600" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="font-semibold text-lg">{applicant.full_name}</h3>
+                                                    <p className="text-sm text-slate-500">
+                                                        ส่งเมื่อ: {applicant.nda_document?.submitted_date ? 
+                                                            new Date(applicant.nda_document.submitted_date).toLocaleDateString('th-TH', {
+                                                                year: 'numeric',
+                                                                month: 'long',
+                                                                day: 'numeric',
+                                                                hour: '2-digit',
+                                                                minute: '2-digit'
+                                                            }) : '-'
+                                                        }
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <h3 className="font-semibold text-lg">{applicant.full_name}</h3>
-                                                <p className="text-sm text-slate-500">
-                                                    ส่งเมื่อ: {applicant.nda_document?.submitted_date ? 
-                                                        new Date(applicant.nda_document.submitted_date).toLocaleDateString('th-TH', {
-                                                            year: 'numeric',
-                                                            month: 'long',
-                                                            day: 'numeric',
-                                                            hour: '2-digit',
-                                                            minute: '2-digit'
-                                                        }) : '-'
-                                                    }
-                                                </p>
+                                            <div className="flex items-center gap-3">
+                                                <Badge variant={applicant.nda_document?.status === 'completed' ? 'success' : 'default'}>
+                                                    {applicant.nda_document?.status === 'completed' ? 'เสร็จสิ้น' : 'รอดำเนินการ'}
+                                                </Badge>
+                                                <Button 
+                                                    onClick={() => onReviewNDA(applicant)}
+                                                    size="sm"
+                                                >
+                                                    ดูและเซ็น
+                                                </Button>
                                             </div>
                                         </div>
-                                        <div className="flex items-center gap-3">
-                                            <Badge variant={applicant.nda_document?.status === 'completed' ? 'success' : 'default'}>
-                                                {applicant.nda_document?.status === 'completed' ? 'เสร็จสิ้น' : 'รอดำเนินการ'}
-                                            </Badge>
-                                            <Button 
-                                                onClick={() => onReview(applicant)}
-                                                size="sm"
-                                            >
-                                                ดูและเซ็น
-                                            </Button>
+                                    </CardContent>
+                                </Card>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                {/* PDPA Documents */}
+                <div>
+                    <h2 className="text-2xl font-bold text-slate-800 mb-4">เอกสาร PDPA</h2>
+                    {pdpaDocs.length === 0 ? (
+                        <Card>
+                            <CardContent className="p-8 text-center text-slate-500">
+                                ยังไม่มีเอกสารที่ส่งมา
+                            </CardContent>
+                        </Card>
+                    ) : (
+                        <div className="grid grid-cols-1 gap-4">
+                            {pdpaDocs.map(applicant => (
+                                <Card key={applicant.id} className="hover:shadow-md transition-shadow">
+                                    <CardContent className="p-6">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
+                                                    <FileCheck className="w-6 h-6 text-purple-600" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="font-semibold text-lg">{applicant.full_name}</h3>
+                                                    <p className="text-sm text-slate-500">
+                                                        ส่งเมื่อ: {applicant.pdpa_document?.submitted_date ? 
+                                                            new Date(applicant.pdpa_document.submitted_date).toLocaleDateString('th-TH', {
+                                                                year: 'numeric',
+                                                                month: 'long',
+                                                                day: 'numeric',
+                                                                hour: '2-digit',
+                                                                minute: '2-digit'
+                                                            }) : '-'
+                                                        }
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <Badge variant={applicant.pdpa_document?.status === 'completed' ? 'success' : 'default'}>
+                                                    {applicant.pdpa_document?.status === 'completed' ? 'เสร็จสิ้น' : 'รอดำเนินการ'}
+                                                </Badge>
+                                                <Button 
+                                                    onClick={() => onReviewPDPA(applicant)}
+                                                    size="sm"
+                                                >
+                                                    กรอกข้อมูลพยาน
+                                                </Button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-                )}
+                                    </CardContent>
+                                </Card>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                {/* FM-HRD-19 Documents */}
+                <div>
+                    <h2 className="text-2xl font-bold text-slate-800 mb-4">เอกสาร FM-HRD-19</h2>
+                    {fmhrd19Docs.length === 0 ? (
+                        <Card>
+                            <CardContent className="p-8 text-center text-slate-500">
+                                ยังไม่มีเอกสารที่ส่งมา
+                            </CardContent>
+                        </Card>
+                    ) : (
+                        <div className="grid grid-cols-1 gap-4">
+                            {fmhrd19Docs.map(applicant => (
+                                <Card key={applicant.id} className="hover:shadow-md transition-shadow">
+                                    <CardContent className="p-6">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                                    <FileCheck className="w-6 h-6 text-green-600" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="font-semibold text-lg">{applicant.full_name}</h3>
+                                                    <p className="text-sm text-slate-500">
+                                                        ส่งเมื่อ: {applicant.fmhrd19_document?.submitted_date ? 
+                                                            new Date(applicant.fmhrd19_document.submitted_date).toLocaleDateString('th-TH', {
+                                                                year: 'numeric',
+                                                                month: 'long',
+                                                                day: 'numeric',
+                                                                hour: '2-digit',
+                                                                minute: '2-digit'
+                                                            }) : '-'
+                                                        }
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <Badge variant={applicant.fmhrd19_document?.status === 'completed' ? 'success' : 'default'}>
+                                                    {applicant.fmhrd19_document?.status === 'completed' ? 'เสร็จสิ้น' : 'รอดำเนินการ'}
+                                                </Badge>
+                                                <Button 
+                                                    onClick={() => onReviewFMHRD19(applicant)}
+                                                    size="sm"
+                                                >
+                                                    กรอกข้อมูลพยาน
+                                                </Button>
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
@@ -96,6 +213,8 @@ export default function AdminPage() {
     const [activeView, setActiveView] = useState("dashboard"); // dashboard, settings, documents
     const [isAuthorized, setIsAuthorized] = useState(null);
     const [reviewingApplicant, setReviewingApplicant] = useState(null);
+    const [reviewingPDPA, setReviewingPDPA] = useState(null);
+    const [reviewingFMHRD19, setReviewingFMHRD19] = useState(null);
 
     useEffect(() => {
         const checkAccess = async () => {
@@ -175,7 +294,11 @@ export default function AdminPage() {
                         <ApplicantDetail applicant={selectedApplicant} />
                     </div>
                 ) : activeView === "documents" ? (
-                    <DocumentsView onReview={setReviewingApplicant} />
+                    <DocumentsView 
+                        onReviewNDA={setReviewingApplicant}
+                        onReviewPDPA={setReviewingPDPA}
+                        onReviewFMHRD19={setReviewingFMHRD19}
+                    />
                 ) : (
                     <div className="h-full overflow-y-auto">
                         <SettingsPanel />
@@ -188,6 +311,13 @@ export default function AdminPage() {
                 applicant={reviewingApplicant}
                 isOpen={!!reviewingApplicant}
                 onClose={() => setReviewingApplicant(null)}
+            />
+
+            {/* PDPA Review Modal */}
+            <PDPAReviewModal 
+                applicant={reviewingPDPA}
+                isOpen={!!reviewingPDPA}
+                onClose={() => setReviewingPDPA(null)}
             />
         </div>
     );
