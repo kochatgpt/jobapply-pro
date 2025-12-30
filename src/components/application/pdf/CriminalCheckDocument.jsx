@@ -29,10 +29,9 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             <div className="mb-6 relative">
                 <div className="flex items-start gap-4">
                     {/* Stamp Box */}
-                    <div className="border-2 border-slate-400 w-[50px] h-[70px] flex-shrink-0 flex items-center justify-center">
-                        <div className="text-center text-[10px] text-slate-500">
-                            <p>ติดอากร</p>
-                            <p>แสตมป์</p>
+                    <div className="border-2 border-slate-400 w-[120px] h-[100px] flex-shrink-0 flex items-center justify-center">
+                        <div className="text-center text-[12px] text-slate-500">
+                            <p>ติดอากรแสตมป์</p>
                             <p>30 บาท</p>
                         </div>
                     </div>
