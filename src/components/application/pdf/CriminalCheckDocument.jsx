@@ -26,27 +26,25 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             }}
         >
             {/* Title and Date Section */}
-            <div className="mb-6 relative">
-                <div className="flex items-start gap-4">
-                    {/* Stamp Box */}
-                    <div className="border-2 border-slate-400 w-[180px] h-[100px] flex-shrink-0 flex items-center justify-center">
-                        <div className="text-center text-[12px] text-slate-500">
-                            <p>ติดอากรแสตมป์</p>
-                            <p>30 บาท</p>
-                        </div>
+            <div className="mb-6 relative" style={{ minHeight: '120px' }}>
+                {/* Stamp Box - Absolute positioned on left */}
+                <div className="absolute left-0 top-0 border-2 border-slate-400 w-[180px] h-[100px] flex items-center justify-center">
+                    <div className="text-center text-[12px] text-slate-500">
+                        <p>ติดอากรแสตมป์</p>
+                        <p>30 บาท</p>
                     </div>
-                    
-                    {/* Title and Date */}
-                    <div className="flex-1">
-                        <h1 className="text-[16px] font-bold text-center mb-4">หนังสือมอบอำนาจ</h1>
-                        <div className="text-right space-y-1">
-                            <p>
-                                ทำที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{companyData.companyLocation || formData.companyLocation || '\u00A0'}</span>
-                            </p>
-                            <p>
-                                วันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{companyData.poaDate || formData.poaDate || '\u00A0'}</span>
-                            </p>
-                        </div>
+                </div>
+                
+                {/* Title and Date - Centered */}
+                <div className="text-center">
+                    <h1 className="text-[16px] font-bold mb-4">หนังสือมอบอำนาจ</h1>
+                    <div className="space-y-1">
+                        <p>
+                            ทำที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{companyData.companyLocation || formData.companyLocation || '\u00A0'}</span>
+                        </p>
+                        <p>
+                            วันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{companyData.poaDate || formData.poaDate || '\u00A0'}</span>
+                        </p>
                     </div>
                 </div>
             </div>
