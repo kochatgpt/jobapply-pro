@@ -128,12 +128,12 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             <div className="mb-1 mt-2">
                 <h1 className="text-[16px] font-bold text-center mb-2">หนังสือยินยอมในการเข้าตรวจดูข้อมูลข่าวสารส่วนบุคคล (ประวัติอาชญากรรม)</h1>
                 <h2 className="text-[14px] font-bold text-center mb-3">(ผ่านหน่วยงาน/บริษัท)</h2>
-                <div className="text-right space-y-1">
+                <div className="text-right space-y-1 absolute right-0 top-[5px]">
                     <p>
-                        ทำที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{companyData.companyLocation || formData.companyLocation || '\u00A0'}</span>
+                        ทำที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{companyData.companyLocation || formData.companyLocation || '\u00A0'}</span>
                     </p>
                     <p>
-                        วันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{companyData.consentDate || formData.consentDate || '\u00A0'}</span>
+                        วันที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{companyData.poaDate || formData.poaDate || '\u00A0'}</span>
                     </p>
                 </div>
             </div>
@@ -142,14 +142,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             <div className="space-y-2 text-justify">
                 <p className="font-semibold">เรียน ผู้บังคับการกองทะเบียนประวัติอาชญากร</p>
                 <p>
-                    ข้าพเจ้า (นาย/นาง/น.ส.) <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span> อยู่บ้านเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center">{formData.houseNumber || p.current_address?.number || '\u00A0'}</span> หมู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center">{formData.moo || p.current_address?.moo || '\u00A0'}</span> ซอย <span className="border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center">{formData.soi || p.current_address?.soi || '\u00A0'}</span> ถนน <span className="border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center">{formData.road || p.current_address?.road || '\u00A0'}</span> ตำบล/แขวง <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.subdistrict || p.current_address?.subdistrict || '\u00A0'}</span> อำเภอ/เขต <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.district || p.current_address?.district || '\u00A0'}</span> จังหวัด <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.province || p.current_address?.province || '\u00A0'}</span>
-                </p>
-                <p>
-                    
-                </p>
-                    
-                <p>
-                    โทรศัพท์ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.mobile_phone || '\u00A0'}</span>
+                    ข้าพเจ้า (นาย/นาง/น.ส.) <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span> อยู่บ้านเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center">{formData.houseNumber || p.current_address?.number || '\u00A0'}</span> หมู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center">{formData.moo || p.current_address?.moo || '\u00A0'}</span> ซอย <span className="border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center">{formData.soi || p.current_address?.soi || '\u00A0'}</span> ถนน <span className="border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center">{formData.road || p.current_address?.road || '\u00A0'}</span> ตำบล/แขวง <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.subdistrict || p.current_address?.subdistrict || '\u00A0'}</span> อำเภอ/เขต <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.district || p.current_address?.district || '\u00A0'}</span> จังหวัด <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.province || p.current_address?.province || '\u00A0'}</span> โทรศัพท์ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.mobile_phone || '\u00A0'}</span>
                 </p>
                 <p className="font-semibold">โดยหนังสือฉบับนี้</p>
                 <p>
