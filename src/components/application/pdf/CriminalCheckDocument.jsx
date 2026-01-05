@@ -130,7 +130,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
                 <div>
                     <h1 className="text-[16px] font-bold text-center mb-2">หนังสือยินยอมในการเข้าตรวจดูข้อมูลข่าวสารส่วนบุคคล (ประวัติอาชญากรรม)</h1>
                     <h2 className="text-[14px] font-bold text-center mb-3">(ผ่านหน่วยงาน/บริษัท)</h2>
-                    <div className="text-right absolute top-[25px] right-0 space-y-1">
+                    <div className="text-right absolute top-[35px] right-0 space-y-1">
                         <p>
                             ทำที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${(companyData.companyLocation || formData.companyLocation) ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...((companyData.companyLocation || formData.companyLocation) && { minHeight: '1.2em' }) }}>{companyData.companyLocation || formData.companyLocation || '\u00A0'}</span>
                         </p>
@@ -142,7 +142,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Content */}
-            <div className="space-y-2 text-justify leading-tight">
+            <div className="space-y-2 text-justify leading-tight mt-2">
                 <p className="font-semibold">เรียน ผู้บังคับการกองทะเบียนประวัติอาชญากร</p>
                 <p>
                     ข้าพเจ้า (นาย/นาง/น.ส.) <span className={`border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2 ${applicant?.full_name ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!applicant?.full_name && { minHeight: '1.2em' }) }}>{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${p.id_card ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!p.id_card && { minHeight: '1.2em' }) }}>{p.id_card || '\u00A0'}</span> อยู่บ้านเลขที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2 ${(formData.houseNumber || p.current_address?.number) ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...((formData.houseNumber || p.current_address?.number) && { minHeight: '1.2em' }) }}>{formData.houseNumber || p.current_address?.number || '\u00A0'}</span> หมู่ที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 ${(formData.moo || p.current_address?.moo) ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...((formData.moo || p.current_address?.moo) && { minHeight: '1.2em' }) }}>{formData.moo || p.current_address?.moo || '\u00A0'}</span> ซอย <span className={`border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center px-2 ${(formData.soi || p.current_address?.soi) ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...((formData.soi || p.current_address?.soi) && { minHeight: '1.2em' }) }}>{formData.soi || p.current_address?.soi || '\u00A0'}</span> ถนน <span className={`border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center px-2 ${(formData.road || p.current_address?.road) ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...((formData.road || p.current_address?.road) && { minHeight: '1.2em' }) }}>{formData.road || p.current_address?.road || '\u00A0'}</span> ตำบล/แขวง <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 ${(formData.subdistrict || p.current_address?.subdistrict) ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...((formData.subdistrict || p.current_address?.subdistrict) && { minHeight: '1.2em' }) }}>{formData.subdistrict || p.current_address?.subdistrict || '\u00A0'}</span> อำเภอ/เขต <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 ${(formData.district || p.current_address?.district) ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...((formData.district || p.current_address?.district) && { minHeight: '1.2em' }) }}>{formData.district || p.current_address?.district || '\u00A0'}</span> จังหวัด <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 ${(formData.province || p.current_address?.province) ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...((formData.province || p.current_address?.province) && { minHeight: '1.2em' }) }}>{formData.province || p.current_address?.province || '\u00A0'}</span> โทรศัพท์ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${p.mobile_phone ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!p.mobile_phone && { minHeight: '1.2em' }) }}>{p.mobile_phone || '\u00A0'}</span>
@@ -160,7 +160,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Signature */}
-            <div className="mt-8 text-center">
+            <div className="mt-4 text-center">
                 <p className="mb-2">
                     (ลงชื่อ) 
                     {applicant?.signature_url ? (
