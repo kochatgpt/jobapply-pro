@@ -52,10 +52,10 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             {/* Content */}
             <div className="space-y-2 text-justify">
                 <p>
-                    ออกให้โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.idIssuedBy || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span>
+                    ข้าพเจ้า <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span>
                 </p>
                 <p>
-                    ข้าพเจ้า <span className="border-b border-dotted border-slate-400 inline-block min-w-[450px] text-center">{applicant?.full_name || '\u00A0'}</span> วันหมดอายุ <span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center">{formData.idExpiry || '\u00A0'}</span>
+                     ออกให้โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.idIssuedBy || '\u00A0'}</span> วันหมดอายุ <span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center">{formData.idExpiry || '\u00A0'}</span>
                 </p>
                 <p>
                     ขอมอบอำนาจให้บริษัท <span className="border-b border-dotted border-slate-400 inline-block min-w-[500px] text-center">{companyData.companyName || formData.companyName || '\u00A0'}</span>
