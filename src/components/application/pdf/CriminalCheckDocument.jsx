@@ -26,7 +26,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             }}
         >
             {/* Title and Date Section */}
-            <div className="mb-6 relative" style={{ minHeight: '95px' }}>
+            <div className="mb-6 relative" style={{ minHeight: '90px' }}>
                 {/* Stamp Box - Absolute positioned on left */}
                 <div className="absolute left-0 top-[-5px] border-2 border-slate-400 w-[180px] h-[70px] flex items-center justify-center">
                     <div className="text-center text-[12px] text-slate-500">
@@ -38,7 +38,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
                 {/* Title and Date */}
                 <div>
                     <h1 className="text-[16px] font-bold text-center mb-4">หนังสือมอบอำนาจ</h1>
-                    <div className="text-right space-y-1 absolute right-0 top-[-10px]">
+                    <div className="text-right space-y-1 absolute right-0 top-[-2px]">
                         <p>
                             ทำที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{companyData.companyLocation || formData.companyLocation || '\u00A0'}</span>
                         </p>
