@@ -76,7 +76,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
                     </p>
                     <p>({applicant?.full_name || '.................................'})</p>
                 </div>
-                <div className="text-center">
+                <div className="text-start">
                     <p className="mb-2">
                         (ลงชื่อ) 
                         {companyData.receiverSignature ? (
@@ -104,7 +104,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
                     </p>
                     <p>({companyData.witnessName1 || '...................................'})</p>
                 </div>
-                <div className="text-center">
+                <div className="text-start">
                     <p className="mb-2">
                         (ลงชื่อ) 
                         {companyData.witness2Signature ? (
