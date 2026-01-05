@@ -123,9 +123,6 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
                 <p>หมายเหตุ : กรุณาเขียนให้ชัดเจน พร้อมแนบสำเนาบัตรประชาชนผู้มอบและผู้รับมอบ อย่างละ 1 ฉบับ (พร้อมรับรองสำเนาถูกต้อง) การมอบอำนาจให้มีพยานอย่างน้อย 1 คน ถ้าผู้มอบอำนาจพิมพ์ลายนิ้วมือ ต้องมีพยาน 2 คน</p>
             </div>
 
-            {/* Divider */}
-            <div className="my-2 border-t-2 border-slate-300"></div>
-
             {/* Title for second document */}
             <div className="mb-4">
                 <h1 className="text-[16px] font-bold text-center mb-2">หนังสือยินยอมในการเข้าตรวจดูข้อมูลข่าวสารส่วนบุคคล (ประวัติอาชญากรรม)</h1>
