@@ -157,7 +157,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             <div className="space-y-2 text-justify">
                 <p className="font-semibold">เรียน ผู้บังคับการกองทะเบียนประวัติอาชญากร</p>
                 <p>
-                    ข้าพเจ้า (นาย/นาง/น.ส.) <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span>
+                    ข้าพเจ้า (นาย/นาง/น.ส.) <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span>
                 </p>
                 <p>
                     อยู่บ้านเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center">{formData.houseNumber || p.current_address?.number || '\u00A0'}</span> หมู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center">{formData.moo || p.current_address?.moo || '\u00A0'}</span> ซอย <span className="border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center">{formData.soi || p.current_address?.soi || '\u00A0'}</span> ถนน <span className="border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center">{formData.road || p.current_address?.road || '\u00A0'}</span>
