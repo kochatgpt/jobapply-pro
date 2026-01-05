@@ -52,19 +52,19 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             {/* Content */}
             <div className="space-y-2 text-justify">
                 <p>
-                    ข้าพเจ้า <span className="border-b border-dotted border-slate-400 inline-block min-w-[450px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span>
+                    ข้าพเจ้า <span className="border-b border-dotted border-slate-400 inline-block min-w-[350px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[180px] text-center">{p.id_card || '\u00A0'}</span>
                 </p>
                 <p>
-                    ออกให้โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{formData.idIssuedBy || '\u00A0'}</span> วันหมดอายุ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{formData.idExpiry || '\u00A0'}</span>
+                    ออกให้โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{formData.idIssuedBy || '\u00A0'}</span> วันหมดอายุ <span className="border-b border-dotted border-slate-400 inline-block min-w-[180px] text-center">{formData.idExpiry || '\u00A0'}</span>
                 </p>
                 <p>
-                    ขอมอบอำนาจให้บริษัท <span className="border-b border-dotted border-slate-400 inline-block min-w-[500px] text-center">{companyData.companyName || formData.companyName || '\u00A0'}</span>
+                    ขอมอบอำนาจให้บริษัท <span className="border-b border-dotted border-slate-400 inline-block min-w-[420px] text-center">{companyData.companyName || formData.companyName || '\u00A0'}</span>
                 </p>
                 <p>
-                    โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[400px] text-center">{companyData.authorizedPerson || formData.authorizedPerson || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{companyData.authorizedId || formData.authorizedId || '\u00A0'}</span>
+                    โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[320px] text-center">{companyData.authorizedPerson || formData.authorizedPerson || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[180px] text-center">{companyData.authorizedId || formData.authorizedId || '\u00A0'}</span>
                 </p>
                 <p>
-                    ออกให้โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{companyData.authIdIssuedBy || formData.authIdIssuedBy || '\u00A0'}</span> วันหมดอายุ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{companyData.authIdExpiry || formData.authIdExpiry || '\u00A0'}</span> ซึ่งเป็นผู้มีอำนาจลงนามผูกพันบริษัท
+                    ออกให้โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[180px] text-center">{companyData.authIdIssuedBy || formData.authIdIssuedBy || '\u00A0'}</span> วันหมดอายุ <span className="border-b border-dotted border-slate-400 inline-block min-w-[180px] text-center">{companyData.authIdExpiry || formData.authIdExpiry || '\u00A0'}</span> ซึ่งเป็นผู้มีอำนาจลงนามผูกพันบริษัท
                 </p>
                 <p className="indent-8">
                     ให้กระทำการแทน ในการติดต่อ ชี้แจง ยื่น ส่ง เอกสารที่เกี่ยวกับหนังสือขอตรวจสอบประวัติอาชญากรรม หนังสือยินยอมตรวจสอบประวัติอาชญากรรม และรับเอกสารผลการตรวจสอบประวัติอาชญากรรมของข้าพเจ้า กับกองทะเบียนประวัติอาชญากร สำนักงานตำรวจแห่งชาติ ตลอดจนการมอบอำนาจช่วง และดำเนินการอื่นใดในส่วนที่เกี่ยวข้องกับเรื่องดังกล่าวข้างต้นแทนข้าพเจ้าจนเสร็จการ
@@ -157,23 +157,23 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             <div className="space-y-2 text-justify">
                 <p className="font-semibold">เรียน ผู้บังคับการกองทะเบียนประวัติอาชญากร</p>
                 <p>
-                    ข้าพเจ้า (นาย/นาง/น.ส.) <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span>
+                    ข้าพเจ้า (นาย/นาง/น.ส.) <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[180px] text-center">{p.id_card || '\u00A0'}</span>
                 </p>
                 <p>
-                    อยู่บ้านเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center">{formData.houseNumber || p.current_address?.number || '\u00A0'}</span> หมู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center">{formData.moo || p.current_address?.moo || '\u00A0'}</span> ซอย <span className="border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center">{formData.soi || p.current_address?.soi || '\u00A0'}</span> ถนน <span className="border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center">{formData.road || p.current_address?.road || '\u00A0'}</span>
+                    อยู่บ้านเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[70px] text-center">{formData.houseNumber || p.current_address?.number || '\u00A0'}</span> หมู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center">{formData.moo || p.current_address?.moo || '\u00A0'}</span> ซอย <span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center">{formData.soi || p.current_address?.soi || '\u00A0'}</span> ถนน <span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center">{formData.road || p.current_address?.road || '\u00A0'}</span>
                 </p>
                 <p>
-                    ตำบล/แขวง <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.subdistrict || p.current_address?.subdistrict || '\u00A0'}</span> อำเภอ/เขต <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.district || p.current_address?.district || '\u00A0'}</span> จังหวัด <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.province || p.current_address?.province || '\u00A0'}</span>
+                    ตำบล/แขวง <span className="border-b border-dotted border-slate-400 inline-block min-w-[130px] text-center">{formData.subdistrict || p.current_address?.subdistrict || '\u00A0'}</span> อำเภอ/เขต <span className="border-b border-dotted border-slate-400 inline-block min-w-[130px] text-center">{formData.district || p.current_address?.district || '\u00A0'}</span> จังหวัด <span className="border-b border-dotted border-slate-400 inline-block min-w-[130px] text-center">{formData.province || p.current_address?.province || '\u00A0'}</span>
                 </p>
                 <p>
-                    โทรศัพท์ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.mobile_phone || '\u00A0'}</span>
+                    โทรศัพท์ <span className="border-b border-dotted border-slate-400 inline-block min-w-[180px] text-center">{p.mobile_phone || '\u00A0'}</span>
                 </p>
                 <p className="font-semibold">โดยหนังสือฉบับนี้</p>
                 <p>
-                    1. ข้าพเจ้ายินยอมให้ <span className="border-b border-dotted border-slate-400 inline-block min-w-[400px] text-center">{companyData.companyName || formData.companyName || '\u00A0'}</span> ซึ่งเป็นหน่วยงานของรัฐ หรือบริษัท สำนักงานตั้งอยู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[500px] text-center">{companyData.companyAddress || formData.companyAddress || '\u00A0'}</span>
+                    1. ข้าพเจ้ายินยอมให้ <span className="border-b border-dotted border-slate-400 inline-block min-w-[320px] text-center">{companyData.companyName || formData.companyName || '\u00A0'}</span> ซึ่งเป็นหน่วยงานของรัฐ หรือบริษัท สำนักงานตั้งอยู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[420px] text-center">{companyData.companyAddress || formData.companyAddress || '\u00A0'}</span>
                 </p>
                 <p className="indent-8">
-                    ซึ่งเป็นหน่วยงาน ที่ข้าพเจ้าได้ขออนุญาต หรือสมัครงาน มีสิทธิ์ดำเนินการใด ๆ เข้าตรวจดูข้อมูล ข่าวสารส่วนบุคคล (ประวัติอาชญากรรม) ของข้าพเจ้าเพื่อวัตถุประสงค์ <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{formData.purpose || '\u00A0'}</span>
+                    ซึ่งเป็นหน่วยงาน ที่ข้าพเจ้าได้ขออนุญาต หรือสมัครงาน มีสิทธิ์ดำเนินการใด ๆ เข้าตรวจดูข้อมูล ข่าวสารส่วนบุคคล (ประวัติอาชญากรรม) ของข้าพเจ้าเพื่อวัตถุประสงค์ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{formData.purpose || '\u00A0'}</span>
                 </p>
                 <p>
                     2. ข้าพเจ้ายินยอมให้สำนักงานตำรวจแห่งชาติ หรือสำนักงานพิสูจน์หลักฐานตำรวจ หรือ กองทะเบียนประวัติอาชญากร หรือเจ้าหน้าที่ตรวจสอบประวัติ ดำเนินการจัดเก็บข้อมูล และลายพิมพ์นิ้วมือของข้าพเจ้า รวมทั้งเปิดเผยข้อมูลของข้าพเจ้าแก่หน่วยงานของรัฐเพื่อใช้ขออนุญาต หรือสมัครงานตามอำนาจหน้าที่ของหน่วยงานของรัฐนั้น หรือบริษัทที่ข้าพเจ้าใช้สมัครงาน และดำเนินการใด ๆ ที่เกี่ยวข้องได้ ข้าพเจ้าจะไม่เรียกร้อง ร้องเรียน หรือฟ้องร้องทั้งในความผิดทางแพ่ง ทางอาญา และทางปกครอง
