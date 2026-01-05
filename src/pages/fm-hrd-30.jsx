@@ -15,6 +15,17 @@ export default function FMHRD30Page() {
     const queryClient = useQueryClient();
     const [applicantId, setApplicantId] = useState(null);
     const [generatingPdf, setGeneratingPdf] = useState(false);
+    const [showForm, setShowForm] = useState(false);
+    const [formData, setFormData] = useState({
+        date: '',
+        employeeId: '',
+        position: '',
+        department: '',
+        startDate: '',
+        signatureDay: '',
+        signatureMonth: '',
+        signatureYear: ''
+    });
 
     useEffect(() => {
         const id = localStorage.getItem('user_applicant_id');
@@ -33,6 +44,18 @@ export default function FMHRD30Page() {
         },
         enabled: !!applicantId
     });
+
+    // Pre-fill form data from applicant
+    useEffect(() => {
+        if (applicant) {
+            const personalData = applicant.personal_data || {};
+            setFormData(prev => ({
+                ...prev,
+                position: personalData.position_1 || '',
+                startDate: applicant.start_work_date || ''
+            }));
+        }
+    }, [applicant]);
 
     const handleGeneratePDF = async (action) => {
         const pages = document.querySelectorAll('.pdpa-page');
@@ -118,6 +141,12 @@ export default function FMHRD30Page() {
                     </Button>
                     <div className="flex gap-2">
                         <Button 
+                            onClick={() => setShowForm(true)}
+                            className="bg-indigo-600 hover:bg-indigo-700"
+                        >
+                            กรอกเอกสาร
+                        </Button>
+                        <Button 
                             variant="outline"
                             onClick={() => handleGeneratePDF('preview')}
                             disabled={generatingPdf}
@@ -138,16 +167,129 @@ export default function FMHRD30Page() {
                 {/* Document Preview Card */}
                 <Card className="shadow-xl">
                     <CardHeader className="border-b bg-slate-50">
-                        <CardTitle>การตรวจประวัติอาชญากรรม (FM-HRD-30)</CardTitle>
+                        <CardTitle>หนังสือยินยอมให้หักเงินเดือน (FM-HRD-30)</CardTitle>
                     </CardHeader>
                     <CardContent className="p-0">
                         <div className="overflow-auto max-h-[800px] bg-slate-100 p-8 flex justify-center">
                             <div id="fmhrd30-content">
-                                <FMHRD30Document applicant={applicant} />
+                                <FMHRD30Document applicant={applicant} formData={formData} />
                             </div>
                         </div>
                     </CardContent>
                 </Card>
+
+                {/* Form Modal */}
+                {showForm && (
+                    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                        <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+                            <CardHeader className="border-b bg-slate-50">
+                                <CardTitle>กรอกข้อมูลเอกสาร</CardTitle>
+                            </CardHeader>
+                            <CardContent className="p-6 space-y-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ทำเอกสาร</label>
+                                        <input
+                                            type="date"
+                                            value={formData.date}
+                                            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">รหัสพนักงาน</label>
+                                        <input
+                                            type="text"
+                                            value={formData.employeeId}
+                                            onChange={(e) => setFormData({ ...formData, employeeId: e.target.value })}
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                            placeholder="รหัสพนักงาน"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">ตำแหน่ง</label>
+                                        <input
+                                            type="text"
+                                            value={formData.position}
+                                            onChange={(e) => setFormData({ ...formData, position: e.target.value })}
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">แผนก</label>
+                                        <input
+                                            type="text"
+                                            value={formData.department}
+                                            onChange={(e) => setFormData({ ...formData, department: e.target.value })}
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                            placeholder="แผนกที่สังกัด"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">วันที่เริ่มงาน</label>
+                                        <input
+                                            type="date"
+                                            value={formData.startDate}
+                                            onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="border-t pt-4">
+                                    <h3 className="font-semibold text-slate-800 mb-4">วันที่ลงนาม</h3>
+                                    <div className="grid grid-cols-3 gap-4">
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">วันที่</label>
+                                            <input
+                                                type="text"
+                                                value={formData.signatureDay}
+                                                onChange={(e) => setFormData({ ...formData, signatureDay: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                                placeholder="เช่น 5"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">เดือน</label>
+                                            <input
+                                                type="text"
+                                                value={formData.signatureMonth}
+                                                onChange={(e) => setFormData({ ...formData, signatureMonth: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                                placeholder="เช่น มกราคม"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">พ.ศ.</label>
+                                            <input
+                                                type="text"
+                                                value={formData.signatureYear}
+                                                onChange={(e) => setFormData({ ...formData, signatureYear: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                                placeholder="เช่น 2569"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-end gap-2 pt-4">
+                                    <Button 
+                                        variant="outline"
+                                        onClick={() => setShowForm(false)}
+                                    >
+                                        ยกเลิก
+                                    </Button>
+                                    <Button 
+                                        onClick={() => setShowForm(false)}
+                                        className="bg-indigo-600 hover:bg-indigo-700"
+                                    >
+                                        บันทึก
+                                    </Button>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
+                )}
             </div>
         </div>
     );

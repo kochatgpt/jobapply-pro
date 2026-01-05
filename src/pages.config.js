@@ -10,7 +10,6 @@ import pdpaForm from './pages/pdpa-form';
 import userLogin from './pages/user-login';
 import fmHrd30 from './pages/fm-hrd-30';
 import userDashboard from './pages/user-dashboard';
-import salaryDeductionForm from './pages/salary-deduction-form';
 import __Layout from './Layout.jsx';
 
 
@@ -27,7 +26,6 @@ export const PAGES = {
     "user-login": userLogin,
     "fm-hrd-30": fmHrd30,
     "user-dashboard": userDashboard,
-    "salary-deduction-form": salaryDeductionForm,
 }
 
 export const pagesConfig = {
