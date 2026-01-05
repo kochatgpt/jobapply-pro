@@ -64,7 +64,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
 
             {/* Signatures */}
             <div className="mt-2 grid grid-cols-2 gap-4">
-                <div className="text-center">
+                <div className="text-left">
                     <p className="mb-0.5">
                         (ลงชื่อ) 
                         {applicant?.signature_url ? (
@@ -76,7 +76,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
                     </p>
                     <p>({applicant?.full_name || '.................................'})</p>
                 </div>
-                <div className="text-center">
+                <div className="text-left">
                     <p className="mb-2">
                         (ลงชื่อ) 
                         {companyData.receiverSignature ? (
@@ -92,7 +92,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
 
             {/* Witnesses */}
             <div className="mt-4 grid grid-cols-2 gap-8">
-                <div className="text-center">
+                <div className="text-left">
                     <p className="mb-2">
                         (ลงชื่อ) 
                         {companyData.witness1Signature ? (
@@ -104,7 +104,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
                     </p>
                     <p>({companyData.witnessName1 || '...................................'})</p>
                 </div>
-                <div className="text-center">
+                <div className="text-left">
                     <p className="mb-2">
                         (ลงชื่อ) 
                         {companyData.witness2Signature ? (
@@ -172,7 +172,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Signature */}
-            <div className="mt-8 text-center">
+            <div className="mt-8 text-left">
                 <p className="mb-2">
                     (ลงชื่อ) 
                     {applicant?.signature_url ? (
