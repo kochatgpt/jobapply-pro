@@ -27,7 +27,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             }}
         >
             {/* Title and Date Section */}
-            <div className="mb-1 relative" style={{ minHeight: '90px' }}>
+            <div className="relative" style={{ minHeight: '70px' }}>
                 {/* Stamp Box - Absolute positioned on left */}
                 <div className="absolute left-0 top-[-5px] border-2 border-slate-400 w-[180px] h-[70px] flex items-center justify-center">
                     <div className="text-center text-[12px] text-slate-500">
@@ -38,8 +38,8 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
                 
                 {/* Title and Date */}
                 <div>
-                    <h1 className="text-[16px] font-bold text-center mb-4 pt-5">หนังสือมอบอำนาจ</h1>
-                    <div className="text-right space-y-1 absolute right-0 top-[15px]">
+                    <h1 className="text-[16px] font-bold text-center mb-4 pt-3">หนังสือมอบอำนาจ</h1>
+                    <div className="text-right space-y-1 absolute right-0 top-[22px]">
                         <p>
                             ทำที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{companyData.companyLocation || formData.companyLocation || '\u00A0'}</span>
                         </p>
@@ -53,7 +53,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             {/* Content */}
             <div className="space-y-2 text-justify">
                 <p>
-                    ข้าพเจ้า <span className="border-b border-dotted border-slate-400 inline-block min-w-[400px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{p.id_card || '\u00A0'}</span> ออกให้โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[320px] text-center">{formData.idIssuedBy || '\u00A0'}</span> วันหมดอายุ <span className="border-b border-dotted border-slate-400 inline-block min-w-[130px] text-center">{formData.idExpiry || '\u00A0'}</span> ขอมอบอำนาจให้บริษัท <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{companyData.companyName || formData.companyName || '\u00A0'}</span> โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[230px] text-center">{companyData.authorizedPerson || formData.authorizedPerson || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[190px] text-center">{companyData.authorizedId || formData.authorizedId || '\u00A0'}</span> ออกให้โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[210px] text-center">{companyData.authIdIssuedBy || formData.authIdIssuedBy || '\u00A0'}</span> วันหมดอายุ <span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center">{companyData.authIdExpiry || formData.authIdExpiry || '\u00A0'}</span> ซึ่งเป็นผู้มีอำนาจลงนามผูกพันบริษัทให้กระทำการแทนในการติดต่อ ชี้แจง ยื่น ส่ง เอกสารที่เกี่ยวกับหนังสือขอตรวจสอบประวัติอาชญากรรม หนังสือยินยอมตรวจสอบประวัติอาชญากรรม และรับเอกสารผลการตรวจสอบประวัติอาชญากรรมของข้าพเจ้า กับกองทะเบียนประวัติอาชญากร สำนักงานตำรวจแห่งชาติ ตลอดจนการมอบอำนาจช่วงและดำเนินการอื่นใดในส่วนที่เกี่ยวข้องกับเรื่องดังกล่าวข้างต้นแทนข้าพเจ้าจนเสร็จการ
+                    ข้าพเจ้า<span className="border-b border-dotted border-slate-400 inline-block min-w-[400px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[250px] text-center">{p.id_card || '\u00A0'}</span> ออกให้โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[320px] text-center">{formData.idIssuedBy || '\u00A0'}</span> วันหมดอายุ <span className="border-b border-dotted border-slate-400 inline-block min-w-[130px] text-center">{formData.idExpiry || '\u00A0'}</span> ขอมอบอำนาจให้บริษัท <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{companyData.companyName || formData.companyName || '\u00A0'}</span> โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[230px] text-center">{companyData.authorizedPerson || formData.authorizedPerson || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[190px] text-center">{companyData.authorizedId || formData.authorizedId || '\u00A0'}</span> ออกให้โดย <span className="border-b border-dotted border-slate-400 inline-block min-w-[210px] text-center">{companyData.authIdIssuedBy || formData.authIdIssuedBy || '\u00A0'}</span> วันหมดอายุ <span className="border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center">{companyData.authIdExpiry || formData.authIdExpiry || '\u00A0'}</span> ซึ่งเป็นผู้มีอำนาจลงนามผูกพันบริษัทให้กระทำการแทนในการติดต่อ ชี้แจง ยื่น ส่ง เอกสารที่เกี่ยวกับหนังสือขอตรวจสอบประวัติอาชญากรรม หนังสือยินยอมตรวจสอบประวัติอาชญากรรม และรับเอกสารผลการตรวจสอบประวัติอาชญากรรมของข้าพเจ้า กับกองทะเบียนประวัติอาชญากร สำนักงานตำรวจแห่งชาติ ตลอดจนการมอบอำนาจช่วงและดำเนินการอื่นใดในส่วนที่เกี่ยวข้องกับเรื่องดังกล่าวข้างต้นแทนข้าพเจ้าจนเสร็จการ
                 </p>
                 <p className="indent-8">
                     
@@ -126,11 +126,11 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Title for second document */}
-            <div className="mb-1 mt-2">
+            <div className="mb-1 mt-2 relative">
                 <div>
                     <h1 className="text-[16px] font-bold text-center mb-2">หนังสือยินยอมในการเข้าตรวจดูข้อมูลข่าวสารส่วนบุคคล (ประวัติอาชญากรรม)</h1>
                     <h2 className="text-[14px] font-bold text-center mb-3">(ผ่านหน่วยงาน/บริษัท)</h2>
-                    <div className="text-right absolute top-[10px] right-[15px] space-y-1">
+                    <div className="text-right absolute top-[10px] right-0 space-y-1">
                         <p>
                             ทำที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{companyData.companyLocation || formData.companyLocation || '\u00A0'}</span>
                         </p>
