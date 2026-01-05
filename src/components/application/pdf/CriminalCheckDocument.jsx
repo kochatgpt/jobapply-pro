@@ -119,13 +119,12 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Note */}
-            <div className="mt-4 text-[12px]">
-                <p className="font-semibold">หมายเหตุ:</p>
-                <p>กรุณาเขียนให้ชัดเจน พร้อมแนบสำเนาบัตรประชาชนผู้มอบและผู้รับมอบ อย่างละ 1 ฉบับ (พร้อมรับรองสำเนาถูกต้อง) การมอบอำนาจให้มีพยานอย่างน้อย 1 คน ถ้าผู้มอบอำนาจพิมพ์ลายนิ้วมือ ต้องมีพยาน 2 คน</p>
+            <div className="mt-2 text-[12px]">
+                <p>หมายเหตุ : กรุณาเขียนให้ชัดเจน พร้อมแนบสำเนาบัตรประชาชนผู้มอบและผู้รับมอบ อย่างละ 1 ฉบับ (พร้อมรับรองสำเนาถูกต้อง) การมอบอำนาจให้มีพยานอย่างน้อย 1 คน ถ้าผู้มอบอำนาจพิมพ์ลายนิ้วมือ ต้องมีพยาน 2 คน</p>
             </div>
 
             {/* Divider */}
-            <div className="my-6 border-t-2 border-slate-300"></div>
+            <div className="my-2 border-t-2 border-slate-300"></div>
 
             {/* Title for second document */}
             <div className="mb-4">
