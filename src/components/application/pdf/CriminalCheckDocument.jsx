@@ -50,7 +50,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Content */}
-            <div className="space-y-1 text-justify">
+            <div className="space-y-2 text-justify">
                 <p>
                     ข้าพเจ้า <span className="border-b border-dotted border-slate-400 inline-block min-w-[450px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span>
                 </p>
@@ -154,7 +154,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Content */}
-            <div className="space-y-1 text-justify">
+            <div className="space-y-2 text-justify">
                 <p className="font-semibold">เรียน ผู้บังคับการกองทะเบียนประวัติอาชญากร</p>
                 <p>
                     ข้าพเจ้า (นาย/นาง/น.ส.) <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span>
@@ -170,7 +170,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
                 </p>
                 <p className="font-semibold">โดยหนังสือฉบับนี้</p>
                 <p>
-                    1. ข้าพเจ้ายินยอมให้ <span className="border-b border-dotted border-slate-400 inline-block min-w-[400px] text-center">{companyData.companyName || formData.companyName || '\u00A0'}</span> ซึ่งเป็นหน่วยงานของรัฐ หรือบริษัท สำนักงานตั้งอยู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[500px] text-center">{companyData.companyAddress || formData.companyAddress || '\u00A0'}</span>
+                    1. ข้าพเจ้ายินยอมให้ <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{companyData.companyName || formData.companyName || '\u00A0'}</span> ซึ่งเป็นหน่วยงานของรัฐหรือบริษัทสำนักงานตั้งอยู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[500px] text-center">{companyData.companyAddress || formData.companyAddress || '\u00A0'}</span>
                 </p>
                 <p className="indent-8">
                     ซึ่งเป็นหน่วยงาน ที่ข้าพเจ้าได้ขออนุญาต หรือสมัครงาน มีสิทธิ์ดำเนินการใด ๆ เข้าตรวจดูข้อมูล ข่าวสารส่วนบุคคล (ประวัติอาชญากรรม) ของข้าพเจ้าเพื่อวัตถุประสงค์ <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{formData.purpose || '\u00A0'}</span>
