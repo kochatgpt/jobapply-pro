@@ -63,7 +63,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Signatures */}
-            <div className="mt-2 grid grid-cols-2 gap-8">
+            <div className="mt-2 grid grid-cols-2 gap-4">
                 <div className="text-center">
                     <p className="mb-0.5">
                         (ลงชื่อ) 
