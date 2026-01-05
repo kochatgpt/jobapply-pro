@@ -142,12 +142,12 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             </div>
 
             {/* Content */}
-            <div className="space-y-2 text-justify">
+            <div className="space-y-2 text-justify leading-tight">
                 <p className="font-semibold">เรียน ผู้บังคับการกองทะเบียนประวัติอาชญากร</p>
                 <p>
                     ข้าพเจ้า (นาย/นาง/น.ส.) <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{applicant?.full_name || '\u00A0'}</span> บัตรประจำตัวประชาชนเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.id_card || '\u00A0'}</span> อยู่บ้านเลขที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center">{formData.houseNumber || p.current_address?.number || '\u00A0'}</span> หมู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center">{formData.moo || p.current_address?.moo || '\u00A0'}</span> ซอย <span className="border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center">{formData.soi || p.current_address?.soi || '\u00A0'}</span> ถนน <span className="border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center">{formData.road || p.current_address?.road || '\u00A0'}</span> ตำบล/แขวง <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.subdistrict || p.current_address?.subdistrict || '\u00A0'}</span> อำเภอ/เขต <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.district || p.current_address?.district || '\u00A0'}</span> จังหวัด <span className="border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center">{formData.province || p.current_address?.province || '\u00A0'}</span> โทรศัพท์ <span className="border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center">{p.mobile_phone || '\u00A0'}</span>
                 </p>
-                <p className="leading-tight">โดยหนังสือฉบับนี้</p>
+                <p>โดยหนังสือฉบับนี้</p>
                 <p>
                     ๑. ข้าพเจ้ายินยอมให้ <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{companyData.companyName || formData.companyName || '\u00A0'}</span> ซึ่งเป็นหน่วยงานของรัฐหรือบริษัทสำนักงานตั้งอยู่ที่ <span className="border-b border-dotted border-slate-400 inline-block min-w-[500px] text-center">{companyData.companyAddress || formData.companyAddress || '\u00A0'}</span> ซึ่งเป็นหน่วยงาน ที่ข้าพเจ้าได้ขออนุญาต หรือสมัครงาน มีสิทธิ์ดำเนินการใด ๆ เข้าตรวจดูข้อมูล ข่าวสารส่วนบุคคล (ประวัติอาชญากรรม) ของข้าพเจ้าเพื่อวัตถุประสงค์ <span className="border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center">{formData.purpose || '\u00A0'}</span>
                 </p>
