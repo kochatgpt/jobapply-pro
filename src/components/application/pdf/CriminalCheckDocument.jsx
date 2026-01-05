@@ -17,8 +17,9 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
         <>
         {/* Single Page - Both Documents */}
         <div 
-            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[14px] font-sans p-[5mm 20mm 20mm 20mm] shadow-sm print:shadow-none"
+            className="pdpa-page bg-white text-slate-900 mx-auto relative text-[14px] font-sans shadow-sm print:shadow-none"
             style={{ 
+                padding: '5mm 20mm 20mm 20mm',
                 width: '210mm', 
                 minHeight: '297mm',
                 fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
