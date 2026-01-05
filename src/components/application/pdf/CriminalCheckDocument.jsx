@@ -65,7 +65,7 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
             {/* Signatures */}
             <div className="mt-2 grid grid-cols-2 gap-8">
                 <div className="text-center">
-                    <p className="mb-2">
+                    <p className="mb-0.5">
                         (ลงชื่อ) 
                         {applicant?.signature_url ? (
                             <img src={applicant.signature_url} alt="Employee signature" crossOrigin="anonymous" className="inline-block h-[40px] object-contain mx-2" />
