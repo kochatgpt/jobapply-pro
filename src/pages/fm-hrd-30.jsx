@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { useQueryClient, useQuery } from '@tanstack/react-query';
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, FileDown, Eye, Loader2 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ArrowLeft, Eye, Loader2, Send } from "lucide-react";
 import FMHRD30Document from '@/components/application/pdf/FMHRD30Document';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import toast from 'react-hot-toast';
-import { createPageUrl } from '@/utils';
 
 export default function FMHRD30Page() {
     const navigate = useNavigate();
@@ -19,15 +19,18 @@ export default function FMHRD30Page() {
     useEffect(() => {
         const id = localStorage.getItem('user_applicant_id');
         if (!id) {
-            navigate(createPageUrl('user-login'));
+            navigate('/user-login');
         } else {
             setApplicantId(id);
         }
     }, [navigate]);
 
-    const { data: applicant, isLoading } = useQuery({
-        queryKey: ['applicant', applicantId],
-        queryFn: () => base44.entities.Applicant.list().then(apps => apps.find(a => a.id === applicantId)),
+    const { data: applicant } = useQuery({
+        queryKey: ['user_applicant', applicantId],
+        queryFn: async () => {
+            const applicants = await base44.entities.Applicant.list();
+            return applicants.find(a => a.id === applicantId);
+        },
         enabled: !!applicantId
     });
 
@@ -81,19 +84,19 @@ export default function FMHRD30Page() {
                 }
             });
             
-            queryClient.invalidateQueries(['applicant', applicantId]);
+            queryClient.invalidateQueries(['user_applicant', applicantId]);
             toast.success('รับทราบเรียบร้อยแล้ว');
-            navigate(createPageUrl('user-dashboard'));
+            navigate('/user-dashboard');
         } catch (error) {
             console.error('Error acknowledging document:', error);
             toast.error('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
         }
     };
 
-    if (isLoading || !applicant) {
+    if (!applicant) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
-                <Loader2 className="w-8 h-8 animate-spin text-indigo-600" />
+            <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">
+                <div className="text-slate-400">กำลังโหลด...</div>
             </div>
         );
     }
@@ -101,55 +104,50 @@ export default function FMHRD30Page() {
     const isAcknowledged = applicant?.fmhrd30_document?.acknowledged;
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8 px-4">
-            <div className="max-w-5xl mx-auto">
+        <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-6">
+            <div className="max-w-5xl mx-auto space-y-6">
                 {/* Header */}
-                <div className="mb-6">
-                    <Button
-                        variant="ghost"
-                        onClick={() => navigate(createPageUrl('user-dashboard'))}
-                        className="mb-4"
+                <div className="flex items-center justify-between">
+                    <Button 
+                        variant="outline" 
+                        onClick={() => navigate('/user-dashboard')}
+                        className="flex items-center gap-2"
                     >
-                        <ArrowLeft className="w-4 h-4 mr-2" />
-                        กลับไปหน้าหลัก
+                        <ArrowLeft className="w-4 h-4" />
+                        กลับ
                     </Button>
-                    <h1 className="text-3xl font-bold text-slate-900">การตรวจประวัติอาชญากรรม (FM-HRD-30)</h1>
-                    <p className="text-slate-600 mt-2">โปรดอ่านและรับทราบเอกสารนี้</p>
-                </div>
-
-                {/* Actions */}
-                <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
-                    <div className="flex flex-wrap gap-3">
-                        <Button
+                    <div className="flex gap-2">
+                        <Button 
                             variant="outline"
                             onClick={() => handleGeneratePDF('preview')}
                             disabled={generatingPdf}
                         >
                             {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Eye className="w-4 h-4 mr-2" />}
-                            ดูตัวอย่าง
+                            Preview
                         </Button>
-                        <Button
-                            variant="outline"
-                            onClick={() => handleGeneratePDF('download')}
-                            disabled={generatingPdf}
-                        >
-                            {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <FileDown className="w-4 h-4 mr-2" />}
-                            ดาวน์โหลด PDF
-                        </Button>
-                        <Button
+                        <Button 
                             onClick={handleAcknowledge}
                             disabled={isAcknowledged}
-                            className="bg-green-600 hover:bg-green-700 ml-auto"
+                            className="bg-green-600 hover:bg-green-700"
                         >
-                            {isAcknowledged ? '✓ รับทราบแล้ว' : 'รับทราบ'}
+                            {isAcknowledged ? '✓ รับทราบแล้ว' : <><Send className="w-4 h-4 mr-2" />รับทราบ</>}
                         </Button>
                     </div>
                 </div>
 
-                {/* Document Preview */}
-                <div className="bg-white rounded-xl shadow-sm p-6">
-                    <FMHRD30Document applicant={applicant} />
-                </div>
+                {/* Document Preview Card */}
+                <Card className="shadow-xl">
+                    <CardHeader className="border-b bg-slate-50">
+                        <CardTitle>การตรวจประวัติอาชญากรรม (FM-HRD-30)</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                        <div className="overflow-auto max-h-[800px] bg-slate-100 p-8 flex justify-center">
+                            <div id="fmhrd30-content">
+                                <FMHRD30Document applicant={applicant} />
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
             </div>
         </div>
     );
