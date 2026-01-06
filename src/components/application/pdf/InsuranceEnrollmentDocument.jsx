@@ -8,7 +8,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
             className="pdpa-page bg-white text-slate-900 mx-auto relative shadow-sm print:shadow-none"
             style={{ 
                 fontSize: "18px",
-                padding: '15mm',
+                padding: '6mm',
                 width: '210mm', 
                 minHeight: '297mm',
                 fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
