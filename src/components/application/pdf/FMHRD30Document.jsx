@@ -19,6 +19,7 @@ export default function FMHRD30Document({ applicant }) {
         <div 
             className="pdpa-page bg-white text-slate-900 mx-auto relative text-[14px] font-sans shadow-sm print:shadow-none"
             style={{ 
+                fontSize: "21px" ,
                 padding: '20mm',
                 width: '210mm', 
                 minHeight: '297mm',
@@ -37,7 +38,7 @@ export default function FMHRD30Document({ applicant }) {
 
             {/* Title */}
             <div className="text-center mb-6">
-                <h1 className="text-[18px] font-bold mb-4">การตรวจประวัติอาชญากรรม</h1>
+                <h1 className="text-[28px] font-bold mb-4">การตรวจประวัติอาชญากรรม</h1>
                 <div className="text-right mb-1">
                     <p>วันที่ <span className="inline-block border-b border-dotted border-slate-400 min-w-[200px] text-center">&nbsp;</span></p>
                 </div>
