@@ -170,12 +170,12 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                     </div>
 
                     {/* Beneficiary Section */}
-                    <div className="border border-slate-900 p-3">
+                    <div className="p-3">
                         <p className="mb-2">โปรดแจ้งผู้รับประโยชน์และระบุความสัมพันธ์</p>
-                        <p className="text-[14px] mb-3">* กรณีที่มีการแก้ไข ขีดฆ่า ขูดลบ โปรดเซ็นชื่อกำกับด้วย</p>
+                        <p className="mb-3">* กรณีที่มีการแก้ไข ขีดฆ่า ขูดลบ โปรดเซ็นชื่อกำกับด้วย</p>
                         
                         <div className="space-y-2">
-                            <div className="grid grid-cols-2 gap-3 font-semibold">
+                            <div className="grid grid-cols-2 gap-3">
                                 <p>ชื่อผู้รับประโยชน์<br/>Beneficiary</p>
                                 <p>ความสัมพันธ์<br/>Relationship</p>
                             </div>
