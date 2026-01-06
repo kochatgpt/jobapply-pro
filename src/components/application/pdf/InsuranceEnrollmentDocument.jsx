@@ -205,7 +205,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
             {/* Dependent Coverage Notice */}
             <div className="p-3 mb-6">
                 <div className="grid grid-cols-2 gap-8">
-                    <div className="border border-dotted border-slate-400 p-4 flex items-center">
+                    <div className="border border-dotted border-slate-400 px-4 flex items-center">
                         <div>
                             <p className="mb-2">ถ้าท่านประสงค์ให้มีประกันภัยผู้อยู่ในอุปการะ โปรดกรอกใบสมัครขอเอาประกันภัยผู้อยู่ในอุปการะด้วย</p>
                             <p className="text-[14px] italic">If you are provided with dependent coverage and are enrolling your dependents, please complete a "Dependent Enrollment Form".</p>
