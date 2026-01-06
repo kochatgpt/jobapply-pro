@@ -38,7 +38,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                     <div className="border border-slate-900 p-2">
                         <p className="mb-1">นามนายจ้าง (ชื่อบริษัท หรือ ห้างร้าน)</p>
                         <p className="mb-1">Name of Employer</p>
-                        <div className="min-h-[24px] border-b border-dotted border-slate-400">
+                        <div className="min-h-[24px] border-b border-dotted border-slate-400 pb-1">
                             {formData.employerName || '\u00A0'}
                         </div>
                     </div>
@@ -47,7 +47,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                     <div className="border border-slate-900 p-2">
                         <p className="mb-1">ชื่อพนักงาน</p>
                         <p className="mb-1">Name of Employee</p>
-                        <div className="min-h-[24px] border-b border-dotted border-slate-400">
+                        <div className="min-h-[24px] border-b border-dotted border-slate-400 pb-1">
                             {applicant?.full_name || '\u00A0'}
                         </div>
                     </div>
@@ -181,10 +181,10 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                             </div>
                             {(formData.beneficiaries || Array(2).fill({ name: '', relationship: '' })).map((ben, idx) => (
                                 <div key={idx} className="grid grid-cols-2 gap-3">
-                                    <div className="border-b border-dotted border-slate-400 min-h-[28px] px-1">
+                                    <div className="border-b border-dotted border-slate-400 min-h-[28px] px-1 pb-1">
                                         {ben.name || '\u00A0'}
                                     </div>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[28px] px-1">
+                                    <div className="border-b border-dotted border-slate-400 min-h-[28px] px-1 pb-1">
                                         {ben.relationship || '\u00A0'}
                                     </div>
                                 </div>
