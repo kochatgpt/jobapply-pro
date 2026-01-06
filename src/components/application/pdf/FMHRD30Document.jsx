@@ -114,11 +114,12 @@ export default function FMHRD30Document({ applicant }) {
                         <p>แผนก HRD: นางสาวณัฎฐณิชา มาวงศ์</p>
                         <p>E-mail: hr@ko.in.th</p>
                     </div>
-                    <p className="mt-4">จึงเรียนมาเพื่อทราบโดยทั่วกัน</p>
+                    
                 </div>
 
                 {/* Signature - Right */}
                 <div className="text-center">
+                    <p className="mt-4">จึงเรียนมาเพื่อทราบโดยทั่วกัน</p>
                     <p className="mb-12">
                         ลงชื่อ: <span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ minHeight: '40px', display: 'inline-block' }}>&nbsp;</span> (ผู้อนุมัติ)
                     </p>
