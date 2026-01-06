@@ -161,18 +161,18 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
 
                     {/* Beneficiary Section */}
                     <div className="border border-slate-900 p-3">
-                        <p className=" mb-2">โปรดแจ้งผู้รับประโยชน์และระบุความสัมพันธ์</p>
-                        <p className=" mb-2">* กรณีที่มีการแก้ไข ขีดฆ่า ขูดลบ โปรดเซ็นชื่อกำกับด้วย</p>
+                        <p className="mb-2">โปรดแจ้งผู้รับประโยชน์และระบุความสัมพันธ์</p>
+                        <p className="text-[14px] mb-3">* กรณีที่มีการแก้ไข ขีดฆ่า ขูดลบ โปรดเซ็นชื่อกำกับด้วย</p>
                         
-                        <div className="space-y-1">
-                            <div className="grid grid-cols-2 gap-1">
+                        <div className="space-y-2">
+                            <div className="grid grid-cols-2 gap-3 font-semibold">
                                 <p>ชื่อผู้รับประโยชน์<br/>Beneficiary</p>
                                 <p>ความสัมพันธ์<br/>Relationship</p>
                             </div>
-                            {Array(4).fill('').map((_, idx) => (
-                                <div key={idx} className="grid grid-cols-2 gap-1">
-                                    <div className="border-b border-dotted border-slate-400 min-h-[20px]"></div>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[20px]"></div>
+                            {Array(5).fill('').map((_, idx) => (
+                                <div key={idx} className="grid grid-cols-2 gap-3">
+                                    <div className="border-b border-dotted border-slate-400 min-h-[28px]"></div>
+                                    <div className="border-b border-dotted border-slate-400 min-h-[28px]"></div>
                                 </div>
                             ))}
                         </div>
@@ -190,20 +190,22 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
 
             {/* Dependent Coverage Notice */}
             <div className="p-3 mb-6">
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="border border-dotted border-slate-400 p-4">
-                        <p className="mb-1">ถ้าท่านประสงค์ให้มีประกันภัยผู้อยู่ในอุปการะ โปรดกรอกใบสมัครขอเอาประกันภัยผู้อยู่ในอุปการะด้วย</p>
-                        <p className="text-[11px] italic">If you are provided with dependent coverage and are enrolling your dependents, please complete a "Dependent Enrollment Form".</p>
-                    </div>
-                    <div className="flex items-center text-center">
-                        <div className="items-center">
-                            <div className="border-b border-slate-400 min-h-[30px] mb-2"></div>
-                            <p className="">วันที่ Date</p>
+                <div className="grid grid-cols-2 gap-8">
+                    <div className="border border-dotted border-slate-400 p-4 flex items-center">
+                        <div>
+                            <p className="mb-2">ถ้าท่านประสงค์ให้มีประกันภัยผู้อยู่ในอุปการะ โปรดกรอกใบสมัครขอเอาประกันภัยผู้อยู่ในอุปการะด้วย</p>
+                            <p className="text-[14px] italic">If you are provided with dependent coverage and are enrolling your dependents, please complete a "Dependent Enrollment Form".</p>
                         </div>
-                        <div className="items-center">
-                            <div className="border-b border-slate-400 min-h-[40px] mt-4 mb-2"></div>
-                            <p className="">ลายเซ็นพนักงานผู้สมัคร / ผู้เอาประกันภัย</p>
-                            <p className="">Signature of Employee</p>
+                    </div>
+                    <div className="flex flex-col gap-6 justify-center">
+                        <div className="text-center">
+                            <div className="border-b border-slate-400 min-h-[40px] mb-2 mx-8"></div>
+                            <p>วันที่ Date</p>
+                        </div>
+                        <div className="text-center">
+                            <div className="border-b border-slate-400 min-h-[50px] mb-2 mx-4"></div>
+                            <p>ลายเซ็นพนักงานผู้สมัคร / ผู้เอาประกันภัย</p>
+                            <p>Signature of Employee</p>
                         </div>
                     </div>
                 </div>
