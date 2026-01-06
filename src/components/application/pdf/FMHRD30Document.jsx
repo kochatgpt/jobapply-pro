@@ -161,7 +161,7 @@ export default function FMHRD30Document({ applicant }) {
             <div className="text-center mb-6">
                 <h1 className="text-[24px] font-bold mb-4">หนังสือยินยอมให้หักเงินเดือน</h1>
                 <div className="text-right mb-4">
-                    <p>วันที่ <span className="inline-block border-b border-dotted border-slate-400 min-w-[200px] text-center">&nbsp;</span></p>
+                    <p>วันที่ <span className="inline-block border-b border-dotted border-slate-400 min-w-[200px] text-center px-2 pb-1" style={{ minHeight: '1.2em' }}>&nbsp;</span></p>
                 </div>
             </div>
 
@@ -178,10 +178,10 @@ export default function FMHRD30Document({ applicant }) {
             {/* Employee Information */}
             <div className="mb-4">
                 <p className="mb-2">
-                    ข้าพเจ้า นาย/นาง/นางสาว/อื่นๆ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2 ${applicant?.full_name ? 'pb-1' : ''}`}>{applicant?.full_name || '\u00A0'}</span> รหัสพนักงาน <span className="inline-block border-b border-dotted border-slate-400 min-w-[100px] text-center">&nbsp;</span>
+                    ข้าพเจ้า นาย/นาง/นางสาว/อื่นๆ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[300px] text-center px-2 ${applicant?.full_name ? 'pb-1' : ''}`} style={{ minHeight: '1.2em' }}>{applicant?.full_name || '\u00A0'}</span> รหัสพนักงาน <span className="inline-block border-b border-dotted border-slate-400 min-w-[100px] text-center px-2 pb-1" style={{ minHeight: '1.2em' }}>&nbsp;</span>
                 </p>
                 <p>
-                    เป็นพนักงานประจำตำแหน่ง <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 ${personalData.position_1 ? 'pb-1' : ''}`}>{personalData.position_1 || '\u00A0'}</span> แผนก <span className="inline-block border-b border-dotted border-slate-400 min-w-[150px] text-center">&nbsp;</span> เริ่มงานเมื่อวันที่ <span className="inline-block border-b border-dotted border-slate-400 min-w-[120px] text-center">&nbsp;</span>
+                    เป็นพนักงานประจำตำแหน่ง <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 ${personalData.position_1 ? 'pb-1' : ''}`} style={{ minHeight: '1.2em' }}>{personalData.position_1 || '\u00A0'}</span> แผนก <span className="inline-block border-b border-dotted border-slate-400 min-w-[150px] text-center px-2 pb-1" style={{ minHeight: '1.2em' }}>&nbsp;</span> เริ่มงานเมื่อวันที่ <span className="inline-block border-b border-dotted border-slate-400 min-w-[120px] text-center px-2 pb-1" style={{ minHeight: '1.2em' }}>&nbsp;</span>
                 </p>
             </div>
 
@@ -218,8 +218,8 @@ export default function FMHRD30Document({ applicant }) {
                     ผู้ให้ความยินยอม
                 </p>
                 <p className="mb-2">({applicant?.full_name || '........................................'})</p>
-                <p>ตำแหน่ง <span className="inline-block border-b border-dotted border-slate-400 min-w-[200px] text-center">&nbsp;</span></p>
-                <p>วันที่ <span className="inline-block border-b border-dotted border-slate-400 min-w-[50px] text-center">&nbsp;</span> เดือน <span className="inline-block border-b border-dotted border-slate-400 min-w-[100px] text-center">&nbsp;</span> พ.ศ. <span className="inline-block border-b border-dotted border-slate-400 min-w-[80px] text-center">&nbsp;</span></p>
+                <p>ตำแหน่ง <span className="inline-block border-b border-dotted border-slate-400 min-w-[200px] text-center px-2 pb-1" style={{ minHeight: '1.2em' }}>&nbsp;</span></p>
+                <p>วันที่ <span className="inline-block border-b border-dotted border-slate-400 min-w-[50px] text-center px-2 pb-1" style={{ minHeight: '1.2em' }}>&nbsp;</span> เดือน <span className="inline-block border-b border-dotted border-slate-400 min-w-[100px] text-center px-2 pb-1" style={{ minHeight: '1.2em' }}>&nbsp;</span> พ.ศ. <span className="inline-block border-b border-dotted border-slate-400 min-w-[80px] text-center px-2 pb-1" style={{ minHeight: '1.2em' }}>&nbsp;</span></p>
             </div>
 
             {/* Footer */}
