@@ -54,14 +54,18 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
 
                     {/* ID Card */}
                     <div className="border border-slate-900 p-2">
-                        <p className="text-[14px] mb-1">เลขที่บัตรประชาชน</p>
-                        <p className="text-[12px] mb-1">ID Card</p>
-                        <div className="flex gap-1">
-                            {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
-                                <div key={idx} className="w-6 h-8 border border-slate-400 flex items-center justify-center text-center">
-                                    {digit}
+                        <div className="mb-1">
+                            <p className="text-[14px]">เลขที่บัตรประชาชน</p>
+                            <div className="flex items-center gap-2">
+                                <p className="text-[12px]">ID Card</p>
+                                <div className="flex gap-1">
+                                    {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
+                                        <div key={idx} className="w-6 h-8 border border-slate-400 flex items-center justify-center text-center">
+                                            {digit}
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
+                            </div>
                         </div>
                     </div>
 
