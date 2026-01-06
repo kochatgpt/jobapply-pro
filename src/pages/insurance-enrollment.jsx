@@ -23,7 +23,10 @@ export default function InsuranceEnrollmentPage() {
             { name: '', relationship: '' }
         ],
         signatureDate: '',
-        signatureUrl: ''
+        signatureUrl: '',
+        maritalStatus: '',
+        dateOfBirth: '',
+        employmentDate: ''
     });
 
     useEffect(() => {
@@ -230,14 +233,49 @@ export default function InsuranceEnrollmentPage() {
                                         ))}
                                     </div>
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-slate-700 mb-2">วันที่</label>
-                                        <input
-                                            type="date"
-                                            value={formData.signatureDate}
-                                            onChange={(e) => setFormData({ ...formData, signatureDate: e.target.value })}
-                                            className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                        />
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">สถานภาพ</label>
+                                            <select
+                                                value={formData.maritalStatus}
+                                                onChange={(e) => setFormData({ ...formData, maritalStatus: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                            >
+                                                <option value="">เลือก</option>
+                                                <option value="single">โสด</option>
+                                                <option value="married">สมรส</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">วันเดือนปีเกิด</label>
+                                            <input
+                                                type="date"
+                                                value={formData.dateOfBirth}
+                                                onChange={(e) => setFormData({ ...formData, dateOfBirth: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">วันที่เริ่มทำงาน</label>
+                                            <input
+                                                type="date"
+                                                value={formData.employmentDate}
+                                                onChange={(e) => setFormData({ ...formData, employmentDate: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ลงนาม</label>
+                                            <input
+                                                type="date"
+                                                value={formData.signatureDate}
+                                                onChange={(e) => setFormData({ ...formData, signatureDate: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
 

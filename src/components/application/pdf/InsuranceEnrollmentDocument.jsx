@@ -102,14 +102,14 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                             <span>โสด</span>
                                             <span>Single</span>
                                         </div>
-                                        <input type="checkbox" className="w-3 h-3" />
+                                        <input type="checkbox" checked={formData.maritalStatus === 'single'} readOnly className="w-3 h-3" />
                                     </label>
                                     <label className="flex items-center gap-1 ">
                                         <div className="grid">
                                             <span>สมรส</span>
                                             <span>Married</span>
                                         </div>
-                                        <input type="checkbox" className="w-3 h-3" />
+                                        <input type="checkbox" checked={formData.maritalStatus === 'married'} readOnly className="w-3 h-3" />
                                     </label>
                                 </div>
                             </div>
@@ -119,8 +119,8 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                 <p className=" mb-1">วัน เดือน ปี เกิด</p>
                                 <p className=" mb-1">Date of Birth</p>
                                 <div className="flex mt-2">
-                                    {Array(6).fill('').map((_, idx) => (
-                                        <div key={idx} className="p-1 border border-slate-400"></div>
+                                    {(formData.dateOfBirth || personalData.dob || '').split('').filter(c => c !== '-').concat(Array(8).fill('')).slice(0, 8).map((digit, idx) => (
+                                        <div key={idx} className="py-1 px-1 border border-slate-400 text-center text-[12px]">{digit || '\u00A0'}</div>
                                     ))}
                                 </div>
                                 <p className="mt-1">ว D ด M ป Y</p>
@@ -131,8 +131,8 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                 <p className=" mb-1">วันที่เริ่มทำงาน</p>
                                 <p className=" mb-1">Date of employment</p>
                                 <div className="flex mt-2">
-                                    {Array(6).fill('').map((_, idx) => (
-                                        <div key={idx} className="p-1 border border-slate-400"></div>
+                                    {(formData.employmentDate || applicant?.start_work_date || '').split('').filter(c => c !== '-').concat(Array(8).fill('')).slice(0, 8).map((digit, idx) => (
+                                        <div key={idx} className="py-1 px-1 border border-slate-400 text-center text-[12px]">{digit || '\u00A0'}</div>
                                     ))}
                                 </div>
                                 <p className="mt-1">ว D ด M ป Y</p>
