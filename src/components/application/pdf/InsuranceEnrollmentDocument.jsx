@@ -32,9 +32,9 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
             </div>
 
             {/* Main Grid */}
-            <div className="grid grid-cols-5 gap-4 mb-4">
+            <div className="grid gap-4 mb-4" style={{ gridTemplateColumns: '60fr 40fr' }}>
                 {/* Left Column - Main Information */}
-                <div className="col-span-3 space-y-3">
+                <div className="space-y-3">
                     {/* Employer Name */}
                     <div className="border border-slate-900 p-2">
                         <p className="mb-1">นามนายจ้าง (ชื่อบริษัท หรือ ห้างร้าน)</p>
@@ -153,7 +153,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                 </div>
 
                 {/* Right Column - Insurance Info */}
-                <div className="col-span-2">
+                <div>
                     <div className="border border-slate-900 p-3 mb-3">
                         <p className=" mb-2 text-center">สำหรับ บริษัท วิริยะประกันภัย</p>
                         <div className="space-y-2">
