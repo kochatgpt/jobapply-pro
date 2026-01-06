@@ -7,7 +7,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
         <div 
             className="pdpa-page bg-white text-slate-900 mx-auto relative shadow-sm print:shadow-none"
             style={{ 
-                fontSize: "16px",
+                fontSize: "18px",
                 padding: '15mm',
                 width: '210mm', 
                 minHeight: '297mm',
@@ -19,14 +19,14 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
             <div className="grid grid-cols-2 gap-8 mb-6">
                 {/* Left - Company Info */}
                 <div className="flex flex-col justify-center">
-                    <p className="text-[16px] font-bold">บริษัท วิริยะประกันภัย</p>
-                    <p className="text-[16px]">ฝ่ายประกันกลุ่ม</p>
+                    <p className="text-[22px] font-bold">บริษัท วิริยะประกันภัย</p>
+                    <p className="text-[20px]">ฝ่ายประกันกลุ่ม</p>
                 </div>
                 
                 {/* Right - Document Title */}
                 <div className="text-center flex flex-col justify-center">
-                    <h1 className="text-[20px] font-bold">ใบสมัครขอเอาประกันภัยพนักงาน</h1>
-                    <p className="text-[16px] font-semibold">Employee Enrollment Form</p>
+                    <h1 className="text-[22px] font-bold">ใบสมัครขอเอาประกันภัยพนักงาน</h1>
+                    <p className="text-[20px] font-semibold">Employee Enrollment Form</p>
                 </div>
             </div>
 
@@ -36,8 +36,8 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                 <div className="col-span-2 space-y-3">
                     {/* Employer Name */}
                     <div className="border border-slate-900 p-2">
-                        <p className="text-[14px] mb-1">นามนายจ้าง (ชื่อบริษัท หรือ ห้างร้าน)</p>
-                        <p className="text-[12px] mb-1">Name of Employer</p>
+                        <p className="mb-1">นามนายจ้าง (ชื่อบริษัท หรือ ห้างร้าน)</p>
+                        <p className="mb-1">Name of Employer</p>
                         <div className="min-h-[24px] border-b border-dotted border-slate-400">
                             {formData.employerName || '\u00A0'}
                         </div>
@@ -45,8 +45,8 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
 
                     {/* Employee Name */}
                     <div className="border border-slate-900 p-2">
-                        <p className="text-[14px] mb-1">ชื่อพนักงาน</p>
-                        <p className="text-[12px] mb-1">Name of Employee</p>
+                        <p className="mb-1">ชื่อพนักงาน</p>
+                        <p className="mb-1">Name of Employee</p>
                         <div className="min-h-[24px] border-b border-dotted border-slate-400">
                             {applicant?.full_name || '\u00A0'}
                         </div>
@@ -55,9 +55,9 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                     {/* ID Card */}
                     <div className="border border-slate-900 p-1">
                         <div className="mb-1">
-                            <p className="text-[14px]">เลขที่บัตรประชาชน</p>
+                            <p className="">เลขที่บัตรประชาชน</p>
                             <div className="flex items-center gap-2">
-                                <p className="text-[14px]">ID Card</p>
+                                <p className="">ID Card</p>
                                 <div className="flex">
                                     {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
                                         <div key={idx} className="w-5 h-6 border border-slate-400 flex items-center justify-center text-center text-[12px]">
