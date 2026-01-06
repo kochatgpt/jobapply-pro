@@ -20,9 +20,6 @@ export default function InsuranceEnrollmentPage() {
         employerName: '',
         beneficiaries: [
             { name: '', relationship: '' },
-            { name: '', relationship: '' },
-            { name: '', relationship: '' },
-            { name: '', relationship: '' },
             { name: '', relationship: '' }
         ],
         signatureDate: '',

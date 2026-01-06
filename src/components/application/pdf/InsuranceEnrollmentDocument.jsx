@@ -169,7 +169,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                 <p>ชื่อผู้รับประโยชน์<br/>Beneficiary</p>
                                 <p>ความสัมพันธ์<br/>Relationship</p>
                             </div>
-                            {(formData.beneficiaries || Array(5).fill({ name: '', relationship: '' })).map((ben, idx) => (
+                            {(formData.beneficiaries || Array(2).fill({ name: '', relationship: '' })).map((ben, idx) => (
                                 <div key={idx} className="grid grid-cols-2 gap-3">
                                     <div className="border-b border-dotted border-slate-400 min-h-[28px] px-1">
                                         {ben.name || '\u00A0'}
