@@ -159,7 +159,7 @@ export default function FMHRD30Document({ applicant }) {
 
             {/* Title */}
             <div className="text-center mb-6">
-                <h1 className="text-[18px] font-bold mb-4">หนังสือยินยอมให้หักเงินเดือน</h1>
+                <h1 className="text-[24px] font-bold mb-4">หนังสือยินยอมให้หักเงินเดือน</h1>
                 <div className="text-right mb-4">
                     <p>วันที่ <span className="inline-block border-b border-dotted border-slate-400 min-w-[200px] text-center">&nbsp;</span></p>
                 </div>
