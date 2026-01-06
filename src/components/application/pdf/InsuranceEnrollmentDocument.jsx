@@ -119,9 +119,14 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                 <p className=" mb-1">วัน เดือน ปี เกิด</p>
                                 <p className=" mb-1">Date of Birth</p>
                                 <div className="flex mt-2">
-                                    {(formData.dateOfBirth || personalData.dob || '').split('').filter(c => c !== '-').concat(Array(8).fill('')).slice(0, 8).map((digit, idx) => (
-                                        <div key={idx} className="py-1 px-1 border border-slate-400 text-center text-[12px]">{digit || '\u00A0'}</div>
-                                    ))}
+                                    {(() => {
+                                        const dateStr = formData.dateOfBirth || personalData.dob || '';
+                                        const [year, month, day] = dateStr.split('-');
+                                        const shortYear = year ? year.slice(-2) : '';
+                                        return (day + month + shortYear).split('').concat(Array(6).fill('')).slice(0, 6).map((digit, idx) => (
+                                            <div key={idx} className="py-1 px-1 border border-slate-400 text-center text-[12px]">{digit || '\u00A0'}</div>
+                                        ));
+                                    })()}
                                 </div>
                                 <p className="mt-1">ว D ด M ป Y</p>
                             </div>
@@ -131,9 +136,14 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                 <p className=" mb-1">วันที่เริ่มทำงาน</p>
                                 <p className=" mb-1">Date of employment</p>
                                 <div className="flex mt-2">
-                                    {(formData.employmentDate || applicant?.start_work_date || '').split('').filter(c => c !== '-').concat(Array(8).fill('')).slice(0, 8).map((digit, idx) => (
-                                        <div key={idx} className="py-1 px-1 border border-slate-400 text-center text-[12px]">{digit || '\u00A0'}</div>
-                                    ))}
+                                    {(() => {
+                                        const dateStr = formData.employmentDate || applicant?.start_work_date || '';
+                                        const [year, month, day] = dateStr.split('-');
+                                        const shortYear = year ? year.slice(-2) : '';
+                                        return (day + month + shortYear).split('').concat(Array(6).fill('')).slice(0, 6).map((digit, idx) => (
+                                            <div key={idx} className="py-1 px-1 border border-slate-400 text-center text-[12px]">{digit || '\u00A0'}</div>
+                                        ));
+                                    })()}
                                 </div>
                                 <p className="mt-1">ว D ด M ป Y</p>
                             </div>
