@@ -106,9 +106,9 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                             <div className="border-r">
                                 <p className="text-[14px] mb-1">วัน เดือน ปี เกิด</p>
                                 <p className="text-[12px] mb-1">Date of Birth</p>
-                                <div className="flex gap-1 mt-2">
+                                <div className="flex mt-2">
                                     {Array(8).fill('').map((_, idx) => (
-                                        <div key={idx} className="w-5 h-6 border border-slate-400"></div>
+                                        <div key={idx} className="p-2 border border-slate-400"></div>
                                     ))}
                                 </div>
                                 <p className="text-[10px] mt-1">ว D ด M ป Y</p>
@@ -118,9 +118,9 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                             <div>
                                 <p className="text-[14px] mb-1">วันที่เริ่มทำงาน</p>
                                 <p className="text-[12px] mb-1">Date of employment</p>
-                                <div className="flex gap-1 mt-2">
+                                <div className="flex mt-2">
                                     {Array(8).fill('').map((_, idx) => (
-                                        <div key={idx} className="w-5 h-6 border border-slate-400"></div>
+                                        <div key={idx} className="p-2 border border-slate-400"></div>
                                     ))}
                                 </div>
                                 <p className="text-[10px] mt-1">ว D ด M ป Y</p>
