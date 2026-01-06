@@ -144,16 +144,16 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                 {/* Right Column - Insurance Info */}
                 <div className="col-span-2">
                     <div className="border border-slate-900 p-3 mb-3">
-                        <p className="text-[14px] mb-2 text-center">สำหรับ บริษัท วิริยะประกันภัย</p>
+                        <p className=" mb-2 text-center">สำหรับ บริษัท วิริยะประกันภัย</p>
                         <div className="space-y-2">
                             <div>
-                                <p className="text-[12px]">กรมธรรม์ประกันกลุ่มเลขที่</p>
-                                <p className="text-[11px]">Group No.</p>
+                                <p className="">กรมธรรม์ประกันกลุ่มเลขที่</p>
+                                <p className="">Group No.</p>
                                 <div className="border-b border-dotted border-slate-400 min-h-[20px]"></div>
                             </div>
                             <div>
-                                <p className="text-[12px]">ใบรับรองเลขที่</p>
-                                <p className="text-[11px]">Certificate No.</p>
+                                <p className="">ใบรับรองเลขที่</p>
+                                <p className="">Certificate No.</p>
                                 <div className="border-b border-dotted border-slate-400 min-h-[20px]"></div>
                             </div>
                         </div>
@@ -161,8 +161,8 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
 
                     {/* Beneficiary Section */}
                     <div className="border border-slate-900 p-3">
-                        <p className="text-[13px] mb-2">โปรดแจ้งผู้รับประโยชน์และระบุความสัมพันธ์</p>
-                        <p className="text-[10px] mb-2">* กรณีที่มีการแก้ไข ขีดฆ่า ขูดลบ โปรดเซ็นชื่อกำกับด้วย</p>
+                        <p className=" mb-2">โปรดแจ้งผู้รับประโยชน์และระบุความสัมพันธ์</p>
+                        <p className=" mb-2">* กรณีที่มีการแก้ไข ขีดฆ่า ขูดลบ โปรดเซ็นชื่อกำกับด้วย</p>
                         
                         <div className="space-y-1 text-[12px]">
                             <div className="grid grid-cols-2 gap-1">
