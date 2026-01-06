@@ -108,7 +108,7 @@ export default function FMHRD30Document({ applicant }) {
             {/* Contact and Signature - Grid Layout */}
             <div className="grid grid-cols-2 gap-8 mt-8">
                 {/* Contact - Left */}
-                <div>
+                <div className="mt-8">
                     <div>
                         <p className="font-semibold">ติดต่อสอบถามเพิ่มเติม</p>
                         <p>แผนก HRD: นางสาวณัฎฐณิชา มาวงศ์</p>
