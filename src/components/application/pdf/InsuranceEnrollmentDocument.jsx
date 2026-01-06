@@ -16,15 +16,15 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
             }}
         >
             {/* Header */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-2 gap-8 mb-6">
                 {/* Left - Company Info */}
-                <div>
+                <div className="flex flex-col justify-center">
                     <p className="text-[16px] font-bold">บริษัท วิริยะประกันภัย</p>
                     <p className="text-[16px]">ฝ่ายประกันกลุ่ม</p>
                 </div>
                 
                 {/* Right - Document Title */}
-                <div className="text-right">
+                <div className="text-center flex flex-col justify-center">
                     <h1 className="text-[20px] font-bold">ใบสมัครขอเอาประกันภัยพนักงาน</h1>
                     <p className="text-[16px] font-semibold">Employee Enrollment Form</p>
                 </div>
