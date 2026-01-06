@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function InsuranceEnrollmentDocument({ applicant, formData = {} }) {
     const personalData = applicant?.personal_data || {};
+    const familyData = applicant?.family_data || {};
 
     return (
         <div 
@@ -102,14 +103,14 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                             <span>โสด</span>
                                             <span>Single</span>
                                         </div>
-                                        <input type="checkbox" checked={formData.maritalStatus === 'single'} readOnly className="w-3 h-3" />
+                                        <input type="checkbox" checked={familyData.marital_status === 'single' || formData.maritalStatus === 'single'} readOnly className="w-3 h-3" />
                                     </label>
                                     <label className="flex items-center gap-1 ">
                                         <div className="grid">
                                             <span>สมรส</span>
                                             <span>Married</span>
                                         </div>
-                                        <input type="checkbox" checked={formData.maritalStatus === 'married'} readOnly className="w-3 h-3" />
+                                        <input type="checkbox" checked={familyData.marital_status === 'married' || formData.maritalStatus === 'married'} readOnly className="w-3 h-3" />
                                     </label>
                                 </div>
                             </div>
