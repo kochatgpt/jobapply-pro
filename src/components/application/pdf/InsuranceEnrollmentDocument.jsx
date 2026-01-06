@@ -60,7 +60,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                 <p className="">ID Card</p>
                                 <div className="flex">
                                     {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
-                                        <div key={idx} className="py-1 px-2 border border-slate-400 flex items-center justify-center text-center text-[12px]">
+                                        <div key={idx} className="py-1 px-1.5 border border-slate-400 flex items-center justify-center text-center text-[12px]">
                                             {digit}
                                         </div>
                                     ))}
