@@ -60,7 +60,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                 <p className="">ID Card</p>
                                 <div className="flex">
                                     {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
-                                        <div key={idx} className="p-1 border border-slate-400 flex items-center justify-center text-center text-[12px]">
+                                        <div key={idx} className="py-1 px-2 border border-slate-400 flex items-center justify-center text-center text-[12px]">
                                             {digit}
                                         </div>
                                     ))}
@@ -77,18 +77,18 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                 <p className=" mb-1">เพศ Sex</p>
                                 <div className="space-y-1">
                                     <label className="flex items-center gap-1 ">
-                                        <div>
+                                        <div className="grid">
                                             <span>ชาย</span>
                                             <span>Male</span>
                                         </div>
-                                        <input type="checkbox" checked={personalData.gender === 'male'} readOnly className="w-4 h-4" />
+                                        <input type="checkbox" checked={personalData.gender === 'male'} readOnly className="w-3 h-3" />
                                     </label>
                                     <label className="flex items-center gap-1 ">
-                                        <div>
+                                        <div className="grid">
                                             <span>หญิง</span>
                                             <span>Female</span>
                                         </div>
-                                        <input type="checkbox" checked={personalData.gender === 'female'} readOnly className="w-4 h-4" />
+                                        <input type="checkbox" checked={personalData.gender === 'female'} readOnly className="w-3 h-3" />
                                     </label>
                                 </div>
                             </div>
