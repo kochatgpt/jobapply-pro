@@ -38,18 +38,16 @@ export default function FMHRD30Document({ applicant }) {
             {/* Title */}
             <div className="text-center mb-6">
                 <h1 className="text-[18px] font-bold mb-4">การตรวจประวัติอาชญากรรม</h1>
-                <div className="text-right mb-4">
+                <div className="text-right mb-1">
                     <p>วันที่ 19 ธันวาคม 2566</p>
+                </div>
+                <div className="text-right mb-4">
+                    <p><strong>เลขที่ประกาศ:</strong> KO.G 2566/46</p>
                 </div>
             </div>
 
-            {/* Document Number */}
-            <div className="mb-4">
-                <p><strong>เลขที่ประกาศ:</strong> KO.G 2566/46</p>
-            </div>
-
             {/* Subject */}
-            <div className="mb-4">
+            <div className="mb-1">
                 <p><strong>เรื่อง</strong> การตรวจประวัติอาชญากรรม</p>
             </div>
 
