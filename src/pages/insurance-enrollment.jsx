@@ -24,6 +24,7 @@ export default function InsuranceEnrollmentPage() {
         ],
         signatureDate: '',
         signatureUrl: '',
+        gender: '',
         maritalStatus: '',
         dateOfBirth: '',
         employmentDate: ''
@@ -233,7 +234,19 @@ export default function InsuranceEnrollmentPage() {
                                         ))}
                                     </div>
 
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-3 gap-4">
+                                        <div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">เพศ</label>
+                                            <select
+                                                value={formData.gender}
+                                                onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                            >
+                                                <option value="">เลือก</option>
+                                                <option value="male">ชาย</option>
+                                                <option value="female">หญิง</option>
+                                            </select>
+                                        </div>
                                         <div>
                                             <label className="block text-sm font-medium text-slate-700 mb-2">สถานภาพ</label>
                                             <select

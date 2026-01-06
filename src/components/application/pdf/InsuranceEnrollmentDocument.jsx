@@ -82,14 +82,14 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                             <span>ชาย</span>
                                             <span>Male</span>
                                         </div>
-                                        <input type="checkbox" checked={personalData.gender === 'male'} readOnly className="w-3 h-3" />
+                                        <input type="checkbox" checked={personalData.gender === 'male' || formData.gender === 'male'} readOnly className="w-3 h-3" />
                                     </label>
                                     <label className="flex items-center gap-1 ">
                                         <div className="grid">
                                             <span>หญิง</span>
                                             <span>Female</span>
                                         </div>
-                                        <input type="checkbox" checked={personalData.gender === 'female'} readOnly className="w-3 h-3" />
+                                        <input type="checkbox" checked={personalData.gender === 'female' || formData.gender === 'female'} readOnly className="w-3 h-3" />
                                     </label>
                                 </div>
                             </div>
