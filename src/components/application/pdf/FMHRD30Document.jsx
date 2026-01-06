@@ -103,8 +103,10 @@ export default function FMHRD30Document({ applicant }) {
                 <p className="font-semibold">
                     ให้มีผลบังคับใช้ ตั้งแต่ 2 มกราคม 2567 เป็นต้นไป
                 </p>
+            </div>
 
-                {/* Contact */}
+            {/* Contact */}
+            <div>
                 <div className="mt-4">
                     <p className="font-semibold">ติดต่อสอบถามเพิ่มเติม</p>
                     <p>แผนก HRD: นางสาวณัฎฐณิชา มาวงศ์</p>
