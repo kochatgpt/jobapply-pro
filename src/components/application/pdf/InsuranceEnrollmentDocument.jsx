@@ -57,7 +57,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                         <div className="mb-1">
                             <p className="text-[14px]">เลขที่บัตรประชาชน</p>
                             <div className="flex items-center gap-2">
-                                <p className="text-[12px]">ID Card</p>
+                                <p className="">ID Card</p>
                                 <div className="flex">
                                     {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
                                         <div key={idx} className="w-5 h-6 border border-slate-400 flex items-center justify-center text-center text-[12px]">
