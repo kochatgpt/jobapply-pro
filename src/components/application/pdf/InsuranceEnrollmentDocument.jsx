@@ -32,7 +32,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
             </div>
 
             {/* Main Grid */}
-            <div className="grid gap-4 mb-4" style={{ gridTemplateColumns: '60fr 40fr' }}>
+            <div className="grid gap-4 mb-4" style={{ gridTemplateColumns: '55fr 45fr' }}>
                 {/* Left Column - Main Information */}
                 <div className="space-y-3">
                     {/* Employer Name */}
