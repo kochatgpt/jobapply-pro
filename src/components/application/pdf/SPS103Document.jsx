@@ -50,7 +50,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             </div>
                             <div className="flex items-center">
                                 <span>ลำดับที่สาขา</span>
-                                <div className="flex ml-2">
+                                <div className="flex ml-2 mt-2">
                                     {Array(5).fill('').map((_, idx) => (
                                         <div key={idx} className="p-2 border border-black"></div>
                                     ))}
@@ -65,15 +65,15 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             <div className="flex items-center gap-2">
                                 <span>ประเภทการจ้าง</span>
                                 <div className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400"></div>
+                                    <div className="w-3 h-3 border border-slate-400 mt-2"></div>
                                     <span>รายวัน</span>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400"></div>
+                                    <div className="w-3 h-3 border border-slate-400 mt-2"></div>
                                     <span>รายเดือน</span>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400"></div>
+                                    <div className="w-3 h-3 border border-slate-400 mt-2"></div>
                                     <span>อื่นๆ</span>
                                 </div>
                             </div>
