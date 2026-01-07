@@ -26,9 +26,9 @@ export default function SPS103Document({ applicant, formData = {} }) {
 
             {/* ส่วนบน: ข้อมูลนายจ้าง และ สถานพยาบาลที่ */}
             <div className="border border-slate-900 mb-3">
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-6">
                     {/* ซ้าย - ข้อมูลนายจ้าง สำหรับเจ้าหน้าที่ */}
-                    <div className="border-r border-slate-900 p-3">
+                    <div className="col-span-3 border-r border-slate-900 p-3">
                         <h3 className="font-bold mb-2">ข้อมูลนายจ้าง สำหรับเจ้าหน้าที่</h3>
                         <div className="space-y-2 text-[12px]">
                             <div>
@@ -37,26 +37,26 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     {formData.employerName || '\u00A0'}
                                 </div>
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center">
                                 <span>เลขที่บัญชี</span>
-                                <div className="flex gap-0.5">
+                                <div className="flex">
                                     {Array(10).fill('').map((_, idx) => (
                                         <div key={idx} className="w-5 h-6 border border-slate-400"></div>
                                     ))}
                                 </div>
                             </div>
-                            <div className="grid grid-cols-2 gap-2">
-                                <div className="flex items-center gap-1">
+                            <div className="grid grid-cols-2">
+                                <div className="flex items-center">
                                     <span>ลำดับที่สาขา</span>
-                                    <div className="flex gap-0.5">
+                                    <div className="flex">
                                         {Array(5).fill('').map((_, idx) => (
                                             <div key={idx} className="w-5 h-6 border border-slate-400"></div>
                                         ))}
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-1">
+                                <div className="flex items-center">
                                     <span className="text-[11px]">เลขที่บัตรประกันสังคม</span>
-                                    <div className="flex gap-0.5">
+                                    <div className="flex">
                                         {Array(10).fill('').map((_, idx) => (
                                             <div key={idx} className="w-4 h-6 border border-slate-400"></div>
                                         ))}
@@ -69,17 +69,17 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     {applicant?.start_work_date ? new Date(applicant.start_work_date).toLocaleDateString('th-TH') : '\u00A0'}
                                 </div>
                             </div>
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center">
                                 <span>ประเภทการจ้าง</span>
-                                <label className="flex items-center gap-1">
+                                <label className="flex items-center">
                                     <input type="checkbox" className="w-3 h-3" />
                                     <span>รายวัน</span>
                                 </label>
-                                <label className="flex items-center gap-1">
+                                <label className="flex items-center">
                                     <input type="checkbox" className="w-3 h-3" />
                                     <span>รายเดือน</span>
                                 </label>
-                                <label className="flex items-center gap-1">
+                                <label className="flex items-center">
                                     <input type="checkbox" className="w-3 h-3" />
                                     <span>อื่นๆ</span>
                                 </label>
@@ -88,9 +88,9 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
                     
                     {/* ขวา - สถานพยาบาลที่ */}
-                    <div className="p-3">
+                    <div className="col-span-3 p-3">
                         <h3 className="font-bold mb-2">สถานพยาบาลที่</h3>
-                        <div className="flex gap-1">
+                        <div className="flex">
                             {Array(16).fill('').map((_, idx) => (
                                 <div key={idx} className="w-4 h-6 border border-slate-400"></div>
                             ))}
