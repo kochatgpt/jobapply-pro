@@ -39,20 +39,20 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             </div>
                             <div className="flex items-center">
                                 <span>เลขที่บัญชี</span>
-                                <div className="flex items-center">
+                                <div className="flex items-center ml-2">
                                     {Array(10).fill('').map((_, idx) => (
                                         <React.Fragment key={idx}>
-                                            <div className="w-5 h-6 border border-slate-400 ml-2"></div>
-                                            {(idx === 1 || idx === 8) && <span className="mx-1">-</span>}
+                                            <div className="w-5 h-6 border border-slate-400"></div>
+                                            {(idx === 1 || idx === 8) && <span>-</span>}
                                         </React.Fragment>
                                     ))}
                                 </div>
                             </div>
                             <div className="flex items-center">
                                 <span>ลำดับที่สาขา</span>
-                                <div className="flex">
+                                <div className="flex ml-2">
                                     {Array(5).fill('').map((_, idx) => (
-                                        <div key={idx} className="w-5 h-6 ml-2 border border-slate-400"></div>
+                                        <div key={idx} className="w-5 h-6 border border-slate-400"></div>
                                     ))}
                                 </div>
                             </div>
