@@ -206,7 +206,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
             {/* Dependent Coverage Notice */}
             <div className="p-3 mb-6">
                 <div className="grid grid-cols-2">
-                    <div className="border border-dotted border-slate-400 px-2 flex items-center">
+                    <div className="border border-dotted border-slate-400 p-2 flex items-center">
                         <div>
                             <p className="mb-2">ถ้าท่านประสงค์ให้มีประกันภัยผู้อยู่ในอุปการะ โปรดกรอกใบสมัครขอเอาประกันภัยผู้อยู่ในอุปการะด้วย</p>
                             <p className="text-[14px] italic">If you are provided with dependent coverage and are enrolling your dependents, please complete a "Dependent Enrollment Form".</p>
@@ -214,7 +214,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                     </div>
                     <div className="flex flex-1 gap-6 justify-center">
                         <div className="text-center">
-                            <div className="border-b border-slate-400 min-h-[40px] mb-2 mx-8 flex items-center justify-center">
+                            <div className="border-b border-slate-400 min-h-[40px] mb-2 mx-2 flex items-center justify-center">
                                 {formData.signatureDate ? new Date(formData.signatureDate).toLocaleDateString('th-TH', { 
                                     year: 'numeric', 
                                     month: 'long', 
