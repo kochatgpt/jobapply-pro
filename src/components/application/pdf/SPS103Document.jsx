@@ -13,7 +13,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                 width: '210mm', 
                 minHeight: '297mm',
                 fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
-                lineHeight: '1.3'
+                lineHeight: '1.1'
             }}
         >
             {/* Header */}
@@ -28,9 +28,9 @@ export default function SPS103Document({ applicant, formData = {} }) {
             <div className="">
                 <div className="border border-slate-900 grid grid-cols-6">
                     {/* ซ้าย - ข้อมูลนายจ้าง */}
-                    <div className="col-span-3 border-r border-slate-900 p-3">
+                    <div className="col-span-3 border-r border-slate-900">
                         <h3 className="font-bold border-b border-slate-900 text-center items-center">ข้อมูลนายจ้าง</h3>
-                        <div className="space-y-2 text-[12px]">
+                        <div className="space-y-2 text-[12px] p-3 mt-1">
                             <div className="flex items-center">
                                 <span>ชื่อสถานประกอบการ</span>
                                 <span className="border-b border-dotted border-slate-400 flex-1 min-h-[20px] ml-2">
@@ -43,7 +43,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     {Array(10).fill('').map((_, idx) => (
                                         <React.Fragment key={idx}>
                                             <div className="w-5 h-6 border border-slate-400"></div>
-                                            {(idx === 1 || idx === 8) && <div className="w-2 border-b border-slate-400 mb-1.5"></div>}
+                                            {(idx === 1 || idx === 8) && <div className="w-2 border-b border-slate-400 mb-0.5"></div>}
                                         </React.Fragment>
                                     ))}
                                 </div>
@@ -62,7 +62,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     {applicant?.start_work_date ? new Date(applicant.start_work_date).toLocaleDateString('th-TH') : '\u00A0'}
                                 </span>
                             </div>
-                            <div className="flex items-center">
+                            <div className="flex items-center gap-2">
                                 <span>ประเภทการจ้าง</span>
                                 <label className="flex items-center">
                                     <input type="checkbox" className="w-3 h-3" />
