@@ -42,7 +42,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                 <div className="flex items-center ml-2">
                                     {Array(10).fill('').map((_, idx) => (
                                         <React.Fragment key={idx}>
-                                            <div className="w-5 h-6 border border-black"></div>
+                                            <div className="px-1.5 py-1 border border-black"></div>
                                             {(idx === 1 || idx === 8) && <div className="w-2 border-b border-black mb-0.5"></div>}
                                         </React.Fragment>
                                     ))}
@@ -52,7 +52,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                 <span>ลำดับที่สาขา</span>
                                 <div className="flex ml-2">
                                     {Array(5).fill('').map((_, idx) => (
-                                        <div key={idx} className="w-5 h-6 border border-black"></div>
+                                        <div key={idx} className="px-1.5 py-1 border border-black"></div>
                                     ))}
                                 </div>
                             </div>
@@ -171,7 +171,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                         <span>5. เลขประจำตัวประชาชน</span>
                         <div className="flex gap-1">
                             {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
-                                <div key={idx} className="w-5 h-6 border border-slate-400 flex items-center justify-center text-[11px]">
+                                <div key={idx} className="px-1.5 py-1 border border-slate-400 flex items-center justify-center text-[11px]">
                                     {digit}
                                 </div>
                             ))}
