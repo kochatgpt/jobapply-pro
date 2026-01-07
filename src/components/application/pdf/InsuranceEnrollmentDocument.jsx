@@ -39,7 +39,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                     <div className="border border-slate-900 p-2">
                         <p className="mb-1">นามนายจ้าง (ชื่อบริษัท หรือ ห้างร้าน)</p>
                         <p className="mb-1">Name of Employer</p>
-                        <div className="min-h-[24px] border-b border-dotted border-slate-400 pb-1">
+                        <div className="min-h-[24px] pb-1">
                             {formData.employerName || '\u00A0'}
                         </div>
                     </div>
@@ -48,7 +48,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                     <div className="border border-slate-900 p-2">
                         <p className="mb-1">ชื่อพนักงาน</p>
                         <p className="mb-1">Name of Employee</p>
-                        <div className="min-h-[24px] border-b border-dotted border-slate-400 pb-1">
+                        <div className="min-h-[24px] pb-1">
                             {applicant?.full_name || '\u00A0'}
                         </div>
                     </div>
@@ -61,7 +61,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                 <p className="">ID Card</p>
                                 <div className="flex">
                                     {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
-                                        <div key={idx} className="py-1 px-1.5 border border-slate-400 flex items-center justify-center text-center text-[12px]">
+                                        <div key={idx} className="py-1 px-1.5 m-auto border border-slate-400 flex items-center justify-center text-center text-[12px]">
                                             {digit}
                                         </div>
                                     ))}
@@ -160,12 +160,12 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                             <div>
                                 <p className="">กรมธรรม์ประกันกลุ่มเลขที่</p>
                                 <p className="">Group No.</p>
-                                <div className="border-b border-dotted border-slate-400 min-h-[20px]"></div>
+                                <div className="min-h-[20px]"></div>
                             </div>
                             <div>
                                 <p className="">ใบรับรองเลขที่</p>
                                 <p className="">Certificate No.</p>
-                                <div className="border-b border-dotted border-slate-400 min-h-[20px]"></div>
+                                <div className="min-h-[20px]"></div>
                             </div>
                         </div>
                     </div>
