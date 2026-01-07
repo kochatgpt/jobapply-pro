@@ -191,19 +191,19 @@ export default function SPS103Document({ applicant, formData = {} }) {
                         {/* บรรทัดแรก: 3 ช่อง */}
                         <div className="flex gap-0.5 mb-2">
                             {Array(3).fill('').map((_, idx) => (
-                                <div key={idx} className="w-5 h-6 border border-slate-900"></div>
+                                <div key={idx} className="p-2 border border-black"></div>
                             ))}
                         </div>
                         
                         {/* บรรทัดที่ 2: 1 ช่อง */}
                         <div className="flex gap-0.5 mb-2">
-                            <div className="w-5 h-6 border border-slate-900"></div>
+                            <div className="p-2 border border-black"></div>
                         </div>
                         
                         {/* บรรทัดที่ 3: 3 ช่อง */}
                         <div className="flex gap-0.5 mb-2">
                             {Array(3).fill('').map((_, idx) => (
-                                <div key={idx} className="w-5 h-6 border border-slate-900"></div>
+                                <div key={idx} className="p-2 border border-black"></div>
                             ))}
                         </div>
                         
@@ -211,8 +211,8 @@ export default function SPS103Document({ applicant, formData = {} }) {
                         <div className="flex items-center gap-0.5">
                             {Array(8).fill('').map((_, idx) => (
                                 <React.Fragment key={idx}>
-                                    <div className="w-5 h-6 border border-slate-900"></div>
-                                    {(idx === 1 || idx === 3) && <div className="w-1.5 border-b border-slate-900 mb-1"></div>}
+                                    <div className="p-2 border border-black"></div>
+                                    {(idx === 1 || idx === 3) && <div className="w-2 border-b border-black mb-0.5"></div>}
                                 </React.Fragment>
                             ))}
                         </div>
