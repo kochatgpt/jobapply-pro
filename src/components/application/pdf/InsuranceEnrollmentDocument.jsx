@@ -95,17 +95,17 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                             </div>
 
                             {/* Status */}
-                            <div className="border-r">
+                            <div className="border-r p-2 m-auto">
                                 <p className=" mb-1 invisible">.</p>
                                 <div className="space-y-1">
-                                    <label className="flex items-center gap-1 ">
+                                    <label className="flex space-between items-center gap-1 ">
                                         <div className="grid">
                                             <span>โสด</span>
                                             <span>Single</span>
                                         </div>
                                         <input type="checkbox" checked={familyData.marital_status === 'single'} readOnly className="w-3 h-3" />
                                     </label>
-                                    <label className="flex items-center gap-1 ">
+                                    <label className="flex space-between items-center gap-1 ">
                                         <div className="grid">
                                             <span>สมรส</span>
                                             <span>Married</span>
