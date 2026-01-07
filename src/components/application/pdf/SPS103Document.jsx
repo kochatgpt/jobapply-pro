@@ -29,7 +29,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                 <div className="border border-slate-900 grid grid-cols-6">
                     {/* ซ้าย - ข้อมูลนายจ้าง */}
                     <div className="col-span-3 border-r border-slate-900">
-                        <h3 className="font-bold border-b border-slate-900 text-center items-center">ข้อมูลนายจ้าง</h3>
+                        <h3 className="font-bold border-b border-slate-900 text-center items-center py-1">ข้อมูลนายจ้าง</h3>
                         <div className="space-y-2 text-[12px] p-3 mt-1">
                             <div className="flex items-center">
                                 <span>ชื่อสถานประกอบการ</span>
