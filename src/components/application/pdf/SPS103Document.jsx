@@ -105,17 +105,17 @@ export default function SPS103Document({ applicant, formData = {} }) {
                 
                 <div className="space-y-2 text-[12px]">
                     {/* 1. ชื่อ */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center">
                         <span>1. ชื่อ</span>
-                        <label className="flex items-center gap-1">
+                        <label className="flex items-center">
                             <input type="checkbox" checked={personalData.prefix === 'นาย'} readOnly className="w-3 h-3" />
                             <span>นาย</span>
                         </label>
-                        <label className="flex items-center gap-1">
+                        <label className="flex items-center">
                             <input type="checkbox" checked={personalData.prefix === 'นางสาว'} readOnly className="w-3 h-3" />
                             <span>นางสาว</span>
                         </label>
-                        <label className="flex items-center gap-1">
+                        <label className="flex items-center">
                             <input type="checkbox" checked={personalData.prefix === 'นาง'} readOnly className="w-3 h-3" />
                             <span>นาง</span>
                         </label>
@@ -129,20 +129,20 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
 
                     {/* 2. เพศ */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center">
                         <span>2. เพศ</span>
-                        <label className="flex items-center gap-1">
+                        <label className="flex items-center">
                             <input type="checkbox" checked={personalData.gender === 'male'} readOnly className="w-3 h-3" />
                             <span>ชาย</span>
                         </label>
-                        <label className="flex items-center gap-1">
+                        <label className="flex items-center">
                             <input type="checkbox" checked={personalData.gender === 'female'} readOnly className="w-3 h-3" />
                             <span>หญิง</span>
                         </label>
                     </div>
 
                     {/* 3. สัญชาติ */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center">
                         <span>3. สัญชาติ</span>
                         <div className="border-b border-dotted border-slate-400 flex-1 min-h-[20px]">
                             {personalData.nationality || '\u00A0'}
@@ -150,7 +150,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
 
                     {/* 4. เกิดวันที่ */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center">
                         <span>4. เกิดวันที่</span>
                         <div className="border-b border-dotted border-slate-400 w-20 min-h-[20px]">
                             {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH', { day: 'numeric' }) : '\u00A0'}
@@ -166,9 +166,9 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
 
                     {/* 5. เลขประจำตัวประชาชน */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center">
                         <span>5. เลขประจำตัวประชาชน</span>
-                        <div className="flex gap-1">
+                        <div className="flex">
                             {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
                                 <div key={idx} className="w-5 h-6 border border-slate-400 flex items-center justify-center text-[11px]">
                                     {digit}
@@ -179,35 +179,35 @@ export default function SPS103Document({ applicant, formData = {} }) {
 
                     {/* 6. สถานภาพครอบครัว */}
                     <div className="space-y-1">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center">
                             <span>6. สถานภาพครอบครัว</span>
-                            <label className="flex items-center gap-1">
+                            <label className="flex items-center">
                                 <input type="checkbox" checked={familyData.marital_status === 'single'} readOnly className="w-3 h-3" />
                                 <span>1. โสด</span>
                             </label>
-                            <label className="flex items-center gap-1">
+                            <label className="flex items-center">
                                 <input type="checkbox" checked={familyData.marital_status === 'married'} readOnly className="w-3 h-3" />
                                 <span>2. สมรส</span>
                             </label>
-                            <label className="flex items-center gap-1">
+                            <label className="flex items-center">
                                 <input type="checkbox" className="w-3 h-3" />
                                 <span>3. หม้าย</span>
                             </label>
-                            <label className="flex items-center gap-1">
+                            <label className="flex items-center">
                                 <input type="checkbox" className="w-3 h-3" />
                                 <span>4. หย่า</span>
                             </label>
-                            <label className="flex items-center gap-1">
+                            <label className="flex items-center">
                                 <input type="checkbox" className="w-3 h-3" />
                                 <span>5. แยกกันอยู่</span>
                             </label>
                         </div>
-                        <div className="flex items-center gap-2 pl-8">
-                            <label className="flex items-center gap-1">
+                        <div className="flex items-center pl-8">
+                            <label className="flex items-center">
                                 <input type="checkbox" checked={familyData.has_children === 'no'} readOnly className="w-3 h-3" />
                                 <span>ไม่มีบุตร</span>
                             </label>
-                            <label className="flex items-center gap-1">
+                            <label className="flex items-center">
                                 <input type="checkbox" checked={familyData.has_children === 'yes'} readOnly className="w-3 h-3" />
                                 <span>มีบุตรอายุไม่เกิน 6 ปี จำนวน</span>
                             </label>
@@ -216,26 +216,26 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             </div>
                             <span>คน</span>
                         </div>
-                        <div className="flex items-center gap-4 pl-16">
-                            <div className="flex items-center gap-1">
+                        <div className="flex items-center pl-16">
+                            <div className="flex items-center">
                                 <span>ลำดับที่ 1 เกิดปี พ.ศ.</span>
-                                <div className="flex gap-0.5">
+                                <div className="flex">
                                     {Array(4).fill('').map((_, idx) => (
                                         <div key={idx} className="w-4 h-5 border border-slate-400"></div>
                                     ))}
                                 </div>
                             </div>
-                            <div className="flex items-center gap-1">
+                            <div className="flex items-center">
                                 <span>ลำดับที่ 2 เกิดปี พ.ศ.</span>
-                                <div className="flex gap-0.5">
+                                <div className="flex">
                                     {Array(4).fill('').map((_, idx) => (
                                         <div key={idx} className="w-4 h-5 border border-slate-400"></div>
                                     ))}
                                 </div>
                             </div>
-                            <div className="flex items-center gap-1">
+                            <div className="flex items-center">
                                 <span>ลำดับที่ 3 เกิดปี พ.ศ.</span>
-                                <div className="flex gap-0.5">
+                                <div className="flex">
                                     {Array(4).fill('').map((_, idx) => (
                                         <div key={idx} className="w-4 h-5 border border-slate-400"></div>
                                     ))}
@@ -248,18 +248,18 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     <div className="space-y-1 text-[11px]">
                         <p>7. สำหรับคนต่างด้าว ให้กรอกข้อความ ดังนี้</p>
                         <div className="pl-4 space-y-1">
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center">
                                 <input type="checkbox" className="w-3 h-3" />
                                 <span>หนังสือเดินทาง (PASSPORT) เลขที่</span>
                                 <div className="border-b border-dotted border-slate-400 flex-1 min-h-[18px]"></div>
                                 <span>และ</span>
                             </div>
-                            <div className="flex items-center gap-2 pl-4">
+                            <div className="flex items-center pl-4">
                                 <span>ใบอนุญาตทำงาน (WORK PERMIT) เลขที่</span>
                                 <div className="border-b border-dotted border-slate-400 flex-1 min-h-[18px]"></div>
                                 <span>หรือ</span>
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center">
                                 <input type="checkbox" className="w-3 h-3" />
                                 <span>อื่นๆ (ระบุ)</span>
                                 <div className="border-b border-dotted border-slate-400 w-48 min-h-[18px]"></div>
@@ -267,7 +267,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                 <div className="border-b border-dotted border-slate-400 flex-1 min-h-[18px]"></div>
                                 <span>และ</span>
                             </div>
-                            <div className="flex items-center gap-2 pl-4">
+                            <div className="flex items-center pl-4">
                                 <span>ใบอนุญาตทำงาน (WORK PERMIT) เลขที่</span>
                                 <div className="border-b border-dotted border-slate-400 flex-1 min-h-[18px]"></div>
                             </div>
@@ -331,31 +331,31 @@ export default function SPS103Document({ applicant, formData = {} }) {
             </div>
 
             {/* ส่วนล่าง: เอกสารแนบ และ ลายเซ็นเจ้าหน้าที่ */}
-            <div className="grid grid-cols-2 gap-4 text-[11px]">
+            <div className="grid grid-cols-2 text-[11px]">
                 <div>
                     <p className="font-bold mb-1">เอกสารที่แนบ</p>
                     <div className="space-y-0.5 pl-2">
-                        <label className="flex items-center gap-1">
+                        <label className="flex items-center">
                             <input type="checkbox" className="w-3 h-3" />
                             <span>สำเนาบัตรประจำตัวประชาชน</span>
                         </label>
-                        <label className="flex items-center gap-1">
+                        <label className="flex items-center">
                             <input type="checkbox" className="w-3 h-3" />
                             <span>สำเนาทะเบียนบ้าน</span>
                         </label>
-                        <label className="flex items-center gap-1">
+                        <label className="flex items-center">
                             <input type="checkbox" className="w-3 h-3" />
                             <span>สำเนาใบสำคัญประจำตัวคนต่างด้าว</span>
                         </label>
-                        <label className="flex items-center gap-1">
+                        <label className="flex items-center">
                             <input type="checkbox" className="w-3 h-3" />
                             <span>สำเนาหนังสือเดินทาง</span>
                         </label>
-                        <label className="flex items-center gap-1">
+                        <label className="flex items-center">
                             <input type="checkbox" className="w-3 h-3" />
                             <span>สำเนาใบอนุญาตทำงานคนต่างด้าว</span>
                         </label>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center">
                             <input type="checkbox" className="w-3 h-3" />
                             <span>อื่น ๆ</span>
                             <div className="border-b border-dotted border-slate-400 flex-1 min-h-[16px]"></div>
