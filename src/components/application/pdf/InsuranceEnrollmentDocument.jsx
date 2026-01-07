@@ -74,7 +74,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                     <div className="border border-slate-900">
                         <div className="flex grid-col-4 gap-1">
                             {/* Sex */}
-                            <div className="border-r p-1 m-0">
+                            <div className="border-r p-1 m-2">
                                 <p className=" mb-1">เพศ Sex</p>
                                 <div className="space-y-1">
                                     <label className="flex space-between items-center gap-1 ">
@@ -95,7 +95,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                             </div>
 
                             {/* Status */}
-                            <div className="border-r p-1 m-0">
+                            <div className="border-r p-1 m-2">
                                 <p className=" mb-1 invisible">.</p>
                                 <div className="space-y-1">
                                     <label className="flex space-between items-center gap-1 ">
@@ -116,7 +116,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                             </div>
 
                             {/* Date of Birth */}
-                            <div className="border-r">
+                            <div className="border-r p-1 m-2">
                                 <p className=" mb-1">วัน เดือน ปี เกิด</p>
                                 <p className=" mb-1">Date of Birth</p>
                                 <div className="flex mt-2">
@@ -133,7 +133,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                             </div>
 
                             {/* Date of Employment */}
-                            <div>
+                            <div className="p-1 m-2">
                                 <p className=" mb-1">วันที่เริ่มทำงาน</p>
                                 <p className=" mb-1">Date of employment</p>
                                 <div className="flex mt-2">
