@@ -25,8 +25,8 @@ export default function SPS103Document({ applicant, formData = {} }) {
             </div>
 
             {/* ส่วนบน: ข้อมูลนายจ้าง และ สำหรับเจ้าหน้าที่ */}
-            <div className="border border-slate-900">
-                <div className="grid grid-cols-6">
+            <div className="">
+                <div className="border border-slate-900 grid grid-cols-6">
                     {/* ซ้าย - ข้อมูลนายจ้าง */}
                     <div className="col-span-3 border-r border-slate-900 p-3">
                         <h3 className="font-bold mb-2">ข้อมูลนายจ้าง</h3>
@@ -78,7 +78,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
                     
                     {/* ขวา - สำหรับเจ้าหน้าที่ */}
-                    <div className="col-span-3 p-3">
+                    <div className="border-t border-r border-slate-900 col-span-3 p-3">
                         <h3 className="font-bold mb-2">สำหรับเจ้าหน้าที่</h3>
                         <div className="space-y-2 text-[12px]">
                             <div className="flex items-center">
