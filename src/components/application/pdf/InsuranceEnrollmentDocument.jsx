@@ -214,7 +214,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                     </div>
                     <div className="flex flex-1 gap-6 justify-center">
                         <div className="text-center">
-                            <div className="border-b border-slate-400 min-h-[50px] mb-2 mx-4 flex items-center justify-center">
+                            <div className="border-b border-slate-400 min-h-[70px] mb-2 mx-4 flex items-center justify-center">
                                 {formData.signatureDate ? new Date(formData.signatureDate).toLocaleDateString('th-TH', { 
                                     year: 'numeric', 
                                     month: 'long', 
