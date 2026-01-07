@@ -33,7 +33,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                         <div className="space-y-1 text-[12px] p-2">
                             <div className="flex items-center">
                                 <span>ชื่อสถานประกอบการ</span>
-                                <span className="border-b border-dotted border-slate-400 flex-1 min-h-[20px] ml-2">
+                                <span className="border-b border-dotted border-slate-400 flex-1 min-h-[20px] ml-2 pb-1">
                                     {formData.employerName || '\u00A0'}
                                 </span>
                             </div>
@@ -58,7 +58,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             </div>
                             <div className="flex items-center">
                                 <span>วันที่ผู้ประกันตนเข้าทำงาน</span>
-                                <span className="border-b border-dotted border-slate-400 flex-1 min-h-[20px] ml-2">
+                                <span className="border-b border-dotted border-slate-400 flex-1 min-h-[20px] ml-2 pb-1">
                                     {applicant?.start_work_date ? new Date(applicant.start_work_date).toLocaleDateString('th-TH') : '\u00A0'}
                                 </span>
                             </div>
