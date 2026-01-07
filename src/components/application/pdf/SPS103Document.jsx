@@ -81,7 +81,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
                     
                     {/* ขวา - สำหรับเจ้าหน้าที่ */}
-                    <div className="col-span-3 border-t border-r">
+                    <div className="col-span-3 border-t border-r border-slate-900">
                         <h3 className="font-bold border-b border-slate-900 text-center items-center py-2">สำหรับเจ้าหน้าที่</h3>
                         <div className="text-[12px] mt-9 p-3">
                             <div className="flex items-center">
@@ -104,10 +104,10 @@ export default function SPS103Document({ applicant, formData = {} }) {
             <div>
                 <div className="grid grid-cols-3">
                     {/* Left Column - 2 ส่วน */}
-                    <div className="col-span-2 border border-slate-900 p-3 space-y-2 text-[12px]">
+                    <div className="col-span-2 border border-slate-900 text-[12px]">
                         {/* 1. ชื่อ */}
-                        <h3 className="font-bold text-center py-1 border-b border-slate-900">ข้อมูลผู้ประกันตน</h3>
-                        <div className="flex items-center gap-2">
+                        <h3 className="font-bold text-center py-2 border-b border-slate-900">ข้อมูลผู้ประกันตน</h3>
+                        <div className="flex p-2 space-y-1 items-center">
                             <span>1. ชื่อ</span>
                             <label className="flex items-center gap-1">
                                 <div className="w-3 h-3 border border-slate-400 flex-shrink-0 flex items-center justify-center">
