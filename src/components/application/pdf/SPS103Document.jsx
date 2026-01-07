@@ -31,11 +31,11 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     <div className="col-span-3 border-r border-slate-900 p-3">
                         <h3 className="font-bold mb-2">ข้อมูลนายจ้าง</h3>
                         <div className="space-y-2 text-[12px]">
-                            <div>
+                            <div className="flex items-center">
                                 <span>ชื่อสถานประกอบการ</span>
-                                <div className="border-b border-dotted border-slate-400 min-h-[20px]">
+                                <span className="border-b border-dotted border-slate-400 flex-1 min-h-[20px] ml-2">
                                     {formData.employerName || '\u00A0'}
-                                </div>
+                                </span>
                             </div>
                             <div className="flex items-center">
                                 <span>เลขที่บัญชี</span>
@@ -53,11 +53,11 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     ))}
                                 </div>
                             </div>
-                            <div>
+                            <div className="flex items-center">
                                 <span>วันที่ผู้ประกันตนเข้าทำงาน</span>
-                                <div className="border-b border-dotted border-slate-400 min-h-[20px]">
+                                <span className="border-b border-dotted border-slate-400 flex-1 min-h-[20px] ml-2">
                                     {applicant?.start_work_date ? new Date(applicant.start_work_date).toLocaleDateString('th-TH') : '\u00A0'}
-                                </div>
+                                </span>
                             </div>
                             <div className="flex items-center">
                                 <span>ประเภทการจ้าง</span>
