@@ -20,7 +20,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
             <div className="text-right mb-2">
                 <span className="text-[14px]">สปส. 1-03</span>
             </div>
-            <div className="text-center mb-1">
+            <div className="text-center mb-2">
                 <h1 className="text-[14px] font-bold">แบบขึ้นทะเบียนผู้ประกันตน</h1>
             </div>
 
@@ -39,7 +39,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             </div>
                             <div className="flex items-center">
                                 <span>เลขที่บัญชี</span>
-                                <div className="flex items-center ml-2">
+                                <div className="flex items-center ml-2 mt-2">
                                     {Array(10).fill('').map((_, idx) => (
                                         <React.Fragment key={idx}>
                                             <div className="p-2 border border-black"></div>
@@ -83,7 +83,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     {/* ขวา - สำหรับเจ้าหน้าที่ */}
                     <div className="col-span-3">
                         <h3 className="font-bold border-b border-slate-900 text-center items-center py-2">สำหรับเจ้าหน้าที่</h3>
-                        <div className="text-[12px] mt-7 p-3">
+                        <div className="text-[12px] mt-9 p-3">
                             <div className="flex items-center">
                                 <span>เลขที่บัตรประกันสังคม</span>
                                 <div className="flex items-center ml-2">
