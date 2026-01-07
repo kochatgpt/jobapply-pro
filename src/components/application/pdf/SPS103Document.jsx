@@ -136,52 +136,53 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     {personalData.last_name || '\u00A0'}
                                 </span>
                             </div>
-                        </div>
+                        
 
-                        {/* 2. เพศ */}
-                        <div className="flex items-center gap-2">
-                            <span>2. เพศ</span>
-                            <label className="flex items-center gap-1">
-                                <div className="w-3 h-3 border border-slate-400 flex-shrink-0 flex items-center justify-center">
-                                    {personalData.gender === 'male' && <div className="w-2 h-2 bg-black"></div>}
-                                </div>
-                                <span>ชาย</span>
-                            </label>
-                            <label className="flex items-center gap-1">
-                                <div className="w-3 h-3 border border-slate-400 flex-shrink-0 flex items-center justify-center">
-                                    {personalData.gender === 'female' && <div className="w-2 h-2 bg-black"></div>}
-                                </div>
-                                <span>หญิง</span>
-                            </label>
-                        </div>
+                            {/* 2. เพศ */}
+                            <div className="flex items-center gap-2">
+                                <span>2. เพศ</span>
+                                <label className="flex items-center gap-1">
+                                    <div className="w-3 h-3 border border-slate-400 flex-shrink-0 flex items-center justify-center">
+                                        {personalData.gender === 'male' && <div className="w-2 h-2 bg-black"></div>}
+                                    </div>
+                                    <span>ชาย</span>
+                                </label>
+                                <label className="flex items-center gap-1">
+                                    <div className="w-3 h-3 border border-slate-400 flex-shrink-0 flex items-center justify-center">
+                                        {personalData.gender === 'female' && <div className="w-2 h-2 bg-black"></div>}
+                                    </div>
+                                    <span>หญิง</span>
+                                </label>
+                            </div>
 
-                        {/* 3. สัญชาติ */}
-                        <div className="flex items-center gap-2">
-                            <span>3. สัญชาติ</span>
-                            <span className="border-b border-dotted border-slate-400 flex-1 pb-0.5 inline-block">
-                                {personalData.nationality || '\u00A0'}
-                            </span>
-                        </div>
+                            {/* 3. สัญชาติ */}
+                            <div className="flex items-center gap-2">
+                                <span>3. สัญชาติ</span>
+                                <span className="border-b border-dotted border-slate-400 flex-1 pb-0.5 inline-block">
+                                    {personalData.nationality || '\u00A0'}
+                                </span>
+                            </div>
 
-                        {/* 4. เกิดวันที่ */}
-                        <div className="flex items-center gap-2">
-                            <span>4. เกิดวันที่</span>
-                            <span className="border-b border-dotted border-slate-400 w-20 pb-0.5 inline-block">
-                                {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH', { day: 'numeric' }) : '\u00A0'}
-                            </span>
-                            <span>เดือน</span>
-                            <span className="border-b border-dotted border-slate-400 flex-1 pb-0.5 inline-block">
-                                {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH', { month: 'long' }) : '\u00A0'}
-                            </span>
-                            <span>พ.ศ.</span>
-                            <span className="border-b border-dotted border-slate-400 w-24 pb-0.5 inline-block">
-                                {personalData.dob ? (new Date(personalData.dob).getFullYear() + 543) : '\u00A0'}
-                            </span>
-                        </div>
+                            {/* 4. เกิดวันที่ */}
+                            <div className="flex items-center gap-2">
+                                <span>4. เกิดวันที่</span>
+                                <span className="border-b border-dotted border-slate-400 w-20 pb-0.5 inline-block">
+                                    {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH', { day: 'numeric' }) : '\u00A0'}
+                                </span>
+                                <span>เดือน</span>
+                                <span className="border-b border-dotted border-slate-400 flex-1 pb-0.5 inline-block">
+                                    {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH', { month: 'long' }) : '\u00A0'}
+                                </span>
+                                <span>พ.ศ.</span>
+                                <span className="border-b border-dotted border-slate-400 w-24 pb-0.5 inline-block">
+                                    {personalData.dob ? (new Date(personalData.dob).getFullYear() + 543) : '\u00A0'}
+                                </span>
+                            </div>
 
-                        {/* 5. เลขประจำตัวประชาชน */}
-                        <div className="flex items-center gap-2">
-                            <span>5. เลขประจำตัวประชาชน</span>
+                            {/* 5. เลขประจำตัวประชาชน */}
+                            <div className="flex items-center gap-2">
+                                <span>5. เลขประจำตัวประชาชน</span>
+                            </div>
                         </div>
                     </div>
 
