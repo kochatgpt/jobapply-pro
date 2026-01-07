@@ -61,7 +61,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                                 <p className="">ID Card</p>
                                 <div className="flex">
                                     {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
-                                        <div key={idx} className="py-1 px-1.5 mt-2 mb-2 border border-slate-400 flex items-center justify-center text-center text-[12px]">
+                                        <div key={idx} className="py-1 px-1.5 mt-2 border border-slate-400 flex items-center justify-center text-center text-[12px]">
                                             {digit}
                                         </div>
                                     ))}
@@ -205,8 +205,8 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
 
             {/* Dependent Coverage Notice */}
             <div className="p-3 mb-6">
-                <div className="grid grid-cols-3">
-                    <div className="col-span-2 absolute border border-dotted border-slate-400 px-2 flex items-center">
+                <div className="grid absolute grid-cols-3">
+                    <div className="col-span-2 relative border border-dotted border-slate-400 px-2 flex items-center">
                         <div>
                             <p className="mb-2">ถ้าท่านประสงค์ให้มีประกันภัยผู้อยู่ในอุปการะ โปรดกรอกใบสมัครขอเอาประกันภัยผู้อยู่ในอุปการะด้วย</p>
                             <p className="text-[14px] italic">If you are provided with dependent coverage and are enrolling your dependents, please complete a "Dependent Enrollment Form".</p>
