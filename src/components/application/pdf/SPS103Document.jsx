@@ -104,7 +104,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
             <div>
                 <div className="grid grid-cols-3">
                     {/* Left Column - 2 ส่วน */}
-                    <div className="col-span-2 border border-slate-900 text-[12px]">
+                    <div className="col-span-2 border border-slate-900">
                         {/* 1. ชื่อ */}
                         <h3 className="font-bold text-center py-2 border-b border-slate-900">ข้อมูลผู้ประกันตน</h3>
                         <div className="flex p-2 space-y-1 items-center">
@@ -184,7 +184,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
 
                     {/* Right Column - 1 ส่วน */}
-                    <div className="col-span-1 p-3 flex flex-col justify-center items-center">
+                    <div className="col-span-1 p-3 flex flex-col border-r border-slate-900 items-center">
                         {/* บรรทัดแรก: 3 ช่อง */}
                         <div className="flex gap-0.5 mb-2">
                             {Array(3).fill('').map((_, idx) => (
