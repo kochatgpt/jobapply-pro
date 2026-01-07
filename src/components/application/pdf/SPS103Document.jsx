@@ -65,15 +65,15 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             <div className="flex items-center gap-2">
                                 <span>ประเภทการจ้าง</span>
                                 <div className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400 mt-2"></div>
+                                    <div className="w-3 h-3 border border-slate-400"></div>
                                     <span>รายวัน</span>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400 mt-2"></div>
+                                    <div className="w-3 h-3 border border-slate-400"></div>
                                     <span>รายเดือน</span>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400 mt-2"></div>
+                                    <div className="w-3 h-3 border border-slate-400"></div>
                                     <span>อื่นๆ</span>
                                 </div>
                             </div>
