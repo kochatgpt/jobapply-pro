@@ -72,7 +72,7 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
 
                     {/* Sex, Status, DOB, Employment Date */}
                     <div className="border border-slate-900">
-                        <div className="grid grid-cols-4 gap-2">
+                        <div className="flex gap-2">
                             {/* Sex */}
                             <div className="border-r p-2 m-auto">
                                 <p className=" mb-1">เพศ Sex</p>
