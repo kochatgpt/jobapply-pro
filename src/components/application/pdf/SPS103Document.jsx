@@ -217,6 +217,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
                 </div>
 
+                <div className="p-3 space-y-2 text-[12px]">
                     {/* 6. สถานภาพครอบครัว */}
                     <div className="space-y-1">
                         <div className="flex items-center gap-2">
@@ -313,10 +314,9 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* ลายเซ็นนายจ้าง */}
-                <div className="mt-4 text-[12px]">
+                    {/* ลายเซ็นนายจ้าง */}
+                    <div className="mt-4 text-[12px]">
                     <p className="mb-2">ข้าพเจ้าขอรับรองว่าข้อความดังกล่าวข้างต้น ถูกต้องตามความเป็นจริงทุกประการ</p>
                     <div className="flex justify-end">
                         <div className="text-center">
