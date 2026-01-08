@@ -378,23 +378,23 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     </div>
                                     <div className="flex gap-2">
                                         <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
-                                        <span className="mb-2"></span>
+                                        <span className="mb-2">สำเนาทะเบียนบ้าน</span>
                                     </div>
                                     <div className="flex gap-2">
                                         <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
-                                        <span className="mb-2"></span>
+                                        <span className="mb-2">สำเนาใบสำคัญประจำตัวคนต่างด้าว</span>
                                     </div>
                                     <div className="flex gap-2">
                                         <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
-                                        <span className="mb-2"></span>
+                                        <span className="mb-2">สำเนาหนังสือเดินทาง</span>
                                     </div>
                                     <div className="flex gap-2">
                                         <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
-                                        <span className="mb-2"></span>
+                                        <span className="mb-2">สำเนาใบอนุญาตทำงานคนต่างด้าว</span>
                                     </div>
                                     <div className="flex gap-2">
                                         <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
-                                        <span className="mb-2"></span>
+                                        <span className="mb-2">อื่น ๆ</span>
                                     </div>
                                 </div>
                             </div>
