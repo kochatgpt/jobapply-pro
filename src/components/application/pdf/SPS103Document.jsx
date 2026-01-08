@@ -369,6 +369,35 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             </div>
                         </div>
                         <div className="col-span-1 border-r border-slate-900">
+                            <h3 className="font-bold underline text-center py-2">เอกสารที่แนบ</h3>
+                            <div className="p-2">
+                                <div className="gird grid-col-6 gap-2">
+                                    <div className="flex gap-2">
+                                        <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
+                                        <span className="mb-2">สำเนาบัตรประจำตัวประชาชน</span>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
+                                        <span className="mb-2"></span>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
+                                        <span className="mb-2"></span>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
+                                        <span className="mb-2"></span>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
+                                        <span className="mb-2"></span>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
+                                        <span className="mb-2"></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
