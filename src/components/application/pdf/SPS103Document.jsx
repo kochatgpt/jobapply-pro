@@ -282,7 +282,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             </div>
                             <div className="flex items-center gap-4 pl-16">
                                 <div className="flex items-center gap-1">
-                                    <span>ลำดับที่ 1 เกิดปี พ.ศ.</span>
+                                    <span>เกิดปี พ.ศ.</span>
                                     <div className="flex gap-0.5">
                                         {Array(4).fill('').map((_, idx) => (
                                             <div key={idx} className="w-4 h-5 border border-slate-400"></div>
@@ -290,7 +290,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <span>ลำดับที่ 2 เกิดปี พ.ศ.</span>
+                                    <span>เกิดปี พ.ศ.</span>
                                     <div className="flex gap-0.5">
                                         {Array(4).fill('').map((_, idx) => (
                                             <div key={idx} className="w-4 h-5 border border-slate-400"></div>
@@ -298,7 +298,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <span>ลำดับที่ 3 เกิดปี พ.ศ.</span>
+                                    <span>เกิดปี พ.ศ.</span>
                                     <div className="flex gap-0.5">
                                         {Array(4).fill('').map((_, idx) => (
                                             <div key={idx} className="w-4 h-5 border border-slate-400"></div>
