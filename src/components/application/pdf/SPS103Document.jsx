@@ -32,8 +32,8 @@ export default function SPS103Document({ applicant, formData = {} }) {
                         <h3 className="font-bold border-b border-slate-900 text-center items-center py-2">ข้อมูลนายจ้าง</h3>
                         <div className="space-y-1 p-2">
                             <div className="flex items-center">
-                                <span>ชื่อสถานประกอบการ</span>
-                                <span className="border-b border-dotted border-slate-400 flex-1 ml-2 pb-0.5 inline-block">
+                                <span className="mb-2">ชื่อสถานประกอบการ</span>
+                                <span className="border-b border-dotted border-slate-400 flex-1 ml-2 min-h-[24px] pb-1 inline-block">
                                     {formData.employerName || '\u00A0'}
                                 </span>
                             </div>
@@ -49,7 +49,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                 </div>
                             </div>
                             <div className="flex items-center">
-                                <span>ลำดับที่สาขา</span>
+                                <span className="mb-2">ลำดับที่สาขา</span>
                                 <div className="flex ml-2 mt-2">
                                     {Array(5).fill('').map((_, idx) => (
                                         <div key={idx} className="p-2 border border-black"></div>
@@ -58,23 +58,23 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             </div>
                             <div className="flex items-center">
                                 <span className="mb-2">วันที่ผู้ประกันตนเข้าทำงาน</span>
-                                <span className="border-b border-dotted border-slate-400 flex-1 ml-2 inline-block pb-1">
+                                <span className="border-b border-dotted border-slate-400 flex-1 ml-2 inline-block min-h-[24px] pb-1">
                                     {applicant?.start_work_date ? new Date(applicant.start_work_date).toLocaleDateString('th-TH') : '\u00A0'}
                                 </span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span>ประเภทการจ้าง</span>
+                                <span className="mb-2">ประเภทการจ้าง</span>
                                 <div className="flex items-center gap-1">
                                     <div className="w-3 h-3 border border-slate-400 flex-shrink-0"></div>
-                                    <span>รายวัน</span>
+                                    <span className="mb-2">รายวัน</span>
                                 </div>
                                 <div className="flex items-center gap-1">
                                     <div className="w-3 h-3 border border-slate-400 flex-shrink-0"></div>
-                                    <span>รายเดือน</span>
+                                    <span className="mb-2">รายเดือน</span>
                                 </div>
                                 <div className="flex items-center gap-1">
                                     <div className="w-3 h-3 border border-slate-400 flex-shrink-0"></div>
-                                    <span>อื่นๆ</span>
+                                    <span className="mb-2">อื่นๆ</span>
                                 </div>
                             </div>
                         </div>
