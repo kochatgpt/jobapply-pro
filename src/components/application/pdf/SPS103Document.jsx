@@ -38,7 +38,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                 </span>
                             </div>
                             <div className="flex items-center">
-                                <span>เลขที่บัญชี</span>
+                                <span className="mb-2">เลขที่บัญชี</span>
                                 <div className="flex items-center ml-2 mt-2">
                                     {Array(10).fill('').map((_, idx) => (
                                         <React.Fragment key={idx}>
@@ -57,8 +57,8 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                 </div>
                             </div>
                             <div className="flex items-center">
-                                <span className="mb-1">วันที่ผู้ประกันตนเข้าทำงาน</span>
-                                <span className="border-b border-dotted border-slate-400 flex-1 ml-2 pb-0.5 inline-block">
+                                <span className="mb-2">วันที่ผู้ประกันตนเข้าทำงาน</span>
+                                <span className="border-b border-dotted border-slate-400 flex-1 ml-2 inline-block pb-1">
                                     {applicant?.start_work_date ? new Date(applicant.start_work_date).toLocaleDateString('th-TH') : '\u00A0'}
                                 </span>
                             </div>
