@@ -421,14 +421,17 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             {/* ลายเซ็นผู้ประกันตน */}
                             <div className="flex justify-end mt-4">
                                 <div className="text-center">
-                                    <div className="border-b border-slate-400 min-h-[50px] w-48 mb-1 flex items-center justify-center">
-                                        {applicant?.signature_url ? (
-                                            <img src={applicant.signature_url} alt="Signature" crossOrigin="anonymous" className="h-[30px] object-contain" />
+                                    <div className="">ลงชื่อ
+                                        {applicant ? (
+                                            <span className="inline-block mx-2" style={{ verticalAlign: 'baseline' }}>
+                                                <img src={applicant.signature_url} alt="Signature" crossOrigin="anonymous" className="inline-block max-h-[50px] object-contain" />
+                                            </span>
                                         ) : (
-                                            '\u00A0'
+                                            <span className="inline-block border-b border-dotted border-slate-400 w-[300px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '50px', display: 'inline-block' }}>&nbsp;</span>
                                         )}
+                                        ผู้ประกันตน
                                     </div>
-                                    <p>ลงชื่อ............................................ผู้ประกันตน</p>
+                                    <p className="mt-2">({applicant?.full_name || '...........................................................'})</p>
                                     <p>({personalData.first_name && personalData.last_name ? `${personalData.first_name} ${personalData.last_name}` : '............................................'})</p>
                                     <p>วันที่{formData.signatureDate ? new Date(formData.signatureDate).toLocaleDateString('th-TH') : '..............................'}</p>
                                 </div>
