@@ -264,13 +264,13 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             </div>
                             <div className="flex items-center gap-2 pl-8">
                                 <div className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400 flex-shrink-0">
+                                    <div className="w-4 h-4 border border-slate-400 flex-shrink-0">
                                         {familyData.has_children === 'no' && <div className="w-2 h-2 bg-black"></div>}
                                     </div>
                                     <span>ไม่มีบุตร</span>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400 flex-shrink-0">
+                                    <div className="w-4 h-4 border border-slate-400 flex-shrink-0">
                                         {familyData.has_children === 'yes' && <div className="w-2 h-2 bg-black"></div>}
                                     </div>
                                     <span>มีบุตรอายุไม่เกิน 6 ปี จำนวน</span>
