@@ -108,7 +108,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                         {/* 1. ชื่อ */}
                         <h3 className="font-bold text-center py-2 border-b border-slate-900">ข้อมูลผู้ประกันตน</h3>
                         <div className="space-y-1 p-2">
-                            <div className="flex items-center">
+                            <div className="flex items-center gap-2">
                                 <span className="mb-2">1. ชื่อ</span>
                                 <label className="flex items-center gap-1">
                                     <div className="w-4 h-4 border border-black flex-shrink-0">
