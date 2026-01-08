@@ -439,7 +439,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                         </div>
                     </div>
                     <div className="col-span-1 border-r border-b border-slate-900 p-2">
-                        <div className="grid mt-1 grid-col-3">
+                        <div className="grid mt-1 grid-col-4">
                             <div className="flex ml-2 mt-2">
                                 {Array(6).fill('').map((_, idx) => (
                                     <div key={idx} className="p-2 border border-black"></div>
@@ -454,6 +454,12 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                 {Array(6).fill('').map((_, idx) => (
                                     <div key={idx} className="p-2 border border-black"></div>
                                 ))}
+                            </div>
+                            <div>
+                                ลงชื่อ.......................................................เจ้าหน้าที่ 
+        (......................................................) 
+ต าแหน่ง........................................................ 
+วันที่...............................................................
                             </div>
                         </div>
                     </div>
