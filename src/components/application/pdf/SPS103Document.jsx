@@ -320,28 +320,28 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     <div className="col-span-2 mb-2 border-l border-r border-b border-slate-900">
                         <span className="ml-2">7. สำหรับคนต่างด้าว ให้กรอกข้อความ ดังนี้</span>
                         <div>
-                            <div className="space-y-1 p-2">
+                            <div className="space-y-1 px-4 py-2">
                                 <div className="flex items-center gap-2">
                                     <PDFCheckbox size="w-4 h-4" />
-                                    <span>หนังสือเดินทาง (PASSPORT) เลขที่</span>
+                                    <span className="mb-2">หนังสือเดินทาง (PASSPORT) เลขที่</span>
                                     <div className="border-b border-dotted border-slate-400 flex-1 min-h-[18px]"></div>
-                                    <span>และ</span>
+                                    <span className="mb-2">และ</span>
                                 </div>
                                 <div className="flex items-center gap-2 pl-4">
-                                    <span>ใบอนุญาตทำงาน (WORK PERMIT) เลขที่</span>
+                                    <span className="mb-2">ใบอนุญาตทำงาน (WORK PERMIT) เลขที่</span>
                                     <div className="border-b border-dotted border-slate-400 flex-1 min-h-[18px]"></div>
-                                    <span>หรือ</span>
+                                    <span className="mb-2">หรือ</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <PDFCheckbox size="w-4 h-4" checkType={'check'}/>
-                                    <span>อื่นๆ (ระบุ)</span>
+                                    <span className="mb-2">อื่นๆ (ระบุ)</span>
                                     <div className="border-b border-dotted border-slate-400 w-48 min-h-[18px]"></div>
-                                    <span>เลขที่</span>
+                                    <span className="mb-2">เลขที่</span>
                                     <div className="border-b border-dotted border-slate-400 flex-1 min-h-[18px]"></div>
-                                    <span>และ</span>
+                                    <span className="mb-2">และ</span>
                                 </div>
                                 <div className="flex items-center gap-2 pl-4">
-                                    <span>ใบอนุญาตทำงาน (WORK PERMIT) เลขที่</span>
+                                    <span className="mb-2">ใบอนุญาตทำงาน (WORK PERMIT) เลขที่</span>
                                     <div className="border-b border-dotted border-slate-400 flex-1 min-h-[18px]"></div>
                                 </div>
                             </div>
