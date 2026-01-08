@@ -118,21 +118,15 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             <div className="flex items-center gap-2">
                                 <span className="mb-2">1. ชื่อ</span>
                                 <label className="flex items-center gap-1">
-                                    <div className="w-4 h-4 border border-black flex-shrink-0">
-                                        {personalData.prefix === 'นาย' && <div className="w-2 h-2 bg-black"></div>}
-                                    </div>
+                                    <PDFCheckbox checked={personalData.prefix === 'นาย'} />
                                     <span className="mb-2">นาย</span>
                                 </label>
                                 <label className="flex items-center gap-1">
-                                    <div className="w-4 h-4 border border-black flex-shrink-0">
-                                        {personalData.prefix === 'นางสาว' && <div className="w-2 h-2 bg-black"></div>}
-                                    </div>
+                                    <PDFCheckbox checked={personalData.prefix === 'นางสาว'} />
                                     <span className="mb-2">นางสาว</span>
                                 </label>
                                 <label className="flex items-center gap-1">
-                                    <div className="w-4 h-4 border border-black flex-shrink-0">
-                                        {personalData.prefix === 'นาง' && <div className="w-2 h-2 bg-black"></div>}
-                                    </div>
+                                    <PDFCheckbox checked={personalData.prefix === 'นาง'} />
                                     <span className="mb-2">นาง</span>
                                 </label>
                                 <span className="border-b border-dotted border-black flex-1 inline-block min-h-[24px] pb-1 ml-1">
