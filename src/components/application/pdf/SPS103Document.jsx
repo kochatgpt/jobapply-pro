@@ -350,7 +350,14 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             <div className="mt-1">
                                 <p className="mb-1">ข้าพเจ้าขอรับรองว่าข้อความดังกล่าวข้างต้น ถูกต้องตามความเป็นจริงทุกประการ</p>
                                 <div className="flex gap-4">
-                                    <div>
+                                    <div className="flex justify-center">
+                                        <div className="w-[80px] h-[80px] rounded-full border-2 border-slate-300 flex items-center justify-center text-center">
+                                            <div>
+                                                <p className="text-[8px] font-bold">ประทับตรา</p>
+                                                <p className="text-[8px]">นิติบุคคล</p>
+                                                <p className="text-[8px]">(ถ้ามี)</p>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="flex justify-end">
                                         <div className="text-center">
