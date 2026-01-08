@@ -235,9 +235,9 @@ export default function SPS103Document({ applicant, formData = {} }) {
                         <span className="ml-2">6. สถานภาพครอบครัว</span>
                         <div className="p-2">
                             <div className="items-center gap-2">
-                                <div className="ml-2 flex">
+                                <div className="ml-2 flex gap-2">
                                     <div className="flex items-center gap-1">
-                                        <div className="w-4 h-4 border border-slate-400 flex-shrink-0">
+                                        <div className="w-4 h-4 border border-black flex-shrink-0">
                                             {familyData.marital_status === 'single' && <div className="w-2 h-2 bg-black"></div>}
                                         </div>
                                         <span className="mb-2">1. โสด</span>
