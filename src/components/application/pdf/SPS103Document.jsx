@@ -234,26 +234,28 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     <div className="col-span-2 border-l border-r border-b border-slate-900">
                         <div className="flex items-center gap-2">
                             <span>6. สถานภาพครอบครัว</span>
-                            <label className="flex items-center gap-1">
-                                <input type="checkbox" checked={familyData.marital_status === 'single'} readOnly className="w-3 h-3" />
-                                <span>1. โสด</span>
-                            </label>
-                            <label className="flex items-center gap-1">
-                                <input type="checkbox" checked={familyData.marital_status === 'married'} readOnly className="w-3 h-3" />
-                                <span>2. สมรส</span>
-                            </label>
-                            <label className="flex items-center gap-1">
-                                <input type="checkbox" className="w-3 h-3" />
-                                <span>3. หม้าย</span>
-                            </label>
-                            <label className="flex items-center gap-1">
-                                <input type="checkbox" className="w-3 h-3" />
-                                <span>4. หย่า</span>
-                            </label>
-                            <label className="flex items-center gap-1">
-                                <input type="checkbox" className="w-3 h-3" />
-                                <span>5. แยกกันอยู่</span>
-                            </label>
+                            <div className="p-2">
+                                <label className="flex items-center gap-1">
+                                    <input type="checkbox" checked={familyData.marital_status === 'single'} readOnly className="w-3 h-3" />
+                                    <span>1. โสด</span>
+                                </label>
+                                <label className="flex items-center gap-1">
+                                    <input type="checkbox" checked={familyData.marital_status === 'married'} readOnly className="w-3 h-3" />
+                                    <span>2. สมรส</span>
+                                </label>
+                                <label className="flex items-center gap-1">
+                                    <input type="checkbox" className="w-3 h-3" />
+                                    <span>3. หม้าย</span>
+                                </label>
+                                <label className="flex items-center gap-1">
+                                    <input type="checkbox" className="w-3 h-3" />
+                                    <span>4. หย่า</span>
+                                </label>
+                                <label className="flex items-center gap-1">
+                                    <input type="checkbox" className="w-3 h-3" />
+                                    <span>5. แยกกันอยู่</span>
+                                </label>
+                            </div>
                         </div>
                         <div className="flex items-center gap-2 pl-8">
                             <label className="flex items-center gap-1">
