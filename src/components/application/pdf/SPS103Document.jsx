@@ -348,21 +348,20 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             <div className="bordor-t"></div>
                             {/* ลายเซ็นนายจ้าง */}
                             <div className="mt-4 text-[12px]">
-                            <p className="mb-2">ข้าพเจ้าขอรับรองว่าข้อความดังกล่าวข้างต้น ถูกต้องตามความเป็นจริงทุกประการ</p>
-                            <div className="flex justify-end">
-                                <div className="text-center">
-                                    <div className="mb-1">ลงชื่อ<div className="inline-block border-b border-dotted border-slate-400 w-48 mx-2 min-h-[20px]"></div>นายจ้าง</div>
-                                    <div className="mb-1">(<div className="inline-block border-b border-dotted border-slate-400 w-48 min-h-[20px]"></div>)</div>
-                                    <div className="mb-1">ตำแหน่ง<div className="inline-block border-b border-dotted border-slate-400 w-40 mx-2 min-h-[20px]"></div></div>
-                                    <div>วันที่<div className="inline-block border-b border-dotted border-slate-400 w-40 mx-2 min-h-[20px]"></div></div>
+                                <p className="mb-2">ข้าพเจ้าขอรับรองว่าข้อความดังกล่าวข้างต้น ถูกต้องตามความเป็นจริงทุกประการ</p>
+                                <div className="flex justify-end">
+                                    <div className="text-center">
+                                        <div className="mb-1">ลงชื่อ<div className="inline-block border-b border-dotted border-slate-400 w-48 mx-2 min-h-[20px]"></div>นายจ้าง</div>
+                                        <div className="mb-1">(<div className="inline-block border-b border-dotted border-slate-400 w-48 min-h-[20px]"></div>)</div>
+                                        <div className="mb-1">ตำแหน่ง<div className="inline-block border-b border-dotted border-slate-400 w-40 mx-2 min-h-[20px]"></div></div>
+                                        <div>วันที่<div className="inline-block border-b border-dotted border-slate-400 w-40 mx-2 min-h-[20px]"></div></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div className="col-span-1 border-r border-slate-900">
                         </div>
                     </div>
-
-                    
                 </div>
             </div>
             </div>
