@@ -315,7 +315,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
             <div>
                 <div className="grid grid-cols-3">
                     {/* 7. สำหรับคนต่างด้าว */}
-                    <div className="col-span-2 mb-4 border-l border-r border-b border-slate-900">
+                    <div className="col-span-2 border-l border-r border-b border-slate-900">
                         <span className="ml-2">7. สำหรับคนต่างด้าว ให้กรอกข้อความ ดังนี้</span>
                         <div>
                             <div className="space-y-0.5 px-4 py-2">
