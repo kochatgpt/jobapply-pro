@@ -281,21 +281,19 @@ export default function FMHRD19Form() {
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-2">วันที่เริ่มฝึกอบรม</label>
                                     <input
-                                        type="text"
+                                        type="date"
                                         value={formData.trainingStartDate}
                                         onChange={(e) => setFormData({ ...formData, trainingStartDate: e.target.value })}
                                         className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                        placeholder="เช่น 1 มกราคม 2568"
                                     />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-2">วันที่สิ้นสุดฝึกอบรม</label>
                                     <input
-                                        type="text"
+                                        type="date"
                                         value={formData.trainingEndDate}
                                         onChange={(e) => setFormData({ ...formData, trainingEndDate: e.target.value })}
                                         className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                        placeholder="เช่น 3 มกราคม 2568"
                                     />
                                 </div>
                                 <div className="border-t pt-4">
