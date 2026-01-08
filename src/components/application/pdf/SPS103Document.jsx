@@ -348,7 +348,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             <div className="bordor-t"></div>
                             {/* ลายเซ็นนายจ้าง */}
                             <div className="mt-1">
-                                <p className="text-center border-t border-black">ข้าพเจ้าขอรับรองว่าข้อความดังกล่าวข้างต้น ถูกต้องตามความเป็นจริงทุกประการ</p>
+                                <p className="text-center pt-1 border-t border-black">ข้าพเจ้าขอรับรองว่าข้อความดังกล่าวข้างต้น ถูกต้องตามความเป็นจริงทุกประการ</p>
                                 <div className="flex gap-4 px-5 py-2 text-center">
                                     <div className="flex justify-center">
                                         <div className="w-[80px] h-[80px] rounded-full border-2 border-slate-300 flex items-center justify-center text-center">
@@ -360,10 +360,10 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                         </div>
                                     </div>
                                     <div className="flex justify-end space-y-1">
-                                        <div className="text-center">
-                                            <div className="mb-2">ลงชื่อ<div className="inline-block border-b border-dotted border-slate-400 w-48 mx-2 pb-2 min-h-[20px]"></div>นายจ้าง</div>
-                                            <div className="mb-2">(<div className="inline-block border-b border-dotted border-slate-400 w-48 pb-2 min-h-[20px]"></div>)</div>
-                                            <div className="mb-2">ตำแหน่ง<div className="inline-block border-b border-dotted border-slate-400 w-40 mx-2 pb-2 min-h-[20px]"></div></div>
+                                        <div className="text-center items-center justify-center">
+                                            <div>ลงชื่อ<div className="inline-block border-b border-dotted border-slate-400 w-48 mx-2 pb-2 min-h-[20px]"></div>นายจ้าง</div>
+                                            <div>(<div className="inline-block border-b border-dotted border-slate-400 w-48 pb-2 min-h-[20px]"></div>)</div>
+                                            <div>ตำแหน่ง<div className="inline-block border-b border-dotted border-slate-400 w-40 mx-2 pb-2 min-h-[20px]"></div></div>
                                             <div>วันที่<div className="inline-block border-b border-dotted border-slate-400 w-40 mx-2 pb-2 min-h-[20px]"></div></div>
                                         </div>
                                     </div>
