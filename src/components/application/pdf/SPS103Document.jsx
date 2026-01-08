@@ -233,32 +233,32 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     {/* 6. สถานภาพครอบครัว */}
                     <div className="col-span-2 border-l border-r border-b border-slate-900">
                         <div className="p-2">
-                            <span>6. สถานภาพครอบครัว</span>
+                            <span className="mb-2">6. สถานภาพครอบครัว</span>
                             <div className="items-center gap-2">
                                 <div className="ml-2 flex">
                                     <div className="flex items-center gap-1">
                                         <div className="w-4 h-4 border border-slate-400 flex-shrink-0">
                                             {familyData.marital_status === 'single' && <div className="w-2 h-2 bg-black"></div>}
                                         </div>
-                                        <span>1. โสด</span>
+                                        <span className="mb-2">1. โสด</span>
                                     </div>
                                     <div className="flex items-center gap-1">
                                         <div className="w-4 h-4 border border-slate-400 flex-shrink-0">
                                             {familyData.marital_status === 'married' && <div className="w-2 h-2 bg-black"></div>}
                                         </div>
-                                        <span>2. สมรส</span>
+                                        <span className="mb-2">2. สมรส</span>
                                     </div>
                                     <div className="flex items-center gap-1">
                                         <div className="w-4 h-4 border border-slate-400 flex-shrink-0"></div>
-                                        <span>3. หม้าย</span>
+                                        <span className="mb-2">3. หม้าย</span>
                                     </div>
                                     <div className="flex items-center gap-1">
                                         <div className="w-4 h-4 border border-slate-400 flex-shrink-0"></div>
-                                        <span>4. หย่า</span>
+                                        <span className="mb-2">4. หย่า</span>
                                     </div>
                                     <div className="flex items-center gap-1">
                                         <div className="w-4 h-4 border border-slate-400 flex-shrink-0"></div>
-                                        <span>5. แยกกันอยู่</span>
+                                        <span className="mb-2">5. แยกกันอยู่</span>
                                     </div>
                                 </div>
                             </div>
@@ -267,22 +267,22 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     <div className="w-4 h-4 border border-slate-400 flex-shrink-0">
                                         {familyData.has_children === 'no' && <div className="w-2 h-2 bg-black"></div>}
                                     </div>
-                                    <span>ไม่มีบุตร</span>
+                                    <span className="mb-2">ไม่มีบุตร</span>
                                 </div>
                                 <div className="flex items-center gap-1">
                                     <div className="w-4 h-4 border border-slate-400 flex-shrink-0">
                                         {familyData.has_children === 'yes' && <div className="w-2 h-2 bg-black"></div>}
                                     </div>
-                                    <span>มีบุตรอายุไม่เกิน 6 ปี จำนวน</span>
+                                    <span className="mb-2">มีบุตรอายุไม่เกิน 6 ปี จำนวน</span>
                                 </div>
                                 <div className="border-b border-dotted border-slate-400 w-12 text-center">
                                     {familyData.children_count || '\u00A0'}
                                 </div>
-                                <span>คน</span>
+                                <span className="mb-2">คน</span>
                             </div>
                             <div className="flex items-center gap-3 pl-10">
                                 <div className="flex items-center gap-0.5">
-                                    <span>เกิดปี พ.ศ.</span>
+                                    <span className="mb-2">เกิดปี พ.ศ.</span>
                                     <div className="flex">
                                         {Array(4).fill('').map((_, idx) => (
                                             <div key={idx} className="w-4 h-5 border border-slate-400"></div>
@@ -290,7 +290,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <span>เกิดปี พ.ศ.</span>
+                                    <span className="mb-2">เกิดปี พ.ศ.</span>
                                     <div className="flex">
                                         {Array(4).fill('').map((_, idx) => (
                                             <div key={idx} className="w-4 h-5 border border-slate-400"></div>
@@ -298,7 +298,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <span>เกิดปี พ.ศ.</span>
+                                    <span className="mb-2">เกิดปี พ.ศ.</span>
                                     <div className="flex">
                                         {Array(4).fill('').map((_, idx) => (
                                             <div key={idx} className="w-4 h-5 border border-slate-400"></div>
