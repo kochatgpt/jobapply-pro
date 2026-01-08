@@ -195,7 +195,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
 
                     {/* Right Column - 1 ส่วน */}
-                    <div className="col-span-1 p-3 flex flex-col border-r border-slate-900 items-center">
+                    <div className="col-span-1 p-3 flex flex-col border-r border-slate-900 items-start">
                         {/* บรรทัดแรก: 3 ช่อง */}
                         <div className="flex mb-2">
                             {Array(3).fill('').map((_, idx) => (
