@@ -429,7 +429,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                         )}
                                     </div>
                                     <p>ลงชื่อ............................................ผู้ประกันตน</p>
-                                    <p>(............................................)</p>
+                                    <p>({personalData.first_name && personalData.last_name ? `${personalData.first_name} ${personalData.last_name}` : '............................................'})</p>
                                     <p>วันที่{formData.signatureDate ? new Date(formData.signatureDate).toLocaleDateString('th-TH') : '..............................'}</p>
                                 </div>
                             </div>
