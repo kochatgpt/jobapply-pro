@@ -83,7 +83,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     {/* ขวา - สำหรับเจ้าหน้าที่ */}
                     <div className="col-span-3 border-t border-r border-slate-900">
                         <h3 className="font-bold border-b border-slate-900 text-center items-center py-2">สำหรับเจ้าหน้าที่</h3>
-                        <div className="mt-9 p-1">
+                        <div className="mt-12 p-1">
                             <div className="flex items-center">
                                 <span>เลขที่บัตรประกันสังคม</span>
                                 <div className="flex items-center ml-1">
