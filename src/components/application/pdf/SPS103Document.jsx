@@ -17,7 +17,13 @@ export default function SPS103Document({ applicant, formData = {} }) {
             }}
         >
             {/* Header */}
-            <div className="text-right mb-2">
+            <div className="flex items-start justify-between mb-2">
+                <img 
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6937c0bd189dcfc8f3a84e3b/7e3f209fb_image.png" 
+                    alt="สำนักงานประกันสังคม" 
+                    className="h-16 w-auto object-contain"
+                    crossOrigin="anonymous"
+                />
                 <span className="text-[14px]">สปส. 1-03</span>
             </div>
             <div className="text-center mb-2">
