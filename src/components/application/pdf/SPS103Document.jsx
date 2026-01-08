@@ -111,19 +111,19 @@ export default function SPS103Document({ applicant, formData = {} }) {
                             <div className="flex items-center">
                                 <span className="mb-2">1. ชื่อ</span>
                                 <label className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400 flex-shrink-0 flex items-center justify-center min-h-[24px] pb-1">
+                                    <div className="w-3 h-3 border border-slate-400 flex-shrink-0">
                                         {personalData.prefix === 'นาย' && <div className="w-2 h-2 bg-black"></div>}
                                     </div>
                                     <span className="mb-2">นาย</span>
                                 </label>
                                 <label className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400 flex-shrink-0 flex items-center justify-center min-h-[24px] pb-1">
+                                    <div className="w-3 h-3 border border-slate-400 flex-shrink-0">
                                         {personalData.prefix === 'นางสาว' && <div className="w-2 h-2 bg-black"></div>}
                                     </div>
                                     <span className="mb-2">นางสาว</span>
                                 </label>
                                 <label className="flex items-center gap-1">
-                                    <div className="w-3 h-3 border border-slate-400 flex-shrink-0 flex items-center justify-center min-h-[24px] pb-1">
+                                    <div className="w-3 h-3 border border-slate-400 flex-shrink-0">
                                         {personalData.prefix === 'นาง' && <div className="w-2 h-2 bg-black"></div>}
                                     </div>
                                     <span className="mb-2">นาง</span>
@@ -195,7 +195,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
 
                     {/* Right Column - 1 ส่วน */}
-                    <div className="col-span-1 p-3 flex flex-col border-r border-slate-900 items-start">
+                    <div className="col-span-1 p-3 flex flex-col border-r border-slate-900 items-start justify-center">
                         {/* บรรทัดแรก: 3 ช่อง */}
                         <div className="flex mb-2">
                             {Array(3).fill('').map((_, idx) => (
