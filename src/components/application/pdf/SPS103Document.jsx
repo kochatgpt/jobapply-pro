@@ -37,7 +37,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     {/* ซ้าย - ข้อมูลนายจ้าง */}
                     <div className="col-span-3 border-l grid border-t border-r border-slate-900">
                         <h3 className="font-bold border-b border-slate-900 text-center items-center py-2">ข้อมูลนายจ้าง</h3>
-                        <div className="space-y-1 p-2">
+                        <div className="space-y-0.5 p-2">
                             <div className="flex items-center">
                                 <span className="mb-2">ชื่อสถานประกอบการ</span>
                                 <span className="border-b border-dotted border-slate-400 flex-1 ml-2 min-h-[24px] pb-1 inline-block">
@@ -114,7 +114,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     <div className="col-span-2 border border-slate-900">
                         {/* 1. ชื่อ */}
                         <h3 className="font-bold text-center py-2 border-b border-slate-900">ข้อมูลผู้ประกันตน</h3>
-                        <div className="space-y-1 p-2">
+                        <div className="space-y-0.5 p-2">
                             <div className="flex items-center gap-2">
                                 <span className="mb-2">1. ชื่อ</span>
                                 <label className="flex items-center gap-1">
@@ -234,7 +234,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     {/* 6. สถานภาพครอบครัว */}
                     <div className="col-span-2 border-l border-r border-b border-slate-900">
                         <span className="ml-2 pt-1">6. สถานภาพครอบครัว</span>
-                        <div className="space-y-1 p-2">
+                        <div className="space-y-0.5 p-2">
                             <div className="items-center gap-2">
                                 <div className="ml-2 flex gap-2">
                                     <div className="flex items-center gap-1">
@@ -320,7 +320,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     <div className="col-span-2 mb-4 border-l border-r border-b border-slate-900">
                         <span className="ml-2">7. สำหรับคนต่างด้าว ให้กรอกข้อความ ดังนี้</span>
                         <div>
-                            <div className="space-y-1 px-4 py-2">
+                            <div className="space-y-0.5 px-4 py-2">
                                 <div className="flex items-center gap-2">
                                     <PDFCheckbox size="w-4 h-4" />
                                     <span className="mb-2">หนังสือเดินทาง (PASSPORT) เลขที่</span>
