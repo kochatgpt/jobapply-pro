@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 
-export default function EmploymentContractDocument({ applicant, formData = {} }) {
+export default function EmploymentContractDocument({ applicant, formData = {}, companyData = {} }) {
           const { data: settings } = useQuery({
               queryKey: ['system_settings_layout'],
               queryFn: () => base44.entities.SystemSetting.list(),
