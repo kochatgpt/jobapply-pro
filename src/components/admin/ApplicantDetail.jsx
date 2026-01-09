@@ -14,14 +14,22 @@ import ResponsesModal from './ResponsesModal';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 
-export default function ApplicantDetail({ applicant }) {
+export default function ApplicantDetail({ applicant: initialApplicant }) {
     const [generatingPdf, setGeneratingPdf] = useState(false);
     const [showAdminForm, setShowAdminForm] = useState(false);
     const [showResponses, setShowResponses] = useState(false);
     const queryClient = useQueryClient();
+
+    // Fetch current applicant data to ensure we have latest updates
+    const { data: applicant = initialApplicant } = useQuery({
+        queryKey: ['applicants_detail', initialApplicant?.id],
+        queryFn: () => base44.entities.Applicant.list().then(apps => apps.find(a => a.id === initialApplicant.id) || initialApplicant),
+        enabled: !!initialApplicant?.id,
+        staleTime: 0
+    });
 
     const updateAdminDataMutation = useMutation({
         mutationFn: ({ id, adminData }) => base44.entities.Applicant.update(id, { admin_data: adminData }),
