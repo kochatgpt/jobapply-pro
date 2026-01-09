@@ -32,7 +32,7 @@ export default function UserLogin() {
 
     // Format date to show only day and month (no year)
     const formatDayMonth = (dateStr) => {
-        if (!dateStr) return '';
+        if (!dateStr) return '-';
         const date = new Date(dateStr);
         return date.toLocaleDateString('th-TH', { day: 'numeric', month: 'long' });
     };
