@@ -24,8 +24,6 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
             witnessName2: '',
             witness2Signature: ''
         });
-        const [trainingPassed, setTrainingPassed] = useState('1');
-        const [dataComplete, setDataComplete] = useState('1');
 
     const { data: pdfDoc } = useQuery({
         queryKey: ['fmhrd19_pdf', applicant?.id],
@@ -75,9 +73,7 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
             pdf_type: 'FM-HRD-19',
             data: {
                 ...(pdfDoc?.data || {}),
-                company_data: companyData,
-                training_passed: trainingPassed === '1',
-                data_complete: dataComplete === '1'
+                company_data: companyData
             },
             status: 'approved',
             approved_date: new Date().toISOString()
@@ -212,69 +208,9 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
                                 onDelete={() => setCompanyData({ ...companyData, witness2Signature: '' })}
                             />
                         </div>
+                    </div>
 
-                        <div className="border-t pt-4 space-y-4">
-                        <h4 className="font-medium mb-3">การประเมิน</h4>
-
-                        <div>
-                            <Label className="mb-3 block">การฝึกอบรมผ่านหรือไม่</Label>
-                            <div className="flex gap-6">
-                                <label className="flex items-center gap-2 cursor-pointer">
-                                    <input
-                                        type="radio"
-                                        name="trainingPassed"
-                                        value="1"
-                                        checked={trainingPassed === '1'}
-                                        onChange={(e) => setTrainingPassed(e.target.value)}
-                                        className="w-4 h-4"
-                                    />
-                                    <span className="text-sm">ผ่าน ✓</span>
-                                </label>
-                                <label className="flex items-center gap-2 cursor-pointer">
-                                    <input
-                                        type="radio"
-                                        name="trainingPassed"
-                                        value="0"
-                                        checked={trainingPassed === '0'}
-                                        onChange={(e) => setTrainingPassed(e.target.value)}
-                                        className="w-4 h-4"
-                                    />
-                                    <span className="text-sm">ไม่ผ่าน ✗</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div>
-                            <Label className="mb-3 block">กรอกข้อมูลเสร็จครบ 100% หรือยัง</Label>
-                            <div className="flex gap-6">
-                                <label className="flex items-center gap-2 cursor-pointer">
-                                    <input
-                                        type="radio"
-                                        name="dataComplete"
-                                        value="1"
-                                        checked={dataComplete === '1'}
-                                        onChange={(e) => setDataComplete(e.target.value)}
-                                        className="w-4 h-4"
-                                    />
-                                    <span className="text-sm">เสร็จแล้ว ✓</span>
-                                </label>
-                                <label className="flex items-center gap-2 cursor-pointer">
-                                    <input
-                                        type="radio"
-                                        name="dataComplete"
-                                        value="0"
-                                        checked={dataComplete === '0'}
-                                        onChange={(e) => setDataComplete(e.target.value)}
-                                        className="w-4 h-4"
-                                    />
-                                    <span className="text-sm">ยังไม่เสร็จ ✗</span>
-                                </label>
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-
-                        {/* Document Preview */}
+                    {/* Document Preview */}
                     <div className="bg-slate-100 p-4 rounded-lg">
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="font-semibold text-lg">ตัวอย่างเอกสาร</h3>

@@ -22,13 +22,6 @@ export default function UserLogin() {
     // Filter applicants based on search
     const filteredApplicants = applicants.filter(app => {
         if (!searchTerm) return false;
-        
-        // Check FM-HRD-19 status: training_passed must be true (1) and data_complete must be false (0)
-        const fmhrd19Status = app.admin_data?.fmhrd19_status || {};
-        const isPrepared = fmhrd19Status.training_passed === true && fmhrd19Status.data_complete === false;
-        
-        if (!isPrepared) return false;
-        
         const fullName = app.full_name?.toLowerCase() || '';
         const englishName = app.personal_data?.english_name?.toLowerCase() || '';
         return fullName.includes(searchTerm.toLowerCase()) || 
