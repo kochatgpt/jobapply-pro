@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { base44 } from '@/api/base44Client';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { Loader2, FileDown, Eye } from "lucide-react";
 import FMH19Document from '@/components/application/pdf/FMH19Document';
 import SignaturePad from '@/components/admin/SignaturePad';
@@ -16,20 +16,47 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
     const queryClient = useQueryClient();
     const [generatingPdf, setGeneratingPdf] = useState(false);
     const [companyData, setCompanyData] = useState({
-        authorizedPerson: applicant?.fmhrd19_document?.company_data?.authorizedPerson || '',
-        hrPerson: applicant?.fmhrd19_document?.company_data?.hrPerson || '',
-        witnessName1: applicant?.fmhrd19_document?.company_data?.witnessName1 || '',
-        witness1Signature: applicant?.fmhrd19_document?.company_data?.witness1Signature || '',
-        witnessName2: applicant?.fmhrd19_document?.company_data?.witnessName2 || '',
-        witness2Signature: applicant?.fmhrd19_document?.company_data?.witness2Signature || ''
+        authorizedPerson: '',
+        hrPerson: '',
+        witnessName1: '',
+        witness1Signature: '',
+        witnessName2: '',
+        witness2Signature: ''
     });
+
+    const { data: pdfDoc } = useQuery({
+        queryKey: ['fmhrd19_pdf', applicant?.id],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ applicant_id: applicant.id, pdf_type: 'FM-HRD-19' });
+            return docs[0] || null;
+        },
+        enabled: !!applicant?.id && isOpen
+    });
+
+    useEffect(() => {
+        if (pdfDoc?.data?.company_data) {
+            setCompanyData({
+                authorizedPerson: pdfDoc.data.company_data.authorizedPerson || '',
+                hrPerson: pdfDoc.data.company_data.hrPerson || '',
+                witnessName1: pdfDoc.data.company_data.witnessName1 || '',
+                witness1Signature: pdfDoc.data.company_data.witness1Signature || '',
+                witnessName2: pdfDoc.data.company_data.witnessName2 || '',
+                witness2Signature: pdfDoc.data.company_data.witness2Signature || ''
+            });
+        }
+    }, [pdfDoc]);
 
     const updateMutation = useMutation({
         mutationFn: async (data) => {
-            return await base44.entities.Applicant.update(applicant.id, data);
+            if (pdfDoc) {
+                return await base44.entities.PdfBase.update(pdfDoc.id, data);
+            } else {
+                return await base44.entities.PdfBase.create(data);
+            }
         },
         onSuccess: () => {
-            queryClient.invalidateQueries(['applicants']);
+            queryClient.invalidateQueries(['fmhrd19_documents']);
+            queryClient.invalidateQueries(['fmhrd19_pdf', applicant.id]);
             toast.success('บันทึกข้อมูลเรียบร้อยแล้ว');
             onClose();
         },
@@ -40,12 +67,14 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
 
     const handleSave = () => {
         const updatedData = {
-            fmhrd19_document: {
-                ...applicant.fmhrd19_document,
-                status: 'completed',
-                company_data: companyData,
-                completed_date: new Date().toISOString()
-            }
+            applicant_id: applicant.id,
+            pdf_type: 'FM-HRD-19',
+            data: {
+                ...(pdfDoc?.data || {}),
+                company_data: companyData
+            },
+            status: 'approved',
+            approved_date: new Date().toISOString()
         };
         updateMutation.mutate(updatedData);
     };
@@ -87,7 +116,7 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
 
     if (!applicant) return null;
 
-    const employeeData = applicant.fmhrd19_document?.employee_data || {};
+    const employeeData = pdfDoc?.data || {};
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
@@ -188,8 +217,8 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
                         <div className="max-h-[500px] overflow-auto bg-white p-4">
                             <FMH19Document 
                                 applicant={applicant}
-                                signatureUrl={employeeData.signatureUrl}
-                                signatureDate={employeeData.signatureDate}
+                                signatureUrl={employeeData.employee_signature_url}
+                                signatureDate={employeeData.employee_signature_date}
                                 formData={employeeData}
                                 witness1Signature={companyData.witness1Signature}
                                 witness2Signature={companyData.witness2Signature}
