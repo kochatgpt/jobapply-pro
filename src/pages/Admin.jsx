@@ -469,6 +469,7 @@ export default function AdminPage() {
                         onReviewPDPA={setReviewingPDPA}
                         onReviewFMHRD19={setReviewingFMHRD19}
                         onReviewCriminalCheck={setReviewingCriminalCheck}
+                        onReviewEmploymentContract={setReviewingEmploymentContract}
                     />
                 ) : (
                     <div className="h-full overflow-y-auto">
