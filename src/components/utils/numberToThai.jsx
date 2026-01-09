@@ -41,6 +41,8 @@ const convertToThai = (num) => {
     if (ten > 0) {
         if (ten === 1) {
             result += 'สิบ';
+        } else if (ten === 2) {
+            result += 'ยี่สิบ';
         } else {
             result += thaiUnits[ten] + 'สิบ';
         }
