@@ -71,6 +71,20 @@ export default function EmploymentContractPage() {
         enabled: !!applicantId
     });
 
+    const saveMutation = useMutation({
+        mutationFn: async (data) => {
+            return await base44.entities.PdfBase.create(data);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(['user_applicant', applicantId]);
+            toast.success('บันทึกเอกสารเรียบร้อยแล้ว');
+            setShowForm(false);
+        },
+        onError: () => {
+            toast.error('เกิดข้อผิดพลาดในการบันทึกเอกสาร');
+        }
+    });
+
     const submitMutation = useMutation({
         mutationFn: async (data) => {
             return await base44.entities.Applicant.update(applicantId, data);
@@ -84,6 +98,17 @@ export default function EmploymentContractPage() {
             toast.error('เกิดข้อผิดพลาดในการส่งเอกสาร');
         }
     });
+
+    const handleSave = () => {
+        const pdfData = {
+            applicant_id: applicantId,
+            pdf_type: 'Employment-Contract',
+            data: formData,
+            status: 'draft',
+            submitted_date: new Date().toISOString()
+        };
+        saveMutation.mutate(pdfData);
+    };
 
     const handleSubmit = () => {
         const contractData = {
@@ -577,7 +602,15 @@ export default function EmploymentContractPage() {
                                         variant="outline"
                                         onClick={() => setShowForm(false)}
                                     >
-                                        ปิด
+                                        ยกเลิก
+                                    </Button>
+                                    <Button 
+                                        onClick={handleSave}
+                                        disabled={saveMutation.isPending}
+                                        className="bg-indigo-600 hover:bg-indigo-700"
+                                    >
+                                        {saveMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
+                                        บันทึก
                                     </Button>
                                 </div>
                             </CardContent>
