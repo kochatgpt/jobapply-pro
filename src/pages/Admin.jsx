@@ -16,6 +16,7 @@ import NDAReviewModal from '@/components/admin/NDAReviewModal';
 import PDPAReviewModal from '@/components/admin/PDPAReviewModal';
 import FMHRD19ReviewModal from '@/components/admin/FMHRD19ReviewModal';
 import CriminalCheckReviewModal from '@/components/admin/CriminalCheckReviewModal';
+import EmploymentContractReviewModal from '@/components/admin/EmploymentContractReviewModal';
 
 function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCriminalCheck, onReviewEmploymentContract, onSelectApplicant }) {
     const { data: applicants = [], isLoading } = useQuery({
