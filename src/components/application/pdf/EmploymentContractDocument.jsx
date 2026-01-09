@@ -347,12 +347,20 @@ export default function EmploymentContractDocument({ applicant, formData = {}, c
                        <p className="text-[11px]">({companyData?.authorizedPerson || '...........................'})</p>
                    </div>
                    <div className="text-center">
-                       <div className="mb-2">ลงชื่อ<span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>ลูกจ้าง</div>
+                       <div className="mb-2">
+                           ลงชื่อ
+                           {applicant?.signature_url ? (
+                               <img src={applicant.signature_url} alt="signature" crossOrigin="anonymous" className="inline-block h-[40px] object-contain mx-2" style={{ verticalAlign: 'baseline' }} />
+                           ) : (
+                               <span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ verticalAlign: 'baseline', minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>
+                           )}
+                           ลูกจ้าง
+                       </div>
                    </div>
-               </div>
-            </div>
+                   </div>
+                   </div>
 
-            {/* Clause 4.4 */}
+                   {/* Clause 4.4 */}
             <div className="mb-4 leading-[1.4] text-justify">
                 <p>4.4  ในระหว่างที่ลูกจ้างตกลงทำงานกับบริษัทฯ ลูกจ้างสัญญาว่าจะไม่ลาออกไปทำงานกับลูกค้า ,คู่แข่ง ,บริษัทฯอื่นๆ หรือนิติ
                     บุคคลอื่นใด รวมถึงภายในระยะเวลา 2 ปี (สอง) นับจากวันที่ลูกจ้างสิ้นสุดการเป็นพนักงานของบริษัทฯแล้ว ลูกจ้างรวมถึงคู่สมรส บุตร หรือ</p>
