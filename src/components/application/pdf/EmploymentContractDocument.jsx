@@ -557,7 +557,7 @@ export default function EmploymentContractDocument({ applicant, formData = {} })
             </div>
 
             {/* Highlighted Section: Clause 4.17-4.21 */}
-            <div className="mb-4 leading-[1.4] text-justify bg-yellow-100 p-4 border-l-4 border-yellow-500">
+            <div className="mb-4 leading-[1.4] text-justifyp-4">
                 <p className="mb-2 indent-8">4.17 การกำหนดให้ลูกจ้างรับผิดชอบต่อความเสียหายที่เกิดขึ้นกับบริษัทฯโดยมีเงื่อนไขที่ชัดเจนนั้น โดยหลักการแล้วไม่ขัดต่อ
                     กฎหมายแรงงานของไทย โดยเฉพาะเมื่อมีการระบุเงื่อนไขที่สำคัญดังนี้:</p>
                 
