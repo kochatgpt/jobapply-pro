@@ -160,47 +160,70 @@ export default function ApplicantDetail({ applicant }) {
                             ดูคำตอบ ({applicant.responses.length})
                         </Button>
                     )}
-                    <div className="flex items-center gap-4 pl-2 border-l border-slate-200">
+                    <div className="flex items-center gap-6 pl-4 border-l border-slate-200">
                         <div>
-                            <label className="text-xs font-semibold text-slate-600 block mb-1">ผ่านการประเมิน</label>
-                            <div className="flex gap-2">
-                                <Button 
-                                    variant={applicant.approval_status === 1 ? "default" : "outline"}
-                                    size="sm"
-                                    onClick={() => base44.entities.Applicant.update(applicant.id, { approval_status: 1 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
-                                    className={applicant.approval_status === 1 ? "bg-green-600 hover:bg-green-700" : ""}
-                                >
-                                    ✓ ผ่าน
-                                </Button>
-                                <Button 
-                                    variant={applicant.approval_status === 0 ? "default" : "outline"}
-                                    size="sm"
-                                    onClick={() => base44.entities.Applicant.update(applicant.id, { approval_status: 0 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
-                                    className={applicant.approval_status === 0 ? "bg-red-600 hover:bg-red-700" : ""}
-                                >
-                                    ✗ ไม่ผ่าน
-                                </Button>
+                            <label className="text-xs font-semibold text-slate-600 block mb-2">ผ่านการประเมิน</label>
+                            <div className="flex gap-3">
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input 
+                                        type="radio" 
+                                        name="approval"
+                                        value="null"
+                                        checked={applicant.approval_status === null || applicant.approval_status === undefined}
+                                        onChange={() => base44.entities.Applicant.update(applicant.id, { approval_status: null }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
+                                        className="w-4 h-4"
+                                    />
+                                    <span className="text-sm">ยังไม่ประเมิน</span>
+                                </label>
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input 
+                                        type="radio" 
+                                        name="approval"
+                                        value="1"
+                                        checked={applicant.approval_status === 1}
+                                        onChange={() => base44.entities.Applicant.update(applicant.id, { approval_status: 1 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
+                                        className="w-4 h-4"
+                                    />
+                                    <span className="text-sm text-green-600 font-medium">ผ่าน</span>
+                                </label>
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input 
+                                        type="radio" 
+                                        name="approval"
+                                        value="0"
+                                        checked={applicant.approval_status === 0}
+                                        onChange={() => base44.entities.Applicant.update(applicant.id, { approval_status: 0 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
+                                        className="w-4 h-4"
+                                    />
+                                    <span className="text-sm text-red-600 font-medium">ไม่ผ่าน</span>
+                                </label>
                             </div>
                         </div>
                         <div>
-                            <label className="text-xs font-semibold text-slate-600 block mb-1">กรอกข้อมูลเสร็จ</label>
-                            <div className="flex gap-2">
-                                <Button 
-                                    variant={applicant.data_completion_status === 1 ? "default" : "outline"}
-                                    size="sm"
-                                    onClick={() => base44.entities.Applicant.update(applicant.id, { data_completion_status: 1 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
-                                    className={applicant.data_completion_status === 1 ? "bg-blue-600 hover:bg-blue-700" : ""}
-                                >
-                                    ✓ ครบ
-                                </Button>
-                                <Button 
-                                    variant={applicant.data_completion_status === 0 ? "default" : "outline"}
-                                    size="sm"
-                                    onClick={() => base44.entities.Applicant.update(applicant.id, { data_completion_status: 0 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
-                                    className={applicant.data_completion_status === 0 ? "bg-orange-600 hover:bg-orange-700" : ""}
-                                >
-                                    ✗ ยัง
-                                </Button>
+                            <label className="text-xs font-semibold text-slate-600 block mb-2">กรอกข้อมูลเสร็จ</label>
+                            <div className="flex gap-3">
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input 
+                                        type="radio" 
+                                        name="completion"
+                                        value="0"
+                                        checked={applicant.data_completion_status === 0}
+                                        onChange={() => base44.entities.Applicant.update(applicant.id, { data_completion_status: 0 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
+                                        className="w-4 h-4"
+                                    />
+                                    <span className="text-sm text-orange-600 font-medium">ยังไม่ครบ</span>
+                                </label>
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <input 
+                                        type="radio" 
+                                        name="completion"
+                                        value="1"
+                                        checked={applicant.data_completion_status === 1}
+                                        onChange={() => base44.entities.Applicant.update(applicant.id, { data_completion_status: 1 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
+                                        className="w-4 h-4"
+                                    />
+                                    <span className="text-sm text-blue-600 font-medium">ครบ 100%</span>
+                                </label>
                             </div>
                         </div>
                     </div>
