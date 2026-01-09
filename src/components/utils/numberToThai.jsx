@@ -12,13 +12,28 @@ const convertToThai = (num) => {
     let one = num % 10;
 
     if (billion > 0) {
-        result += convertToThai(billion) + 'พันล้าน';
+        if (billion === 1) {
+            result += 'หนึ่ง';
+        } else {
+            result += convertToThai(billion);
+        }
+        result += 'พันล้าน';
     }
     if (million > 0) {
-        result += convertToThai(million) + 'ล้าน';
+        if (million === 1) {
+            result += 'หนึ่ง';
+        } else {
+            result += convertToThai(million);
+        }
+        result += 'ล้าน';
     }
     if (thousand > 0) {
-        result += convertToThai(thousand) + 'พัน';
+        if (thousand === 1) {
+            result += 'หนึ่ง';
+        } else {
+            result += convertToThai(thousand);
+        }
+        result += 'พัน';
     }
     if (hundred > 0) {
         result += thaiUnits[hundred] + 'ร้อย';
@@ -44,8 +59,20 @@ const convertToThai = (num) => {
 export const numberToThai = (num) => {
     if (!num || num === '' || num === 0) return '';
     
-    const n = parseInt(num);
-    if (isNaN(n) || n <= 0) return '';
+    const numStr = String(num).trim();
+    const parts = numStr.split('.');
+    const baht = parseInt(parts[0]);
+    const satang = parts[1] ? parseInt(parts[1].padEnd(2, '0').substring(0, 2)) : 0;
+    
+    if (isNaN(baht) || baht < 0) return '';
 
-    return convertToThai(n) + 'บาทถ้วน';
+    let result = convertToThai(baht);
+    if (!result) result = 'ศูนย์';
+    result += 'บาท';
+    
+    if (satang > 0) {
+        result += convertToThai(satang) + 'สตางค์';
+    }
+    
+    return result;
 };
