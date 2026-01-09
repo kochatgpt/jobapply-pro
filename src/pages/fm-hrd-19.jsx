@@ -46,7 +46,7 @@ export default function FMHRD19Form() {
         enabled: !!applicantId
     });
 
-    const { data: document } = useQuery({
+    const { data: fmhrd19Doc } = useQuery({
         queryKey: ['fmhrd19_pdf', applicantId],
         queryFn: async () => {
             const docs = await base44.entities.PdfBase.filter({ applicant_id: applicantId, pdf_type: 'FM-HRD-19' });
@@ -56,27 +56,27 @@ export default function FMHRD19Form() {
     });
 
     useEffect(() => {
-        if (document && document.data) {
-            setSignatureUrl(document.data.employee_signature_url || '');
-            setSignatureDate(document.data.employee_signature_date || new Date().toISOString().split('T')[0]);
+        if (fmhrd19Doc && fmhrd19Doc.data) {
+            setSignatureUrl(fmhrd19Doc.data.employee_signature_url || '');
+            setSignatureDate(fmhrd19Doc.data.employee_signature_date || new Date().toISOString().split('T')[0]);
             setFormData({
-                documentDate: document.data.document_date || '',
-                position: document.data.position || '',
-                department: document.data.department || '',
-                startDate: document.data.start_date || '',
-                trainingStartDate: document.data.training_start_date || '',
-                trainingEndDate: document.data.training_end_date || ''
+                documentDate: fmhrd19Doc.data.document_date || '',
+                position: fmhrd19Doc.data.position || '',
+                department: fmhrd19Doc.data.department || '',
+                startDate: fmhrd19Doc.data.start_date || '',
+                trainingStartDate: fmhrd19Doc.data.training_start_date || '',
+                trainingEndDate: fmhrd19Doc.data.training_end_date || ''
             });
         } else if (applicant) {
             setSignatureUrl(applicant.signature_url || '');
             setSignatureDate(applicant.signature_date || new Date().toISOString().split('T')[0]);
         }
-    }, [document, applicant]);
+    }, [fmhrd19Doc, applicant]);
 
     const saveDocumentMutation = useMutation({
         mutationFn: async (pdfData) => {
-            if (document) {
-                return await base44.entities.PdfBase.update(document.id, pdfData);
+            if (fmhrd19Doc) {
+                return await base44.entities.PdfBase.update(fmhrd19Doc.id, pdfData);
             } else {
                 return await base44.entities.PdfBase.create(pdfData);
             }
@@ -106,8 +106,8 @@ export default function FMHRD19Form() {
                 submitted_date: new Date().toISOString()
             };
 
-            if (document) {
-                return await base44.entities.PdfBase.update(document.id, pdfData);
+            if (fmhrd19Doc) {
+                return await base44.entities.PdfBase.update(fmhrd19Doc.id, pdfData);
             } else {
                 return await base44.entities.PdfBase.create(pdfData);
             }
@@ -224,8 +224,8 @@ export default function FMHRD19Form() {
                                     signatureUrl={signatureUrl}
                                     signatureDate={signatureDate}
                                     formData={formData}
-                                    witness1Signature={document?.data?.company_data?.witness_signature_1 || ''}
-                                    witness2Signature={document?.data?.company_data?.witness_signature_2 || ''}
+                                    witness1Signature={fmhrd19Doc?.data?.company_data?.witness_signature_1 || ''}
+                                    witness2Signature={fmhrd19Doc?.data?.company_data?.witness_signature_2 || ''}
                                 />
                             </div>
                         </div>
@@ -345,7 +345,7 @@ export default function FMHRD19Form() {
                                                     employee_signature_url: signatureUrl,
                                                     employee_signature_date: signatureDate
                                                 },
-                                                status: document?.status || 'draft'
+                                                status: fmhrd19Doc?.status || 'draft'
                                             });
                                             setShowForm(false);
                                         }}
