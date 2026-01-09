@@ -420,27 +420,25 @@ export default function EmploymentContractPage() {
                                         <div>
                                             <label className="block text-sm font-medium text-slate-700 mb-2">เวลาเข้างาน</label>
                                             <input
-                                                type="text"
+                                                type="time"
                                                 value={formData.workTimeStart}
                                                 onChange={(e) => setFormData({ ...formData, workTimeStart: e.target.value })}
                                                 className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                                placeholder="เช่น 08:00"
                                             />
                                         </div>
                                         <div>
                                             <label className="block text-sm font-medium text-slate-700 mb-2">เวลาออกงาน</label>
                                             <input
-                                                type="text"
+                                                type="time"
                                                 value={formData.workTimeEnd}
                                                 onChange={(e) => setFormData({ ...formData, workTimeEnd: e.target.value })}
                                                 className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                                placeholder="เช่น 17:00"
                                             />
                                         </div>
                                         <div>
                                             <label className="block text-sm font-medium text-slate-700 mb-2">เวลาเข้างาน (ทางเลือก 2)</label>
                                             <input
-                                                type="text"
+                                                type="time"
                                                 value={formData.workTimeAlt1}
                                                 onChange={(e) => setFormData({ ...formData, workTimeAlt1: e.target.value })}
                                                 className="w-full px-3 py-2 border border-slate-300 rounded-md"
@@ -449,7 +447,7 @@ export default function EmploymentContractPage() {
                                         <div>
                                             <label className="block text-sm font-medium text-slate-700 mb-2">เวลาออกงาน (ทางเลือก 2)</label>
                                             <input
-                                                type="text"
+                                                type="time"
                                                 value={formData.workTimeAlt2}
                                                 onChange={(e) => setFormData({ ...formData, workTimeAlt2: e.target.value })}
                                                 className="w-full px-3 py-2 border border-slate-300 rounded-md"
