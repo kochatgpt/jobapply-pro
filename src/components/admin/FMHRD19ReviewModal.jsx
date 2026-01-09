@@ -241,6 +241,7 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
                                 signatureUrl={employeeData.employee_signature_url}
                                 signatureDate={employeeData.employee_signature_date}
                                 formData={employeeData}
+                                companyData={companyData}
                                 companySignature={companyData.authorizedPersonSignature}
                                 witness1Signature={companyData.witness1Signature}
                                 witness2Signature={companyData.witness2Signature}

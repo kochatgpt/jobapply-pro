@@ -2,16 +2,15 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 
-export default function FMH19Document({ applicant, signatureUrl, signatureDate, formData = {}, companySignature, witness1Signature, witness2Signature }) {
-    const { data: settings } = useQuery({
-        queryKey: ['system_settings_layout'],
-        queryFn: () => base44.entities.SystemSetting.list(),
-        staleTime: 1000 * 60 * 5 
-    });
-    
-    const appLogo = settings?.find(s => s.key === 'app_logo')?.value;
-    const p = applicant?.personal_data || {};
-    const companyData = applicant?.fmhrd19_document?.company_data || {};
+export default function FMH19Document({ applicant, signatureUrl, signatureDate, formData = {}, companyData = {}, companySignature, witness1Signature, witness2Signature }) {
+          const { data: settings } = useQuery({
+              queryKey: ['system_settings_layout'],
+              queryFn: () => base44.entities.SystemSetting.list(),
+              staleTime: 1000 * 60 * 5 
+          });
+
+          const appLogo = settings?.find(s => s.key === 'app_logo')?.value;
+          const p = applicant?.personal_data || {};
 
     // แปลง documentDate เป็น day, month, year ถ้ามี
     let displayDay = formData.day;
