@@ -116,7 +116,17 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
 
     if (!applicant) return null;
 
-    const employeeData = pdfDoc?.data || {};
+    // แปลง snake_case keys จาก database เป็น camelCase สำหรับ component
+    const employeeData = pdfDoc?.data ? {
+        documentDate: pdfDoc.data.document_date,
+        position: pdfDoc.data.position,
+        department: pdfDoc.data.department,
+        startDate: pdfDoc.data.start_date,
+        trainingStartDate: pdfDoc.data.training_start_date,
+        trainingEndDate: pdfDoc.data.training_end_date,
+        employee_signature_url: pdfDoc.data.employee_signature_url,
+        employee_signature_date: pdfDoc.data.employee_signature_date
+    } : {};
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
