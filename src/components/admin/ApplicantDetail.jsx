@@ -26,8 +26,15 @@ export default function ApplicantDetail({ applicant }) {
     const updateAdminDataMutation = useMutation({
         mutationFn: ({ id, adminData }) => base44.entities.Applicant.update(id, { admin_data: adminData }),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['applicants_list'] });
+            queryClient.invalidateQueries({ queryKey: ['applicants'] });
             setShowAdminForm(false);
+        }
+    });
+
+    const updateStatusMutation = useMutation({
+        mutationFn: ({ id, data }) => base44.entities.Applicant.update(id, data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['applicants'] });
         }
     });
 
@@ -166,7 +173,7 @@ export default function ApplicantDetail({ applicant }) {
                             <div 
                                 onClick={() => {
                                     const newStatus = applicant.approval_status === 1 ? 0 : 1;
-                                    base44.entities.Applicant.update(applicant.id, { approval_status: newStatus }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }));
+                                    updateStatusMutation.mutate({ id: applicant.id, data: { approval_status: newStatus } });
                                 }}
                                 className={`flex items-center h-6 w-14 rounded-full cursor-pointer transition-colors ${
                                     applicant.approval_status === 1 ? 'bg-green-600' : applicant.approval_status === 0 ? 'bg-red-600' : 'bg-slate-300'
@@ -185,7 +192,7 @@ export default function ApplicantDetail({ applicant }) {
                             <div 
                                 onClick={() => {
                                     const newStatus = applicant.data_completion_status === 1 ? 0 : 1;
-                                    base44.entities.Applicant.update(applicant.id, { data_completion_status: newStatus }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }));
+                                    updateStatusMutation.mutate({ id: applicant.id, data: { data_completion_status: newStatus } });
                                 }}
                                 className={`flex items-center h-6 w-14 rounded-full cursor-pointer transition-colors ${
                                     applicant.data_completion_status === 1 ? 'bg-blue-600' : 'bg-slate-300'
