@@ -160,48 +160,44 @@ export default function ApplicantDetail({ applicant }) {
                             ดูคำตอบ ({applicant.responses.length})
                         </Button>
                     )}
-                    <div className="flex items-center gap-4 pl-2 border-l border-slate-200">
+                    <div className="flex items-center gap-6 pl-4 border-l border-slate-200">
                         <div>
-                            <label className="text-xs font-semibold text-slate-600 block mb-1">ผ่านการประเมิน</label>
-                            <div className="flex gap-2">
-                                <Button 
-                                    variant={applicant.approval_status === 1 ? "default" : "outline"}
-                                    size="sm"
-                                    onClick={() => base44.entities.Applicant.update(applicant.id, { approval_status: 1 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
-                                    className={applicant.approval_status === 1 ? "bg-green-600 hover:bg-green-700" : ""}
-                                >
-                                    ✓ ผ่าน
-                                </Button>
-                                <Button 
-                                    variant={applicant.approval_status === 0 ? "default" : "outline"}
-                                    size="sm"
-                                    onClick={() => base44.entities.Applicant.update(applicant.id, { approval_status: 0 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
-                                    className={applicant.approval_status === 0 ? "bg-red-600 hover:bg-red-700" : ""}
-                                >
-                                    ✗ ไม่ผ่าน
-                                </Button>
+                            <label className="text-xs font-semibold text-slate-600 block mb-2">ผ่านการประเมิน</label>
+                            <div 
+                                onClick={() => {
+                                    const newStatus = applicant.approval_status === 1 ? 0 : 1;
+                                    base44.entities.Applicant.update(applicant.id, { approval_status: newStatus }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }));
+                                }}
+                                className={`flex items-center h-6 w-14 rounded-full cursor-pointer transition-colors ${
+                                    applicant.approval_status === 1 ? 'bg-green-600' : applicant.approval_status === 0 ? 'bg-red-600' : 'bg-slate-300'
+                                }`}
+                            >
+                                <div className={`w-5 h-5 rounded-full bg-white transform transition-transform ${
+                                    applicant.approval_status === 1 ? 'translate-x-8' : 'translate-x-0.5'
+                                }`} />
                             </div>
+                            <span className="text-xs text-slate-500 mt-1 block">{
+                                applicant.approval_status === 1 ? 'ผ่าน' : applicant.approval_status === 0 ? 'ไม่ผ่าน' : '-'
+                            }</span>
                         </div>
                         <div>
-                            <label className="text-xs font-semibold text-slate-600 block mb-1">กรอกข้อมูลเสร็จ</label>
-                            <div className="flex gap-2">
-                                <Button 
-                                    variant={applicant.data_completion_status === 1 ? "default" : "outline"}
-                                    size="sm"
-                                    onClick={() => base44.entities.Applicant.update(applicant.id, { data_completion_status: 1 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
-                                    className={applicant.data_completion_status === 1 ? "bg-blue-600 hover:bg-blue-700" : ""}
-                                >
-                                    ✓ ครบ
-                                </Button>
-                                <Button 
-                                    variant={applicant.data_completion_status === 0 ? "default" : "outline"}
-                                    size="sm"
-                                    onClick={() => base44.entities.Applicant.update(applicant.id, { data_completion_status: 0 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
-                                    className={applicant.data_completion_status === 0 ? "bg-orange-600 hover:bg-orange-700" : ""}
-                                >
-                                    ✗ ยัง
-                                </Button>
+                            <label className="text-xs font-semibold text-slate-600 block mb-2">กรอกข้อมูลเสร็จ</label>
+                            <div 
+                                onClick={() => {
+                                    const newStatus = applicant.data_completion_status === 1 ? 0 : 1;
+                                    base44.entities.Applicant.update(applicant.id, { data_completion_status: newStatus }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }));
+                                }}
+                                className={`flex items-center h-6 w-14 rounded-full cursor-pointer transition-colors ${
+                                    applicant.data_completion_status === 1 ? 'bg-blue-600' : 'bg-slate-300'
+                                }`}
+                            >
+                                <div className={`w-5 h-5 rounded-full bg-white transform transition-transform ${
+                                    applicant.data_completion_status === 1 ? 'translate-x-8' : 'translate-x-0.5'
+                                }`} />
                             </div>
+                            <span className="text-xs text-slate-500 mt-1 block">{
+                                applicant.data_completion_status === 1 ? 'ครบ' : 'ยัง'
+                            }</span>
                         </div>
                     </div>
                     <Button 
