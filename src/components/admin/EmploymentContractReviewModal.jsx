@@ -237,6 +237,7 @@ export default function EmploymentContractReviewModal({ applicant, isOpen, onClo
                             <EmploymentContractDocument
                                 applicant={applicant}
                                 formData={pdfDoc?.data || {}}
+                                companyData={companyData}
                             />
                         </div>
                     </div>
