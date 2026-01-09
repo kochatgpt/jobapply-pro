@@ -132,8 +132,30 @@ export default function EmploymentContractReviewModal({ applicant, isOpen, onClo
                 <div className="space-y-4">
                     {/* Admin Form - Witnesses Only */}
                     <div className="bg-slate-50 p-4 rounded-lg space-y-4">
-                        <h3 className="font-semibold text-lg">ลายเซ็นพยานและชื่อผู้ลงนาม</h3>
+                        <h3 className="font-semibold text-lg">ลายเซ็นบริษัทฯและพยาน</h3>
                         
+                        <div>
+                            <Label>กรรมการผู้มีอำนาจลงนามแทน (บริษัทฯ)</Label>
+                            <Input
+                                value={companyData.authorizedPerson}
+                                onChange={(e) => setCompanyData({ ...companyData, authorizedPerson: e.target.value })}
+                                placeholder="ชื่อ-สกุล กรรมการผู้มีอำนาจ"
+                            />
+                        </div>
+
+                        <div>
+                            <Label>ลายเซ็นกรรมการผู้มีอำนาจลงนามแทน (บริษัทฯ)</Label>
+                            <SignaturePad 
+                                signatureUrl={companyData.authorizedPersonSignature}
+                                onSave={(url) => setCompanyData({ ...companyData, authorizedPersonSignature: url })}
+                                onDelete={() => setCompanyData({ ...companyData, authorizedPersonSignature: '' })}
+                            />
+                        </div>
+
+                        <div className="border-t pt-4">
+                            <h4 className="font-medium mb-3">ข้อมูลพยาน</h4>
+                        </div>
+
                         <div>
                             <Label>ชื่อพยานคนที่ 1</Label>
                             <Input
