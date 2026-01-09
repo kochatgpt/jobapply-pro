@@ -54,9 +54,9 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
 
             {/* Date */}
             <div className="mb-6 leading-[1.4] flex justify-end">
-                <div>วันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center px-2 ${displayDay ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!displayDay && { minHeight: '1.2em' }) }}>{displayDay || '\u00A0'}</span> 
-                เดือน <span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 ${displayMonth ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!displayMonth && { minHeight: '1.2em' }) }}>{displayMonth || '\u00A0'}</span> 
-                พ.ศ. <span className={`border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center px-2 ${displayYear ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!displayYear && { minHeight: '1.2em' }) }}>{displayYear || '\u00A0'}</span>
+                <div>วันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center px-2 pb-1 ${displayDay}`} style={{ verticalAlign: 'baseline', ...(!displayDay && { minHeight: '1.2em' }) }}>{displayDay || '\u00A0'}</span> 
+                เดือน <span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 pb-1 ${displayMonth}`} style={{ verticalAlign: 'baseline', ...(!displayMonth && { minHeight: '1.2em' }) }}>{displayMonth || '\u00A0'}</span> 
+                พ.ศ. <span className={`border-b border-dotted border-slate-400 inline-block min-w-[50px] text-center px-2 pb-1 ${displayYear}`} style={{ verticalAlign: 'baseline', ...(!displayYear && { minHeight: '1.2em' }) }}>{displayYear || '\u00A0'}</span>
                 </div>
             </div>
 
@@ -68,16 +68,16 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                 <p>
                     ได้รับการว่าจ้างจาก บริษัท เค แอนด์โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด ที่ตั้งสำนักงานใหญ่ เลขที่ 15,17 ซอยกรุง 
                     ธนบุรี 4 ถนนกรุงธนบุรี แขวงบางลำภูล่าง เขตคลองสาน กรุงเทพมหานคร 10600 โทร. 662-860-6618
-                    FAX. 662-860-6617 ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า "บริษัท"ให้เริ่มปฏิบัติงานในวันที่<span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 ${formData.startDate ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.startDate && { minHeight: '1.2em' }) }}>{formData.startDate ? new Date(formData.startDate).toLocaleDateString('th-TH') : '\u00A0'}</span> ตำแหน่ง
-                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2 pb-1${formData.position ? '' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.position && { minHeight: '1.2em' }) }}>{formData.position || '\u00A0'}</span> แผนก
-                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2 pb-1${formData.department ? '' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.department && { minHeight: '1.2em' }) }}>{formData.department || '\u00A0'}</span> ตกลงและ
+                    FAX. 662-860-6617 ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า "บริษัท"ให้เริ่มปฏิบัติงานในวันที่<span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 pb-1 ${formData.startDate}`} style={{ verticalAlign: 'baseline', ...(!formData.startDate && { minHeight: '1.2em' }) }}>{formData.startDate ? new Date(formData.startDate).toLocaleDateString('th-TH') : '\u00A0'}</span> ตำแหน่ง
+                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2 pb-1 ${formData.position}`} style={{ verticalAlign: 'baseline', ...(!formData.position && { minHeight: '1.2em' }) }}>{formData.position || '\u00A0'}</span> แผนก
+                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2 pb-1 ${formData.department}`} style={{ verticalAlign: 'baseline', ...(!formData.department && { minHeight: '1.2em' }) }}>{formData.department || '\u00A0'}</span> ตกลงและ
                 </p>
             </div>
 
             {/* Terms */}
             <div className="mb-4 text-justify leading-[1.4] space-y-2">
                 <p className="indent-8">
-                    ยินยอมเข้ารับการฝึกอบรม "หลักสูตรปฐมนิเทศพนักงานใหม่" ตามระเบียบของบริษัทฯมีกำหนดระยะเวลาการฝึกอบรม 3 วัน(ไม่นับรวมวันหยุด) เริ่มตั้งแต่วันที่<span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 ${formData.trainingStartDate ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.trainingStartDate && { minHeight: '1.2em' }) }}>{formData.trainingStartDate ? new Date(formData.trainingStartDate).toLocaleDateString('th-TH') : '\u00A0'}</span>ถึงวันที่<span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 ${formData.trainingEndDate ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.trainingEndDate && { minHeight: '1.2em' }) }}>{formData.trainingEndDate ? new Date(formData.trainingEndDate).toLocaleDateString('th-TH') : '\u00A0'}</span>โดยไม่ได้รับค่าจ้างหรือค่าตอบแทนใดๆ เพื่อเป็นการเตรียมความพร้อมให้กับพนักงานใหม่ก่อนเริ่มปฏิบัติงานจริงโดยการฝึกอบรมแบ่ง
+                    ยินยอมเข้ารับการฝึกอบรม "หลักสูตรปฐมนิเทศพนักงานใหม่" ตามระเบียบของบริษัทฯมีกำหนดระยะเวลาการฝึกอบรม 3 วัน(ไม่นับรวมวันหยุด) เริ่มตั้งแต่วันที่<span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 pb-1 ${formData.trainingStartDate}`} style={{ verticalAlign: 'baseline', ...(!formData.trainingStartDate && { minHeight: '1.2em' }) }}>{formData.trainingStartDate ? new Date(formData.trainingStartDate).toLocaleDateString('th-TH') : '\u00A0'}</span>ถึงวันที่<span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 ${formData.trainingEndDate ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.trainingEndDate && { minHeight: '1.2em' }) }}>{formData.trainingEndDate ? new Date(formData.trainingEndDate).toLocaleDateString('th-TH') : '\u00A0'}</span>โดยไม่ได้รับค่าจ้างหรือค่าตอบแทนใดๆ เพื่อเป็นการเตรียมความพร้อมให้กับพนักงานใหม่ก่อนเริ่มปฏิบัติงานจริงโดยการฝึกอบรมแบ่ง
                 </p>
                 
                 <p className="font-bold">ออกเป็น 4 หัวข้อหลัก ดังนี้</p>
