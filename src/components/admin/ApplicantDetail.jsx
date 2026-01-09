@@ -160,6 +160,50 @@ export default function ApplicantDetail({ applicant }) {
                             ดูคำตอบ ({applicant.responses.length})
                         </Button>
                     )}
+                    <div className="flex items-center gap-4 pl-2 border-l border-slate-200">
+                        <div>
+                            <label className="text-xs font-semibold text-slate-600 block mb-1">ผ่านการประเมิน</label>
+                            <div className="flex gap-2">
+                                <Button 
+                                    variant={applicant.approval_status === 1 ? "default" : "outline"}
+                                    size="sm"
+                                    onClick={() => base44.entities.Applicant.update(applicant.id, { approval_status: 1 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
+                                    className={applicant.approval_status === 1 ? "bg-green-600 hover:bg-green-700" : ""}
+                                >
+                                    ✓ ผ่าน
+                                </Button>
+                                <Button 
+                                    variant={applicant.approval_status === 0 ? "default" : "outline"}
+                                    size="sm"
+                                    onClick={() => base44.entities.Applicant.update(applicant.id, { approval_status: 0 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
+                                    className={applicant.approval_status === 0 ? "bg-red-600 hover:bg-red-700" : ""}
+                                >
+                                    ✗ ไม่ผ่าน
+                                </Button>
+                            </div>
+                        </div>
+                        <div>
+                            <label className="text-xs font-semibold text-slate-600 block mb-1">กรอกข้อมูลเสร็จ</label>
+                            <div className="flex gap-2">
+                                <Button 
+                                    variant={applicant.data_completion_status === 1 ? "default" : "outline"}
+                                    size="sm"
+                                    onClick={() => base44.entities.Applicant.update(applicant.id, { data_completion_status: 1 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
+                                    className={applicant.data_completion_status === 1 ? "bg-blue-600 hover:bg-blue-700" : ""}
+                                >
+                                    ✓ ครบ
+                                </Button>
+                                <Button 
+                                    variant={applicant.data_completion_status === 0 ? "default" : "outline"}
+                                    size="sm"
+                                    onClick={() => base44.entities.Applicant.update(applicant.id, { data_completion_status: 0 }).then(() => queryClient.invalidateQueries({ queryKey: ['applicants'] }))}
+                                    className={applicant.data_completion_status === 0 ? "bg-orange-600 hover:bg-orange-700" : ""}
+                                >
+                                    ✗ ยัง
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
                     <Button 
                         variant="outline"
                         onClick={() => setShowAdminForm(true)}
