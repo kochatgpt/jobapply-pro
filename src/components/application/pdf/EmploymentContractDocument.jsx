@@ -3,15 +3,24 @@ import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 
 export default function EmploymentContractDocument({ applicant, formData = {} }) {
-    const { data: settings } = useQuery({
-        queryKey: ['system_settings_layout'],
-        queryFn: () => base44.entities.SystemSetting.list(),
-        staleTime: 1000 * 60 * 5 
-    });
-    
-    const appLogo = settings?.find(s => s.key === 'app_logo')?.value;
-    const p = applicant?.personal_data || {};
-    const currentAddr = p.current_address || {};
+          const { data: settings } = useQuery({
+              queryKey: ['system_settings_layout'],
+              queryFn: () => base44.entities.SystemSetting.list(),
+              staleTime: 1000 * 60 * 5 
+          });
+
+          const appLogo = settings?.find(s => s.key === 'app_logo')?.value;
+          const p = applicant?.personal_data || {};
+          const currentAddr = p.current_address || {};
+
+          const formatDate = (dateString) => {
+              if (!dateString) return '';
+              const date = new Date(dateString);
+              const day = String(date.getDate()).padStart(2, '0');
+              const month = String(date.getMonth() + 1).padStart(2, '0');
+              const year = date.getFullYear();
+              return `${day}/${month}/${year}`;
+          };
 
     return (
         <>
@@ -39,7 +48,7 @@ export default function EmploymentContractDocument({ applicant, formData = {} })
 
             {/* Date and Contract Number */}
             <div className="mb-4 leading-[1.4]">
-                <p className="indent-8">สัญญาฉบับนี้ทำขึ้นที่ บริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด เมื่อวันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 ${formData.contractDate}`} style={{ verticalAlign: 'baseline', ...(!formData.contractDate && { minHeight: '1.2em' }) }}>{formData.contractDate || '\u00A0'}</span></p>
+                <p className="indent-8">สัญญาฉบับนี้ทำขึ้นที่ บริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด เมื่อวันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 ${formData.contractDate}`} style={{ verticalAlign: 'baseline', ...(!formData.contractDate && { minHeight: '1.2em' }) }}>{formData.contractDate ? formatDate(formData.contractDate) : '\u00A0'}</span></p>
             </div>
 
             {/* Company Info */}
@@ -557,7 +566,7 @@ export default function EmploymentContractDocument({ applicant, formData = {} })
             </div>
 
             {/* Highlighted Section: Clause 4.17-4.21 */}
-            <div className="mb-4 leading-[1.4] text-justifyp-4">
+            <div className="mb-4 leading-[1.4] text-justify p-4">
                 <p className="mb-2 indent-8">4.17 การกำหนดให้ลูกจ้างรับผิดชอบต่อความเสียหายที่เกิดขึ้นกับบริษัทฯโดยมีเงื่อนไขที่ชัดเจนนั้น โดยหลักการแล้วไม่ขัดต่อ
                     กฎหมายแรงงานของไทย โดยเฉพาะเมื่อมีการระบุเงื่อนไขที่สำคัญดังนี้:</p>
                 
