@@ -62,6 +62,12 @@ export default function EmploymentContractPage() {
         }
     }, [navigate]);
 
+    useEffect(() => {
+        if (existingPdf?.data) {
+            setFormData(existingPdf.data);
+        }
+    }, [existingPdf]);
+
     const { data: applicant } = useQuery({
         queryKey: ['user_applicant', applicantId],
         queryFn: async () => {
