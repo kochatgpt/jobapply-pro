@@ -160,7 +160,7 @@ function DocumentsView({ onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCri
                     )}
                 </div>
 
-                {/* FM-HRD-19 Documents - Table View */}
+                {/* FM-HRD-19 Documents - Card View */}
                 <div>
                     <h2 className="text-2xl font-bold text-slate-800 mb-4">เอกสาร FM-HRD-19</h2>
                     {fmhrd19Documents.length === 0 ? (
@@ -170,76 +170,58 @@ function DocumentsView({ onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCri
                             </CardContent>
                         </Card>
                     ) : (
-                        <Card>
-                            <CardContent className="p-0">
-                                <div className="overflow-x-auto">
-                                    <table className="w-full">
-                                        <thead className="bg-slate-50 border-b">
-                                            <tr>
-                                                <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">ชื่อผู้สมัคร</th>
-                                                <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">วันที่เอกสาร</th>
-                                                <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">ตำแหน่ง</th>
-                                                <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">แผนก</th>
-                                                <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">วันที่ฝึกอบรม</th>
-                                                <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">ข้อมูลเอกสาร (JSON)</th>
-                                                <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">สถานะ</th>
-                                                <th className="px-4 py-3 text-left text-sm font-semibold text-slate-700">จัดการ</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody className="divide-y divide-slate-200">
-                                            {fmhrd19Documents.map(doc => {
-                                                const applicant = applicants.find(a => a.id === doc.applicant_id);
-                                                const docData = doc.data || {};
-                                                return (
-                                                    <tr key={doc.id} className="hover:bg-slate-50">
-                                                        <td className="px-4 py-3 text-sm">
-                                                            <div className="font-medium text-slate-900">
-                                                                {applicant?.full_name || '-'}
+                        <div className="grid grid-cols-1 gap-4">
+                            {fmhrd19Documents.map(doc => {
+                                const applicant = applicants.find(a => a.id === doc.applicant_id);
+                                const docData = doc.data || {};
+                                return (
+                                    <Card key={doc.id} className="hover:shadow-md transition-shadow">
+                                        <CardContent className="p-6">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-4 flex-1">
+                                                    <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                                                        <FileCheck className="w-6 h-6 text-blue-600" />
+                                                    </div>
+                                                    <div className="flex-1">
+                                                        <h3 className="font-semibold text-lg">{applicant?.full_name || '-'}</h3>
+                                                        <div className="grid grid-cols-2 gap-4 mt-2 text-sm text-slate-600">
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">วันที่เอกสาร</p>
+                                                                <p className="font-medium">{docData.document_date ? new Date(docData.document_date).toLocaleDateString('th-TH') : '-'}</p>
                                                             </div>
-                                                        </td>
-                                                        <td className="px-4 py-3 text-sm text-slate-600">
-                                                            {docData.document_date ? new Date(docData.document_date).toLocaleDateString('th-TH') : '-'}
-                                                        </td>
-                                                        <td className="px-4 py-3 text-sm text-slate-600">{docData.position || '-'}</td>
-                                                        <td className="px-4 py-3 text-sm text-slate-600">{docData.department || '-'}</td>
-                                                        <td className="px-4 py-3 text-sm text-slate-600">
-                                                            {docData.training_start_date && docData.training_end_date ? 
-                                                                `${new Date(docData.training_start_date).toLocaleDateString('th-TH')} - ${new Date(docData.training_end_date).toLocaleDateString('th-TH')}` 
-                                                                : '-'
-                                                            }
-                                                        </td>
-                                                        <td className="px-4 py-3">
-                                                            <details className="cursor-pointer">
-                                                                <summary className="text-xs text-indigo-600 hover:text-indigo-700">
-                                                                    ดู JSON
-                                                                </summary>
-                                                                <pre className="mt-2 text-xs bg-slate-100 p-2 rounded overflow-auto max-h-40">
-                                                                    {JSON.stringify(doc, null, 2)}
-                                                                </pre>
-                                                            </details>
-                                                        </td>
-                                                        <td className="px-4 py-3">
-                                                            <Badge variant={doc.status === 'approved' ? 'success' : doc.status === 'submitted' ? 'default' : 'secondary'}>
-                                                                {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
-                                                            </Badge>
-                                                        </td>
-                                                        <td className="px-4 py-3">
-                                                            <Button 
-                                                                onClick={() => applicant && onReviewFMHRD19(applicant)}
-                                                                size="sm"
-                                                                disabled={!applicant}
-                                                            >
-                                                                จัดการ
-                                                            </Button>
-                                                        </td>
-                                                    </tr>
-                                                );
-                                            })}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </CardContent>
-                        </Card>
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">ตำแหน่ง / แผนก</p>
+                                                                <p className="font-medium">{docData.position || '-'} / {docData.department || '-'}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">วันฝึกอบรม</p>
+                                                                <p className="font-medium">{docData.training_start_date && docData.training_end_date ? `${new Date(docData.training_start_date).toLocaleDateString('th-TH')} - ${new Date(docData.training_end_date).toLocaleDateString('th-TH')}` : '-'}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">ID เอกสาร</p>
+                                                                <p className="font-medium text-xs">{doc.id.substring(0, 8)}...</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center gap-3">
+                                                    <Badge variant={doc.status === 'approved' ? 'success' : doc.status === 'submitted' ? 'default' : 'secondary'}>
+                                                        {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
+                                                    </Badge>
+                                                    <Button 
+                                                        onClick={() => applicant && onReviewFMHRD19(applicant)}
+                                                        size="sm"
+                                                        disabled={!applicant}
+                                                    >
+                                                        ดูเอกสาร
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                );
+                            })}
+                        </div>
                     )}
                 </div>
 
