@@ -6,7 +6,9 @@ const convertToThai = (num) => {
     let result = '';
     let billion = Math.floor(num / 1000000000);
     let million = Math.floor((num % 1000000000) / 1000000);
-    let thousand = Math.floor((num % 1000000) / 1000);
+    let hundredThousand = Math.floor((num % 1000000) / 100000);
+    let tenThousand = Math.floor((num % 100000) / 10000);
+    let thousand = Math.floor((num % 10000) / 1000);
     let hundred = Math.floor((num % 1000) / 100);
     let ten = Math.floor((num % 100) / 10);
     let one = num % 10;
