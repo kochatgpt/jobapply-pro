@@ -116,6 +116,7 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                                                 <Button 
                                                     onClick={() => onReviewNDA(applicant)}
                                                     size="sm"
+                                                    disabled={applicant.nda_document?.status === 'completed'}
                                                 >
                                                     ดูและเซ็น
                                                 </Button>
@@ -169,6 +170,7 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                                                 <Button 
                                                     onClick={() => onReviewPDPA(applicant)}
                                                     size="sm"
+                                                    disabled={applicant.pdpa_document?.status === 'completed'}
                                                 >
                                                     กรอกข้อมูลพยาน
                                                 </Button>
@@ -232,7 +234,7 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                                                     <Button 
                                                         onClick={() => applicant && onReviewFMHRD19(applicant)}
                                                         size="sm"
-                                                        disabled={!applicant}
+                                                        disabled={!applicant || doc.status === 'approved'}
                                                     >
                                                         ดูเอกสาร
                                                     </Button>
@@ -287,6 +289,7 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                                                 <Button 
                                                     onClick={() => onReviewCriminalCheck(applicant)}
                                                     size="sm"
+                                                    disabled={applicant.criminal_check_document?.status === 'completed'}
                                                 >
                                                     กรอกข้อมูลและเซ็น
                                                 </Button>
