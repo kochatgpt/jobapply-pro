@@ -17,7 +17,7 @@ import PDPAReviewModal from '@/components/admin/PDPAReviewModal';
 import FMHRD19ReviewModal from '@/components/admin/FMHRD19ReviewModal';
 import CriminalCheckReviewModal from '@/components/admin/CriminalCheckReviewModal';
 
-function DocumentsView({ onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCriminalCheck }) {
+function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCriminalCheck, onSelectApplicant }) {
     const { data: applicants = [], isLoading } = useQuery({
         queryKey: ['applicants'],
         queryFn: () => base44.entities.Applicant.list()
@@ -31,15 +31,36 @@ function DocumentsView({ onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCri
         }
     });
 
-    const ndaDocs = applicants.filter(a => 
+    if (!selectedApplicant) {
+        return (
+            <div className="h-full flex items-center justify-center">
+                <Card className="max-w-md">
+                    <CardContent className="p-8 text-center">
+                        <FileCheck className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+                        <h2 className="text-xl font-semibold text-slate-800 mb-2">เลือกผู้สมัครก่อน</h2>
+                        <p className="text-slate-500 mb-6">กรุณากลับไปที่แท็บ "ผู้สมัคร" และเลือกผู้สมัครเพื่อดูเอกสาร</p>
+                        <Button 
+                            onClick={onSelectApplicant}
+                            className="bg-indigo-600 hover:bg-indigo-700"
+                        >
+                            ไปที่ผู้สมัคร
+                        </Button>
+                    </CardContent>
+                </Card>
+            </div>
+        );
+    }
+
+    const filteredFMHRD19 = fmhrd19Documents.filter(doc => doc.applicant_id === selectedApplicant.id);
+    const ndaDocs = [selectedApplicant].filter(a => 
         a.nda_document?.status === 'submitted' || a.nda_document?.status === 'completed'
     );
     
-    const pdpaDocs = applicants.filter(a => 
+    const pdpaDocs = [selectedApplicant].filter(a => 
         a.pdpa_document?.status === 'submitted' || a.pdpa_document?.status === 'completed'
     );
     
-    const criminalCheckDocs = applicants.filter(a => 
+    const criminalCheckDocs = [selectedApplicant].filter(a => 
         a.criminal_check_document?.status === 'submitted' || a.criminal_check_document?.status === 'completed'
     );
 
@@ -163,7 +184,7 @@ function DocumentsView({ onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCri
                 {/* FM-HRD-19 Documents - Card View */}
                 <div>
                     <h2 className="text-2xl font-bold text-slate-800 mb-4">เอกสาร FM-HRD-19</h2>
-                    {fmhrd19Documents.length === 0 ? (
+                    {filteredFMHRD19.length === 0 ? (
                         <Card>
                             <CardContent className="p-8 text-center text-slate-500">
                                 ยังไม่มีเอกสารที่ส่งมา
@@ -171,8 +192,8 @@ function DocumentsView({ onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCri
                         </Card>
                     ) : (
                         <div className="grid grid-cols-1 gap-4">
-                            {fmhrd19Documents.map(doc => {
-                                const applicant = applicants.find(a => a.id === doc.applicant_id);
+                            {filteredFMHRD19.map(doc => {
+                                const applicant = selectedApplicant;
                                 const docData = doc.data || {};
                                 return (
                                     <Card key={doc.id} className="hover:shadow-md transition-shadow">
@@ -371,6 +392,8 @@ export default function AdminPage() {
                     </div>
                 ) : activeView === "documents" ? (
                     <DocumentsView 
+                        selectedApplicant={selectedApplicant}
+                        onSelectApplicant={() => setActiveView("dashboard")}
                         onReviewNDA={setReviewingApplicant}
                         onReviewPDPA={setReviewingPDPA}
                         onReviewFMHRD19={setReviewingFMHRD19}
