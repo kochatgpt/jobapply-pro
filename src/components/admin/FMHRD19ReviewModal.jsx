@@ -16,13 +16,14 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
     const queryClient = useQueryClient();
     const [generatingPdf, setGeneratingPdf] = useState(false);
     const [companyData, setCompanyData] = useState({
-        authorizedPerson: '',
-        hrPerson: '',
-        witnessName1: '',
-        witness1Signature: '',
-        witnessName2: '',
-        witness2Signature: ''
-    });
+            authorizedPerson: '',
+            authorizedPersonSignature: '',
+            hrPerson: '',
+            witnessName1: '',
+            witness1Signature: '',
+            witnessName2: '',
+            witness2Signature: ''
+        });
 
     const { data: pdfDoc } = useQuery({
         queryKey: ['fmhrd19_pdf', applicant?.id],
@@ -35,15 +36,16 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
 
     useEffect(() => {
         if (pdfDoc?.data?.company_data) {
-            setCompanyData({
-                authorizedPerson: pdfDoc.data.company_data.authorizedPerson || '',
-                hrPerson: pdfDoc.data.company_data.hrPerson || '',
-                witnessName1: pdfDoc.data.company_data.witnessName1 || '',
-                witness1Signature: pdfDoc.data.company_data.witness1Signature || '',
-                witnessName2: pdfDoc.data.company_data.witnessName2 || '',
-                witness2Signature: pdfDoc.data.company_data.witness2Signature || ''
-            });
-        }
+                setCompanyData({
+                    authorizedPerson: pdfDoc.data.company_data.authorizedPerson || '',
+                    authorizedPersonSignature: pdfDoc.data.company_data.authorizedPersonSignature || '',
+                    hrPerson: pdfDoc.data.company_data.hrPerson || '',
+                    witnessName1: pdfDoc.data.company_data.witnessName1 || '',
+                    witness1Signature: pdfDoc.data.company_data.witness1Signature || '',
+                    witnessName2: pdfDoc.data.company_data.witnessName2 || '',
+                    witness2Signature: pdfDoc.data.company_data.witness2Signature || ''
+                });
+            }
     }, [pdfDoc]);
 
     const updateMutation = useMutation({
@@ -150,6 +152,15 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
                         </div>
 
                         <div>
+                            <Label>ลายเซ็นกรรมการผู้มีอำนาจลงนามแทน (บริษัท)</Label>
+                            <SignaturePad 
+                                signatureUrl={companyData.authorizedPersonSignature}
+                                onSave={(url) => setCompanyData({ ...companyData, authorizedPersonSignature: url })}
+                                onDelete={() => setCompanyData({ ...companyData, authorizedPersonSignature: '' })}
+                            />
+                        </div>
+
+                        <div>
                             <Label>กรรมการผู้มีอำนาจลงนามแทน (HR)</Label>
                             <Input
                                 value={companyData.hrPerson}
@@ -230,6 +241,7 @@ export default function FMHRD19ReviewModal({ applicant, isOpen, onClose }) {
                                 signatureUrl={employeeData.employee_signature_url}
                                 signatureDate={employeeData.employee_signature_date}
                                 formData={employeeData}
+                                companySignature={companyData.authorizedPersonSignature}
                                 witness1Signature={companyData.witness1Signature}
                                 witness2Signature={companyData.witness2Signature}
                             />
