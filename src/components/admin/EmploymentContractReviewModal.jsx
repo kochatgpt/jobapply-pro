@@ -36,6 +36,8 @@ export default function EmploymentContractReviewModal({ applicant, isOpen, onClo
     useEffect(() => {
         if (pdfDoc?.data?.company_data) {
             setCompanyData({
+                authorizedPerson: pdfDoc.data.company_data.authorizedPerson || '',
+                authorizedPersonSignature: pdfDoc.data.company_data.authorizedPersonSignature || '',
                 witnessName1: pdfDoc.data.company_data.witnessName1 || '',
                 witness1Signature: pdfDoc.data.company_data.witness1Signature || '',
                 witnessName2: pdfDoc.data.company_data.witnessName2 || '',
