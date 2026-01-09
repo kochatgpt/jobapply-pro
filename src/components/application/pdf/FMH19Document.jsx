@@ -69,8 +69,8 @@ export default function FMH19Document({ applicant, signatureUrl, signatureDate, 
                     ได้รับการว่าจ้างจาก บริษัท เค แอนด์โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด ที่ตั้งสำนักงานใหญ่ เลขที่ 15,17 ซอยกรุง 
                     ธนบุรี 4 ถนนกรุงธนบุรี แขวงบางลำภูล่าง เขตคลองสาน กรุงเทพมหานคร 10600 โทร. 662-860-6618
                     FAX. 662-860-6617 ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า "บริษัท"ให้เริ่มปฏิบัติงานในวันที่<span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 ${formData.startDate ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.startDate && { minHeight: '1.2em' }) }}>{formData.startDate ? new Date(formData.startDate).toLocaleDateString('th-TH') : '\u00A0'}</span> ตำแหน่ง
-                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2 ${formData.position ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.position && { minHeight: '1.2em' }) }}>{formData.position || '\u00A0'}</span> แผนก
-                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2 ${formData.department ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.department && { minHeight: '1.2em' }) }}>{formData.department || '\u00A0'}</span> ตกลงและ
+                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2 pb-1${formData.position ? '' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.position && { minHeight: '1.2em' }) }}>{formData.position || '\u00A0'}</span> แผนก
+                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[170px] text-center px-2 pb-1${formData.department ? '' : ''}`} style={{ verticalAlign: 'baseline', ...(!formData.department && { minHeight: '1.2em' }) }}>{formData.department || '\u00A0'}</span> ตกลงและ
                 </p>
             </div>
 
