@@ -299,6 +299,13 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                                                     <Badge variant={doc.status === 'approved' ? 'success' : doc.status === 'submitted' ? 'default' : 'secondary'}>
                                                         {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
                                                     </Badge>
+                                                    <Button 
+                                                        onClick={() => applicant && onReviewEmploymentContract(applicant)}
+                                                        size="sm"
+                                                        disabled={!applicant}
+                                                    >
+                                                        ดูเอกสาร
+                                                    </Button>
                                                 </div>
                                             </div>
                                         </CardContent>
