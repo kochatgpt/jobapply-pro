@@ -195,7 +195,7 @@ export default function UserDashboard() {
                                                     {isApproved ? (
                                                         <Badge className="bg-green-100 text-green-800 border-green-300">
                                                             <CheckCircle className="w-3 h-3 mr-1" />
-                                                            อনุมัติแล้ว
+                                                            อนุมัติแล้ว
                                                         </Badge>
                                                     ) : (
                                                         <Badge variant="outline" className="text-amber-600 border-amber-300">
