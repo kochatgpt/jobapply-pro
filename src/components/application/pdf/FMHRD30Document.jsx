@@ -40,10 +40,10 @@ export default function FMHRD30Document({ applicant, formData = {} }) {
             <div className="text-center mb-6">
                 <h1 className="text-[14px] font-bold mb-4">การตรวจประวัติอาชญากรรม</h1>
                 <div className="text-right mb-1">
-                    <p>วันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 pb-1 ${formData.criminalCheckDate}`} style={{ verticalAlign: 'baseline', ...(!formData.criminalCheckDate && { minHeight: '1.2em' }) }}>{formData.criminalCheckDate ? new Date(formData.criminalCheckDate).toLocaleDateString('th-TH', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '/') : '\u00A0'}</span></p>
+                    <p>วันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 pb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>&nbsp;</span></p>
                 </div>
                 <div className="text-right mb-4">
-                    <p><strong>เลขที่ประกาศ:</strong> <span className="inline-block min-w-[150px] text-center">&nbsp;</span></p>
+                    <p><strong>เลขที่ประกาศ:</strong> <span className={`inline-block min-w-[150px] text-center ${formData.proclamationNumber}`} style={{ verticalAlign: 'baseline', ...(!formData.proclamationNumber && { minHeight: '1.2em' }) }}>{formData.proclamationNumber || '\u00A0'}</span></p>
                 </div>
             </div>
 
@@ -122,10 +122,16 @@ export default function FMHRD30Document({ applicant, formData = {} }) {
                 <div className="text-center">
                     <p className="mt-12">จึงเรียนมาเพื่อทราบโดยทั่วกัน</p>
                     <p className="mb-6">
-                        ลงชื่อ: <span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ minHeight: '40px', display: 'inline-block' }}>&nbsp;</span> (ผู้อนุมัติ)
+                        ลงชื่อ: 
+                        {formData.approverSignature ? (
+                            <img src={formData.approverSignature} alt="signature" crossOrigin="anonymous" className="inline-block h-[40px] object-contain mx-2" style={{ verticalAlign: 'baseline' }} />
+                        ) : (
+                            <span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ minHeight: '40px', display: 'inline-block', verticalAlign: 'baseline' }}>&nbsp;</span>
+                        )}
+                         (ผู้อนุมัติ)
                     </p>
-                    <p>( <span className="inline-block border-b border-dotted border-slate-400 min-w-[250px] text-center">&nbsp;</span> )</p>
-                    <p>กรรมการผู้จัดการ</p>
+                    <p>( <span className={`inline-block border-b border-dotted border-slate-400 min-w-[250px] text-center ${formData.approverName}`} style={{ verticalAlign: 'baseline', ...(!formData.approverName && { minHeight: '1.2em' }) }}>{formData.approverName || '\u00A0'}</span> )</p>
+                    <p>{formData.approverPosition || 'กรรมการผู้จัดการ'}</p>
                 </div>
             </div>
 
