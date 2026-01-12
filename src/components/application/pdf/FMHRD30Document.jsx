@@ -207,20 +207,56 @@ export default function FMHRD30Document({ applicant }) {
             </div>
 
             {/* Signature */}
-            <div className="mt-16 text-end">
-                <div>
+           <div className="mt-16">
+                <div className="grid grid-cols-2 items-start">
+                    {/* ซ้าย (เว้นว่าง) */}
+                    <div />
+
+                    {/* ขวา (ข้อมูลทั้งหมด) */}
+                    <div className="text-end">
                     <p className="mb-2">
-                        (ลงชื่อ) 
+                        (ลงชื่อ)
                         {applicant?.signature_url ? (
-                            <img src={applicant.signature_url} alt="Employee signature" crossOrigin="anonymous" className="inline-block h-[40px] object-contain mx-2" />
+                        <img
+                            src={applicant.signature_url}
+                            alt="Employee signature"
+                            crossOrigin="anonymous"
+                            className="inline-block h-[40px] object-contain mx-2 align-middle"
+                        />
                         ) : (
-                            <span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2" style={{ minHeight: '40px', display: 'inline-block' }}>&nbsp;</span>
+                        <span className="inline-block border-b border-dotted border-slate-400 w-[200px] mx-2 min-h-[40px] align-middle">
+                            &nbsp;
+                        </span>
                         )}
                         ผู้ให้ความยินยอม
                     </p>
-                    <p className="mb-2 text-center">({applicant?.full_name || '........................................'})</p>
-                    <p>ตำแหน่ง <span className="inline-block border-b border-dotted border-slate-400 min-w-[200px] text-center">&nbsp;</span></p>
-                    <p>วันที่ <span className="inline-block border-b border-dotted border-slate-400 min-w-[50px] text-center">&nbsp;</span> เดือน <span className="inline-block border-b border-dotted border-slate-400 min-w-[100px] text-center">&nbsp;</span> พ.ศ. <span className="inline-block border-b border-dotted border-slate-400 min-w-[80px] text-center">&nbsp;</span></p>
+
+                    <p className="mb-2 text-center">
+                        ({applicant?.full_name || "........................................"})
+                    </p>
+
+                    <p className="mb-2">
+                        ตำแหน่ง{" "}
+                        <span className="inline-block border-b border-dotted border-slate-400 min-w-[200px] text-center">
+                        &nbsp;
+                        </span>
+                    </p>
+
+                    <p>
+                        วันที่{" "}
+                        <span className="inline-block border-b border-dotted border-slate-400 min-w-[50px] text-center">
+                        &nbsp;
+                        </span>{" "}
+                        เดือน{" "}
+                        <span className="inline-block border-b border-dotted border-slate-400 min-w-[100px] text-center">
+                        &nbsp;
+                        </span>{" "}
+                        พ.ศ.{" "}
+                        <span className="inline-block border-b border-dotted border-slate-400 min-w-[80px] text-center">
+                        &nbsp;
+                        </span>
+                    </p>
+                    </div>
                 </div>
             </div>
 
