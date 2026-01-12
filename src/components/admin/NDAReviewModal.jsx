@@ -133,29 +133,13 @@ export default function NDAReviewModal({ applicant, isOpen, onClose }) {
 
                         <div>
                             <Label>ลายเซ็นกรรมการ</Label>
-                            <div className="space-y-2">
-                                <SignaturePad 
-                                    ref={signaturePadRef}
-                                    onSignatureCapture={(signature) => {
-                                        setCompanyData({ ...companyData, companySignature: signature });
-                                    }}
-                                />
-                                {companyData.companySignature && (
-                                    <div className="flex items-center gap-2">
-                                        <img src={companyData.companySignature} alt="Company signature" className="h-20 object-contain border rounded" />
-                                        <Button
-                                            variant="outline"
-                                            size="sm"
-                                            onClick={() => {
-                                                setCompanyData({ ...companyData, companySignature: '' });
-                                                signaturePadRef.current?.clear();
-                                            }}
-                                        >
-                                            <Trash2 className="w-4 h-4" />
-                                        </Button>
-                                    </div>
-                                )}
-                            </div>
+                            <SignaturePad 
+                                signatureUrl={companyData.companySignature}
+                                onSave={(signature) => {
+                                    setCompanyData({ ...companyData, companySignature: signature });
+                                }}
+                                label="ลายเซ็นกรรมการผู้มีอำนาจลงนาม"
+                            />
                         </div>
 
                         <div>
