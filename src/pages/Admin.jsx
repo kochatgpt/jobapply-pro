@@ -40,6 +40,22 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
         }
     });
 
+    const { data: fmhrd30Documents = [] } = useQuery({
+        queryKey: ['fmhrd30_documents'],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ pdf_type: 'FM-HRD-30' });
+            return docs;
+        }
+    });
+
+    const { data: criminalCheckDocuments = [] } = useQuery({
+        queryKey: ['criminal_check_documents'],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ pdf_type: 'Criminal-Check' });
+            return docs;
+        }
+    });
+
     if (!selectedApplicant) {
         return (
             <div className="h-full flex items-center justify-center">
@@ -62,6 +78,8 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
 
     const filteredFMHRD19 = fmhrd19Documents.filter(doc => doc.applicant_id === selectedApplicant.id);
     const filteredEmploymentContract = employmentContractDocuments.filter(doc => doc.applicant_id === selectedApplicant.id);
+    const filteredFMHRD30 = fmhrd30Documents.filter(doc => doc.applicant_id === selectedApplicant.id);
+    const filteredCriminalCheck = criminalCheckDocuments.filter(doc => doc.applicant_id === selectedApplicant.id);
     const ndaDocs = [selectedApplicant].filter(a => 
         a.nda_document?.status === 'submitted' || a.nda_document?.status === 'completed'
     );
@@ -317,10 +335,10 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                     )}
                 </div>
 
-                {/* Criminal Check Documents */}
+                {/* FM-HRD-30 Documents */}
                 <div>
-                    <h2 className="text-2xl font-bold text-slate-800 mb-4">หนังสือมอบอำนาจและยินยอมตรวจประวัติอาชญากรรม</h2>
-                    {criminalCheckDocs.length === 0 ? (
+                    <h2 className="text-2xl font-bold text-slate-800 mb-4">เอกสาร FM-HRD-30 (การตรวจประวัติอาชญากรรม)</h2>
+                    {filteredFMHRD30.length === 0 ? (
                         <Card>
                             <CardContent className="p-8 text-center text-slate-500">
                                 ยังไม่มีเอกสารที่ส่งมา
@@ -328,6 +346,95 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                         </Card>
                     ) : (
                         <div className="grid grid-cols-1 gap-4">
+                            {filteredFMHRD30.map(doc => {
+                                const applicant = selectedApplicant;
+                                const docData = doc.data || {};
+                                return (
+                                    <Card key={doc.id} className="hover:shadow-md transition-shadow">
+                                        <CardContent className="p-6">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-4 flex-1">
+                                                    <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+                                                        <FileCheck className="w-6 h-6 text-orange-600" />
+                                                    </div>
+                                                    <div className="flex-1">
+                                                        <h3 className="font-semibold text-lg">{applicant?.full_name || '-'}</h3>
+                                                        <div className="grid grid-cols-2 gap-4 mt-2 text-sm text-slate-600">
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">รหัสพนักงาน</p>
+                                                                <p className="font-medium">{docData.employeeId || '-'}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">ตำแหน่ง</p>
+                                                                <p className="font-medium">{docData.position || '-'}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">ID เอกสาร</p>
+                                                                <p className="font-medium text-xs">{doc.id.substring(0, 8)}...</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center gap-3">
+                                                    <Badge variant={doc.status === 'approved' ? 'success' : doc.status === 'submitted' ? 'default' : 'secondary'}>
+                                                        {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
+                                                    </Badge>
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                );
+                            })}
+                        </div>
+                    )}
+                </div>
+
+                {/* Criminal Check Documents */}
+                <div>
+                    <h2 className="text-2xl font-bold text-slate-800 mb-4">หนังสือมอบอำนาจและยินยอมตรวจประวัติอาชญากรรม</h2>
+                    {filteredCriminalCheck.length === 0 && criminalCheckDocs.length === 0 ? (
+                        <Card>
+                            <CardContent className="p-8 text-center text-slate-500">
+                                ยังไม่มีเอกสารที่ส่งมา
+                            </CardContent>
+                        </Card>
+                    ) : (
+                        <div className="grid grid-cols-1 gap-4">
+                            {filteredCriminalCheck.map(doc => {
+                                const applicant = selectedApplicant;
+                                const docData = doc.data || {};
+                                return (
+                                    <Card key={doc.id} className="hover:shadow-md transition-shadow">
+                                        <CardContent className="p-6">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-4 flex-1">
+                                                    <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
+                                                        <FileCheck className="w-6 h-6 text-amber-600" />
+                                                    </div>
+                                                    <div className="flex-1">
+                                                        <h3 className="font-semibold text-lg">{applicant?.full_name || '-'}</h3>
+                                                        <div className="grid grid-cols-2 gap-4 mt-2 text-sm text-slate-600">
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">วัตถุประสงค์</p>
+                                                                <p className="font-medium">{docData.purpose || '-'}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">ID เอกสาร</p>
+                                                                <p className="font-medium text-xs">{doc.id.substring(0, 8)}...</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center gap-3">
+                                                    <Badge variant={doc.status === 'approved' ? 'success' : doc.status === 'submitted' ? 'default' : 'secondary'}>
+                                                        {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
+                                                    </Badge>
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                );
+                            })}
                             {criminalCheckDocs.map(applicant => (
                                 <Card key={applicant.id} className="hover:shadow-md transition-shadow">
                                     <CardContent className="p-6">
