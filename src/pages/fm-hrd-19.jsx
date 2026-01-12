@@ -172,6 +172,8 @@ export default function FMHRD19Form() {
         );
     }
 
+    const isApproved = fmhrd19Doc?.status === 'approved';
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-6">
             <div className="max-w-5xl mx-auto space-y-6">
@@ -188,9 +190,10 @@ export default function FMHRD19Form() {
                     <div className="flex gap-2">
                         <Button 
                             onClick={() => setShowForm(true)}
+                            disabled={isApproved}
                             className="bg-indigo-600 hover:bg-indigo-700"
                         >
-                            กรอกเอกสาร
+                            {isApproved ? '✓ อนุมัติแล้ว' : 'กรอกเอกสาร'}
                         </Button>
                         <Button 
                             variant="outline"
@@ -202,11 +205,11 @@ export default function FMHRD19Form() {
                         </Button>
                         <Button 
                             onClick={handleSubmit}
-                            disabled={submitMutation.isPending}
+                            disabled={submitMutation.isPending || isApproved}
                             className="bg-green-600 hover:bg-green-700"
                         >
-                            {submitMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Send className="w-4 h-4 mr-2" />}
-                            ส่งเอกสาร
+                            {isApproved ? '✓ ส่งแล้ว' : submitMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Send className="w-4 h-4 mr-2" />}
+                            {isApproved ? 'ส่งแล้ว' : 'ส่งเอกสาร'}
                         </Button>
                     </div>
                 </div>
@@ -237,16 +240,17 @@ export default function FMHRD19Form() {
                     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
                         <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
                             <CardHeader className="border-b bg-slate-50">
-                                <CardTitle>กรอกข้อมูลและลงนาม</CardTitle>
+                                <CardTitle>กรอกข้อมูลและลงนาม {isApproved && '(อนุมัติแล้ว)'}</CardTitle>
                             </CardHeader>
                             <CardContent className="p-6 space-y-4">
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-2">วันที่</label>
                                     <input
                                         type="date"
+                                        disabled={isApproved}
                                         value={formData.documentDate}
                                         onChange={(e) => setFormData({ ...formData, documentDate: e.target.value })}
-                                        className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed"
                                     />
                                 </div>
 
@@ -255,9 +259,10 @@ export default function FMHRD19Form() {
                                         <label className="block text-sm font-medium text-slate-700 mb-2">ตำแหน่ง</label>
                                         <input
                                             type="text"
+                                            disabled={isApproved}
                                             value={formData.position}
                                             onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed"
                                             placeholder="ตำแหน่งที่สมัคร"
                                         />
                                     </div>
@@ -265,9 +270,10 @@ export default function FMHRD19Form() {
                                         <label className="block text-sm font-medium text-slate-700 mb-2">แผนก</label>
                                         <input
                                             type="text"
+                                            disabled={isApproved}
                                             value={formData.department}
                                             onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed"
                                             placeholder="แผนกที่สังกัด"
                                         />
                                     </div>
@@ -277,27 +283,30 @@ export default function FMHRD19Form() {
                                     <label className="block text-sm font-medium text-slate-700 mb-2">วันที่เริ่มปฏิบัติงาน</label>
                                     <input
                                         type="date"
+                                        disabled={isApproved}
                                         value={formData.startDate}
                                         onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-                                        className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed"
                                     />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-2">วันที่เริ่มฝึกอบรม</label>
                                     <input
                                         type="date"
+                                        disabled={isApproved}
                                         value={formData.trainingStartDate}
                                         onChange={(e) => setFormData({ ...formData, trainingStartDate: e.target.value })}
-                                        className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed"
                                     />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-2">วันที่สิ้นสุดฝึกอบรม</label>
                                     <input
                                         type="date"
+                                        disabled={isApproved}
                                         value={formData.trainingEndDate}
                                         onChange={(e) => setFormData({ ...formData, trainingEndDate: e.target.value })}
-                                        className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed"
                                     />
                                 </div>
                                 <div className="border-t pt-4">
@@ -315,9 +324,10 @@ export default function FMHRD19Form() {
                                             <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ลงนาม</label>
                                             <input
                                                 type="date"
+                                                disabled={isApproved}
                                                 value={signatureDate}
                                                 onChange={(e) => setSignatureDate(e.target.value)}
-                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed"
                                             />
                                         </div>
                                     </div>
@@ -349,11 +359,11 @@ export default function FMHRD19Form() {
                                             });
                                             setShowForm(false);
                                         }}
-                                        disabled={saveDocumentMutation.isPending}
+                                        disabled={saveDocumentMutation.isPending || isApproved}
                                         className="bg-indigo-600 hover:bg-indigo-700"
                                     >
                                         {saveDocumentMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
-                                        บันทึก
+                                        {isApproved ? 'ปิดการแก้ไข' : 'บันทึก'}
                                     </Button>
                                 </div>
                             </CardContent>

@@ -174,6 +174,8 @@ export default function FMHRD27Page() {
         );
     }
 
+    const isApproved = existingPdfDoc?.status === 'approved';
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-6">
             <div className="max-w-5xl mx-auto space-y-6">
@@ -190,9 +192,10 @@ export default function FMHRD27Page() {
                     <div className="flex gap-2">
                         <Button 
                             onClick={() => setShowForm(true)}
+                            disabled={isApproved}
                             className="bg-indigo-600 hover:bg-indigo-700"
                         >
-                            กรอกเอกสาร
+                            {isApproved ? '✓ อนุมัติแล้ว' : 'กรอกเอกสาร'}
                         </Button>
                         <Button 
                             variant="outline"
@@ -204,11 +207,11 @@ export default function FMHRD27Page() {
                         </Button>
                         <Button 
                             onClick={handleSubmit}
-                            disabled={submitMutation.isPending}
+                            disabled={submitMutation.isPending || isApproved}
                             className="bg-green-600 hover:bg-green-700"
                         >
-                            {submitMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Send className="w-4 h-4 mr-2" />}
-                            ส่งเอกสาร
+                            {isApproved ? '✓ ส่งแล้ว' : submitMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Send className="w-4 h-4 mr-2" />}
+                            {isApproved ? 'ส่งแล้ว' : 'ส่งเอกสาร'}
                         </Button>
                     </div>
                 </div>
@@ -235,16 +238,17 @@ export default function FMHRD27Page() {
                     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 overflow-y-auto">
                         <Card className="w-full max-w-md my-8">
                             <CardHeader className="border-b bg-slate-50">
-                                <CardTitle>กรอกข้อมูลสัญญา NDA</CardTitle>
+                                <CardTitle>กรอกข้อมูลสัญญา NDA {isApproved && '(อนุมัติแล้ว)'}</CardTitle>
                             </CardHeader>
                             <CardContent className="p-6 space-y-4">
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ทำสัญญา</label>
                                     <input
                                         type="date"
+                                        disabled={isApproved}
                                         value={formData.contractDate}
                                         onChange={(e) => setFormData({ ...formData, contractDate: e.target.value })}
-                                        className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed"
                                     />
                                 </div>
 
@@ -252,9 +256,10 @@ export default function FMHRD27Page() {
                                     <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ลงนาม (พนักงาน)</label>
                                     <input
                                         type="date"
+                                        disabled={isApproved}
                                         value={formData.employeeSignDate}
                                         onChange={(e) => setFormData({ ...formData, employeeSignDate: e.target.value })}
-                                        className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed"
                                     />
                                 </div>
 
@@ -265,14 +270,15 @@ export default function FMHRD27Page() {
                                         <div>
                                             <label className="block text-xs text-slate-600 mb-1">บ้านเลขที่</label>
                                             <input
-                                                type="text"
-                                                value={formData.currentAddress.number}
-                                                onChange={(e) => setFormData({ 
-                                                    ...formData, 
-                                                    currentAddress: { ...formData.currentAddress, number: e.target.value }
-                                                })}
-                                                className="w-full px-2 py-1.5 border border-slate-300 rounded-md text-sm"
-                                            />
+                                                 type="text"
+                                                 disabled={isApproved}
+                                                 value={formData.currentAddress.number}
+                                                 onChange={(e) => setFormData({ 
+                                                     ...formData, 
+                                                     currentAddress: { ...formData.currentAddress, number: e.target.value }
+                                                 })}
+                                                 className="w-full px-2 py-1.5 border border-slate-300 rounded-md text-sm disabled:bg-slate-100 disabled:text-slate-500 disabled:cursor-not-allowed"
+                                             />
                                         </div>
                                         <div>
                                             <label className="block text-xs text-slate-600 mb-1">หมู่</label>
@@ -370,11 +376,11 @@ export default function FMHRD27Page() {
                                     </Button>
                                     <Button 
                                         onClick={handleSave}
-                                        disabled={saveMutation.isPending}
+                                        disabled={saveMutation.isPending || isApproved}
                                         className="bg-indigo-600 hover:bg-indigo-700"
                                     >
                                         {saveMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
-                                        บันทึก
+                                        {isApproved ? 'ปิดการแก้ไข' : 'บันทึก'}
                                     </Button>
                                 </div>
                             </CardContent>
