@@ -56,6 +56,14 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
         }
     });
 
+    const { data: fmhrd27Documents = [] } = useQuery({
+        queryKey: ['fmhrd27_documents'],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ pdf_type: 'FM-HRD-27' });
+            return docs;
+        }
+    });
+
     if (!selectedApplicant) {
         return (
             <div className="h-full flex items-center justify-center">
@@ -79,6 +87,7 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
     const filteredFMHRD19 = fmhrd19Documents.filter(doc => doc.applicant_id === selectedApplicant.id);
     const filteredEmploymentContract = employmentContractDocuments.filter(doc => doc.applicant_id === selectedApplicant.id);
     const filteredFMHRD30 = fmhrd30Documents.filter(doc => doc.applicant_id === selectedApplicant.id);
+    const filteredFMHRD27 = fmhrd27Documents.filter(doc => doc.applicant_id === selectedApplicant.id);
     const filteredCriminalCheck = criminalCheckDocuments.filter(doc => doc.applicant_id === selectedApplicant.id);
     const ndaDocs = [selectedApplicant].filter(a => 
         a.nda_document?.status === 'submitted' || a.nda_document?.status === 'completed'
@@ -103,10 +112,10 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
     return (
         <div className="h-full overflow-y-auto p-6">
             <div className="max-w-6xl mx-auto space-y-8">
-                {/* NDA Documents */}
+                {/* NDA Documents - FM-HRD-27 */}
                 <div>
                     <h2 className="text-2xl font-bold text-slate-800 mb-4">เอกสาร NDA (FM-HRD-27)</h2>
-                    {ndaDocs.length === 0 ? (
+                    {filteredFMHRD27.length === 0 && ndaDocs.length === 0 ? (
                         <Card>
                             <CardContent className="p-8 text-center text-slate-500">
                                 ยังไม่มีเอกสารที่ส่งมา
@@ -114,6 +123,41 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                         </Card>
                     ) : (
                         <div className="grid grid-cols-1 gap-4">
+                            {filteredFMHRD27.map(doc => {
+                                const applicant = selectedApplicant;
+                                const docData = doc.data || {};
+                                return (
+                                    <Card key={doc.id} className="hover:shadow-md transition-shadow">
+                                        <CardContent className="p-6">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-4 flex-1">
+                                                    <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
+                                                        <FileCheck className="w-6 h-6 text-indigo-600" />
+                                                    </div>
+                                                    <div className="flex-1">
+                                                        <h3 className="font-semibold text-lg">{applicant?.full_name || '-'}</h3>
+                                                        <div className="grid grid-cols-2 gap-4 mt-2 text-sm text-slate-600">
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">สถานะ</p>
+                                                                <p className="font-medium">{docData.status || '-'}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p className="text-xs text-slate-500">ID เอกสาร</p>
+                                                                <p className="font-medium text-xs">{doc.id.substring(0, 8)}...</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center gap-3">
+                                                    <Badge variant={doc.status === 'approved' ? 'success' : doc.status === 'submitted' ? 'default' : 'secondary'}>
+                                                        {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
+                                                    </Badge>
+                                                </div>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                );
+                            })}
                             {ndaDocs.map(applicant => (
                                 <Card key={applicant.id} className="hover:shadow-md transition-shadow">
                                     <CardContent className="p-6">
