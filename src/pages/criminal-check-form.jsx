@@ -57,6 +57,52 @@ export default function CriminalCheckFormPage() {
         enabled: !!applicantId
     });
 
+    const { data: existingPdfDoc } = useQuery({
+        queryKey: ['criminal_check_pdf', applicantId],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ 
+                applicant_id: applicantId, 
+                pdf_type: 'Criminal-Check' 
+            });
+            return docs[0] || null;
+        },
+        enabled: !!applicantId
+    });
+
+    const saveMutation = useMutation({
+        mutationFn: async (data) => {
+            if (existingPdfDoc) {
+                return await base44.entities.PdfBase.update(existingPdfDoc.id, data);
+            } else {
+                return await base44.entities.PdfBase.create(data);
+            }
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(['criminal_check_pdf', applicantId]);
+            toast.success('บันทึกข้อมูลเรียบร้อยแล้ว');
+            setShowForm(false);
+        },
+        onError: () => {
+            toast.error('เกิดข้อผิดพลาดในการบันทึก');
+        }
+    });
+
+    const handleSave = () => {
+        const pdfData = {
+            applicant_id: applicantId,
+            pdf_type: 'Criminal-Check',
+            data: formData,
+            status: 'draft'
+        };
+        saveMutation.mutate(pdfData);
+    };
+
+    useEffect(() => {
+        if (existingPdfDoc?.data) {
+            setFormData(existingPdfDoc.data);
+        }
+    }, [existingPdfDoc]);
+
     const submitMutation = useMutation({
         mutationFn: async (data) => {
             return await base44.entities.Applicant.update(applicantId, data);
@@ -366,6 +412,14 @@ export default function CriminalCheckFormPage() {
                                         onClick={() => setShowForm(false)}
                                     >
                                         ปิด
+                                    </Button>
+                                    <Button 
+                                        onClick={handleSave}
+                                        disabled={saveMutation.isPending}
+                                        className="bg-indigo-600 hover:bg-indigo-700"
+                                    >
+                                        {saveMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
+                                        บันทึก
                                     </Button>
                                 </div>
                             </CardContent>
