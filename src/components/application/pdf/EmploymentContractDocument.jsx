@@ -1071,7 +1071,7 @@ export default function EmploymentContractDocument({ applicant, formData = {}, c
                             )}
                             พยาน
                         </p>
-                        <p>({companyData?.witnessName1 || '................................................'})</p>
+                        <p>({companyData?.witnessName1 || '......................................................'})</p>
                     </div>
                     <div>
                         <p>
@@ -1083,7 +1083,7 @@ export default function EmploymentContractDocument({ applicant, formData = {}, c
                             )}
                             พยาน
                         </p>
-                        <p>({companyData?.witnessName2 || '................................................'})</p>
+                        <p>({companyData?.witnessName2 || '.......................................................'})</p>
                     </div>
                 </div>
             </div>
