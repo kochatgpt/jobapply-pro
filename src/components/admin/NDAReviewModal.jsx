@@ -1,10 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { base44 } from '@/api/base44Client';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { Loader2, FileDown, Eye, Trash2 } from "lucide-react";
 import NDADocument from '@/components/application/pdf/NDADocument';
 import SignaturePad from '@/components/admin/SignaturePad';
@@ -20,6 +20,18 @@ export default function NDAReviewModal({ applicant, isOpen, onClose }) {
         signerName: applicant?.nda_document?.company_data?.signerName || '',
         companySignature: applicant?.nda_document?.company_data?.companySignature || '',
         companySignDate: applicant?.nda_document?.company_data?.companySignDate || ''
+    });
+
+    const { data: pdfBaseDoc } = useQuery({
+        queryKey: ['nda_pdf_base', applicant?.id],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ 
+                applicant_id: applicant.id, 
+                pdf_type: 'NDA' 
+            });
+            return docs[0] || null;
+        },
+        enabled: !!applicant?.id
     });
 
     const updateMutation = useMutation({
@@ -92,6 +104,7 @@ export default function NDAReviewModal({ applicant, isOpen, onClose }) {
     if (!applicant) return null;
 
     const mergedFormData = {
+        ...pdfBaseDoc?.data,
         ...applicant.nda_document?.data,
         ...applicant.nda_document?.employee_data,
         ...companyData
