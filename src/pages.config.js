@@ -1,4 +1,3 @@
-import Admin from './pages/Admin';
 import Application from './pages/Application';
 import Home from './pages/Home';
 import PDFPreview from './pages/PDFPreview';
@@ -12,11 +11,11 @@ import pdpaForm from './pages/pdpa-form';
 import spsForm from './pages/sps-form';
 import userDashboard from './pages/user-dashboard';
 import userLogin from './pages/user-login';
+import Admin from './pages/Admin';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
-    "Admin": Admin,
     "Application": Application,
     "Home": Home,
     "PDFPreview": PDFPreview,
@@ -30,6 +29,7 @@ export const PAGES = {
     "sps-form": spsForm,
     "user-dashboard": userDashboard,
     "user-login": userLogin,
+    "Admin": Admin,
 }
 
 export const pagesConfig = {

@@ -115,11 +115,10 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                 {/* NDA Documents - FM-HRD-27 */}
                 <div>
                     <h2 className="text-2xl font-bold text-slate-800 mb-4">เอกสาร NDA (FM-HRD-27)</h2>
-                    {(filteredFMHRD27.length > 0 || ndaDocs.length > 0) ? (
+                    {filteredFMHRD27.length > 0 ? (
                         <div className="grid grid-cols-1 gap-4">
                             {filteredFMHRD27.map(doc => {
                                 const applicant = selectedApplicant;
-                                const docData = doc.data || {};
                                 return (
                                     <Card key={doc.id} className="hover:shadow-md transition-shadow">
                                         <CardContent className="p-6">
@@ -130,66 +129,27 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                                                     </div>
                                                     <div className="flex-1">
                                                         <h3 className="font-semibold text-lg">{applicant?.full_name || '-'}</h3>
-                                                        <div className="grid grid-cols-2 gap-4 mt-2 text-sm text-slate-600">
-                                                            <div>
-                                                                <p className="text-xs text-slate-500">สถานะ</p>
-                                                                <p className="font-medium">{docData.status || '-'}</p>
-                                                            </div>
-                                                            <div>
-                                                                <p className="text-xs text-slate-500">ID เอกสาร</p>
-                                                                <p className="font-medium text-xs">{doc.id.substring(0, 8)}...</p>
-                                                            </div>
-                                                        </div>
+                                                        <p className="text-sm text-slate-500">
+                                                            สถานะ: {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-3">
                                                     <Badge variant={doc.status === 'approved' ? 'success' : doc.status === 'submitted' ? 'default' : 'secondary'}>
                                                         {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
                                                     </Badge>
+                                                    <Button 
+                                                        onClick={() => setReviewingFMHRD27Doc(doc)}
+                                                        size="sm"
+                                                    >
+                                                        ดูและเซ็น
+                                                    </Button>
                                                 </div>
                                             </div>
                                         </CardContent>
                                     </Card>
                                 );
                             })}
-                            {ndaDocs.map(applicant => (
-                                <Card key={applicant.id} className="hover:shadow-md transition-shadow">
-                                    <CardContent className="p-6">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
-                                                    <FileCheck className="w-6 h-6 text-indigo-600" />
-                                                </div>
-                                                <div>
-                                                    <h3 className="font-semibold text-lg">{applicant.full_name}</h3>
-                                                    <p className="text-sm text-slate-500">
-                                                        ส่งเมื่อ: {applicant.nda_document?.submitted_date ? 
-                                                            new Date(applicant.nda_document.submitted_date).toLocaleDateString('th-TH', {
-                                                                year: 'numeric',
-                                                                month: 'long',
-                                                                day: 'numeric',
-                                                                hour: '2-digit',
-                                                                minute: '2-digit'
-                                                            }) : '-'
-                                                        }
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-center gap-3">
-                                                <Badge variant={applicant.nda_document?.status === 'completed' ? 'success' : 'default'}>
-                                                    {applicant.nda_document?.status === 'completed' ? 'เสร็จสิ้น' : 'รอดำเนินการ'}
-                                                </Badge>
-                                                <Button 
-                                                    onClick={() => onReviewNDA(applicant)}
-                                                    size="sm"
-                                                >
-                                                    ดูและเซ็น
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            ))}
                         </div>
                     ) : (
                         <Card>
