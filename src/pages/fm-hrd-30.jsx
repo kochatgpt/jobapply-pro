@@ -210,10 +210,11 @@ export default function FMHRD30Page() {
                         </Button>
                         <Button 
                             onClick={handleAcknowledge}
-                            disabled={isAcknowledged}
+                            disabled={isAcknowledged || isSubmitting}
                             className="bg-green-600 hover:bg-green-700"
                         >
-                            {isAcknowledged ? '✓ ส่งเอกสารแล้ว' : <><Send className="w-4 h-4 mr-2" />ส่งเอกสาร</>}
+                            {isSubmitting ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
+                            {isAcknowledged ? '✓ ส่งเอกสารแล้ว' : 'ส่งเอกสาร'}
                         </Button>
                     </div>
                 </div>
