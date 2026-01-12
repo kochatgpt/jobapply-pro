@@ -133,6 +133,14 @@ export default function FMHRD30Page() {
 
     const handleAcknowledge = async () => {
         try {
+            // Update PDF status to submitted
+            if (existingPdfDoc) {
+                await base44.entities.PdfBase.update(existingPdfDoc.id, {
+                    status: 'submitted',
+                    submitted_date: new Date().toISOString()
+                });
+            }
+            
             await base44.entities.Applicant.update(applicant.id, {
                 fmhrd30_document: {
                     acknowledged: true,
@@ -141,7 +149,8 @@ export default function FMHRD30Page() {
             });
             
             queryClient.invalidateQueries(['user_applicant', applicantId]);
-            toast.success('รับทราบเรียบร้อยแล้ว');
+            queryClient.invalidateQueries(['fm_hrd_30_pdf', applicantId]);
+            toast.success('ส่งเอกสารเรียบร้อยแล้ว');
             navigate('/user-dashboard');
         } catch (error) {
             console.error('Error acknowledging document:', error);
