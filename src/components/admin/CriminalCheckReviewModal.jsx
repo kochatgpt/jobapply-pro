@@ -30,6 +30,26 @@ export default function CriminalCheckReviewModal({ applicant, isOpen, onClose })
         witness2Signature: applicant?.criminal_check_document?.company_data?.witness2Signature || ''
     });
 
+    const { data: existingPdfDoc } = useQuery({
+        queryKey: ['criminal_check_pdf', applicant?.id],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ 
+                applicant_id: applicant.id, 
+                pdf_type: 'Criminal-Check' 
+            });
+            return docs[0] || null;
+        },
+        enabled: !!applicant?.id
+    });
+
+    const employeeData = existingPdfDoc?.data || applicant.criminal_check_document?.employee_data || {};
+
+    useEffect(() => {
+        if (existingPdfDoc?.data) {
+            // Data already set via employeeData variable above
+        }
+    }, [existingPdfDoc]);
+
     const updateMutation = useMutation({
         mutationFn: async (data) => {
             return await base44.entities.Applicant.update(applicant.id, data);
