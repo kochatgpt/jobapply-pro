@@ -44,12 +44,6 @@ export default function CriminalCheckReviewModal({ applicant, isOpen, onClose })
 
     const employeeData = existingPdfDoc?.data || applicant.criminal_check_document?.employee_data || {};
 
-    useEffect(() => {
-        if (existingPdfDoc?.data) {
-            // Data already set via employeeData variable above
-        }
-    }, [existingPdfDoc]);
-
     const updateMutation = useMutation({
         mutationFn: async (data) => {
             return await base44.entities.Applicant.update(applicant.id, data);
