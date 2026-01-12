@@ -49,11 +49,28 @@ export default function FMHRD27Page() {
         enabled: !!applicantId
     });
 
+    const { data: existingPdfDoc } = useQuery({
+        queryKey: ['nda_pdf', applicantId],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ 
+                applicant_id: applicantId, 
+                pdf_type: 'NDA' 
+            });
+            return docs[0] || null;
+        },
+        enabled: !!applicantId
+    });
+
     const submitMutation = useMutation({
         mutationFn: async (data) => {
-            return await base44.entities.Applicant.update(applicantId, data);
+            if (existingPdfDoc) {
+                return await base44.entities.PdfBase.update(existingPdfDoc.id, data);
+            } else {
+                return await base44.entities.PdfBase.create(data);
+            }
         },
         onSuccess: () => {
+            queryClient.invalidateQueries(['nda_pdf', applicantId]);
             queryClient.invalidateQueries(['user_applicant', applicantId]);
             toast.success('ส่งเอกสารเรียบร้อยแล้ว');
             navigate('/user-dashboard');
@@ -64,14 +81,14 @@ export default function FMHRD27Page() {
     });
 
     const handleSubmit = () => {
-        const ndaData = {
-            nda_document: {
-                status: 'submitted',
-                employee_data: formData,
-                submitted_date: new Date().toISOString()
-            }
+        const pdfData = {
+            applicant_id: applicantId,
+            pdf_type: 'NDA',
+            data: formData,
+            status: 'submitted',
+            submitted_date: new Date().toISOString()
         };
-        submitMutation.mutate(ndaData);
+        submitMutation.mutate(pdfData);
     };
 
     const handleGeneratePDF = async (action) => {
