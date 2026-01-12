@@ -61,6 +61,12 @@ export default function FMHRD27Page() {
         enabled: !!applicantId
     });
 
+    useEffect(() => {
+        if (existingPdfDoc?.data) {
+            setFormData(existingPdfDoc.data);
+        }
+    }, [existingPdfDoc]);
+
     const saveMutation = useMutation({
         mutationFn: async (data) => {
             if (existingPdfDoc) {
