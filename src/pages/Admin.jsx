@@ -446,7 +446,7 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                                                          {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
                                                      </Badge>
                                                      <Button 
-                                                         onClick={() => applicant && onReviewCriminalCheck?.(applicant, doc)}
+                                                         onClick={() => applicant && (onSetCriminalCheckDoc?.(doc), onReviewCriminalCheck?.(applicant))}
                                                          size="sm"
                                                          disabled={!applicant}
                                                      >
