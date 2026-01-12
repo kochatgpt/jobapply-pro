@@ -18,7 +18,7 @@ import FMHRD19ReviewModal from '@/components/admin/FMHRD19ReviewModal';
 import CriminalCheckReviewModal from '@/components/admin/CriminalCheckReviewModal';
 import EmploymentContractReviewModal from '@/components/admin/EmploymentContractReviewModal';
 
-function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCriminalCheck, onReviewEmploymentContract, onSelectApplicant }) {
+function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCriminalCheck, onReviewEmploymentContract, onSelectApplicant, onReviewFMHRD27 }) {
     const { data: applicants = [], isLoading } = useQuery({
         queryKey: ['applicants'],
         queryFn: () => base44.entities.Applicant.list()
@@ -139,7 +139,7 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                                                         {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
                                                     </Badge>
                                                     <Button 
-                                                        onClick={() => setReviewingFMHRD27Doc(doc)}
+                                                        onClick={() => onReviewFMHRD27?.(doc)}
                                                         size="sm"
                                                     >
                                                         ดูและเซ็น
@@ -495,6 +495,7 @@ export default function AdminPage() {
     const [reviewingFMHRD19, setReviewingFMHRD19] = useState(null);
     const [reviewingCriminalCheck, setReviewingCriminalCheck] = useState(null);
     const [reviewingEmploymentContract, setReviewingEmploymentContract] = useState(null);
+    const [reviewingFMHRD27Doc, setReviewingFMHRD27Doc] = useState(null);
 
     useEffect(() => {
         const checkAccess = async () => {
@@ -582,6 +583,7 @@ export default function AdminPage() {
                         onReviewFMHRD19={setReviewingFMHRD19}
                         onReviewCriminalCheck={setReviewingCriminalCheck}
                         onReviewEmploymentContract={setReviewingEmploymentContract}
+                        onReviewFMHRD27={setReviewingFMHRD27Doc}
                     />
                 ) : (
                     <div className="h-full overflow-y-auto">
@@ -619,11 +621,20 @@ export default function AdminPage() {
             />
 
             {/* Employment Contract Review Modal */}
-            <EmploymentContractReviewModal 
-                applicant={reviewingEmploymentContract}
-                isOpen={!!reviewingEmploymentContract}
-                onClose={() => setReviewingEmploymentContract(null)}
-            />
-        </div>
-    );
-}
+             <EmploymentContractReviewModal 
+                 applicant={reviewingEmploymentContract}
+                 isOpen={!!reviewingEmploymentContract}
+                 onClose={() => setReviewingEmploymentContract(null)}
+             />
+
+             {/* FM-HRD-27 NDA Review Modal */}
+             {reviewingFMHRD27Doc && selectedApplicant && (
+                 <NDAReviewModal
+                     applicant={selectedApplicant}
+                     isOpen={!!reviewingFMHRD27Doc}
+                     onClose={() => setReviewingFMHRD27Doc(null)}
+                 />
+             )}
+            </div>
+            );
+            }
