@@ -252,9 +252,8 @@ export default function FormStep4({ data, setGlobalData }) {
                     </DialogHeader>
                     
                     <Tabs defaultValue="draw" className="w-full">
-                        <TabsList className="grid w-full grid-cols-2">
+                        <TabsList className="grid w-full grid-cols-1">
                             <TabsTrigger value="draw">วาดลายเซ็น</TabsTrigger>
-                            <TabsTrigger value="upload">อัปโหลดรูปภาพ</TabsTrigger>
                         </TabsList>
                         
                         <TabsContent value="draw" className="space-y-4 py-4">
@@ -284,26 +283,7 @@ export default function FormStep4({ data, setGlobalData }) {
                             </DialogFooter>
                         </TabsContent>
                         
-                        <TabsContent value="upload" className="space-y-4 py-4">
-                            <div className="flex flex-col items-center justify-center h-48 border-2 border-slate-200 border-dashed rounded-lg bg-slate-50">
-                                <Input 
-                                    type="file" 
-                                    accept="image/*"
-                                    onChange={(e) => setUploadFile(e.target.files[0])}
-                                    className="max-w-xs"
-                                />
-                                <p className="text-sm text-slate-500 mt-2">รองรับไฟล์ .jpg, .png</p>
-                            </div>
-                            <DialogFooter>
-                                <Button 
-                                    onClick={handleUploadFile} 
-                                    disabled={!uploadFile || isUploading}
-                                    className="w-full bg-indigo-600 hover:bg-indigo-700"
-                                >
-                                    {isUploading ? "กำลังอัปโหลด..." : "อัปโหลดและบันทึก"}
-                                </Button>
-                            </DialogFooter>
-                        </TabsContent>
+
                     </Tabs>
                 </DialogContent>
             </Dialog>
