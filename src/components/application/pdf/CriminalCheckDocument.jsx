@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
 
-export default function CriminalCheckDocument({ applicant, formData = {} }) {
+export default function CriminalCheckDocument({ applicant, formData = {}, pdfData = {} }) {
     const { data: settings } = useQuery({
         queryKey: ['system_settings_layout'],
         queryFn: () => base44.entities.SystemSetting.list(),
@@ -12,6 +12,8 @@ export default function CriminalCheckDocument({ applicant, formData = {} }) {
     const appLogo = settings?.find(s => s.key === 'app_logo')?.value;
     const p = applicant?.personal_data || {};
     const companyData = applicant?.criminal_check_document?.company_data || {};
+    // Merge data: use pdfData.data from PdfBase, fallback to formData from form
+    const mergedFormData = { ...formData, ...(pdfData?.data || {}) };
 
     return (
         <>
