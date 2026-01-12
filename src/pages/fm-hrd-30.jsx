@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
-import { useQueryClient, useQuery } from '@tanstack/react-query';
+import { useQueryClient, useQuery, useMutation } from '@tanstack/react-query';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, Eye, Loader2, Send } from "lucide-react";
@@ -42,6 +42,52 @@ export default function FMHRD30Page() {
         },
         enabled: !!applicantId
     });
+
+    const { data: existingPdfDoc } = useQuery({
+        queryKey: ['fm_hrd_30_pdf', applicantId],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ 
+                applicant_id: applicantId, 
+                pdf_type: 'FM-HRD-30' 
+            });
+            return docs[0] || null;
+        },
+        enabled: !!applicantId
+    });
+
+    const saveMutation = useMutation({
+        mutationFn: async (data) => {
+            if (existingPdfDoc) {
+                return await base44.entities.PdfBase.update(existingPdfDoc.id, data);
+            } else {
+                return await base44.entities.PdfBase.create(data);
+            }
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(['fm_hrd_30_pdf', applicantId]);
+            toast.success('บันทึกข้อมูลเรียบร้อยแล้ว');
+            setShowForm(false);
+        },
+        onError: () => {
+            toast.error('เกิดข้อผิดพลาดในการบันทึก');
+        }
+    });
+
+    const handleSave = () => {
+        const pdfData = {
+            applicant_id: applicantId,
+            pdf_type: 'FM-HRD-30',
+            data: formData,
+            status: 'draft'
+        };
+        saveMutation.mutate(pdfData);
+    };
+
+    useEffect(() => {
+        if (existingPdfDoc?.data) {
+            setFormData(existingPdfDoc.data);
+        }
+    }, [existingPdfDoc]);
 
     const handleGeneratePDF = async (action) => {
         const pages = document.querySelectorAll('.pdpa-page');
