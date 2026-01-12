@@ -36,14 +36,7 @@ export default function CriminalCheckFormPage() {
         district: '',
         province: '',
         companyAddress: '',
-        purpose: '',
-        criminalCheckDate: '',
-        consentDeductionDate: '',
-        employeeId: '',
-        employeePosition: '',
-        employeeSignDate: '',
-        employeeSignMonth: '',
-        employeeSignYear: ''
+        purpose: ''
     });
 
     useEffect(() => {
@@ -225,32 +218,14 @@ export default function CriminalCheckFormPage() {
                                             />
                                         </div>
                                         <div>
-                                             <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ (ยินยอม)</label>
-                                             <input
-                                                 type="date"
-                                                 value={formData.consentDate}
-                                                 onChange={(e) => setFormData({ ...formData, consentDate: e.target.value })}
-                                                 className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                             />
-                                         </div>
-                                         <div>
-                                             <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ (การตรวจประวัติอาชญากรรม)</label>
-                                             <input
-                                                 type="date"
-                                                 value={formData.criminalCheckDate}
-                                                 onChange={(e) => setFormData({ ...formData, criminalCheckDate: e.target.value })}
-                                                 className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                             />
-                                         </div>
-                                         <div>
-                                             <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ (หนังสือยินยอมหักเงินเดือน)</label>
-                                             <input
-                                                 type="date"
-                                                 value={formData.consentDeductionDate}
-                                                 onChange={(e) => setFormData({ ...formData, consentDeductionDate: e.target.value })}
-                                                 className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                             />
-                                         </div>
+                                            <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ (ยินยอม)</label>
+                                            <input
+                                                type="date"
+                                                value={formData.consentDate}
+                                                onChange={(e) => setFormData({ ...formData, consentDate: e.target.value })}
+                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                            />
+                                        </div>
                                         <div>
                                             <label className="block text-sm font-medium text-slate-700 mb-2">บัตรออกให้โดย</label>
                                             <input
@@ -317,67 +292,7 @@ export default function CriminalCheckFormPage() {
                                 </div>
 
                                 <div className="space-y-4 border-t pt-4">
-                                    <h3 className="font-semibold text-slate-800">ข้อมูลพนักงาน</h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-2">รหัสพนักงาน</label>
-                                            <input
-                                                type="text"
-                                                value={formData.employeeId}
-                                                onChange={(e) => setFormData({ ...formData, employeeId: e.target.value })}
-                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-2">ตำแหน่ง</label>
-                                            <input
-                                                type="text"
-                                                value={formData.employeePosition}
-                                                onChange={(e) => setFormData({ ...formData, employeePosition: e.target.value })}
-                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="space-y-4 border-t pt-4">
-                                    <h3 className="font-semibold text-slate-800">วันที่ลายเซ็นพนักงาน</h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-2">วันที่</label>
-                                            <input
-                                                type="text"
-                                                value={formData.employeeSignDate}
-                                                onChange={(e) => setFormData({ ...formData, employeeSignDate: e.target.value })}
-                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                                placeholder="วัน"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-2">เดือน</label>
-                                            <input
-                                                type="text"
-                                                value={formData.employeeSignMonth}
-                                                onChange={(e) => setFormData({ ...formData, employeeSignMonth: e.target.value })}
-                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                                placeholder="เดือน"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-2">พ.ศ.</label>
-                                            <input
-                                                type="text"
-                                                value={formData.employeeSignYear}
-                                                onChange={(e) => setFormData({ ...formData, employeeSignYear: e.target.value })}
-                                                className="w-full px-3 py-2 border border-slate-300 rounded-md"
-                                                placeholder="พ.ศ."
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="space-y-4 border-t pt-4">
-                                     <h3 className="font-semibold text-slate-800">ที่อยู่ปัจจุบัน (ถ้าต่างจากที่กรอกไว้)</h3>
+                                    <h3 className="font-semibold text-slate-800">ที่อยู่ปัจจุบัน (ถ้าต่างจากที่กรอกไว้)</h3>
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         <div>
                                             <label className="block text-sm font-medium text-slate-700 mb-2">บ้านเลขที่</label>
