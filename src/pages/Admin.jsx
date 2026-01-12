@@ -57,12 +57,12 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
     });
 
     const { data: fmhrd27Documents = [] } = useQuery({
-        queryKey: ['fmhrd27_documents'],
-        queryFn: async () => {
-            const docs = await base44.entities.PdfBase.filter({ pdf_type: 'FM-HRD-27' });
-            return docs;
-        }
-    });
+                queryKey: ['fmhrd27_documents'],
+                queryFn: async () => {
+                    const docs = await base44.entities.PdfBase.filter({ pdf_type: 'NDA' });
+                    return docs;
+                }
+            });
 
     if (!selectedApplicant) {
         return (
