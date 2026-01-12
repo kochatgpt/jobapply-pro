@@ -8,6 +8,15 @@ export default function NDADocument({ applicant, formData = {} }) {
         queryFn: () => base44.entities.SystemSetting.list(),
         staleTime: 1000 * 60 * 5 
     });
+
+    const { data: ndaDoc } = useQuery({
+        queryKey: ['nda_document', applicant?.id],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ applicant_id: applicant.id, pdf_type: 'NDA' });
+            return docs[0] || null;
+        },
+        enabled: !!applicant?.id
+    });
     
     const appLogo = settings?.find(s => s.key === 'app_logo')?.value;
     const p = applicant?.personal_data || {};
@@ -51,6 +60,7 @@ export default function NDADocument({ applicant, formData = {} }) {
             {/* Title */}
             <div className="text-center mb-6">
                 <h1 className="text-[16px] font-bold">สัญญาข้อตกลงไม่เปิดเผยข้อมูล (Non-Disclosure Agreement : NDA) สำหรับพนักงาน</h1>
+                {ndaDoc?.id && <p className="text-[12px] text-slate-600 mt-2">เลขที่เอกสาร: {ndaDoc.id}</p>}
             </div>
 
             {/* Contract Date */}
