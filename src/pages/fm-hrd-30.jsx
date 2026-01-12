@@ -254,11 +254,11 @@ export default function FMHRD30Page() {
                                     ปิด
                                 </Button>
                                 <Button 
-                                    onClick={() => {
-                                        setShowForm(false);
-                                    }}
+                                    onClick={handleSave}
+                                    disabled={saveMutation.isPending}
                                     className="bg-indigo-600 hover:bg-indigo-700"
                                 >
+                                    {saveMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
                                     บันทึก
                                 </Button>
                             </div>
