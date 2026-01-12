@@ -61,7 +61,7 @@ export default function CriminalCheckDocument({ applicant, formData = {}, pdfDat
                     
                 </p>
                 <p className="indent-8">
-                    ให้หนังสือมอบอำนาจฉบับนี้มีผลเริ่มใช้บังคับตั้งแต่วันที่<span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${(companyData.effectiveDate || formData.effectiveDate) ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...((companyData.effectiveDate || formData.effectiveDate) && { minHeight: '1.2em' }) }}>{companyData.effectiveDate || formData.effectiveDate || '\u00A0'}</span>เป็นต้นไป จนกว่าการดำเนินการกับเรื่องดังกล่าวข้างต้นในครั้งนี้จะเสร็จการซึ่งการใดๆที่ผู้รับมอบอำนาจได้กระทำภายใต้เงื่อนไขหนังสือมอบอำนาจฉบับนี้ ให้มีผลผูกพันผู้มอบอำนาญเสมือนหนึ่งว่าผู้มอบอำนาจ ได้กระทำการดังกล่าวด้วยตนเองทุกประการเพื่อเป็นหลักฐานแห่งการนี้จึงได้ลงลายมือชื่อในหนังสือมอบอำนาจฉบับนี้ไว้ต่อหน้าพยานเป็นสำคัญ
+                    ให้หนังสือมอบอำนาจฉบับนี้มีผลเริ่มใช้บังคับตั้งแต่วันที่<span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 ${(companyData.effectiveDate || mergedFormData.effectiveDate) ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...((companyData.effectiveDate || mergedFormData.effectiveDate) && { minHeight: '1.2em' }) }}>{companyData.effectiveDate || mergedFormData.effectiveDate || '\u00A0'}</span>เป็นต้นไป จนกว่าการดำเนินการกับเรื่องดังกล่าวข้างต้นในครั้งนี้จะเสร็จการซึ่งการใดๆที่ผู้รับมอบอำนาจได้กระทำภายใต้เงื่อนไขหนังสือมอบอำนาจฉบับนี้ ให้มีผลผูกพันผู้มอบอำนาญเสมือนหนึ่งว่าผู้มอบอำนาจ ได้กระทำการดังกล่าวด้วยตนเองทุกประการเพื่อเป็นหลักฐานแห่งการนี้จึงได้ลงลายมือชื่อในหนังสือมอบอำนาจฉบับนี้ไว้ต่อหน้าพยานเป็นสำคัญ
                 </p>
             </div>
 
