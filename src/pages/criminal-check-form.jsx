@@ -105,10 +105,19 @@ export default function CriminalCheckFormPage() {
 
     const submitMutation = useMutation({
         mutationFn: async (data) => {
+            // Update PdfBase status
+            if (existingPdfDoc) {
+                await base44.entities.PdfBase.update(existingPdfDoc.id, {
+                    status: 'submitted',
+                    submitted_date: new Date().toISOString()
+                });
+            }
+            // Update Applicant
             return await base44.entities.Applicant.update(applicantId, data);
         },
         onSuccess: () => {
             queryClient.invalidateQueries(['user_applicant', applicantId]);
+            queryClient.invalidateQueries(['criminal_check_pdf', applicantId]);
             toast.success('ส่งเอกสารเรียบร้อยแล้ว');
             navigate('/user-dashboard');
         },
