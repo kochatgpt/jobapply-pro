@@ -12,7 +12,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import toast from 'react-hot-toast';
 
-export default function CriminalCheckReviewModal({ applicant, isOpen, onClose }) {
+export default function CriminalCheckReviewModal({ applicant, pdfDoc, isOpen, onClose }) {
     const queryClient = useQueryClient();
     const [generatingPdf, setGeneratingPdf] = useState(false);
     const [companyData, setCompanyData] = useState({
