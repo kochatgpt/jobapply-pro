@@ -140,7 +140,7 @@ export default function FMHRD30Document({ applicant }) {
         <div 
             className="pdpa-page bg-white text-slate-900 mx-auto relative shadow-sm print:shadow-none mt-8"
             style={{ 
-                fontSize: "18px" ,
+                fontSize: "12px" ,
                 padding: '20mm',
                 width: '210mm', 
                 minHeight: '297mm',
