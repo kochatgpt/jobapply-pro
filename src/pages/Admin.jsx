@@ -85,11 +85,11 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
         );
     }
 
-    const filteredFMHRD19 = fmhrd19Documents.filter(doc => doc.applicant_id === selectedApplicant.id);
-    const filteredEmploymentContract = employmentContractDocuments.filter(doc => doc.applicant_id === selectedApplicant.id);
-    const filteredFMHRD30 = fmhrd30Documents.filter(doc => doc.applicant_id === selectedApplicant.id);
-    const filteredFMHRD27 = fmhrd27Documents.filter(doc => doc.applicant_id === selectedApplicant.id);
-    const filteredCriminalCheck = criminalCheckDocuments.filter(doc => doc.applicant_id === selectedApplicant.id);
+    const filteredFMHRD19 = fmhrd19Documents.filter(doc => doc.applicant_id === selectedApplicant.id && doc.status === 'submitted');
+    const filteredEmploymentContract = employmentContractDocuments.filter(doc => doc.applicant_id === selectedApplicant.id && doc.status === 'submitted');
+    const filteredFMHRD30 = fmhrd30Documents.filter(doc => doc.applicant_id === selectedApplicant.id && doc.status === 'submitted');
+    const filteredFMHRD27 = fmhrd27Documents.filter(doc => doc.applicant_id === selectedApplicant.id && doc.status === 'submitted');
+    const filteredCriminalCheck = criminalCheckDocuments.filter(doc => doc.applicant_id === selectedApplicant.id && doc.status === 'submitted');
     const ndaDocs = [selectedApplicant].filter(a => 
         a.nda_document?.status === 'submitted' || a.nda_document?.status === 'completed'
     );
