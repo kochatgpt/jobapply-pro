@@ -192,6 +192,7 @@ export default function FMHRD27Page() {
                     <div className="flex gap-2">
                         <Button 
                             onClick={() => setShowForm(true)}
+                            disabled={isApproved}
                             className="bg-indigo-600 hover:bg-indigo-700"
                         >
                             กรอกเอกสาร
