@@ -19,7 +19,7 @@ export default function FMHRD30Document({ applicant }) {
         <div 
             className="pdpa-page bg-white text-slate-900 mx-auto relative shadow-sm print:shadow-none"
             style={{ 
-                fontSize: "18px" ,
+                fontSize: "12px" ,
                 padding: '20mm',
                 width: '210mm', 
                 minHeight: '297mm',
@@ -38,7 +38,7 @@ export default function FMHRD30Document({ applicant }) {
 
             {/* Title */}
             <div className="text-center mb-6">
-                <h1 className="text-[24px] font-bold mb-4">การตรวจประวัติอาชญากรรม</h1>
+                <h1 className="text-[14px] font-bold mb-4">การตรวจประวัติอาชญากรรม</h1>
                 <div className="text-right mb-1">
                     <p>วันที่ <span className="inline-block min-w-[200px] text-center">&nbsp;</span></p>
                 </div>
@@ -159,7 +159,7 @@ export default function FMHRD30Document({ applicant }) {
 
             {/* Title */}
             <div className="text-center mb-6">
-                <h1 className="text-[24px] font-bold mb-4">หนังสือยินยอมให้หักเงินเดือน</h1>
+                <h1 className="text-[14px] font-bold mb-4">หนังสือยินยอมให้หักเงินเดือน</h1>
                 <div className="text-right mb-4">
                     <p>วันที่ <span className="inline-block border-b border-dotted border-slate-400 min-w-[200px] text-center">&nbsp;</span></p>
                 </div>
