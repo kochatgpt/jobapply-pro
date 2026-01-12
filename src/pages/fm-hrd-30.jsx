@@ -192,7 +192,7 @@ export default function FMHRD30Page() {
                             disabled={isAcknowledged}
                             className="bg-green-600 hover:bg-green-700"
                         >
-                            {isAcknowledged ? '✓ รับทราบแล้ว' : <><Send className="w-4 h-4 mr-2" />รับทราบ</>}
+                            {isAcknowledged ? '✓ ส่งเอกสารแล้ว' : <><Send className="w-4 h-4 mr-2" />ส่งเอกสาร</>}
                         </Button>
                     </div>
                 </div>
