@@ -207,11 +207,10 @@ export default function FMHRD27Page() {
                         </Button>
                         <Button 
                             onClick={handleSubmit}
-                            disabled={submitMutation.isPending}
+                            disabled={submitMutation.isPending || isApproved}
                             className="bg-green-600 hover:bg-green-700"
                         >
-                            {submitMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Send className="w-4 h-4 mr-2" />}
-                            ส่งเอกสาร
+                            {isApproved ? '✓ อนุมัติแล้ว' : submitMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <><Send className="w-4 h-4 mr-2" />ส่งเอกสาร</>}
                         </Button>
                     </div>
                 </div>
