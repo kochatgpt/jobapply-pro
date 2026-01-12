@@ -18,7 +18,7 @@ import FMHRD19ReviewModal from '@/components/admin/FMHRD19ReviewModal';
 import CriminalCheckReviewModal from '@/components/admin/CriminalCheckReviewModal';
 import EmploymentContractReviewModal from '@/components/admin/EmploymentContractReviewModal';
 
-function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCriminalCheck, onReviewEmploymentContract, onSelectApplicant, onReviewFMHRD27 }) {
+function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewFMHRD19, onReviewCriminalCheck, onReviewEmploymentContract, onSelectApplicant, onReviewFMHRD27, onReviewFMHRD30 }) {
     const { data: applicants = [], isLoading } = useQuery({
         queryKey: ['applicants'],
         queryFn: () => base44.entities.Applicant.list()
@@ -383,6 +383,13 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                                                     <Badge variant={doc.status === 'approved' ? 'success' : doc.status === 'submitted' ? 'default' : 'secondary'}>
                                                         {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
                                                     </Badge>
+                                                    <Button 
+                                                        onClick={() => applicant && onReviewFMHRD30?.(applicant)}
+                                                        size="sm"
+                                                        disabled={!applicant}
+                                                    >
+                                                        ดูเอกสาร
+                                                    </Button>
                                                 </div>
                                             </div>
                                         </CardContent>
@@ -433,6 +440,13 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                                                     <Badge variant={doc.status === 'approved' ? 'success' : doc.status === 'submitted' ? 'default' : 'secondary'}>
                                                         {doc.status === 'approved' ? 'อนุมัติแล้ว' : doc.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
                                                     </Badge>
+                                                    <Button 
+                                                        onClick={() => applicant && onReviewCriminalCheck?.(applicant)}
+                                                        size="sm"
+                                                        disabled={!applicant}
+                                                    >
+                                                        ดูเอกสาร
+                                                    </Button>
                                                 </div>
                                             </div>
                                         </CardContent>
@@ -584,6 +598,7 @@ export default function AdminPage() {
                         onReviewCriminalCheck={setReviewingCriminalCheck}
                         onReviewEmploymentContract={setReviewingEmploymentContract}
                         onReviewFMHRD27={setReviewingFMHRD27Doc}
+                        onReviewFMHRD30={setReviewingFMHRD19}
                     />
                 ) : (
                     <div className="h-full overflow-y-auto">
