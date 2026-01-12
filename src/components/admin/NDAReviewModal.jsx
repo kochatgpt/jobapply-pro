@@ -36,28 +36,40 @@ export default function NDAReviewModal({ applicant, isOpen, onClose }) {
 
     const updateMutation = useMutation({
         mutationFn: async (data) => {
-            return await base44.entities.Applicant.update(applicant.id, data);
+            // Update both Applicant and PdfBase
+            await base44.entities.Applicant.update(applicant.id, data.applicantData);
+            if (pdfBaseDoc) {
+                await base44.entities.PdfBase.update(pdfBaseDoc.id, data.pdfData);
+            }
         },
         onSuccess: () => {
             queryClient.invalidateQueries(['applicants']);
+            queryClient.invalidateQueries(['nda_pdf_base', applicant?.id]);
             toast.success('บันทึกข้อมูลเรียบร้อยแล้ว');
             onClose();
         },
-        onError: () => {
+        onError: (error) => {
+            console.error('Save error:', error);
             toast.error('เกิดข้อผิดพลาดในการบันทึก');
         }
     });
 
     const handleSave = () => {
-        const updatedData = {
+        const applicantData = {
             nda_document: {
                 ...applicant.nda_document,
-                status: 'completed',
+                status: 'approved',
                 company_data: companyData,
                 completed_date: new Date().toISOString()
             }
         };
-        updateMutation.mutate(updatedData);
+        
+        const pdfData = {
+            status: 'approved',
+            approved_date: new Date().toISOString()
+        };
+
+        updateMutation.mutate({ applicantData, pdfData });
     };
 
     const handleGeneratePDF = async (action) => {
