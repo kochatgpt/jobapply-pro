@@ -10,8 +10,8 @@ import spsForm from './pages/sps-form';
 import userDashboard from './pages/user-dashboard';
 import userLogin from './pages/user-login';
 import fmHrd19 from './pages/fm-hrd-19';
-import fmHrd27 from './pages/fm-hrd-27';
 import fmHrd30 from './pages/fm-hrd-30';
+import fmHrd27 from './pages/fm-hrd-27';
 import __Layout from './Layout.jsx';
 
 
@@ -28,8 +28,8 @@ export const PAGES = {
     "user-dashboard": userDashboard,
     "user-login": userLogin,
     "fm-hrd-19": fmHrd19,
-    "fm-hrd-27": fmHrd27,
     "fm-hrd-30": fmHrd30,
+    "fm-hrd-27": fmHrd27,
 }
 
 export const pagesConfig = {
