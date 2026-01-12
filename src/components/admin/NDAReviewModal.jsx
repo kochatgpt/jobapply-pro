@@ -19,7 +19,8 @@ export default function NDAReviewModal({ applicant, isOpen, onClose }) {
     const [companyData, setCompanyData] = useState({
         signerName: applicant?.nda_document?.company_data?.signerName || '',
         companySignature: applicant?.nda_document?.company_data?.companySignature || '',
-        companySignDate: applicant?.nda_document?.company_data?.companySignDate || ''
+        companySignDate: applicant?.nda_document?.company_data?.companySignDate || '',
+        employeeSignDate: applicant?.nda_document?.company_data?.employeeSignDate || ''
     });
 
     const updateMutation = useMutation({
@@ -150,6 +151,15 @@ export default function NDAReviewModal({ applicant, isOpen, onClose }) {
                                 type="date"
                                 value={companyData.companySignDate}
                                 onChange={(e) => setCompanyData({ ...companyData, companySignDate: e.target.value })}
+                            />
+                        </div>
+
+                        <div>
+                            <Label>วันที่ลงนาม (พนักงาน)</Label>
+                            <Input
+                                type="date"
+                                value={companyData.employeeSignDate}
+                                onChange={(e) => setCompanyData({ ...companyData, employeeSignDate: e.target.value })}
                             />
                         </div>
                     </div>
