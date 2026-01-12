@@ -100,7 +100,7 @@ export default function CriminalCheckReviewModal({ applicant, pdfDoc, isOpen, on
     if (!applicant) return null;
 
     const employeeData = applicant.criminal_check_document?.employee_data || {};
-    const pdfBaseData = applicant.criminal_check_document?.pdf_base || {};
+    const pdfBaseData = pdfDoc || {};
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
