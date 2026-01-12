@@ -22,7 +22,8 @@ export default function FMHRD30Page() {
         signaturePosition: '',
         criminalCheckDate: '',
         consentLetterDate: '',
-        signatureDate: ''
+        signatureDate: '',
+        proclamationDate: ''
     });
 
     useEffect(() => {
@@ -259,11 +260,11 @@ export default function FMHRD30Page() {
                                 <h3 className="font-semibold text-slate-800">วันที่เอกสาร</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ - การตรวจประวัติอาชญากรรม</label>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ประกาศ - การตรวจประวัติอาชญากรรม</label>
                                         <input
                                             type="date"
-                                            value={formData.criminalCheckDate}
-                                            onChange={(e) => setFormData({ ...formData, criminalCheckDate: e.target.value })}
+                                            value={formData.proclamationDate}
+                                            onChange={(e) => setFormData({ ...formData, proclamationDate: e.target.value })}
                                             className="w-full px-3 py-2 border border-slate-300 rounded-md"
                                         />
                                     </div>
@@ -273,6 +274,15 @@ export default function FMHRD30Page() {
                                             type="date"
                                             value={formData.consentLetterDate}
                                             onChange={(e) => setFormData({ ...formData, consentLetterDate: e.target.value })}
+                                            className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">วันที่ - การตรวจประวัติอาชญากรรม</label>
+                                        <input
+                                            type="date"
+                                            value={formData.criminalCheckDate}
+                                            onChange={(e) => setFormData({ ...formData, criminalCheckDate: e.target.value })}
                                             className="w-full px-3 py-2 border border-slate-300 rounded-md"
                                         />
                                     </div>

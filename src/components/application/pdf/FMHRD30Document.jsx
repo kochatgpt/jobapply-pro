@@ -40,7 +40,7 @@ export default function FMHRD30Document({ applicant, formData = {} }) {
             <div className="text-center mb-6">
                 <h1 className="text-[14px] font-bold mb-4">การตรวจประวัติอาชญากรรม</h1>
                 <div className="text-right mb-1">
-                    <p>วันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 pb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>&nbsp;</span></p>
+                    <p>วันที่ <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 pb-1 ${formData.proclamationDate}`} style={{ verticalAlign: 'baseline', ...(!formData.proclamationDate && { minHeight: '1.2em' }) }}>{formData.proclamationDate ? new Date(formData.proclamationDate).toLocaleDateString('th-TH', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '/') : '\u00A0'}</span></p>
                 </div>
                 <div className="text-right mb-4">
                     <p><strong>เลขที่ประกาศ:</strong> <span className={`inline-block min-w-[150px] text-center ${formData.proclamationNumber}`} style={{ verticalAlign: 'baseline', ...(!formData.proclamationNumber && { minHeight: '1.2em' }) }}>{formData.proclamationNumber || '\u00A0'}</span></p>
