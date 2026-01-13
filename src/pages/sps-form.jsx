@@ -41,6 +41,10 @@ export default function SPSFormPage() {
         otherDocumentNumber: '',
         otherWorkPermitNumber: '',
         
+        // For SPS 1-03 - Hospital selection
+        hospitalChoice1: '',
+        hospitalChoice2: '',
+        
         // For SPS 9-02
         educationLevel: '',
         educationMajor: ''
@@ -367,6 +371,28 @@ export default function SPSFormPage() {
                                                 value={formData.signatureDate}
                                                 onChange={(e) => setFormData({ ...formData, signatureDate: e.target.value })}
                                             />
+                                        </div>
+
+                                        <div className="border-t pt-4">
+                                            <h3 className="font-semibold text-slate-800 mb-3">ข้อมูลการเลือกสถานพยาบาล</h3>
+                                            <div className="space-y-3">
+                                                <div>
+                                                    <Label>ขอเลือกสถานพยาบาลประกันสังคม</Label>
+                                                    <Input
+                                                        value={formData.hospitalChoice1}
+                                                        onChange={(e) => setFormData({ ...formData, hospitalChoice1: e.target.value })}
+                                                        placeholder="ลำดับที่ 1"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Label>ลำดับที่ 2 ชื่อ</Label>
+                                                    <Input
+                                                        value={formData.hospitalChoice2}
+                                                        onChange={(e) => setFormData({ ...formData, hospitalChoice2: e.target.value })}
+                                                        placeholder="ลำดับที่ 2"
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div className="border-t pt-4">
