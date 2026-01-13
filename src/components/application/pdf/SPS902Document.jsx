@@ -206,20 +206,19 @@ export default function SPS902Document({ applicant, formData = {} }) {
                 </div>
             </div>
 
-            {/* ข้อมูลการศึกษา */}
-            <div className="border border-slate-900 p-4 mb-4">
-                <h3 className="font-bold mb-3">วุฒิการศึกษาสูงสุด</h3>
-                <div className="space-y-2">
-                    <div>
-                        <label className="text-sm">ระดับการศึกษา</label>
-                        <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                            {formData.educationLevel || '\u00A0'}
+                    <h3 className="font-bold mb-3">วุฒิการศึกษาสูงสุด</h3>
+                    <div className="space-y-2">
+                        <div>
+                            <label className="text-sm">ระดับการศึกษา</label>
+                            <div className="border-b border-dotted border-slate-400 min-h-[24px]">
+                                {formData.educationLevel || '\u00A0'}
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <label className="text-sm">สาขาวิชา</label>
-                        <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                            {formData.educationMajor || '\u00A0'}
+                        <div>
+                            <label className="text-sm">สาขาวิชา</label>
+                            <div className="border-b border-dotted border-slate-400 min-h-[24px]">
+                                {formData.educationMajor || '\u00A0'}
+                            </div>
                         </div>
                     </div>
                 </div>
