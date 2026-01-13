@@ -128,7 +128,7 @@ export default function InsuranceEnrollmentReviewModal({ applicant, pdfDoc, isOp
                             <div className="insurance-enrollment-review-page">
                                 <InsuranceEnrollmentDocument 
                                     applicant={applicant}
-                                    formData={(insuranceData?.data && typeof insuranceData.data === 'object') ? insuranceData.data : {}}
+                                    formData={insuranceData?.data || {}}
                                 />
                             </div>
                         </div>
