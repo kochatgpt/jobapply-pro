@@ -22,13 +22,13 @@ export default function SPS902Document({ applicant, formData = {} }) {
                 <p className="text-[14px]">(กรณีไม่เคยมีประกันสังคม)</p>
             </div>
 
-            {/* เลขที่กรมธรรม์ */}
-            <div className="mb-4">
+            {/* เลขที่กรมธรรม์ - Row 1 (col-1) */}
+            <div className="mb-4 border border-slate-900 p-4">
                 <div className="flex items-center gap-2 mb-2">
-                    <span>เลขประจำตัวประชาชน</span>
+                    <span className="font-bold text-sm">เลขประจำตัวประชาชน</span>
                     <div className="flex gap-1">
                         {(personalData.id_card || '').split('').concat(Array(13).fill('')).slice(0, 13).map((digit, idx) => (
-                            <div key={idx} className="w-6 h-8 border border-slate-400 flex items-center justify-center">
+                            <div key={idx} className="w-6 h-8 border border-slate-400 flex items-center justify-center text-sm">
                                 {digit}
                             </div>
                         ))}
