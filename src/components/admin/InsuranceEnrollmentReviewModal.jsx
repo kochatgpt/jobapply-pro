@@ -14,7 +14,7 @@ export default function InsuranceEnrollmentReviewModal({ applicant, pdfDoc, isOp
     const queryClient = useQueryClient();
     const [generatingPdf, setGeneratingPdf] = useState(false);
 
-    const { data: insuranceData, isLoading: isLoadingData } = useQuery({
+    const { data: insuranceData } = useQuery({
         queryKey: ['insurance_enrollment_detail', pdfDoc?.id],
         queryFn: async () => {
             if (!pdfDoc?.id) return null;
@@ -124,20 +124,14 @@ export default function InsuranceEnrollmentReviewModal({ applicant, pdfDoc, isOp
                             </div>
                         </div>
                         
-                        {isLoadingData ? (
-                            <div className="max-h-[600px] overflow-auto bg-white p-4 flex items-center justify-center">
-                                <Loader2 className="w-6 h-6 animate-spin text-slate-400" />
+                        <div className="max-h-[600px] overflow-auto bg-white p-4 flex justify-center">
+                            <div className="insurance-enrollment-review-page">
+                                <InsuranceEnrollmentDocument 
+                                    applicant={applicant}
+                                    formData={insuranceData?.data || {}}
+                                />
                             </div>
-                        ) : (
-                            <div className="max-h-[600px] overflow-auto bg-white p-4 flex justify-center">
-                                <div className="insurance-enrollment-review-page">
-                                    <InsuranceEnrollmentDocument 
-                                        applicant={applicant}
-                                        formData={insuranceData?.data || {}}
-                                    />
-                                </div>
-                            </div>
-                        )}
+                        </div>
                     </div>
 
                     {/* Actions */}
