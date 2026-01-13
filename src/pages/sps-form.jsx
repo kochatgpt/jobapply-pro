@@ -108,6 +108,7 @@ export default function SPSFormPage() {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['sps_pdf_data', applicantId] });
+            setShowForm(false);
             toast.success('บันทึกข้อมูลเรียบร้อยแล้ว');
         },
         onError: () => {
