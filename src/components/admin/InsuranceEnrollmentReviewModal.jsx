@@ -116,39 +116,6 @@ export default function InsuranceEnrollmentReviewModal({ applicant, pdfDoc, isOp
                         </CardContent>
                     </Card>
 
-                    {/* Document Info */}
-                    <Card>
-                        <CardHeader className="border-b bg-slate-50">
-                            <CardTitle className="text-lg">ข้อมูลเอกสาร</CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-6 space-y-4">
-                            <div className="grid grid-cols-2 gap-4">
-                                <div>
-                                    <p className="text-sm text-slate-500">บริษัท</p>
-                                    <p className="font-medium">{insuranceData?.data?.employerName || '-'}</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm text-slate-500">สถานะ</p>
-                                    <p className="font-medium">
-                                        {insuranceData?.status === 'approved' ? 'อนุมัติแล้ว' : insuranceData?.status === 'submitted' ? 'รอดำเนินการ' : 'แบบร่าง'}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p className="text-sm text-slate-500">วันที่ส่ง</p>
-                                    <p className="font-medium">
-                                        {insuranceData?.submitted_date ? new Date(insuranceData.submitted_date).toLocaleDateString('th-TH') : '-'}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p className="text-sm text-slate-500">วันที่อนุมัติ</p>
-                                    <p className="font-medium">
-                                        {insuranceData?.approved_date ? new Date(insuranceData.approved_date).toLocaleDateString('th-TH') : '-'}
-                                    </p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
-
                     {/* Actions */}
                     <div className="flex justify-end gap-2">
                         <Button
