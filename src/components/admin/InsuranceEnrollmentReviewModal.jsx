@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
-import { Eye, Loader2, Download } from "lucide-react";
+import { Eye, Loader2, FileDown } from "lucide-react";
 import InsuranceEnrollmentDocument from '@/components/application/pdf/InsuranceEnrollmentDocument';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -93,54 +93,59 @@ export default function InsuranceEnrollmentReviewModal({ applicant, pdfDoc, isOp
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+            <DialogContent className="max-w-7xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle>ใบสมัครขอเอาประกันภัยพนักงาน - {applicant.full_name}</DialogTitle>
+                    <DialogTitle className="text-xl">ใบสมัครขอเอาประกันภัยพนักงาน - {applicant.full_name}</DialogTitle>
                 </DialogHeader>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                     {/* Document Preview */}
-                    <Card>
-                        <CardHeader className="border-b bg-slate-50">
-                            <CardTitle className="text-lg">ตัวอย่างเอกสาร</CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-0">
-                            <div className="overflow-auto max-h-[500px] bg-slate-100 p-8 flex justify-center">
-                                <div className="insurance-enrollment-review-page">
-                                    <InsuranceEnrollmentDocument 
-                                        applicant={applicant}
-                                        formData={insuranceData?.data || {}}
-                                    />
-                                </div>
+                    <div className="bg-slate-100 p-4 rounded-lg">
+                        <div className="flex justify-between items-center mb-4">
+                            <h3 className="font-semibold text-lg">ตัวอย่างเอกสาร</h3>
+                            <div className="flex gap-2">
+                                <Button 
+                                    variant="outline"
+                                    onClick={() => handleGeneratePDF('preview')}
+                                    disabled={generatingPdf}
+                                    size="sm"
+                                >
+                                    {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Eye className="w-4 h-4 mr-2" />}
+                                    Preview
+                                </Button>
+                                <Button 
+                                    onClick={() => handleGeneratePDF('download')}
+                                    disabled={generatingPdf}
+                                    size="sm"
+                                >
+                                    {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <FileDown className="w-4 h-4 mr-2" />}
+                                    ดาวน์โหลด
+                                </Button>
                             </div>
-                        </CardContent>
-                    </Card>
+                        </div>
+                        
+                        <div className="max-h-[600px] overflow-auto bg-white p-4 flex justify-center">
+                            <div className="insurance-enrollment-review-page">
+                                <InsuranceEnrollmentDocument 
+                                    applicant={applicant}
+                                    formData={insuranceData?.data || {}}
+                                />
+                            </div>
+                        </div>
+                    </div>
 
                     {/* Actions */}
                     <div className="flex justify-end gap-2">
-                        <Button
-                            variant="outline"
-                            onClick={() => handleGeneratePDF('preview')}
-                            disabled={generatingPdf}
-                        >
-                            {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Eye className="w-4 h-4 mr-2" />}
-                            ดูตัวอย่าง
+                        <Button variant="outline" onClick={onClose}>
+                            ยกเลิก
                         </Button>
-                        <Button
-                            variant="outline"
-                            onClick={() => handleGeneratePDF('download')}
-                            disabled={generatingPdf}
-                        >
-                            {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Download className="w-4 h-4 mr-2" />}
-                            ดาวน์โหลด
-                        </Button>
-                        <Button
+                        <Button 
                             onClick={handleApprove}
                             disabled={updateMutation.isPending || insuranceData?.status === 'approved'}
                             className="bg-green-600 hover:bg-green-700"
                         >
                             {updateMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
-                            อนุมัติ
+                            บันทึกและอนุมัติเอกสาร
                         </Button>
                     </div>
                 </div>
