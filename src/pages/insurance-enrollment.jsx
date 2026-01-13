@@ -4,7 +4,7 @@ import { base44 } from '@/api/base44Client';
 import { useQueryClient, useQuery, useMutation } from '@tanstack/react-query';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Eye, Loader2, Send } from "lucide-react";
+import { ArrowLeft, Eye, Loader2, Send, Save } from "lucide-react";
 import InsuranceEnrollmentDocument from '@/components/application/pdf/InsuranceEnrollmentDocument';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -43,6 +43,47 @@ export default function InsuranceEnrollmentPage() {
             return applicants.find(a => a.id === applicantId);
         },
         enabled: !!applicantId
+    });
+
+    const { data: insuranceData } = useQuery({
+        queryKey: ['insurance_enrollment', applicantId],
+        queryFn: async () => {
+            const docs = await base44.entities.PdfBase.filter({ pdf_type: 'Insurance-Enrollment' });
+            return docs.find(d => d.applicant_id === applicantId);
+        },
+        enabled: !!applicantId
+    });
+
+    useEffect(() => {
+        if (insuranceData?.data) {
+            setFormData(prevData => ({
+                ...prevData,
+                ...insuranceData.data
+            }));
+        }
+    }, [insuranceData]);
+
+    const saveMutation = useMutation({
+        mutationFn: async (data) => {
+            if (insuranceData?.id) {
+                return await base44.entities.PdfBase.update(insuranceData.id, { data });
+            } else {
+                return await base44.entities.PdfBase.create({
+                    applicant_id: applicantId,
+                    pdf_type: 'Insurance-Enrollment',
+                    data,
+                    status: 'draft'
+                });
+            }
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(['insurance_enrollment', applicantId]);
+            toast.success('บันทึกข้อมูลเรียบร้อยแล้ว');
+            setShowForm(false);
+        },
+        onError: () => {
+            toast.error('เกิดข้อผิดพลาดในการบันทึก');
+        }
     });
 
     const submitMutation = useMutation({
@@ -269,6 +310,14 @@ export default function InsuranceEnrollmentPage() {
                                         onClick={() => setShowForm(false)}
                                     >
                                         ปิด
+                                    </Button>
+                                    <Button 
+                                        onClick={() => saveMutation.mutate(formData)}
+                                        disabled={saveMutation.isPending}
+                                        className="bg-blue-600 hover:bg-blue-700"
+                                    >
+                                        {saveMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Save className="w-4 h-4 mr-2" />}
+                                        บันทึก
                                     </Button>
                                 </div>
                             </CardContent>
