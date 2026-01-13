@@ -24,10 +24,10 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     className="h-16 w-auto object-contain"
                     crossOrigin="anonymous"
                 />
-                <h1 className="text-[20px] font-bold">แบบเลือกสถานพยาบาลในการรับบริการทางการแพทย์</h1>
+                <h1 className="text-[18px] font-bold">แบบเลือกสถานพยาบาลในการรับบริการทางการแพทย์</h1>
                 <div className="text-right text-xs space-y-0.5">
                     <div className="font-bold mt-1">สปส. 9-02</div>
-                    <div className="border border-black rounded-lg p-2 text-start w-[300px] ml-auto">
+                    <div className="border border-black rounded-lg p-2 text-start w-[150px] ml-auto">
                         {/* เลขที่รับ */}
                         <div className="flex items-end gap-2">
                         <span className="whitespace-nowrap">เลขที่รับ</span>
