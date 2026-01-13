@@ -33,6 +33,14 @@ export default function SPSFormPage() {
         salary: '',
         signatureDate: '',
         
+        // For SPS 1-03 - Foreigner section
+        hasPassport: false,
+        passportNumber: '',
+        workPermitNumber: '',
+        otherDocumentType: '',
+        otherDocumentNumber: '',
+        otherWorkPermitNumber: '',
+        
         // For SPS 9-02
         educationLevel: '',
         educationMajor: ''
