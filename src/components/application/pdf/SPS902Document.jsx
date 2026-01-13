@@ -28,9 +28,9 @@ export default function SPS902Document({ applicant, formData = {} }) {
                 <div className="text-right text-xs space-y-0.5">
                     <div className="font-bold mt-1">สปส. 9-02</div>
                     <div className="border border-black rounded-lg p-2 text-start w-full">
-                      <div>เลขที่รับ ...........................</div>
-                      <div>วันที่ .......................... เวลา ..............</div>
-                      <div>ลงชื่อ ............................. ผู้รับ</div>
+                      <div className="border-b border-dotted border-black w-full m-auto">เลขที่รับ ...........................</div>
+                      <div className="border-b border-dotted border-black w-full m-auto">วันที่ .......................... เวลา ..............</div>
+                      <div className="border-b border-dotted border-black w-full m-auto">ลงชื่อ ............................. ผู้รับ</div>
                     </div>
                 </div>
             </div>
