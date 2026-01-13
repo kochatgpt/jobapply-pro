@@ -24,6 +24,9 @@ export default function InsuranceEnrollmentReviewModal({ applicant, pdfDoc, isOp
         enabled: !!pdfDoc?.id && isOpen
     });
 
+    console.log("insuranceData in modal:", insuranceData);
+    console.log("formData sent to document:", insuranceData?.data);
+
     const updateMutation = useMutation({
         mutationFn: async (data) => {
             return await base44.entities.PdfBase.update(pdfDoc.id, {
