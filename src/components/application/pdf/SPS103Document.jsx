@@ -441,20 +441,22 @@ export default function SPS103Document({ applicant, formData = {} }) {
                     </div>
                     <div className="col-span-1 border-r border-b border-slate-900 p-2">
                         <div className="grid mt-1 grid-col-4">
-                            <div className="flex ml-2 mt-2">
-                                {Array(6).fill('').map((_, idx) => (
-                                    <div key={idx} className="p-2 border border-black"></div>
-                                ))}
-                            </div>
-                            <div className="flex ml-2 mt-2">
-                                {Array(6).fill('').map((_, idx) => (
-                                    <div key={idx} className="p-2 border border-black"></div>
-                                ))}
-                            </div>
-                            <div className="flex ml-2 mt-2">
-                                {Array(6).fill('').map((_, idx) => (
-                                    <div key={idx} className="p-2 border border-black"></div>
-                                ))}
+                            <div>
+                                <div className="flex ml-2 mt-2">
+                                    {Array(6).fill('').map((_, idx) => (
+                                        <div key={idx} className="p-2 border border-black"></div>
+                                    ))}
+                                </div>
+                                <div className="flex ml-2 mt-2">
+                                    {Array(6).fill('').map((_, idx) => (
+                                        <div key={idx} className="p-2 border border-black"></div>
+                                    ))}
+                                </div>
+                                <div className="flex ml-2 mt-2">
+                                    {Array(6).fill('').map((_, idx) => (
+                                        <div key={idx} className="p-2 border border-black"></div>
+                                    ))}
+                                </div>
                             </div>
                             <div className="text-center space-y-0 relative">
                                 <div>ลงชื่อ
