@@ -45,11 +45,6 @@ export default function SPSFormPage() {
         hospitalChoice1: '',
         hospitalChoice2: '',
         
-        // For SPS 1-03 - Children birth years
-        childBirthYear1: '',
-        childBirthYear2: '',
-        childBirthYear3: '',
-        
         // For SPS 9-02
         educationLevel: '',
         educationMajor: ''
@@ -384,54 +379,6 @@ export default function SPSFormPage() {
                                         </div>
 
                                         <div className="border-t pt-4">
-                                            <h3 className="font-semibold text-slate-800 mb-3">เกิดปี พ.ศ.</h3>
-                                            <div className="space-y-3">
-                                                <div>
-                                                    <Label>เกิดปี พ.ศ. ที่ 1</Label>
-                                                    <Input
-                                                        value={formData.childBirthYear1}
-                                                        onChange={(e) => {
-                                                            const value = e.target.value.replace(/\D/g, '');
-                                                            if (value.length <= 4) {
-                                                                setFormData({ ...formData, childBirthYear1: value });
-                                                            }
-                                                        }}
-                                                        placeholder="ปีพ.ศ. (4 หลัก)"
-                                                        maxLength="4"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Label>เกิดปี พ.ศ. ที่ 2</Label>
-                                                    <Input
-                                                        value={formData.childBirthYear2}
-                                                        onChange={(e) => {
-                                                            const value = e.target.value.replace(/\D/g, '');
-                                                            if (value.length <= 4) {
-                                                                setFormData({ ...formData, childBirthYear2: value });
-                                                            }
-                                                        }}
-                                                        placeholder="ปีพ.ศ. (4 หลัก)"
-                                                        maxLength="4"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Label>เกิดปี พ.ศ. ที่ 3</Label>
-                                                    <Input
-                                                        value={formData.childBirthYear3}
-                                                        onChange={(e) => {
-                                                            const value = e.target.value.replace(/\D/g, '');
-                                                            if (value.length <= 4) {
-                                                                setFormData({ ...formData, childBirthYear3: value });
-                                                            }
-                                                        }}
-                                                        placeholder="ปีพ.ศ. (4 หลัก)"
-                                                        maxLength="4"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="border-t pt-4">
                                             <h3 className="font-semibold text-slate-800 mb-3">ข้อมูลการเลือกสถานพยาบาล</h3>
                                             <div className="space-y-3">
                                                 <div>
@@ -611,7 +558,7 @@ export default function SPSFormPage() {
                                         disabled={saveMutation.isPending}
                                         className="bg-blue-600 hover:bg-blue-700"
                                     >
-                                        {saveMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : '💾'}
+                                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                                         บันทึก
                                     </Button>
                                 </div>
