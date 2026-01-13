@@ -361,8 +361,20 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     </div>
                                     <div className="flex justify-end space-y-1">
                                         <div className="text-center">
-                                            <div>ลงชื่อ<div className="inline-block border-b border-dotted border-slate-400 w-48 mx-2 px-2 pb-2" style={{ minHeight: '1.2em' }}></div>นายจ้าง</div>
-                                            <div>(<div className="inline-block border-b border-dotted border-slate-400 w-48 px-2 pb-2" style={{ minHeight: '1.2em' }}></div>)</div>
+                                            <div>ลงชื่อ
+                                                <div className="inline-block border-b border-dotted border-slate-400 w-48 mx-2 px-2 pb-1 relative" style={{ minHeight: '1.2em', verticalAlign: 'bottom' }}>
+                                                    {formData.employerSignature && (
+                                                        <img 
+                                                            src={formData.employerSignature} 
+                                                            alt="Employer Sig" 
+                                                            className="absolute bottom-0 left-1/2 -translate-x-1/2 max-h-[40px] max-w-[100px] object-contain" 
+                                                            crossOrigin="anonymous"
+                                                        />
+                                                    )}
+                                                </div>
+                                                นายจ้าง
+                                            </div>
+                                            <div>(<div className="inline-block border-b border-dotted border-slate-400 w-48 px-2 pb-1 text-center" style={{ minHeight: '1.2em' }}></div>)</div>
                                             <div>ตำแหน่ง<div className="inline-block border-b border-dotted border-slate-400 w-40 mx-2 px-2 pb-1 text-left" style={{ minHeight: '1.2em' }}>{formData.employerPosition || ''}</div></div>
                                             <div>วันที่<div className="inline-block border-b border-dotted border-slate-400 w-40 mx-2 px-2 pb-1 text-left" style={{ minHeight: '1.2em' }}>{formData.employerSignDate ? new Date(formData.employerSignDate).toLocaleDateString('th-TH') : ''}</div></div>
                                         </div>
