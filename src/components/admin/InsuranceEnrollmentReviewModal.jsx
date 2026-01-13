@@ -24,7 +24,8 @@ export default function InsuranceEnrollmentReviewModal({ applicant, pdfDoc, isOp
             if (!pdfDoc?.id) return null;
             console.log("Fetching PdfBase with id:", pdfDoc.id);
             try {
-                const doc = await base44.entities.PdfBase.read(pdfDoc.id);
+                const docs = await base44.entities.PdfBase.list();
+                const doc = docs.find(d => d.id === pdfDoc.id);
                 console.log("Fetched doc:", doc);
                 return doc;
             } catch (error) {
