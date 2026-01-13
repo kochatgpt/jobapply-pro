@@ -22,7 +22,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                 <p className="text-[14px]">(กรณีไม่เคยมีประกันสังคม)</p>
             </div>
 
-            {/* เลขที่กรมธรรม์ - Row 1 (col-1) */}
+            {/* Row 1 (col-1) - ID Card */}
             <div className="mb-4 border border-slate-900 p-4">
                 <div className="flex items-center gap-2 mb-2">
                     <span className="font-bold text-sm">เลขประจำตัวประชาชน</span>
@@ -44,73 +44,75 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     
                     <div className="space-y-3">
                         <div className="grid grid-cols-3 gap-2">
-                        <div>
-                            <label className="text-sm">คำนำหน้า</label>
-                            <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                                {personalData.prefix || '\u00A0'}
+                            <div>
+                                <label className="text-sm">คำนำหน้า</label>
+                                <div className="border-b border-dotted border-slate-400 min-h-[24px]">
+                                    {personalData.prefix || '\u00A0'}
+                                </div>
+                            </div>
+                            <div>
+                                <label className="text-sm">ชื่อ</label>
+                                <div className="border-b border-dotted border-slate-400 min-h-[24px]">
+                                    {personalData.first_name || '\u00A0'}
+                                </div>
+                            </div>
+                            <div>
+                                <label className="text-sm">นามสกุล</label>
+                                <div className="border-b border-dotted border-slate-400 min-h-[24px]">
+                                    {personalData.last_name || '\u00A0'}
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <label className="text-sm">ชื่อ</label>
-                            <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                                {personalData.first_name || '\u00A0'}
+
+                        <div className="grid grid-cols-2 gap-2">
+                            <div>
+                                <label className="text-sm">วัน/เดือน/ปีเกิด</label>
+                                <div className="border-b border-dotted border-slate-400 min-h-[24px] text-xs">
+                                    {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric'
+                                    }) : '\u00A0'}
+                                </div>
+                            </div>
+                            <div>
+                                <label className="text-sm">สัญชาติ</label>
+                                <div className="border-b border-dotted border-slate-400 min-h-[24px]">
+                                    {personalData.nationality || '\u00A0'}
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <label className="text-sm">นามสกุล</label>
-                            <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                                {personalData.last_name || '\u00A0'}
+
+                        <div className="grid grid-cols-2 gap-2">
+                            <div>
+                                <label className="text-sm">เพศ</label>
+                                <div className="flex gap-2 mt-1">
+                                    <label className="flex items-center gap-1">
+                                        <input type="checkbox" checked={personalData.gender === 'male'} readOnly className="w-3 h-3" />
+                                        <span className="text-xs">ชาย</span>
+                                    </label>
+                                    <label className="flex items-center gap-1">
+                                        <input type="checkbox" checked={personalData.gender === 'female'} readOnly className="w-3 h-3" />
+                                        <span className="text-xs">หญิง</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <label className="text-sm">หมายเลขโทรศัพท์</label>
+                                <div className="border-b border-dotted border-slate-400 min-h-[24px]">
+                                    {personalData.mobile_phone || '\u00A0'}
+                                </div>
                             </div>
                         </div>
-                    </div>
 
                         <div>
-                            <label className="text-sm">วัน/เดือน/ปีเกิด</label>
+                            <label className="text-sm">ที่อยู่ตามทะเบียนบ้าน</label>
                             <div className="border-b border-dotted border-slate-400 min-h-[24px] text-xs">
-                                {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH', {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: 'numeric'
-                                }) : '\u00A0'}
+                                {personalData.registered_address ? 
+                                    `${personalData.registered_address.number || ''} หมู่ ${personalData.registered_address.moo || ''} ถนน ${personalData.registered_address.road || ''} ตำบล/แขวง ${personalData.registered_address.subdistrict || ''} อำเภอ/เขต ${personalData.registered_address.district || ''} จังหวัด ${personalData.registered_address.province || ''} ${personalData.registered_address.zipcode || ''}`
+                                    : '\u00A0'
+                                }
                             </div>
-                        </div>
-                        <div>
-                            <label className="text-sm">สัญชาติ</label>
-                            <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                                {personalData.nationality || '\u00A0'}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-2">
-                        <div>
-                            <label className="text-sm">เพศ</label>
-                            <div className="flex gap-2 mt-1">
-                                <label className="flex items-center gap-1">
-                                    <input type="checkbox" checked={personalData.gender === 'male'} readOnly className="w-3 h-3" />
-                                    <span className="text-xs">ชาย</span>
-                                </label>
-                                <label className="flex items-center gap-1">
-                                    <input type="checkbox" checked={personalData.gender === 'female'} readOnly className="w-3 h-3" />
-                                    <span className="text-xs">หญิง</span>
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <label className="text-sm">หมายเลขโทรศัพท์</label>
-                            <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                                {personalData.mobile_phone || '\u00A0'}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label className="text-sm">ที่อยู่ตามทะเบียนบ้าน</label>
-                        <div className="border-b border-dotted border-slate-400 min-h-[24px] text-xs">
-                            {personalData.registered_address ? 
-                                `${personalData.registered_address.number || ''} หมู่ ${personalData.registered_address.moo || ''} ถนน ${personalData.registered_address.road || ''} ตำบล/แขวง ${personalData.registered_address.subdistrict || ''} อำเภอ/เขต ${personalData.registered_address.district || ''} จังหวัด ${personalData.registered_address.province || ''} ${personalData.registered_address.zipcode || ''}`
-                                : '\u00A0'
-                            }
                         </div>
                     </div>
                 </div>
@@ -167,45 +169,6 @@ export default function SPS902Document({ applicant, formData = {} }) {
 
                 {/* Row 3 - Right */}
                 <div className="border border-slate-900 p-4">
-                <h3 className="font-bold mb-3">ข้อมูลนายจ้าง</h3>
-                <div className="space-y-3">
-                    <div>
-                        <label className="text-sm">ชื่อสถานประกอบการ</label>
-                        <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                            {formData.employerName || '\u00A0'}
-                        </div>
-                    </div>
-                    <div>
-                        <label className="text-sm">เลขที่นายจ้าง (10 หลัก)</label>
-                        <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                            {formData.employerId || '\u00A0'}
-                        </div>
-                    </div>
-                    <div>
-                        <label className="text-sm">วันที่เริ่มทำงาน</label>
-                        <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                            {applicant?.start_work_date ? new Date(applicant.start_work_date).toLocaleDateString('th-TH', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric'
-                            }) : '\u00A0'}
-                        </div>
-                    </div>
-                    <div>
-                        <label className="text-sm">ตำแหน่งงาน</label>
-                        <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                            {personalData.position_1 || '\u00A0'}
-                        </div>
-                    </div>
-                    <div>
-                        <label className="text-sm">อัตราค่าจ้าง (บาท/เดือน)</label>
-                        <div className="border-b border-dotted border-slate-400 min-h-[24px]">
-                            {formData.salary || personalData.expected_salary || '\u00A0'}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
                     <h3 className="font-bold mb-3">วุฒิการศึกษาสูงสุด</h3>
                     <div className="space-y-2">
                         <div>
