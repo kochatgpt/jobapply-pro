@@ -32,6 +32,13 @@ export default function SPSFormPage() {
         newEmployerId: '',
         salary: '',
         signatureDate: '',
+        // For foreigners section
+        foreignerType: '', // 'passport', 'permit', 'other'
+        passportNumber: '',
+        workPermitNumber: '',
+        otherDocumentType: '',
+        otherDocumentNumber: '',
+        foreignerNotes: '',
         
         // For SPS 9-02
         educationLevel: '',
@@ -350,6 +357,81 @@ export default function SPSFormPage() {
                                                 placeholder="เงินเดือน"
                                                 type="number"
                                             />
+                                        </div>
+
+                                        <div>
+                                            <h3 className="font-semibold text-slate-800 mb-3">ส่วนที่ 7: สำหรับคนต่างด้าว</h3>
+                                            <div className="space-y-3 bg-amber-50 p-4 rounded border border-amber-200">
+                                                <div>
+                                                    <Label>ประเภทเอกสาร</Label>
+                                                    <select
+                                                        value={formData.foreignerType}
+                                                        onChange={(e) => setFormData({ ...formData, foreignerType: e.target.value })}
+                                                        className="w-full px-3 py-2 border border-slate-300 rounded-md"
+                                                    >
+                                                        <option value="">-- เลือก --</option>
+                                                        <option value="passport">หนังสือเดินทาง (PASSPORT)</option>
+                                                        <option value="permit">ใบอนุญาตทำงาน (WORK PERMIT)</option>
+                                                        <option value="other">อื่นๆ (ระบุ)</option>
+                                                    </select>
+                                                </div>
+
+                                                {formData.foreignerType === 'passport' && (
+                                                    <div>
+                                                        <Label>เลขที่หนังสือเดินทาง</Label>
+                                                        <Input
+                                                            value={formData.passportNumber}
+                                                            onChange={(e) => setFormData({ ...formData, passportNumber: e.target.value })}
+                                                            placeholder="เลขที่ passport"
+                                                        />
+                                                    </div>
+                                                )}
+
+                                                {(formData.foreignerType === 'permit' || formData.foreignerType === 'passport') && (
+                                                    <div>
+                                                        <Label>เลขที่ใบอนุญาตทำงาน (WORK PERMIT)</Label>
+                                                        <Input
+                                                            value={formData.workPermitNumber}
+                                                            onChange={(e) => setFormData({ ...formData, workPermitNumber: e.target.value })}
+                                                            placeholder="เลขที่ work permit"
+                                                        />
+                                                    </div>
+                                                )}
+
+                                                {formData.foreignerType === 'other' && (
+                                                    <>
+                                                        <div>
+                                                            <Label>ระบุเอกสาร</Label>
+                                                            <Input
+                                                                value={formData.otherDocumentType}
+                                                                onChange={(e) => setFormData({ ...formData, otherDocumentType: e.target.value })}
+                                                                placeholder="ระบุชนิดของเอกสาร"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Label>เลขที่เอกสาร</Label>
+                                                            <Input
+                                                                value={formData.otherDocumentNumber}
+                                                                onChange={(e) => setFormData({ ...formData, otherDocumentNumber: e.target.value })}
+                                                                placeholder="เลขที่เอกสาร"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Label>เลขที่ใบอนุญาตทำงาน (WORK PERMIT)</Label>
+                                                            <Input
+                                                                value={formData.workPermitNumber}
+                                                                onChange={(e) => setFormData({ ...formData, workPermitNumber: e.target.value })}
+                                                                placeholder="เลขที่ work permit"
+                                                            />
+                                                        </div>
+                                                    </>
+                                                )}
+
+                                                <div className="bg-white p-3 rounded border border-amber-300 text-sm">
+                                                    <p className="font-semibold text-amber-900 mb-2">หมายเหตุ:</p>
+                                                    <p className="text-amber-800">กรุณาเขียนให้ชัดเจน พร้อมแนบสำเนาบัตรประชาชนผู้มอบและผู้รับมอบ อย่างละ 1 ฉบับ (พร้อมรับรองสำเนาถูกต้อง) การมอบอำนาจให้มีพยานอย่างน้อย 1 คน ถ้าผู้มอบอำนาจพิมพ์ลายนิ้วมือ ต้องมีพยาน 2 คน</p>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div>
