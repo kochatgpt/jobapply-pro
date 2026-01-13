@@ -64,15 +64,15 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     <div className="flex gap-1 items-center text-xs mb-1">
                         <span>ข้าพเจ้า</span>
                         <label className="flex items-center gap-0.5">
-                            <PDFCheckbox checked={personalData.prefix === 'นาย'} />
+                            <PDFCheckbox checked={personalData.prefix === 'นาย'} checkType={'check'}/>
                             <span className="text-xs">นาย</span>
                         </label>
                         <label className="flex items-center gap-0.5">
-                            <PDFCheckbox checked={personalData.prefix === 'นางสาว'} />
+                            <PDFCheckbox checked={personalData.prefix === 'นางสาว'} checkType={'check'}/>
                             <span className="text-xs">นางสาว</span>
                         </label>
                         <label className="flex items-center gap-0.5">
-                            <PDFCheckbox checked={personalData.prefix === 'นาง'} />
+                            <PDFCheckbox checked={personalData.prefix === 'นาง'} checkType={'check'}/>
                             <span className="text-xs">นาง</span>
                         </label>
                         <span className="flex-1 border-b border-dotted border-slate-400 mx-1 min-h-[18px]">
