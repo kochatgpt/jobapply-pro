@@ -89,7 +89,7 @@ export default function CriminalCheckDocument({ applicant, formData = {}, pdfDat
                         )}
                         ผู้รับมอบอำนาจ
                     </p>
-                    <p>({companyData.authorizedPerson || '.................................'})</p>
+                    <p>({companyData.receiverName || '.................................'})</p>
                 </div>
             </div>
 
