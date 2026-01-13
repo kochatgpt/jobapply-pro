@@ -342,20 +342,6 @@ export default function SPSFormPage() {
                                         </div>
 
                                         <div>
-                                            <h3 className="font-semibold text-slate-800 mb-3">ข้อมูลผู้ประกันตน</h3>
-                                            <div className="space-y-3 bg-slate-50 p-3 rounded">
-                                                <div className="text-sm text-slate-600 space-y-1">
-                                                    <p><span className="font-medium">ชื่อ:</span> {applicant?.full_name}</p>
-                                                    <p><span className="font-medium">เลขประจำตัวประชาชน:</span> {applicant?.personal_data?.id_card || '—'}</p>
-                                                    <p><span className="font-medium">เพศ:</span> {applicant?.personal_data?.gender === 'male' ? 'ชาย' : applicant?.personal_data?.gender === 'female' ? 'หญิง' : '—'}</p>
-                                                    <p><span className="font-medium">วันเดือนปีเกิด:</span> {applicant?.personal_data?.dob ? new Date(applicant.personal_data.dob).toLocaleDateString('th-TH') : '—'}</p>
-                                                    <p><span className="font-medium">สัญชาติ:</span> {applicant?.personal_data?.nationality || '—'}</p>
-                                                    <p><span className="font-medium">สถานภาพครอบครัว:</span> {applicant?.family_data?.marital_status === 'single' ? 'โสด' : applicant?.family_data?.marital_status === 'married' ? 'สมรส' : '—'}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div>
                                             <Label>อัตราค่าจ้าง (บาท/เดือน)</Label>
                                             <Input
                                                 value={formData.salary}
