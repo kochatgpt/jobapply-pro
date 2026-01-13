@@ -368,6 +368,82 @@ export default function SPSFormPage() {
                                                 onChange={(e) => setFormData({ ...formData, signatureDate: e.target.value })}
                                             />
                                         </div>
+
+                                        <div className="border-t pt-4">
+                                            <h3 className="font-semibold text-slate-800 mb-3">ข้อมูลสำหรับคนต่างด้าว (ถ้ามี)</h3>
+                                            <div className="space-y-3">
+                                                <div>
+                                                    <label className="flex items-center gap-2">
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={formData.hasPassport}
+                                                            onChange={(e) => setFormData({ ...formData, hasPassport: e.target.checked })}
+                                                            className="w-4 h-4 rounded"
+                                                        />
+                                                        <span className="text-sm font-medium">หนังสือเดินทาง (PASSPORT)</span>
+                                                    </label>
+                                                </div>
+                                                {formData.hasPassport && (
+                                                    <>
+                                                        <div>
+                                                            <Label>หนังสือเดินทาง (PASSPORT) เลขที่</Label>
+                                                            <Input
+                                                                value={formData.passportNumber}
+                                                                onChange={(e) => setFormData({ ...formData, passportNumber: e.target.value })}
+                                                                placeholder="เลขที่หนังสือเดินทาง"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Label>ใบอนุญาตทำงาน (WORK PERMIT) เลขที่</Label>
+                                                            <Input
+                                                                value={formData.workPermitNumber}
+                                                                onChange={(e) => setFormData({ ...formData, workPermitNumber: e.target.value })}
+                                                                placeholder="เลขที่ใบอนุญาตทำงาน"
+                                                            />
+                                                        </div>
+                                                    </>
+                                                )}
+                                                <div>
+                                                    <label className="flex items-center gap-2">
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={!!formData.otherDocumentType}
+                                                            onChange={(e) => setFormData({ ...formData, otherDocumentType: e.target.checked ? 'other' : '' })}
+                                                            className="w-4 h-4 rounded"
+                                                        />
+                                                        <span className="text-sm font-medium">อื่นๆ (ระบุ)</span>
+                                                    </label>
+                                                </div>
+                                                {formData.otherDocumentType && (
+                                                    <>
+                                                        <div>
+                                                            <Label>อื่นๆ (ระบุประเภท)</Label>
+                                                            <Input
+                                                                value={formData.otherDocumentType}
+                                                                onChange={(e) => setFormData({ ...formData, otherDocumentType: e.target.value })}
+                                                                placeholder="ระบุเอกสาร"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Label>เลขที่</Label>
+                                                            <Input
+                                                                value={formData.otherDocumentNumber}
+                                                                onChange={(e) => setFormData({ ...formData, otherDocumentNumber: e.target.value })}
+                                                                placeholder="เลขที่เอกสาร"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Label>ใบอนุญาตทำงาน (WORK PERMIT) เลขที่</Label>
+                                                            <Input
+                                                                value={formData.otherWorkPermitNumber}
+                                                                onChange={(e) => setFormData({ ...formData, otherWorkPermitNumber: e.target.value })}
+                                                                placeholder="เลขที่ใบอนุญาตทำงาน"
+                                                            />
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
                                 ) : (
                                     // Form for SPS 9-02
