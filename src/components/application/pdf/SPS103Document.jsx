@@ -120,11 +120,11 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     <span className="mb-2">นาย</span>
                                 </label>
                                 <label className="flex items-center gap-1">
-                                    <PDFCheckbox checked={personalData.prefix === 'นางสาว'} />
+                                    <PDFCheckbox checked={personalData.prefix === 'นางสาว'} checkType={'check'}/>
                                     <span className="mb-2">นางสาว</span>
                                 </label>
                                 <label className="flex items-center gap-1">
-                                    <PDFCheckbox checked={personalData.prefix === 'นาง'} />
+                                    <PDFCheckbox checked={personalData.prefix === 'นาง'} checkType={'check'}/>
                                     <span className="mb-2">นาง</span>
                                 </label>
                                 <span className="border-b border-dotted border-black flex-1 inline-block min-h-[24px] pb-1 ml-1">
