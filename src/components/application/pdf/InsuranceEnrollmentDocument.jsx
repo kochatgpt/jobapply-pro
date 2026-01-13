@@ -161,16 +161,12 @@ export default function InsuranceEnrollmentDocument({ applicant, formData = {} }
                             <div>
                                 <p className="">กรมธรรม์ประกันกลุ่มเลขที่</p>
                                 <p className="">Group No.</p>
-                                <div className="min-h-[20px] px-1 pb-1">
-                                    {formData.groupNo || '\u00A0'}
-                                </div>
+                                <div className="min-h-[20px]"></div>
                             </div>
                             <div>
                                 <p className="">ใบรับรองเลขที่</p>
                                 <p className="">Certificate No.</p>
-                                <div className="min-h-[20px] px-1 pb-1">
-                                    {formData.certificateNo || '\u00A0'}
-                                </div>
+                                <div className="min-h-[20px]"></div>
                             </div>
                         </div>
                     </div>
