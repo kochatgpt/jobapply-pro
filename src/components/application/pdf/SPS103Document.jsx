@@ -336,10 +336,6 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     <span className="mb-2">ใบอนุญาตทำงาน (WORK PERMIT) เลขที่</span>
                                     <div className="border-b border-dotted border-slate-400 flex-1 px-2 pb-1" style={{ minHeight: '1.2em' }}></div>
                                 </div>
-                                <div className="mt-2 text-[12px] flex">
-                                    <p className="font-semibold">หมายเหตุ</p>
-                                    <p> : กรุณาเลือกประเภทเอกสารประจำตัวสำหรับคนต่างด้าวเพียงหนึ่งอย่างเท่านั้น</p>
-                                </div>
                             </div>
                             <div className="bordor-t"></div>
                             {/* ลายเซ็นนายจ้าง */}
