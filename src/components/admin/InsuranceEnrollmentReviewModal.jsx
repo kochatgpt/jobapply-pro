@@ -14,11 +14,17 @@ export default function InsuranceEnrollmentReviewModal({ applicant, pdfDoc, isOp
     const queryClient = useQueryClient();
     const [generatingPdf, setGeneratingPdf] = useState(false);
 
+    console.log("pdfDoc:", pdfDoc);
+    console.log("pdfDoc?.id:", pdfDoc?.id);
+    console.log("isOpen:", isOpen);
+
     const { data: insuranceData } = useQuery({
         queryKey: ['insurance_enrollment_detail', pdfDoc?.id],
         queryFn: async () => {
             if (!pdfDoc?.id) return null;
+            console.log("Fetching PdfBase with id:", pdfDoc.id);
             const doc = await base44.entities.PdfBase.read(pdfDoc.id);
+            console.log("Fetched doc:", doc);
             return doc;
         },
         enabled: !!pdfDoc?.id && isOpen
