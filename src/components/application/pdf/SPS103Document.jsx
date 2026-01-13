@@ -98,7 +98,7 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                 <div className="flex items-center ml-1">
                                     {Array(13).fill('').map((_, idx) => (
                                         <React.Fragment key={idx}>
-                                            <div className="pb-1 border border-black min-w-[20px] flex items-center justify-center text-xs">
+                                            <div className="pb-1 border border-black min-w-[20px] min-h-[30px] flex items-center justify-center text-xs">
                                                 {formData.ssoCardNumber && formData.ssoCardNumber[idx] ? formData.ssoCardNumber[idx] : ''}
                                             </div>
                                             {(idx === 2 || idx === 4 || idx === 11) && <div className="w-2 border-b border-black mb-0.5"></div>}
