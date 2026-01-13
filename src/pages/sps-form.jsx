@@ -365,12 +365,17 @@ export default function SPSFormPage() {
                                         </div>
 
                                         <div>
-                                            <Label>วันที่ลงนาม</Label>
-                                            <Input
-                                                type="date"
-                                                value={formData.signatureDate}
-                                                onChange={(e) => setFormData({ ...formData, signatureDate: e.target.value })}
-                                            />
+                                            <h3 className="font-semibold text-slate-800 mb-3">ลายเซ็นผู้ประกันตน</h3>
+                                            <div className="space-y-3">
+                                                <div>
+                                                    <Label>วันที่ลงนาม</Label>
+                                                    <Input
+                                                        type="date"
+                                                        value={formData.signatureDate}
+                                                        onChange={(e) => setFormData({ ...formData, signatureDate: e.target.value })}
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div className="border-t pt-4">
