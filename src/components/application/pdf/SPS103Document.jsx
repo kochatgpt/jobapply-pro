@@ -278,7 +278,9 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     <span className="mb-2">เกิดปี พ.ศ.</span>
                                     <div className="flex">
                                         {Array(4).fill('').map((_, idx) => (
-                                            <div key={idx} className="w-4 h-5 border border-black"></div>
+                                            <div key={idx} className="w-4 h-5 border border-black text-center text-xs font-semibold">
+                                                {formData.childBirthYear1 ? formData.childBirthYear1[idx] : '\u00A0'}
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
@@ -286,7 +288,9 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     <span className="mb-2">เกิดปี พ.ศ.</span>
                                     <div className="flex">
                                         {Array(4).fill('').map((_, idx) => (
-                                            <div key={idx} className="w-4 h-5 border border-black"></div>
+                                            <div key={idx} className="w-4 h-5 border border-black text-center text-xs font-semibold">
+                                                {formData.childBirthYear2 ? formData.childBirthYear2[idx] : '\u00A0'}
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
@@ -294,7 +298,9 @@ export default function SPS103Document({ applicant, formData = {} }) {
                                     <span className="mb-2">เกิดปี พ.ศ.</span>
                                     <div className="flex">
                                         {Array(4).fill('').map((_, idx) => (
-                                            <div key={idx} className="w-4 h-5 border border-black"></div>
+                                            <div key={idx} className="w-4 h-5 border border-black text-center text-xs font-semibold">
+                                                {formData.childBirthYear3 ? formData.childBirthYear3[idx] : '\u00A0'}
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
