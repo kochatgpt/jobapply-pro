@@ -269,7 +269,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
             </div>
 
             {/* Section 2: Hospital Selection */}
-            <div className="border-b border-l border-r border-slate-900">
+            <div className="border-l border-r border-slate-900">
                 <div className="border-b border-slate-900 px-2 pb-3 font-bold text-sm">
                     2. การเลือกสถานพยาบาล
                 </div>
