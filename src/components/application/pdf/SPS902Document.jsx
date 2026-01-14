@@ -333,10 +333,10 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                 <PDFCheckbox checked={formData.selectHospital === 'yes'} />
                                 <span>ขอเลือกสถานพยาบาล</span>
                             </label>
-                            <div className="space-y-2 ml-4">
+                            <div className="space-y-2 ml-1">
                                 <div className="flex items-center gap-1">
                                     <span className="text-xs">ลำดับที่ 1 ชื่อ</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block w-32 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-40 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
                                         {formData.hospital1 || '\u00A0'}
                                     </span>
                                     <div className="flex">
@@ -350,7 +350,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                 <div className="text-xs italic ml-0">หากไม่สามารถจัดสถานพยาบาลลำดับที่ 1 ให้ได้ จะจัดสถานพยาบาลลำดับถัดไปให้ตามลำดับ</div>
                                 <div className="flex items-center gap-1">
                                     <span className="text-xs">ลำดับที่ 2 ชื่อ</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block w-32 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-40 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
                                         {formData.hospital2 || '\u00A0'}
                                     </span>
                                     <div className="flex">
@@ -363,7 +363,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                 </div>
                                 <div className="flex items-center gap-1">
                                     <span className="text-xs">ลำดับที่ 3 ชื่อ</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block w-32 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-40 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
                                         {formData.hospital3 || '\u00A0'}
                                     </span>
                                     <div className="flex">
