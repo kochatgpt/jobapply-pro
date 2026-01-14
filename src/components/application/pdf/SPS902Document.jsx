@@ -406,7 +406,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             <span>ผู้ประกันตน/ ผู้มีสิทธิ</span>
                         </div>
                         <p className="mb-2 text-center">(<span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 ${applicant?.full_name}`} style={{ verticalAlign: 'baseline', ...(!applicant?.full_name && { minHeight: '1.2em' }) }}>{applicant?.full_name || '\u00A0'}</span>)</p>
-                        <div className="flex items-center gap-1 text-xs">
+                        <div className="flex items-center gap-1 text-xs mb-0.5">
                             <span>ลงวันที่</span>
                             <span className={`border-b border-dotted border-slate-400 inline-block w-8 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
                             <span>เดือน</span>
