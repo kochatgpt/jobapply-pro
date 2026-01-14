@@ -277,7 +277,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                 <div className="grid grid-cols-5 gap-0 divide-x divide-slate-900">
                     {/* Left Column - 40% */}
                     <div className="col-span-2 p-2">
-                        <div className="space-y-1 text-xs">
+                        <div className="text-xs">
                             <label className="flex items-start gap-2">
                                 <PDFCheckbox checked={formData.hospitalSelection === 'not_selected'} />
                                 <span className="mb-1">ยังไม่ได้เลือกสถานพยาบาล</span>
