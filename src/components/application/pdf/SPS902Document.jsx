@@ -130,29 +130,28 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             </div>
 
                             {/* Account and Branch */}
-                            <div className="grid grid-cols-2 gap-2 mb-2">
-                                <div>
-                                    <div className="text-xs mb-0.5">เลขที่บัญชี</div>
-                                    <div className="flex gap-0.5">
-                                        {(formData.accountNumber || '').split('').concat(Array(10).fill('')).slice(0, 10).map((digit, idx) => (
-                                            <div key={idx} className="w-3.5 h-5 border border-slate-400 flex items-center justify-center text-xs">
-                                                {digit}
+                            <div className="mb-2">
+                                <div className="text-xs mb-0.5">เลขที่บัญชี</div>
+                                <div className="flex items-center ml-2 mt-2">
+                                    {Array(10).fill('').map((_, idx) => (
+                                        <React.Fragment key={idx}>
+                                            <div className="pb-1 border border-black text-center text-xs font-semibold min-w-[20px] min-h-[20px]">
+                                                {formData.accountNumber && formData.accountNumber[idx] ? formData.accountNumber[idx] : '\u00A0'}
                                             </div>
-                                        ))}
-                                    </div>
+                                            {(idx === 2 || idx === 9) && <div className="w-2 border-b border-black mb-0.5"></div>}
+                                        </React.Fragment>
+                                    ))}
                                 </div>
                             </div>
                             
                             <div>
-                                <div>
-                                    <div className="text-xs mb-0.5">ลำดับที่สาขา</div>
-                                    <div className="flex gap-0.5">
-                                        {(formData.branchNumber || '').split('').concat(Array(4).fill('')).slice(0, 4).map((digit, idx) => (
-                                            <div key={idx} className="w-4 h-5 border border-slate-400 flex items-center justify-center text-xs">
-                                                {digit}
-                                            </div>
-                                        ))}
-                                    </div>
+                                <div className="text-xs mb-0.5">ลำดับที่สาขา</div>
+                                <div className="flex ml-2 mt-2">
+                                    {Array(5).fill('').map((_, idx) => (
+                                        <div key={idx} className="pb-1 border border-black text-center text-xs font-semibold min-w-[20px] min-h-[20px]">
+                                            {formData.branchOrder && formData.branchOrder[idx] ? formData.branchOrder[idx] : '\u00A0'}
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 
