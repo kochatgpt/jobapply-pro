@@ -26,7 +26,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                 />
                 <h1 className="text-[18px] font-bold">แบบเลือกสถานพยาบาลในการรับบริการทางการแพทย์</h1>
                 <div className="text-right text-xs space-y-0.5">
-                    <div className="font-bold mt-1">สปส. 9-02</div>
+                    <div className="font-bold mt-1 mb-1">สปส. 9-02</div>
                     <div className="border border-black rounded-lg p-2 text-start w-[200px] ml-auto">
                         {/* เลขที่รับ */}
                         <div className="flex items-end gap-2">
