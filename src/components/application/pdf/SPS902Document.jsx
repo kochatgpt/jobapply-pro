@@ -399,7 +399,8 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     <div className="flex justify-end items-start pt-4">
                         <div className="flex gap-4">
                             <div className="text-center">
-                                <p className="text-xs border-b border-dotted border-slate-400 w-48 mb-1">ลงชื่อ</p>
+                                <p className="text-xs">ลงชื่อ</p>
+                                <div className="border-b border-dotted border-slate-400 w-48 mb-1"></div>
                                 <p className="text-xs">(ผู้ประกันตน/ ผู้มีสิทธิ)</p>
                             </div>
                             <div className="text-center">
