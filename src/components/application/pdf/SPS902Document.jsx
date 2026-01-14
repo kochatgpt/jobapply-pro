@@ -116,7 +116,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                 <div className="grid grid-cols-5 gap-0 divide-x divide-slate-900">
                     {/* Left Column - Section 33 */}
                     <div className="col-span-2 border-slate-900">
-                        <div className="text-xs font-bold px-3 pb-2 mr-10 pt-1 border-b ิborder-r border-slate-900">
+                        <div className="text-xs font-bold px-3 pb-2 mr-28 pt-1 border-b ิborder-r border-slate-900">
                             สำหรับผู้ประกันตนมาตรา 33
                         </div>
                         <div className="p-2">
