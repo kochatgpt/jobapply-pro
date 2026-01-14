@@ -139,7 +139,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                                 <div className="pb-1 border border-black text-center text-xs font-semibold min-w-[20px] min-h-[20px]">
                                                     {formData.accountNumber && formData.accountNumber[idx] ? formData.accountNumber[idx] : '\u00A0'}
                                                 </div>
-                                                {(idx === 2 || idx === 9) && <div className="w-2 border-b border-black mb-0.5"></div>}
+                                                {(idx === 1 || idx === 8) && <div className="w-2 border-b border-black mb-0.5"></div>}
                                             </React.Fragment>
                                         ))}
                                     </div>
