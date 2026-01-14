@@ -387,10 +387,39 @@ export default function SPS902Document({ applicant, formData = {} }) {
                 </div>
             </div>
 
-            {/* Section 3: Staff Remarks */}
+            {/* Section 3: Declaration */}
+            <div className="border border-slate-900 mb-4">
+                <div className="p-3 text-xs space-y-2">
+                    <div>
+                        <span className="mb-2">ขณะที่ข้าพเจ้าเลือกหรือเปลี่ยนสถานพยาบาลใหม่ ข้าพเจ้าไม่ได้นอนพักรักษาตัวเป็นผู้ป่วยใน ณ สถานพยาบาลใดๆ</span>
+                    </div>
+                    <div>
+                        <span>และขอรับรองว่าข้อความข้างต้นเป็นจริงทุกประการ</span>
+                    </div>
+                    <div className="flex justify-between items-end pt-4">
+                        <div className="text-center">
+                            <div className="border-b border-dotted border-slate-400 w-40 mb-1"></div>
+                            <p className="text-xs">ลงชื่อ</p>
+                            <p className="text-xs">(ผู้ประกันตน/ ผู้มีสิทธิ)</p>
+                        </div>
+                        <div className="text-center">
+                            <p className="text-xs mb-1">ลงวันที่</p>
+                            <div className="flex items-center gap-1">
+                                <span className={`border-b border-dotted border-slate-400 inline-block w-12 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                <span className="text-xs">เดือน</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block w-32 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                <span className="text-xs">พ.ศ.</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block w-12 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Section 4: Staff Remarks */}
             <div className="border border-slate-900">
                 <div className="border-b border-slate-900 p-2 bg-slate-100 font-bold text-sm">
-                    3. สำหรับเจ้าหน้าที่
+                    4. สำหรับเจ้าหน้าที่
                 </div>
                 
                 <div className="p-3">
