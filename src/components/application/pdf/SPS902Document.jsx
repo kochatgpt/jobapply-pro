@@ -389,9 +389,9 @@ export default function SPS902Document({ applicant, formData = {} }) {
 
             {/* Section 3: Declaration */}
             <div className="border border-slate-900">
-                <div className="px-3 py-1 text-xs space-y-1">
+                <div className="px-3 text-xs space-y-1">
                     <div>
-                        <span className="mb-2">ขณะที่ข้าพเจ้าเลือกหรือเปลี่ยนสถานพยาบาลใหม่ ข้าพเจ้าไม่ได้นอนพักรักษาตัวเป็นผู้ป่วยใน ณ สถานพยาบาลใดๆ</span>
+                        <span>ขณะที่ข้าพเจ้าเลือกหรือเปลี่ยนสถานพยาบาลใหม่ ข้าพเจ้าไม่ได้นอนพักรักษาตัวเป็นผู้ป่วยใน ณ สถานพยาบาลใดๆ</span>
                     </div>
                     <div>
                         <span>และขอรับรองว่าข้อความข้างต้นเป็นจริงทุกประการ</span>
