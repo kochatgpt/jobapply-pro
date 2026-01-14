@@ -170,7 +170,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                     <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
                                 </div>
                                 <div>
-                                    <span>ได้รับค่าจ้างงวดสุดท้าย เมื่อเดือน</span>
+                                    <span>ได้รับค่าจ้างงวดสุดท้ายเมื่อเดือน</span>
                                     <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
                                     <span>พ.ศ.</span>
                                     <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
