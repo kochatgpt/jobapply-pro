@@ -115,60 +115,63 @@ export default function SPS902Document({ applicant, formData = {} }) {
 
                 <div className="grid grid-cols-5 gap-0 divide-x divide-slate-900">
                     {/* Left Column - Section 33 */}
-                    <div className="col-span-2 p-3 border-r border-slate-900">
-                        <div className="text-xs font-bold mb-2 pb-2 border-b border-slate-900">
+                    <div className="col-span-2 border-slate-900">
+                        <div className="text-xs font-bold mb-1 pb-2 mx-3 border-b border-slate-900">
                             สำหรับผู้ประกันตนมาตรา 33
                         </div>
+                        <div className="p-3">
 
-                        {/* Current Employer */}
-                        <div className="mb-2">
-                            <div className="text-xs mb-1">ปัจจุบันทำงานกับสถานประกอบการชื่อ</div>
-                            <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 mb-1 ${formData.employerName}`} style={{ verticalAlign: 'baseline', ...(!formData.employerName && { minHeight: '1.2em' }) }}>
-                                {formData.employerName || '\u00A0'}
-                            </div>
-                        </div>
-
-                        {/* Account and Branch */}
-                        <div className="grid grid-cols-2 gap-2 mb-2">
-                            <div>
-                                <div className="text-xs mb-0.5">เลขที่บัญชี</div>
-                                <div className="flex gap-0.5">
-                                    {(formData.accountNumber || '').split('').concat(Array(10).fill('')).slice(0, 10).map((digit, idx) => (
-                                        <div key={idx} className="w-3.5 h-5 border border-slate-400 flex items-center justify-center text-xs">
-                                            {digit}
-                                        </div>
-                                    ))}
+                            {/* Current Employer */}
+                            <div className="mb-2">
+                                <div className="text-xs mb-1">ปัจจุบันทำงานกับสถานประกอบการชื่อ</div>
+                                <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 mb-1 ${formData.employerName}`} style={{ verticalAlign: 'baseline', ...(!formData.employerName && { minHeight: '1.2em' }) }}>
+                                    {formData.employerName || '\u00A0'}
                                 </div>
                             </div>
-                            <div>
-                                <div className="text-xs mb-0.5">ลำดับที่สาขา</div>
-                                <div className="flex gap-0.5">
-                                    {(formData.branchNumber || '').split('').concat(Array(4).fill('')).slice(0, 4).map((digit, idx) => (
-                                        <div key={idx} className="w-4 h-5 border border-slate-400 flex items-center justify-center text-xs">
-                                            {digit}
-                                        </div>
-                                    ))}
+
+                            {/* Account and Branch */}
+                            <div className="grid grid-cols-2 gap-2 mb-2">
+                                <div>
+                                    <div className="text-xs mb-0.5">เลขที่บัญชี</div>
+                                    <div className="flex gap-0.5">
+                                        {(formData.accountNumber || '').split('').concat(Array(10).fill('')).slice(0, 10).map((digit, idx) => (
+                                            <div key={idx} className="w-3.5 h-5 border border-slate-400 flex items-center justify-center text-xs">
+                                                {digit}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="text-xs mb-0.5">ลำดับที่สาขา</div>
+                                    <div className="flex gap-0.5">
+                                        {(formData.branchNumber || '').split('').concat(Array(4).fill('')).slice(0, 4).map((digit, idx) => (
+                                            <div key={idx} className="w-4 h-5 border border-slate-400 flex items-center justify-center text-xs">
+                                                {digit}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Start Date and Last Pay */}
+                            <div className="mb-2 text-xs">
+                                <div className="mb-1">
+                                    <span>เข้างานเมื่อวันที่</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>........</span>
+                                    <span>เดือน</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.............</span>
+                                    <span>พ.ศ.</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.........</span>
+                                </div>
+                                <div>
+                                    <span>ได้รับค่าจ้างงวดสุดท้าย เมื่อเดือน</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>............</span>
+                                    <span>พ.ศ.</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.........</span>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Start Date and Last Pay */}
-                        <div className="mb-2 text-xs">
-                            <div className="mb-1">
-                                <span>เข้างานเมื่อวันที่</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>........</span>
-                                <span>เดือน</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.............</span>
-                                <span>พ.ศ.</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.........</span>
-                            </div>
-                            <div>
-                                <span>ได้รับค่าจ้างงวดสุดท้าย เมื่อเดือน</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>............</span>
-                                <span>พ.ศ.</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.........</span>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Right Column - Section 39 and 38, 41 */}
