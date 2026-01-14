@@ -268,7 +268,109 @@ export default function SPS902Document({ applicant, formData = {} }) {
                 </div>
             </div>
 
-            {/* Section 2: Staff Remarks */}
+            {/* Section 2: Hospital Selection */}
+            <div className="border border-slate-900 mb-4">
+                <div className="border-b border-slate-900 px-2 py-1 bg-slate-100 font-bold text-sm">
+                    2. การเลือกสถานพยาบาล
+                </div>
+
+                <div className="grid grid-cols-5 gap-0 divide-x divide-slate-900">
+                    {/* Left Column - 40% */}
+                    <div className="col-span-2 p-2">
+                        <div className="space-y-1 text-xs">
+                            <label className="flex items-start gap-2">
+                                <PDFCheckbox checked={formData.hospitalSelection === 'not_selected'} />
+                                <span>ยังไม่ได้เลือกสถานพยาบาล</span>
+                            </label>
+                            <label className="flex items-start gap-2">
+                                <PDFCheckbox checked={formData.hospitalSelection === 'use_old'} />
+                                <span>ขอใช้สถานพยาบาลเดิม (กรณี มาตรา 38 และ 41)</span>
+                            </label>
+                            <label className="flex items-start gap-2">
+                                <PDFCheckbox checked={formData.hospitalSelection === 'change'} />
+                                <span>ขอเปลี่ยนสถานพยาบาล (โปรดระบุเหตุผล)</span>
+                            </label>
+                        </div>
+
+                        {formData.hospitalSelection === 'change' && (
+                            <div className="mt-2 ml-4 space-y-1 text-xs">
+                                <div className="font-bold mb-1">เหตุผล</div>
+                                <label className="flex items-start gap-2">
+                                    <PDFCheckbox checked={formData.changeReason === 'annual'} />
+                                    <span>เปลี่ยนสถานพยาบาลประจำปี</span>
+                                </label>
+                                <label className="flex items-start gap-2">
+                                    <PDFCheckbox checked={formData.changeReason === 'during_year'} />
+                                    <span>เปลี่ยนสถานพยาบาลระหว่างปี</span>
+                                </label>
+                                <div className="ml-4 space-y-1">
+                                    <label className="flex items-start gap-2">
+                                        <PDFCheckbox checked={formData.changeReasonDetail === 'address'} />
+                                        <span>ย้ายที่อยู่</span>
+                                    </label>
+                                    <label className="flex items-start gap-2">
+                                        <PDFCheckbox checked={formData.changeReasonDetail === 'workplace'} />
+                                        <span>เปลี่ยนสถานที่ทำงาน</span>
+                                    </label>
+                                    <label className="flex items-start gap-2">
+                                        <PDFCheckbox checked={formData.changeReasonDetail === 'other'} />
+                                        <span>อื่นๆ (ระบุ)</span>
+                                        <span className={`border-b border-dotted border-slate-400 flex-1 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
+                                            {formData.otherReason || '\u00A0'}
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Right Column - 60% */}
+                    <div className="col-span-3 p-2">
+                        {/* Hospital Selection */}
+                        <div className="mb-3 text-xs">
+                            <div className="font-bold mb-2">ข้าพเจ้า (ผู้ประกันตน/คนพิการซึ่งเป็นผู้ประกันตน/ผู้มีสิทธิ)</div>
+                            <label className="flex items-start gap-2 mb-2">
+                                <PDFCheckbox checked={formData.selectHospital === 'yes'} />
+                                <span>ขอเลือกสถานพยาบาล</span>
+                            </label>
+
+                            {formData.selectHospital === 'yes' && (
+                                <div className="space-y-2 ml-4">
+                                    <div>
+                                        <span className="text-xs">ลำดับที่ 1 ชื่อ</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
+                                            {formData.hospital1 || '\u00A0'}
+                                        </span>
+                                    </div>
+                                    <div className="text-xs italic">หากไม่สามารถจัดสถานพยาบาลลำดับที่ 1 ให้ได้ จะจัดสถานพยาบาลลำดับถัดไปให้ตามลำดับ</div>
+                                    <div>
+                                        <span className="text-xs">ลำดับที่ 2 ชื่อ</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
+                                            {formData.hospital2 || '\u00A0'}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span className="text-xs">ลำดับที่ 3 ชื่อ</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
+                                            {formData.hospital3 || '\u00A0'}
+                                        </span>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Disabled Person Section */}
+                        <div className="mt-3 pt-3 border-t border-slate-300 text-xs">
+                            <label className="flex items-start gap-2">
+                                <PDFCheckbox checked={formData.disabledPerson === 'yes'} />
+                                <span>ข้าพเจ้าคนพิการซึ่งเป็นผู้ประกันตน ขอรับบริการสาธารณสุขจาก สำนักงานหลักประกันสุขภาพแห่งชาติ (สปสช.)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Section 3: Staff Remarks */}
             <div className="border border-slate-900">
                 <div className="border-b border-slate-900 p-2 bg-slate-100 font-bold text-sm">
                     สำหรับเจ้าหน้าที่
