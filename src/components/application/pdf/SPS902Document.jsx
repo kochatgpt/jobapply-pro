@@ -328,10 +328,9 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     <div className="col-span-3 p-2">
                         {/* Hospital Selection */}
                         <div className="mb-3 text-xs">
-                            <div className="font-bold mb-2">ข้าพเจ้า (ผู้ประกันตน/คนพิการซึ่งเป็นผู้ประกันตน/ผู้มีสิทธิ)</div>
                             <label className="flex items-start gap-2 mb-2">
                                 <PDFCheckbox checked={formData.selectHospital === 'yes'} />
-                                <span>ขอเลือกสถานพยาบาล</span>
+                                <span>ข้าพเจ้า (ผู้ประกันตน/คนพิการซึ่งเป็นผู้ประกันตน/ผู้มีสิทธิ)ขอเลือกสถานพยาบาล</span>
                             </label>
                             <div className="space-y-2 ml-1">
                                 <div className="flex items-center gap-1">
