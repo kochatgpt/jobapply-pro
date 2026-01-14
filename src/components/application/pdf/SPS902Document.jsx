@@ -313,6 +313,9 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                     <label className="flex items-start gap-2">
                                         <PDFCheckbox checked={formData.changeReasonDetail === 'other'} />
                                         <span className="mb-0.5">อื่นๆ (ระบุ)</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block w-20 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
+                                            {'' || '\u00A0'}
+                                        </span>
                                     </label>
                                     {formData.changeReasonDetail === 'other' && (
                                         <span className={`border-b border-dotted border-slate-400 inline-block w-48 text-center px-2 pb-1 ml-6`} style={{ minHeight: '1.2em' }}>
