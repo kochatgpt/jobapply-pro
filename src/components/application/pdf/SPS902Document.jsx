@@ -389,20 +389,20 @@ export default function SPS902Document({ applicant, formData = {} }) {
 
             {/* Section 3: Declaration */}
             <div className="border border-slate-900">
-                <div className="p-3 text-xs space-y-2">
+                <div className="px-3 py-1 text-xs space-y-1">
                     <div>
                         <span className="mb-2">ขณะที่ข้าพเจ้าเลือกหรือเปลี่ยนสถานพยาบาลใหม่ ข้าพเจ้าไม่ได้นอนพักรักษาตัวเป็นผู้ป่วยใน ณ สถานพยาบาลใดๆ</span>
                     </div>
                     <div>
                         <span>และขอรับรองว่าข้อความข้างต้นเป็นจริงทุกประการ</span>
                     </div>
-                    <div className="grid justify-end items-end pt-4 gap-3">
+                    <div className="grid justify-end items-end pt-3 gap-3">
                         <div className="flex items-baseline gap-2 text-xs">
                             <span>ลงชื่อ</span>
                             <div className="border-b border-dotted border-slate-400 w-40 inline-block pb-0.5"></div>
                             <span>ผู้ประกันตน/ ผู้มีสิทธิ</span>
                         </div>
-                        <p className="mb-2 text-center">(<span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 ${applicant?.full_name}`} style={{ verticalAlign: 'baseline', ...(!applicant?.full_name && { minHeight: '1.2em' }) }}>{applicant?.full_name || '\u00A0'}</span>)</p>
+                        <p className="mb-1 text-center">(<span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 ${applicant?.full_name}`} style={{ verticalAlign: 'baseline', ...(!applicant?.full_name && { minHeight: '1.2em' }) }}>{applicant?.full_name || '\u00A0'}</span>)</p>
                         <div className="flex items-center gap-1 text-xs">
                             <span>ลงวันที่</span>
                             <span className={`border-b border-dotted border-slate-400 inline-block w-8 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
