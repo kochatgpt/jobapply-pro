@@ -123,7 +123,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
 
                             {/* Current Employer */}
                             <div>
-                                <div className="text-xs mb-1">ปัจจุบันทำงานกับสถานประกอบการชื่อ</div>
+                                <div className="text-xs">ปัจจุบันทำงานกับสถานประกอบการชื่อ</div>
                                 <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 mb-1 ${formData.employerName}`} style={{ verticalAlign: 'baseline', ...(!formData.employerName && { minHeight: '1.2em' }) }}>
                                     {formData.employerName || '\u00A0'}
                                 </div>
@@ -144,6 +144,9 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                         ))}
                                     </div>
                                 </div>
+                            </div>
+
+                            <div>
                                 <div>
                                     <div className="text-xs mb-0.5">ลำดับที่สาขา</div>
                                     <div className="flex ml-2 mt-2">
