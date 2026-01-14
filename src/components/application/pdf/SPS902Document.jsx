@@ -75,11 +75,11 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             <PDFCheckbox checked={personalData.prefix === 'นาง'} checkType={'check'}/>
                             <span className="text-xs">นาง</span>
                         </label>
-                        <span className="flex-1 border-b border-dotted border-slate-400 mx-1 min-h-[18px]">
+                        <span className={`border-b border-dotted border-slate-400 inline-block flex-1 text-center px-2 pb-1 mx-1 ${personalData.first_name}`} style={{ verticalAlign: 'baseline', ...(!personalData.first_name && { minHeight: '1.2em' }) }}>
                             {personalData.first_name || '\u00A0'}
                         </span>
                         <span>ชื่อสกุล</span>
-                        <span className="flex-1 border-b border-dotted border-slate-400 ml-1 min-h-[18px]">
+                        <span className={`border-b border-dotted border-slate-400 inline-block flex-1 text-center px-2 pb-1 ml-1 ${personalData.last_name}`} style={{ verticalAlign: 'baseline', ...(!personalData.last_name && { minHeight: '1.2em' }) }}>
                             {personalData.last_name || '\u00A0'}
                         </span>
                     </div>
@@ -95,16 +95,16 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             ))}
                         </div>
                         <span className="ml-2">เกิด วันที่</span>
-                        <span className="w-8 border-b border-dotted border-slate-400">
-                            {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH').split('/')[0] : ''}
+                        <span className={`border-b border-dotted border-slate-400 inline-block w-8 text-center px-2 pb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                            {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH').split('/')[0] : '\u00A0'}
                         </span>
                         <span>เดือน</span>
-                        <span className="w-12 border-b border-dotted border-slate-400">
-                            {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH').split('/')[1] : ''}
+                        <span className={`border-b border-dotted border-slate-400 inline-block w-12 text-center px-2 pb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                            {personalData.dob ? new Date(personalData.dob).toLocaleDateString('th-TH').split('/')[1] : '\u00A0'}
                         </span>
                         <span>พ.ศ.</span>
-                        <span className="w-10 border-b border-dotted border-slate-400">
-                            {personalData.dob ? (new Date(personalData.dob).getFullYear() + 543) : ''}
+                        <span className={`border-b border-dotted border-slate-400 inline-block w-10 text-center px-2 pb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                            {personalData.dob ? (new Date(personalData.dob).getFullYear() + 543) : '\u00A0'}
                         </span>
                     </div>
                     <div className="text-xs italic mt-1">(สำหรับคนต่างด้าวให้กรอกเลขที่บัตรประกันสังคม)</div>
@@ -120,7 +120,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                         {/* Current Employer */}
                         <div className="mb-2">
                             <div className="text-xs mb-1">ปัจจุบันทำงานกับสถานประกอบการชื่อ</div>
-                            <div className="border-b border-dotted border-slate-400 min-h-[18px] mb-1 px-1">
+                            <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 mb-1 ${formData.employerName}`} style={{ verticalAlign: 'baseline', ...(!formData.employerName && { minHeight: '1.2em' }) }}>
                                 {formData.employerName || '\u00A0'}
                             </div>
                         </div>
@@ -153,17 +153,17 @@ export default function SPS902Document({ applicant, formData = {} }) {
                         <div className="grid grid-cols-2 gap-2 mb-2 text-xs">
                             <div>
                                 <span>เข้างานเมื่อวันที่</span>
-                                <span className="border-b border-dotted border-slate-400 mx-1">........</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>........</span>
                                 <span>เดือน</span>
-                                <span className="border-b border-dotted border-slate-400 mx-1">.............</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.............</span>
                                 <span>พ.ศ.</span>
-                                <span className="border-b border-dotted border-slate-400 mx-1">.........</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.........</span>
                             </div>
                             <div>
                                 <span>ได้รับค่าจ้างงวดสุดท้าย เมื่อเดือน</span>
-                                <span className="border-b border-dotted border-slate-400 mx-1">............</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>............</span>
                                 <span>พ.ศ.</span>
-                                <span className="border-b border-dotted border-slate-400 mx-1">.........</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.........</span>
                             </div>
                         </div>
 
@@ -173,43 +173,43 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             <div className="grid grid-cols-3 gap-1 mb-1">
                                 <div>
                                     <span className="text-xs">เลขที่</span>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[16px]">{personalData.current_address?.number || '\u00A0'}</div>
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 ${personalData.current_address?.number}`} style={{ verticalAlign: 'baseline', ...(!personalData.current_address?.number && { minHeight: '1.2em' }) }}>{personalData.current_address?.number || '\u00A0'}</div>
                                 </div>
                                 <div>
                                     <span className="text-xs">หมู่ที่</span>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[16px]">{personalData.current_address?.moo || '\u00A0'}</div>
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 ${personalData.current_address?.moo}`} style={{ verticalAlign: 'baseline', ...(!personalData.current_address?.moo && { minHeight: '1.2em' }) }}>{personalData.current_address?.moo || '\u00A0'}</div>
                                 </div>
                                 <div>
                                     <span className="text-xs">ตรอก/ซอย</span>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[16px]">{personalData.current_address?.road || '\u00A0'}</div>
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 ${personalData.current_address?.road}`} style={{ verticalAlign: 'baseline', ...(!personalData.current_address?.road && { minHeight: '1.2em' }) }}>{personalData.current_address?.road || '\u00A0'}</div>
                                 </div>
                             </div>
                             <div className="grid grid-cols-3 gap-1 mb-1">
                                 <div>
                                     <span className="text-xs">ถนน</span>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[16px]"></div>
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</div>
                                 </div>
                                 <div>
                                     <span className="text-xs">แขวง/ตำบล</span>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[16px]">{personalData.current_address?.subdistrict || '\u00A0'}</div>
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 ${personalData.current_address?.subdistrict}`} style={{ verticalAlign: 'baseline', ...(!personalData.current_address?.subdistrict && { minHeight: '1.2em' }) }}>{personalData.current_address?.subdistrict || '\u00A0'}</div>
                                 </div>
                                 <div>
                                     <span className="text-xs">เขต/อำเภอ</span>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[16px]">{personalData.current_address?.district || '\u00A0'}</div>
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 ${personalData.current_address?.district}`} style={{ verticalAlign: 'baseline', ...(!personalData.current_address?.district && { minHeight: '1.2em' }) }}>{personalData.current_address?.district || '\u00A0'}</div>
                                 </div>
                             </div>
                             <div className="grid grid-cols-3 gap-1">
                                 <div>
                                     <span className="text-xs">จังหวัด</span>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[16px]">{personalData.current_address?.province || '\u00A0'}</div>
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 ${personalData.current_address?.province}`} style={{ verticalAlign: 'baseline', ...(!personalData.current_address?.province && { minHeight: '1.2em' }) }}>{personalData.current_address?.province || '\u00A0'}</div>
                                 </div>
                                 <div>
                                     <span className="text-xs">รหัสไปรษณีย์</span>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[16px]">{personalData.current_address?.zipcode || '\u00A0'}</div>
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 ${personalData.current_address?.zipcode}`} style={{ verticalAlign: 'baseline', ...(!personalData.current_address?.zipcode && { minHeight: '1.2em' }) }}>{personalData.current_address?.zipcode || '\u00A0'}</div>
                                 </div>
                                 <div>
                                     <span className="text-xs">โทรศัพท์มือถือ</span>
-                                    <div className="border-b border-dotted border-slate-400 min-h-[16px]">{personalData.mobile_phone || '\u00A0'}</div>
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 ${personalData.mobile_phone}`} style={{ verticalAlign: 'baseline', ...(!personalData.mobile_phone && { minHeight: '1.2em' }) }}>{personalData.mobile_phone || '\u00A0'}</div>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +217,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                         {/* Last Employer */}
                         <div className="mb-2">
                             <div className="text-xs mb-1">ชื่อสถานประกอบการสุดท้ายที่ทำงาน</div>
-                            <div className="border-b border-dotted border-slate-400 min-h-[18px] mb-1 px-1"></div>
+                            <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 mb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</div>
                         </div>
 
                         {/* Last Account and Branch */}
@@ -245,11 +245,11 @@ export default function SPS902Document({ applicant, formData = {} }) {
                         {/* End Date */}
                         <div className="text-xs">
                             <span>สิ้นสภาพความเป็นลูกจ้าง เมื่อวันที่</span>
-                            <span className="border-b border-dotted border-slate-400 mx-1">........</span>
+                            <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>........</span>
                             <span>เดือน</span>
-                            <span className="border-b border-dotted border-slate-400 mx-1">............</span>
+                            <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>............</span>
                             <span>พ.ศ.</span>
-                            <span className="border-b border-dotted border-slate-400 mx-1">.........</span>
+                            <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.........</span>
                         </div>
                     </div>
 
@@ -263,11 +263,11 @@ export default function SPS902Document({ applicant, formData = {} }) {
                         <div className="mb-2">
                             <div className="flex gap-2 items-center text-xs mb-1">
                                 <span>ที่อยู่ปัจจุบันสถาน</span>
-                                <span className="border-b border-dotted border-slate-400 flex-1">...........</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block flex-1 text-center px-2 pb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>...........</span>
                                 <span>หน่วยที่</span>
-                                <span className="border-b border-dotted border-slate-400 w-12">.........</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block w-12 text-center px-2 pb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.........</span>
                                 <span>ทรสัป/ขสป</span>
-                                <span className="border-b border-dotted border-slate-400 w-12">.........</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block w-12 text-center px-2 pb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>.........</span>
                             </div>
                         </div>
 
@@ -360,7 +360,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                 </div>
                                 <div className="text-center text-xs">
                                     <div className="text-xs">ลงวันที่</div>
-                                    <div className="border-b border-dotted border-slate-400 w-20 mx-auto">...........</div>
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-20 text-center px-2 pb-1 mx-auto`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>...........</div>
                                     <div className="text-xs mt-1">เดือน........... พ.ศ.........</div>
                                 </div>
                             </div>
@@ -386,7 +386,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             <PDFCheckbox checked={formData.staffDecision === 'disapprove'} />
                             <span>ไม่เห็นสมควรจัดสถานพยาบาล ระบุเหตุผล</span>
                         </label>
-                        <div className="border-b border-dotted border-slate-400 min-h-[36px] ml-5"></div>
+                        <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 ml-5`} style={{ verticalAlign: 'baseline', minHeight: '2.5em' }}>{'\u00A0'}</div>
                     </div>
 
                     <div className="flex justify-between items-end mt-3">
@@ -397,7 +397,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                         </div>
                         <div className="text-center text-xs">
                             <div className="text-xs">ลงวันที่</div>
-                            <div className="border-b border-dotted border-slate-400 w-20 mx-auto">...........</div>
+                            <div className={`border-b border-dotted border-slate-400 inline-block w-20 text-center px-2 pb-1 mx-auto`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>...........</div>
                             <div className="text-xs mt-1">เดือน........... พ.ศ.........</div>
                         </div>
                     </div>
