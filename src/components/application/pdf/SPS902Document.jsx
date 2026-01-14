@@ -421,31 +421,51 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     4. สำหรับเจ้าหน้าที่
                 </div>
                 
-                <div className="p-3">
-                    <div className="text-xs font-bold mb-2">ความเห็นเจ้าหน้าที่</div>
-                    <div className="space-y-1 mb-3">
-                        <label className="flex items-center gap-2 text-xs">
-                            <PDFCheckbox checked={formData.staffDecision === 'approve'} />
-                            <span>เห็นสมควรจัดสถานพยาบาล</span>
-                        </label>
-                        <label className="flex items-center gap-2 text-xs">
-                            <PDFCheckbox checked={formData.staffDecision === 'disapprove'} />
-                            <span>ไม่เห็นสมควรจัดสถานพยาบาล ระบุเหตุผล</span>
-                        </label>
-                        <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 ml-5`} style={{ verticalAlign: 'baseline', minHeight: '2.5em' }}>{'\u00A0'}</div>
+                <div className="p-3 space-y-3">
+                    <div>
+                        <div className="text-xs font-bold mb-2">ความเห็นเจ้าหน้าที่</div>
+                        <div className="space-y-1 ml-2">
+                            <label className="flex items-center gap-2 text-xs">
+                                <PDFCheckbox checked={formData.staffDecision === 'approve'} />
+                                <span>เห็นสมควรจัดสถานพยาบาล</span>
+                            </label>
+                            <label className="flex items-start gap-2 text-xs">
+                                <PDFCheckbox checked={formData.staffDecision === 'disapprove'} />
+                                <span>ไม่เห็นสมควรจัดสถานพยาบาล ระบุเหตุผล</span>
+                            </label>
+                        </div>
                     </div>
 
-                    <div className="flex justify-between items-end mt-3">
-                        <div className="text-center w-32">
-                            <div className="border-b border-slate-400 min-h-[40px] mb-1"></div>
-                            <p className="text-xs">ลงชื่อ</p>
-                            <p className="text-xs">(เจ้าหน้าที่)</p>
+                    <div className="space-y-1">
+                        <div className={`border-b border-dotted border-slate-400 w-full text-center px-2 pb-1 min-h-[1.5em] text-xs`}>{'\u00A0'}</div>
+                        <div className={`border-b border-dotted border-slate-400 w-full text-center px-2 pb-1 min-h-[1.5em] text-xs`}>{'\u00A0'}</div>
+                    </div>
+
+                    <div className="flex justify-between items-end gap-4 pt-2">
+                        <div className="flex items-baseline gap-2 text-xs">
+                            <span>ลงชื่อ</span>
+                            <div className="border-b border-dotted border-slate-400 w-40 inline-block pb-0.5"></div>
                         </div>
                         <div className="text-center text-xs">
-                            <div className="text-xs">ลงวันที่</div>
-                            <div className={`border-b border-dotted border-slate-400 inline-block w-20 text-center px-2 pb-1 mx-auto`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>...........</div>
-                            <div className="text-xs mt-1">เดือน........... พ.ศ.........</div>
+                            <div className="flex items-center gap-1">
+                                <span>ลงวันที่</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block w-8 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                <span>เดือน</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block w-20 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                <span>พ.ศ.</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block w-8 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
+                            </div>
                         </div>
+                    </div>
+
+                    <div className="text-center text-xs">
+                        <p>(</p>
+                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
+                        <p>)</p>
+                    </div>
+
+                    <div className="text-center text-xs">
+                        <span>เจ้าหน้าที่</span>
                     </div>
                 </div>
             </div>
