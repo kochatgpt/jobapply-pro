@@ -113,9 +113,9 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     <div className="text-xs italic mt-1">(สำหรับคนต่างด้าวให้กรอกเลขที่บัตรประกันสังคม)</div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-0 divide-x divide-slate-900">
+                <div className="grid grid-cols-3 gap-0 divide-x divide-slate-900">
                     {/* Left Column - Section 33 */}
-                    <div className="p-3 border-r border-slate-900">
+                    <div className="col-span-1 p-3 border-r border-slate-900">
                         <div className="text-xs font-bold mb-2 pb-2 border-b border-slate-900">
                             สำหรับผู้ประกันตนมาตรา 33
                         </div>
@@ -257,7 +257,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     </div>
 
                     {/* Right Column - Section 39 and 38, 41 */}
-                    <div className="p-3">
+                    <div className="col-span-2 p-3">
                         <div className="text-xs font-bold mb-2 pb-2 border-b border-slate-900">
                             สำหรับผู้ประกันตนมาตรา 39 และบุคคลตามมาตรา 38 และมาตรา 41
                         </div>
