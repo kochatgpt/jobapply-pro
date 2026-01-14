@@ -53,7 +53,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
             </div>
 
             {/* Section 1: รายละเอียดผู้ประกันตน */}
-            <div className="border border-slate-900 mb-4">
+            <div className="border border-slate-900">
                 <div className="border-b border-slate-900 px-2 py-1 bg-slate-100 font-bold text-sm">
                     1. รายละเอียดผู้ประกันตน
                 </div>
@@ -269,7 +269,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
             </div>
 
             {/* Section 2: Hospital Selection */}
-            <div className="border border-slate-900 mb-4">
+            <div className="border border-slate-900">
                 <div className="border-b border-slate-900 px-2 py-1 bg-slate-100 font-bold text-sm">
                     2. การเลือกสถานพยาบาล
                 </div>
