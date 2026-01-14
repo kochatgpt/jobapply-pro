@@ -396,20 +396,22 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     <div>
                         <span>และขอรับรองว่าข้อความข้างต้นเป็นจริงทุกประการ</span>
                     </div>
-                    <div className="flex justify-between items-end pt-4">
-                        <div className="text-center">
-                            <div className="border-b border-dotted border-slate-400 w-40 mb-1"></div>
-                            <p className="text-xs">ลงชื่อ</p>
-                            <p className="text-xs">(ผู้ประกันตน/ ผู้มีสิทธิ)</p>
-                        </div>
-                        <div className="text-center">
-                            <p className="text-xs mb-1">ลงวันที่</p>
-                            <div className="flex items-center gap-1">
-                                <span className={`border-b border-dotted border-slate-400 inline-block w-12 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
-                                <span className="text-xs">เดือน</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block w-32 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
-                                <span className="text-xs">พ.ศ.</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block w-12 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
+                    <div className="flex justify-end items-start pt-4">
+                        <div className="flex gap-4">
+                            <div className="text-center">
+                                <div className="border-b border-dotted border-slate-400 w-48 mb-1"></div>
+                                <p className="text-xs">ลงชื่อ</p>
+                                <p className="text-xs">(ผู้ประกันตน/ ผู้มีสิทธิ)</p>
+                            </div>
+                            <div className="text-center">
+                                <p className="text-xs mb-1">ลงวันที่</p>
+                                <div className="flex items-center gap-1">
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-8 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                    <span className="text-xs">เดือน</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-24 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                    <span className="text-xs">พ.ศ.</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-8 text-center px-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
