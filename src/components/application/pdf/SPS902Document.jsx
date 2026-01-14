@@ -417,11 +417,11 @@ export default function SPS902Document({ applicant, formData = {} }) {
 
             {/* Section 4: Staff Remarks */}
             <div className="border border-slate-900">
-                <div className="border-b border-slate-900 px-2 font-bold text-sm text-center">
+                <div className="border-b border-slate-900 px-2 pb-2 py-1 font-bold text-sm text-center">
                     สำหรับเจ้าหน้าที่
                 </div>
                 
-                <div className="p-3">
+                <div className="px-3 py-1">
                     <div className="text-xs font-bold mb-2">ความเห็นเจ้าหน้าที่</div>
                     <div className="space-y-1 mb-3">
                         <label className="flex items-center gap-2 text-xs">
@@ -438,7 +438,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                         </div>
                     </div>
 
-                    <div className="grid justify-end items-end pt-4 gap-3">
+                    <div className="grid justify-end items-end pt-1 gap-2">
                         <div className="flex items-baseline gap-2 text-xs">
                             <span>ลงชื่อ</span>
                             <div className="border-b border-dotted border-slate-400 w-40 inline-block pb-0.5"></div>
