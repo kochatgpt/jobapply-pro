@@ -333,30 +333,27 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                 <PDFCheckbox checked={formData.selectHospital === 'yes'} />
                                 <span>ขอเลือกสถานพยาบาล</span>
                             </label>
-
-                            {formData.selectHospital === 'yes' && (
-                                <div className="space-y-2 ml-4">
-                                    <div>
-                                        <span className="text-xs">ลำดับที่ 1 ชื่อ</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
-                                            {formData.hospital1 || '\u00A0'}
-                                        </span>
-                                    </div>
-                                    <div className="text-xs italic">หากไม่สามารถจัดสถานพยาบาลลำดับที่ 1 ให้ได้ จะจัดสถานพยาบาลลำดับถัดไปให้ตามลำดับ</div>
-                                    <div>
-                                        <span className="text-xs">ลำดับที่ 2 ชื่อ</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
-                                            {formData.hospital2 || '\u00A0'}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span className="text-xs">ลำดับที่ 3 ชื่อ</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
-                                            {formData.hospital3 || '\u00A0'}
-                                        </span>
-                                    </div>
+                            <div className="space-y-2 ml-4">
+                                <div>
+                                    <span className="text-xs">ลำดับที่ 1 ชื่อ</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
+                                        {formData.hospital1 || '\u00A0'}
+                                    </span>
                                 </div>
-                            )}
+                                <div className="text-xs italic">หากไม่สามารถจัดสถานพยาบาลลำดับที่ 1 ให้ได้ จะจัดสถานพยาบาลลำดับถัดไปให้ตามลำดับ</div>
+                                <div>
+                                    <span className="text-xs">ลำดับที่ 2 ชื่อ</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
+                                        {formData.hospital2 || '\u00A0'}
+                                    </span>
+                                </div>
+                                <div>
+                                    <span className="text-xs">ลำดับที่ 3 ชื่อ</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
+                                        {formData.hospital3 || '\u00A0'}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Disabled Person Section */}
