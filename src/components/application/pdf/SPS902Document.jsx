@@ -334,24 +334,45 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                 <span>ขอเลือกสถานพยาบาล</span>
                             </label>
                             <div className="space-y-2 ml-4">
-                                <div>
+                                <div className="flex items-center gap-1">
                                     <span className="text-xs">ลำดับที่ 1 ชื่อ</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-32 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
                                         {formData.hospital1 || '\u00A0'}
                                     </span>
+                                    <div className="flex">
+                                        {Array(7).fill('').map((_, idx) => (
+                                            <div key={idx} className="pb-1 border border-black text-center text-xs font-semibold min-w-[20px] min-h-[20px]">
+                                                {formData.hospital1Code && formData.hospital1Code[idx] ? formData.hospital1Code[idx] : '\u00A0'}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                                <div className="text-xs italic">หากไม่สามารถจัดสถานพยาบาลลำดับที่ 1 ให้ได้ จะจัดสถานพยาบาลลำดับถัดไปให้ตามลำดับ</div>
-                                <div>
+                                <div className="text-xs italic ml-0">หากไม่สามารถจัดสถานพยาบาลลำดับที่ 1 ให้ได้ จะจัดสถานพยาบาลลำดับถัดไปให้ตามลำดับ</div>
+                                <div className="flex items-center gap-1">
                                     <span className="text-xs">ลำดับที่ 2 ชื่อ</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-32 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
                                         {formData.hospital2 || '\u00A0'}
                                     </span>
+                                    <div className="flex">
+                                        {Array(7).fill('').map((_, idx) => (
+                                            <div key={idx} className="pb-1 border border-black text-center text-xs font-semibold min-w-[20px] min-h-[20px]">
+                                                {formData.hospital2Code && formData.hospital2Code[idx] ? formData.hospital2Code[idx] : '\u00A0'}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                                <div>
+                                <div className="flex items-center gap-1">
                                     <span className="text-xs">ลำดับที่ 3 ชื่อ</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block w-[60%] text-center px-2 pb-1 ml-1`} style={{ minHeight: '1.2em' }}>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block w-32 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
                                         {formData.hospital3 || '\u00A0'}
                                     </span>
+                                    <div className="flex">
+                                        {Array(7).fill('').map((_, idx) => (
+                                            <div key={idx} className="pb-1 border border-black text-center text-xs font-semibold min-w-[20px] min-h-[20px]">
+                                                {formData.hospital3Code && formData.hospital3Code[idx] ? formData.hospital3Code[idx] : '\u00A0'}
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </div>
