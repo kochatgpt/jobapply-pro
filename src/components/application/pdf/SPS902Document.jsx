@@ -130,7 +130,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             </div>
 
                             {/* Account and Branch */}
-                            <div className="grid grid-cols-2">
+                            <div className="">
                                 <div>
                                     <div className="text-xs mb-0.5">เลขที่บัญชี</div>
                                     <div className="flex items-center ml-2 mt-2">
