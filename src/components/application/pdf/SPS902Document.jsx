@@ -439,10 +439,12 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     </div>
 
                     <div className="flex justify-between items-end mt-3">
-                        <div className="text-center w-32">
-                            <div className="border-b border-slate-400 min-h-[40px] mb-1"></div>
-                            <p className="text-xs">ลงชื่อ</p>
-                            <p className="text-xs">(เจ้าหน้าที่)</p>
+                        <div className="text-center">
+                            <div className="text-xs">ลงชื่อ
+                                <div className="inline-block border-b border-dotted border-slate-400 w-48 mx-2 px-2 pb-1" style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</div>
+                            </div>
+                            <p className="text-xs mt-1">(<div className="inline-block border-b border-dotted border-slate-400 w-40 px-2 pb-1 text-center" style={{ minHeight: '1.2em' }}>{'\u00A0'}</div>)</p>
+                            <p className="text-xs mt-1">เจ้าหน้าที่</p>
                         </div>
                         <div className="text-center text-xs">
                             <div className="text-xs">ลงวันที่</div>
