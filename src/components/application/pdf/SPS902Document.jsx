@@ -300,29 +300,26 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                     <PDFCheckbox checked={formData.changeReason === 'during_year'} />
                                     <span>เปลี่ยนสถานพยาบาลระหว่างปี</span>
                                 </label>
-                                
-                                {formData.changeReason === 'during_year' && (
-                                    <div className="ml-4 space-y-1">
-                                        <div className="font-bold">เนื่องจาก</div>
-                                        <label className="flex items-start gap-2">
-                                            <PDFCheckbox checked={formData.changeReasonDetail === 'address'} />
-                                            <span>ย้ายที่อยู่</span>
-                                        </label>
-                                        <label className="flex items-start gap-2">
-                                            <PDFCheckbox checked={formData.changeReasonDetail === 'workplace'} />
-                                            <span>เปลี่ยนสถานที่ทำงาน</span>
-                                        </label>
-                                        <label className="flex items-start gap-2">
-                                            <PDFCheckbox checked={formData.changeReasonDetail === 'other'} />
-                                            <span>อื่นๆ (ระบุ)</span>
-                                        </label>
-                                        {formData.changeReasonDetail === 'other' && (
-                                            <span className={`border-b border-dotted border-slate-400 inline-block w-48 text-center px-2 pb-1 ml-6`} style={{ minHeight: '1.2em' }}>
-                                                {formData.otherReason || '\u00A0'}
-                                            </span>
-                                        )}
-                                    </div>
-                                )}
+                                <div className="ml-4 space-y-1">
+                                    <div className="font-bold">เนื่องจาก</div>
+                                    <label className="flex items-start gap-2">
+                                        <PDFCheckbox checked={formData.changeReasonDetail === 'address'} />
+                                        <span>ย้ายที่อยู่</span>
+                                    </label>
+                                    <label className="flex items-start gap-2">
+                                        <PDFCheckbox checked={formData.changeReasonDetail === 'workplace'} />
+                                        <span>เปลี่ยนสถานที่ทำงาน</span>
+                                    </label>
+                                    <label className="flex items-start gap-2">
+                                        <PDFCheckbox checked={formData.changeReasonDetail === 'other'} />
+                                        <span>อื่นๆ (ระบุ)</span>
+                                    </label>
+                                    {formData.changeReasonDetail === 'other' && (
+                                        <span className={`border-b border-dotted border-slate-400 inline-block w-48 text-center px-2 pb-1 ml-6`} style={{ minHeight: '1.2em' }}>
+                                            {formData.otherReason || '\u00A0'}
+                                        </span>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
