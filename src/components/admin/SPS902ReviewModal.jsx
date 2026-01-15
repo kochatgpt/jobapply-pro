@@ -214,6 +214,138 @@ export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfData 
                             </div>
                         </div>
                     </div>
+
+                    {/* Divider */}
+                    <div className="border-t-2 border-slate-300 my-6"></div>
+
+                    {/* Social Security Number Section */}
+                    <div className="space-y-2">
+                        <Label className="font-semibold">เลขที่บัตรประกันสังคม (13 หลัก)</Label>
+                        <Input
+                            value={formData.socialSecurityNumber}
+                            onChange={(e) => {
+                                const value = e.target.value.replace(/\D/g, '');
+                                if (value.length <= 13) {
+                                    setFormData({ ...formData, socialSecurityNumber: value });
+                                }
+                            }}
+                            placeholder="เลขที่บัตรประกันสังคม"
+                            maxLength="13"
+                        />
+                        {formData.socialSecurityNumber && formData.socialSecurityNumber.length !== 13 && (
+                            <p className="text-red-500 text-xs">ต้องเป็น 13 หลัก ({formData.socialSecurityNumber.length}/13)</p>
+                        )}
+                    </div>
+
+                    {/* Documents Section */}
+                    <div className="space-y-2">
+                        <Label className="font-semibold">เอกสารที่แนบ</Label>
+                        <div className="space-y-2 ml-2">
+                            {[
+                                { key: 'idCard', label: 'สำเนาบัตรประจำตัวประชาชน' },
+                                { key: 'housRegistration', label: 'สำเนาทะเบียนบ้าน' },
+                                { key: 'alienCard', label: 'สำเนาใบสำคัญประจำตัวคนต่างด้าว' },
+                                { key: 'passport', label: 'สำเนาหนังสือเดินทาง' },
+                                { key: 'workPermit', label: 'สำเนาใบอนุญาตทำงานคนต่างด้าว' },
+                                { key: 'other', label: 'อื่น ๆ' }
+                            ].map(doc => (
+                                <label key={doc.key} className="flex items-center gap-3">
+                                    <input
+                                        type="checkbox"
+                                        checked={formData.documents[doc.key]}
+                                        onChange={(e) => setFormData({
+                                            ...formData,
+                                            documents: { ...formData.documents, [doc.key]: e.target.checked }
+                                        })}
+                                        className="w-4 h-4"
+                                    />
+                                    <span className="text-sm">{doc.label}</span>
+                                </label>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="border-t-2 border-slate-300 my-6"></div>
+
+                    {/* Employer Section */}
+                    <div className="space-y-3">
+                        <Label className="font-semibold">ส่วนของนายจ้าง</Label>
+                        <Input
+                            value={formData.employerName}
+                            onChange={(e) => setFormData({ ...formData, employerName: e.target.value })}
+                            placeholder="ชื่อนายจ้าง"
+                        />
+                        <Input
+                            value={formData.employerFullName}
+                            onChange={(e) => setFormData({ ...formData, employerFullName: e.target.value })}
+                            placeholder="ชื่อ-สกุล นายจ้าง"
+                        />
+                        <Input
+                            value={formData.employerPosition}
+                            onChange={(e) => setFormData({ ...formData, employerPosition: e.target.value })}
+                            placeholder="ตำแหน่งผู้ลงนาม เช่น กรรมการผู้จัดการ, ผู้จัดการฝ่ายบุคคล"
+                        />
+                        <div className="space-y-2">
+                            <Label className="text-sm">ลายเซ็นนายจ้าง</Label>
+                            <SignaturePad
+                                signatureUrl={formData.employerSignature}
+                                onSave={(sig) => setFormData({ ...formData, employerSignature: sig })}
+                                label="ลายเซ็นนายจ้าง"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <Label className="text-sm">วันที่ลงนาม</Label>
+                            <div className="grid grid-cols-3 gap-3">
+                                <div>
+                                    <Input
+                                        type="number"
+                                        min="1"
+                                        max="31"
+                                        placeholder="วัน"
+                                        value={formData.employerSignatureDate ? new Date(formData.employerSignatureDate).getDate() : ''}
+                                        onChange={(e) => {
+                                            const date = new Date(formData.employerSignatureDate || new Date());
+                                            date.setDate(parseInt(e.target.value) || 1);
+                                            setFormData({ ...formData, employerSignatureDate: date.toISOString().split('T')[0] });
+                                        }}
+                                    />
+                                </div>
+                                <div>
+                                    <select
+                                        value={formData.employerSignatureDate ? new Date(formData.employerSignatureDate).getMonth() : ''}
+                                        onChange={(e) => {
+                                            const date = new Date(formData.employerSignatureDate || new Date());
+                                            date.setMonth(parseInt(e.target.value) || 0);
+                                            setFormData({ ...formData, employerSignatureDate: date.toISOString().split('T')[0] });
+                                        }}
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm"
+                                    >
+                                        <option value="">-- เลือก --</option>
+                                        {['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 
+                                          'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'].map((m, i) => (
+                                            <option key={i} value={i}>{m}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div>
+                                    <Input
+                                        type="number"
+                                        min="2500"
+                                        max="2700"
+                                        placeholder="ปี พ.ศ."
+                                        value={formData.employerSignatureDate ? new Date(formData.employerSignatureDate).getFullYear() + 543 : ''}
+                                        onChange={(e) => {
+                                            const buddhistYear = parseInt(e.target.value) || new Date().getFullYear() + 543;
+                                            const date = new Date(formData.employerSignatureDate || new Date());
+                                            date.setFullYear(buddhistYear - 543);
+                                            setFormData({ ...formData, employerSignatureDate: date.toISOString().split('T')[0] });
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="flex justify-end gap-2">
