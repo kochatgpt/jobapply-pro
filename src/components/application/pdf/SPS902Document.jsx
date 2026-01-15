@@ -124,8 +124,8 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                 {/* Current Employer */}
                                 <div>
                                     <div className="text-xs">ปัจจุบันทำงานกับสถานประกอบการชื่อ</div>
-                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 mb-1 ${formData.employerName}`} style={{ verticalAlign: 'baseline', ...(!formData.employerName && { minHeight: '1.2em' }) }}>
-                                        {formData.employerName || '\u00A0'}
+                                    <div className={`border-b border-dotted border-slate-400 inline-block w-full text-center px-2 pb-1 mb-1 ${formData.showSection33 ? formData.employerName : ''}`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                                        {formData.showSection33 ? (formData.employerName || '\u00A0') : '\u00A0'}
                                     </div>
                                 </div>
 
@@ -137,7 +137,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                             {Array(10).fill('').map((_, idx) => (
                                                 <React.Fragment key={idx}>
                                                     <div className="pb-1 border border-black text-center text-xs font-semibold min-w-[20px] min-h-[20px]">
-                                                        {formData.accountNumber && formData.accountNumber[idx] ? formData.accountNumber[idx] : '\u00A0'}
+                                                        {formData.showSection33 && formData.accountNumber && formData.accountNumber[idx] ? formData.accountNumber[idx] : '\u00A0'}
                                                     </div>
                                                     {(idx === 1 || idx === 8) && <div className="w-2 border-b border-black mb-0.5"></div>}
                                                 </React.Fragment>
@@ -152,7 +152,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                         <div className="flex ml-2 mt-1.5">
                                             {Array(5).fill('').map((_, idx) => (
                                                 <div key={idx} className="pb-1 border border-black text-center text-xs font-semibold min-w-[20px] min-h-[20px]">
-                                                    {formData.branchNumber && formData.branchNumber[idx] ? formData.branchNumber[idx] : '\u00A0'}
+                                                    {formData.showSection33 && formData.branchNumber && formData.branchNumber[idx] ? formData.branchNumber[idx] : '\u00A0'}
                                                 </div>
                                             ))}
                                         </div>
@@ -164,25 +164,25 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                     <div className="mb-1">
                                         <span>เข้างานเมื่อวันที่</span>
                                         <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
-                                            {formData.employmentStartDate ? new Date(formData.employmentStartDate).toLocaleDateString('th-TH').split('/')[0] : '\u00A0'}
+                                            {formData.showSection33 && formData.employmentStartDate ? new Date(formData.employmentStartDate).toLocaleDateString('th-TH').split('/')[0] : '\u00A0'}
                                         </span>
                                         <span>เดือน</span>
                                         <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
-                                            {formData.employmentStartDate ? new Date(formData.employmentStartDate).toLocaleDateString('th-TH').split('/')[1] : '\u00A0'}
+                                            {formData.showSection33 && formData.employmentStartDate ? new Date(formData.employmentStartDate).toLocaleDateString('th-TH').split('/')[1] : '\u00A0'}
                                         </span>
                                         <span>พ.ศ.</span>
                                         <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
-                                            {formData.employmentStartDate ? (new Date(formData.employmentStartDate).getFullYear() + 543) : '\u00A0'}
+                                            {formData.showSection33 && formData.employmentStartDate ? (new Date(formData.employmentStartDate).getFullYear() + 543) : '\u00A0'}
                                         </span>
                                     </div>
                                     <div>
                                         <span>ได้รับค่าจ้างงวดสุดท้ายเมื่อเดือน</span>
                                         <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
-                                            {formData.lastSalaryMonth ? new Date(formData.lastSalaryMonth).toLocaleDateString('th-TH', { month: 'short' }) : '\u00A0'}
+                                            {formData.showSection33 && formData.lastSalaryMonth ? new Date(formData.lastSalaryMonth).toLocaleDateString('th-TH', { month: 'short' }) : '\u00A0'}
                                         </span>
                                         <span>พ.ศ.</span>
                                         <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
-                                            {formData.lastSalaryMonth ? (new Date(formData.lastSalaryMonth).getFullYear() + 543) : '\u00A0'}
+                                            {formData.showSection33 && formData.lastSalaryMonth ? (new Date(formData.lastSalaryMonth).getFullYear() + 543) : '\u00A0'}
                                         </span>
                                     </div>
                                 </div>
@@ -202,36 +202,36 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                 <div className="text-xs">
                                     <div className="mb-1">
                                         <span>ที่อยู่ปัจจุบันเลขที่</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{personalData.current_address?.number || '\u00A0'}</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.showSection39 ? (personalData.current_address?.number || '\u00A0') : '\u00A0'}</span>
                                         <span>หมู่ที่</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{personalData.current_address?.moo || '\u00A0'}</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.showSection39 ? (personalData.current_address?.moo || '\u00A0') : '\u00A0'}</span>
                                         <span>ตรอก/ซอย</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{personalData.current_address?.road || '\u00A0'}</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[100px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.showSection39 ? (personalData.current_address?.road || '\u00A0') : '\u00A0'}</span>
                                     </div>
                                     <div className="mb-1">
                                         <span>ถนน</span>
                                         <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
                                         <span>แขวง/ตำบล</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{personalData.current_address?.subdistrict || '\u00A0'}</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.showSection39 ? (personalData.current_address?.subdistrict || '\u00A0') : '\u00A0'}</span>
                                     </div>
                                     <div className="mb-1">
                                         <span>เขต/อำเภอ</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{personalData.current_address?.district || '\u00A0'}</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.showSection39 ? (personalData.current_address?.district || '\u00A0') : '\u00A0'}</span>
                                         <span>จังหวัด</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{personalData.current_address?.province || '\u00A0'}</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[150px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.showSection39 ? (personalData.current_address?.province || '\u00A0') : '\u00A0'}</span>
                                     </div>
                                     <div className="mb-1">
                                         <span>รหัสไปรษณีย์</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{personalData.current_address?.zipcode || '\u00A0'}</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[80px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.showSection39 ? (personalData.current_address?.zipcode || '\u00A0') : '\u00A0'}</span>
                                         <span>โทรศัพท์มือถือ</span>
-                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{personalData.mobile_phone || '\u00A0'}</span>
+                                        <span className={`border-b border-dotted border-slate-400 inline-block min-w-[120px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.showSection39 ? (personalData.mobile_phone || '\u00A0') : '\u00A0'}</span>
                                     </div>
                                 </div>
 
                                 {/* Last Employer */}
                                 <div className="text-xs">
                                     <span>ชื่อสถานประกอบการสุดท้ายที่ทำงาน</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.lastEmployerName || '\u00A0'}</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.showSection39 ? (formData.lastEmployerName || '\u00A0') : '\u00A0'}</span>
                                 </div>
 
                                 {/* Account and Branch */}
@@ -242,7 +242,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                             {Array(10).fill('').map((_, idx) => (
                                                 <React.Fragment key={idx}>
                                                     <div className="pb-1 border border-black text-center text-xs font-semibold min-w-[20px] min-h-[20px]">
-                                                        {formData.accountNumber && formData.accountNumber[idx] ? formData.accountNumber[idx] : '\u00A0'}
+                                                        {formData.showSection39 && formData.accountNumber && formData.accountNumber[idx] ? formData.accountNumber[idx] : '\u00A0'}
                                                     </div>
                                                     {(idx === 1 || idx === 8) && <div className="w-2 border-b border-black mb-0.5"></div>}
                                                 </React.Fragment>
@@ -257,7 +257,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                         <div className="flex ml-2 mt-1.5">
                                             {Array(5).fill('').map((_, idx) => (
                                                 <div key={idx} className="pb-1 border border-black text-center text-xs font-semibold min-w-[20px] min-h-[20px]">
-                                                    {formData.branchNumber && formData.branchNumber[idx] ? formData.branchNumber[idx] : '\u00A0'}
+                                                    {formData.showSection39 && formData.branchNumber && formData.branchNumber[idx] ? formData.branchNumber[idx] : '\u00A0'}
                                                 </div>
                                             ))}
                                         </div>
@@ -268,15 +268,15 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                 <div className="text-xs mb-0.5">
                                     <span>สิ้นสภาพความเป็นลูกจ้างเมื่อวันที่</span>
                                     <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
-                                        {formData.employmentEndDate ? new Date(formData.employmentEndDate).toLocaleDateString('th-TH').split('/')[0] : '\u00A0'}
+                                        {formData.showSection39 && formData.employmentEndDate ? new Date(formData.employmentEndDate).toLocaleDateString('th-TH').split('/')[0] : '\u00A0'}
                                     </span>
                                     <span>เดือน</span>
                                     <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
-                                        {formData.employmentEndDate ? new Date(formData.employmentEndDate).toLocaleDateString('th-TH').split('/')[1] : '\u00A0'}
+                                        {formData.showSection39 && formData.employmentEndDate ? new Date(formData.employmentEndDate).toLocaleDateString('th-TH').split('/')[1] : '\u00A0'}
                                     </span>
                                     <span>พ.ศ.</span>
                                     <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
-                                        {formData.employmentEndDate ? (new Date(formData.employmentEndDate).getFullYear() + 543) : '\u00A0'}
+                                        {formData.showSection39 && formData.employmentEndDate ? (new Date(formData.employmentEndDate).getFullYear() + 543) : '\u00A0'}
                                     </span>
                                 </div>
                             </div>
