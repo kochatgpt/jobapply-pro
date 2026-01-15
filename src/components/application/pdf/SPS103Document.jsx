@@ -12,9 +12,10 @@ export default function SPS103Document({ applicant, formData = {} }) {
                 fontSize: "12px",
                 padding: '5mm 8mm',
                 width: '210mm', 
-                minHeight: '297mm',
+                minHeight: 'auto',
                 fontFamily: 'TH Sarabun New, Sarabun, sans-serif',
-                lineHeight: '1.1'
+                lineHeight: '1.1',
+                pageBreakInside: 'avoid'
             }}
         >
             {/* Header */}
