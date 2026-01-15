@@ -90,21 +90,35 @@ export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfDoc }
 
         setGeneratingPdf(true);
         try {
+            // Get the actual document pages to handle multi-page content
+            const pages = content.querySelectorAll('.pdpa-page');
+            if (pages.length === 0) {
+                toast.error("ไม่พบเนื้อหาเอกสาร");
+                setGeneratingPdf(false);
+                return;
+            }
+
             const pdf = new jsPDF('p', 'mm', 'a4');
             const pdfWidth = pdf.internal.pageSize.getWidth();
-            
-            const canvas = await html2canvas(content, {
-                scale: 2,
-                useCORS: true,
-                logging: false,
-                windowWidth: 1200
-            });
 
-            const imgData = canvas.toDataURL('image/png');
-            const imgWidth = pdfWidth;
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            for (let i = 0; i < pages.length; i++) {
+                const page = pages[i];
+                const canvas = await html2canvas(page, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    windowWidth: 1200
+                });
 
-            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = pdfWidth;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                if (i > 0) {
+                    pdf.addPage();
+                }
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            }
 
             if (action === 'download') {
                 pdf.save(`SPS-9-02_${applicant?.full_name || 'Document'}.pdf`);
