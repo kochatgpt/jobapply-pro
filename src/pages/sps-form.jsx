@@ -611,22 +611,6 @@ export default function SPSFormPage() {
                                                     />
                                                 </div>
                                                 <div>
-                                                    <Label>เข้างานเมื่อวันที่</Label>
-                                                    <Input
-                                                        type="date"
-                                                        value={formData.employmentStartDate}
-                                                        onChange={(e) => setFormData({ ...formData, employmentStartDate: e.target.value })}
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Label>ได้รับค่าจ้างงวดสุดท้ายเมื่อเดือน</Label>
-                                                    <Input
-                                                        type="month"
-                                                        value={formData.lastSalaryMonth}
-                                                        onChange={(e) => setFormData({ ...formData, lastSalaryMonth: e.target.value })}
-                                                    />
-                                                </div>
-                                                <div>
                                                     <Label>สิ้นสภาพความเป็นลูกจ้างเมื่อวันที่</Label>
                                                     <Input
                                                         type="date"
