@@ -282,6 +282,8 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             </div>
                         </div>
                     </div>
+
+                    </div>
                 </div>
             </div>
 
