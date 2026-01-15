@@ -558,6 +558,52 @@ export default function SPSFormPage() {
                                             <p className="text-sm font-medium">แบบฟอร์มนี้สำหรับผู้ที่ยังไม่เคยมีประกันสังคม</p>
                                         </div>
 
+                                        <div className="border-t pt-4">
+                                            <h3 className="font-semibold text-slate-800 mb-3">ข้อมูลการรับเอกสาร</h3>
+                                            <div className="space-y-3">
+                                                <div>
+                                                    <Label>เลขที่รับ</Label>
+                                                    <Input
+                                                        value={formData.receiptNumber}
+                                                        onChange={(e) => setFormData({ ...formData, receiptNumber: e.target.value })}
+                                                        placeholder="เลขที่รับ"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Label>วันที่</Label>
+                                                    <Input
+                                                        type="date"
+                                                        value={formData.receiptDate}
+                                                        onChange={(e) => setFormData({ ...formData, receiptDate: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Label>เวลา</Label>
+                                                    <Input
+                                                        type="time"
+                                                        value={formData.receiptTime}
+                                                        onChange={(e) => setFormData({ ...formData, receiptTime: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Label>ลงชื่อผู้รับ</Label>
+                                                    <Input
+                                                        value={formData.receivedSignature}
+                                                        onChange={(e) => setFormData({ ...formData, receivedSignature: e.target.value })}
+                                                        placeholder="ลงชื่อผู้รับ"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Label>ผู้รับ</Label>
+                                                    <Input
+                                                        value={formData.receivedBy}
+                                                        onChange={(e) => setFormData({ ...formData, receivedBy: e.target.value })}
+                                                        placeholder="ชื่อผู้รับเอกสาร"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div className="space-y-3 p-3 bg-blue-50 border border-blue-200 rounded">
                                             <label className="flex items-center gap-2">
                                                 <input
