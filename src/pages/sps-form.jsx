@@ -80,11 +80,7 @@ export default function SPSFormPage() {
         staffSignatureDate: '',
         staffSignature: '',
         reasonLine1: '',
-        reasonLine2: '',
-        receiptNumber: '',
-        receiptDate: '',
-        receiptTime: '',
-        receiverName: ''
+        reasonLine2: ''
         });
 
     useEffect(() => {
@@ -964,46 +960,6 @@ export default function SPSFormPage() {
                                                         />
                                                         <span className="text-sm font-medium">ข้าพเจ้าคนพิการ ขอรับบริการจาก สปสช.</span>
                                                     </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="border-t pt-4">
-                                            <h3 className="font-semibold text-slate-800 mb-3">ส่วนการรับเอกสาร</h3>
-                                            <div className="space-y-3 p-3 bg-gray-50 border border-gray-200 rounded">
-                                                <div>
-                                                    <Label>เลขที่รับ</Label>
-                                                    <Input
-                                                        value={formData.receiptNumber}
-                                                        onChange={(e) => setFormData({ ...formData, receiptNumber: e.target.value })}
-                                                        placeholder="เลขที่รับ"
-                                                    />
-                                                </div>
-                                                <div className="grid grid-cols-2 gap-3">
-                                                    <div>
-                                                        <Label>วันที่รับ</Label>
-                                                        <Input
-                                                            type="date"
-                                                            value={formData.receiptDate}
-                                                            onChange={(e) => setFormData({ ...formData, receiptDate: e.target.value })}
-                                                        />
-                                                    </div>
-                                                    <div>
-                                                        <Label>เวลา</Label>
-                                                        <Input
-                                                            type="time"
-                                                            value={formData.receiptTime}
-                                                            onChange={(e) => setFormData({ ...formData, receiptTime: e.target.value })}
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <Label>ชื่อผู้รับ</Label>
-                                                    <Input
-                                                        value={formData.receiverName}
-                                                        onChange={(e) => setFormData({ ...formData, receiverName: e.target.value })}
-                                                        placeholder="ชื่อผู้รับเอกสาร"
-                                                    />
                                                 </div>
                                             </div>
                                         </div>
