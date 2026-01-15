@@ -559,8 +559,8 @@ export default function SPSFormPage() {
 
                                         <div className="border-t pt-4">
                                             <h3 className="font-semibold text-slate-800 mb-3">ข้อมูลการรับเอกสาร</h3>
-                                            <div className="space-y-3">
-                                                <div>
+                                            <div>
+                                                <div className="mb-3">
                                                     <Label>เลขที่รับ</Label>
                                                     <Input
                                                         value={formData.receiptNumber}
@@ -568,21 +568,23 @@ export default function SPSFormPage() {
                                                         placeholder="เลขที่รับ"
                                                     />
                                                 </div>
-                                                <div>
-                                                    <Label>วันที่</Label>
-                                                    <Input
-                                                        type="date"
-                                                        value={formData.receiptDate}
-                                                        onChange={(e) => setFormData({ ...formData, receiptDate: e.target.value })}
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Label>เวลา</Label>
-                                                    <Input
-                                                        type="time"
-                                                        value={formData.receiptTime}
-                                                        onChange={(e) => setFormData({ ...formData, receiptTime: e.target.value })}
-                                                    />
+                                                <div className="grid grid-cols-2 gap-3 mb-3">
+                                                    <div>
+                                                        <Label>วันที่</Label>
+                                                        <Input
+                                                            type="date"
+                                                            value={formData.receiptDate}
+                                                            onChange={(e) => setFormData({ ...formData, receiptDate: e.target.value })}
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <Label>เวลา</Label>
+                                                        <Input
+                                                            type="time"
+                                                            value={formData.receiptTime}
+                                                            onChange={(e) => setFormData({ ...formData, receiptTime: e.target.value })}
+                                                        />
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <Label>ลงชื่อ/ผู้รับ</Label>
