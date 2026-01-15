@@ -80,34 +80,54 @@ export default function EmploymentContractReviewModal({ applicant, isOpen, onClo
     };
 
     const handleGeneratePDF = async (action) => {
-        const pages = document.querySelectorAll('.pdpa-page');
-        if (!pages || pages.length === 0) {
-            toast.error("ไม่พบเนื้อหาเอกสาร");
-            return;
-        }
-
         setGeneratingPdf(true);
         try {
+            // Get the hidden content and make visible temporarily
+            const hiddenContent = document.querySelector('#employment-contract-hidden');
+            if (!hiddenContent) {
+                toast.error("ไม่พบเนื้อหาเอกสาร");
+                setGeneratingPdf(false);
+                return;
+            }
+
+            // Make visible temporarily for rendering
+            hiddenContent.style.display = 'block';
+            hiddenContent.style.position = 'absolute';
+            hiddenContent.style.left = '-9999px';
+            hiddenContent.style.top = '-9999px';
+
+            const pages = hiddenContent.querySelectorAll('.pdpa-page');
+            if (!pages || pages.length === 0) {
+                toast.error("ไม่พบเนื้อหาเอกสาร");
+                hiddenContent.style.display = 'none';
+                setGeneratingPdf(false);
+                return;
+            }
+
+            // Wait for images to load
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
             const pdf = new jsPDF('p', 'mm', 'a4');
             const pdfWidth = pdf.internal.pageSize.getWidth();
 
             for (let i = 0; i < pages.length; i++) {
                 const page = pages[i];
                 const canvas = await html2canvas(page, {
-                    scale: 2,
+                    scale: 1,
                     useCORS: true,
                     logging: false,
-                    windowWidth: 1200
+                    windowWidth: 1200,
+                    backgroundColor: '#ffffff'
                 });
 
-                const imgData = canvas.toDataURL('image/png');
+                const imgData = canvas.toDataURL('image/jpeg', 0.9);
                 const imgWidth = pdfWidth;
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
                 if (i > 0) {
                     pdf.addPage();
                 }
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
             }
 
             if (action === 'download') {
@@ -115,6 +135,9 @@ export default function EmploymentContractReviewModal({ applicant, isOpen, onClo
             } else {
                 window.open(pdf.output('bloburl'), '_blank');
             }
+
+            // Hide again
+            hiddenContent.style.display = 'none';
         } catch (error) {
             console.error("PDF Generation failed", error);
             toast.error("เกิดข้อผิดพลาดในการสร้าง PDF");
