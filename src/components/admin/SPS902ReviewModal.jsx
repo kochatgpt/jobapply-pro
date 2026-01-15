@@ -73,6 +73,41 @@ export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfData 
         saveMutation.mutate(formData);
     };
 
+    const handleGeneratePDF = async (action) => {
+        const content = document.querySelector('#sps902-review-content');
+        if (!content) return;
+
+        setGeneratingPdf(true);
+        try {
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            
+            const canvas = await html2canvas(content, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                windowWidth: 1200
+            });
+
+            const imgData = canvas.toDataURL('image/png');
+            const imgWidth = pdfWidth;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+            if (action === 'download') {
+                pdf.save(`SPS-9-02_${applicant?.full_name || 'Document'}.pdf`);
+            } else {
+                window.open(pdf.output('bloburl'), '_blank');
+            }
+        } catch (error) {
+            console.error("PDF Generation failed", error);
+            toast.error("เกิดข้อผิดพลาดในการสร้าง PDF");
+        } finally {
+            setGeneratingPdf(false);
+        }
+    };
+
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="max-w-2xl">
