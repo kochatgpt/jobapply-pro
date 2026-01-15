@@ -108,147 +108,193 @@ export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfData 
         }
     };
 
+    const previewFormData = {
+        ...(pdfData?.data || {}),
+        ...formData
+    };
+
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="max-w-2xl">
+            <DialogContent className="max-w-7xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle>ตรวจสอบและลงนามเอกสาร สปส. 9-02 - {applicant?.full_name}</DialogTitle>
+                    <DialogTitle className="text-xl">ตรวจสอบและลงนามเอกสาร สปส. 9-02 - {applicant?.full_name}</DialogTitle>
                 </DialogHeader>
 
-                <div className="space-y-4 py-4">
-                    {/* Staff Decision */}
-                    <div className="space-y-2">
-                        <Label className="font-semibold">ความเห็นเจ้าหน้าที่</Label>
-                        <div className="space-y-2 ml-2">
-                            <label className="flex items-center gap-3">
-                                <input
-                                    type="radio"
-                                    name="staffDecision"
-                                    value="approve"
-                                    checked={formData.staffDecision === 'approve'}
-                                    onChange={(e) => setFormData({ ...formData, staffDecision: e.target.value })}
-                                    className="w-4 h-4"
-                                />
-                                <span className="text-sm">เห็นสมควรจัดสถานพยาบาล</span>
-                            </label>
-                            <label className="flex items-center gap-3">
-                                <input
-                                    type="radio"
-                                    name="staffDecision"
-                                    value="disapprove"
-                                    checked={formData.staffDecision === 'disapprove'}
-                                    onChange={(e) => setFormData({ ...formData, staffDecision: e.target.value })}
-                                    className="w-4 h-4"
-                                />
-                                <span className="text-sm">ไม่เห็นสมควรจัดสถานพยาบาล ระบุเหตุผล</span>
-                            </label>
+                <div className="space-y-4">
+                    {/* Admin Form */}
+                    <div className="bg-slate-50 p-4 rounded-lg space-y-4">
+                        <h3 className="font-semibold text-lg">ส่วนสำหรับเจ้าหน้าที่</h3>
+                        
+                        {/* Staff Decision */}
+                        <div className="space-y-2">
+                            <Label className="font-semibold">ความเห็นเจ้าหน้าที่</Label>
+                            <div className="space-y-2 ml-2">
+                                <label className="flex items-center gap-3">
+                                    <input
+                                        type="radio"
+                                        name="staffDecision"
+                                        value="approve"
+                                        checked={formData.staffDecision === 'approve'}
+                                        onChange={(e) => setFormData({ ...formData, staffDecision: e.target.value })}
+                                        className="w-4 h-4"
+                                    />
+                                    <span className="text-sm">เห็นสมควรจัดสถานพยาบาล</span>
+                                </label>
+                                <label className="flex items-center gap-3">
+                                    <input
+                                        type="radio"
+                                        name="staffDecision"
+                                        value="disapprove"
+                                        checked={formData.staffDecision === 'disapprove'}
+                                        onChange={(e) => setFormData({ ...formData, staffDecision: e.target.value })}
+                                        className="w-4 h-4"
+                                    />
+                                    <span className="text-sm">ไม่เห็นสมควรจัดสถานพยาบาล ระบุเหตุผล</span>
+                                </label>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* Reason Section */}
-                    {formData.staffDecision === 'disapprove' && (
-                        <div className="space-y-2 ml-6">
-                            <Textarea
-                                value={formData.reasonLine1}
-                                onChange={(e) => setFormData({ ...formData, reasonLine1: e.target.value })}
-                                placeholder="ระบุเหตุผล"
-                                className="min-h-16"
-                            />
-                            <Textarea
-                                value={formData.reasonLine2}
-                                onChange={(e) => setFormData({ ...formData, reasonLine2: e.target.value })}
-                                placeholder="ระบุเหตุผล (ต่อ)"
-                                className="min-h-16"
-                            />
-                        </div>
-                    )}
-
-                    {/* Staff Name */}
-                    <div className="space-y-2">
-                        <Label className="font-semibold">ชื่อเจ้าหน้าที่</Label>
-                        <Input
-                            value={formData.staffName}
-                            onChange={(e) => setFormData({ ...formData, staffName: e.target.value })}
-                            placeholder="ชื่อ-สกุล"
-                        />
-                    </div>
-
-                    {/* Signature Section */}
-                    <div className="space-y-2">
-                        <Label className="font-semibold">ลายเซ็นเจ้าหน้าที่</Label>
-                        <SignaturePad
-                            signatureUrl={formData.staffSignature}
-                            onSave={(sig) => setFormData({ ...formData, staffSignature: sig })}
-                            label="ลายเซ็นเจ้าหน้าที่"
-                        />
-                    </div>
-
-                    {/* Date Section */}
-                    <div className="space-y-2">
-                        <Label className="font-semibold">วันที่ลงนาม</Label>
-                        <div className="grid grid-cols-3 gap-3">
-                            <div>
-                                <Input
-                                    type="number"
-                                    min="1"
-                                    max="31"
-                                    placeholder="วัน"
-                                    value={formData.staffSignatureDate ? new Date(formData.staffSignatureDate).getDate() : ''}
-                                    onChange={(e) => {
-                                        const date = new Date(formData.staffSignatureDate || new Date());
-                                        date.setDate(parseInt(e.target.value) || 1);
-                                        setFormData({ ...formData, staffSignatureDate: date.toISOString().split('T')[0] });
-                                    }}
+                        {/* Reason Section */}
+                        {formData.staffDecision === 'disapprove' && (
+                            <div className="space-y-2 ml-6">
+                                <Textarea
+                                    value={formData.reasonLine1}
+                                    onChange={(e) => setFormData({ ...formData, reasonLine1: e.target.value })}
+                                    placeholder="ระบุเหตุผล"
+                                    className="min-h-16"
+                                />
+                                <Textarea
+                                    value={formData.reasonLine2}
+                                    onChange={(e) => setFormData({ ...formData, reasonLine2: e.target.value })}
+                                    placeholder="ระบุเหตุผล (ต่อ)"
+                                    className="min-h-16"
                                 />
                             </div>
-                            <div>
-                                <select
-                                    value={formData.staffSignatureDate ? new Date(formData.staffSignatureDate).getMonth() : ''}
-                                    onChange={(e) => {
-                                        const date = new Date(formData.staffSignatureDate || new Date());
-                                        date.setMonth(parseInt(e.target.value) || 0);
-                                        setFormData({ ...formData, staffSignatureDate: date.toISOString().split('T')[0] });
-                                    }}
-                                    className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm"
+                        )}
+
+                        {/* Staff Name */}
+                        <div className="space-y-2">
+                            <Label className="font-semibold">ชื่อเจ้าหน้าที่</Label>
+                            <Input
+                                value={formData.staffName}
+                                onChange={(e) => setFormData({ ...formData, staffName: e.target.value })}
+                                placeholder="ชื่อ-สกุล"
+                            />
+                        </div>
+
+                        {/* Signature Section */}
+                        <div className="space-y-2">
+                            <Label className="font-semibold">ลายเซ็นเจ้าหน้าที่</Label>
+                            <SignaturePad
+                                signatureUrl={formData.staffSignature}
+                                onSave={(sig) => setFormData({ ...formData, staffSignature: sig })}
+                                label="ลายเซ็นเจ้าหน้าที่"
+                            />
+                        </div>
+
+                        {/* Date Section */}
+                        <div className="space-y-2">
+                            <Label className="font-semibold">วันที่ลงนาม</Label>
+                            <div className="grid grid-cols-3 gap-3">
+                                <div>
+                                    <Input
+                                        type="number"
+                                        min="1"
+                                        max="31"
+                                        placeholder="วัน"
+                                        value={formData.staffSignatureDate ? new Date(formData.staffSignatureDate).getDate() : ''}
+                                        onChange={(e) => {
+                                            const date = new Date(formData.staffSignatureDate || new Date());
+                                            date.setDate(parseInt(e.target.value) || 1);
+                                            setFormData({ ...formData, staffSignatureDate: date.toISOString().split('T')[0] });
+                                        }}
+                                    />
+                                </div>
+                                <div>
+                                    <select
+                                        value={formData.staffSignatureDate ? new Date(formData.staffSignatureDate).getMonth() : ''}
+                                        onChange={(e) => {
+                                            const date = new Date(formData.staffSignatureDate || new Date());
+                                            date.setMonth(parseInt(e.target.value) || 0);
+                                            setFormData({ ...formData, staffSignatureDate: date.toISOString().split('T')[0] });
+                                        }}
+                                        className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm"
+                                    >
+                                        <option value="">-- เลือก --</option>
+                                        {['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 
+                                          'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'].map((m, i) => (
+                                            <option key={i} value={i}>{m}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div>
+                                    <Input
+                                        type="number"
+                                        min="2500"
+                                        max="2700"
+                                        placeholder="ปี พ.ศ."
+                                        value={formData.staffSignatureDate ? new Date(formData.staffSignatureDate).getFullYear() + 543 : ''}
+                                        onChange={(e) => {
+                                            const buddhistYear = parseInt(e.target.value) || new Date().getFullYear() + 543;
+                                            const date = new Date(formData.staffSignatureDate || new Date());
+                                            date.setFullYear(buddhistYear - 543);
+                                            setFormData({ ...formData, staffSignatureDate: date.toISOString().split('T')[0] });
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Document Preview */}
+                    <div className="bg-slate-100 p-4 rounded-lg">
+                        <div className="flex justify-between items-center mb-4">
+                            <h3 className="font-semibold text-lg">ตัวอย่างเอกสาร</h3>
+                            <div className="flex gap-2">
+                                <Button 
+                                    variant="outline"
+                                    onClick={() => handleGeneratePDF('preview')}
+                                    disabled={generatingPdf}
+                                    size="sm"
                                 >
-                                    <option value="">-- เลือก --</option>
-                                    {['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 
-                                      'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'].map((m, i) => (
-                                        <option key={i} value={i}>{m}</option>
-                                    ))}
-                                </select>
+                                    {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Eye className="w-4 h-4 mr-2" />}
+                                    Preview
+                                </Button>
+                                <Button 
+                                    onClick={() => handleGeneratePDF('download')}
+                                    disabled={generatingPdf}
+                                    size="sm"
+                                >
+                                    {generatingPdf ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <FileDown className="w-4 h-4 mr-2" />}
+                                    ดาวน์โหลด
+                                </Button>
                             </div>
-                            <div>
-                                <Input
-                                    type="number"
-                                    min="2500"
-                                    max="2700"
-                                    placeholder="ปี พ.ศ."
-                                    value={formData.staffSignatureDate ? new Date(formData.staffSignatureDate).getFullYear() + 543 : ''}
-                                    onChange={(e) => {
-                                        const buddhistYear = parseInt(e.target.value) || new Date().getFullYear() + 543;
-                                        const date = new Date(formData.staffSignatureDate || new Date());
-                                        date.setFullYear(buddhistYear - 543);
-                                        setFormData({ ...formData, staffSignatureDate: date.toISOString().split('T')[0] });
-                                    }}
+                        </div>
+                        
+                        <div className="max-h-[600px] overflow-auto bg-white p-4 flex justify-center">
+                            <div id="sps902-review-content">
+                                <SPS902Document 
+                                    applicant={applicant}
+                                    formData={previewFormData}
                                 />
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="flex justify-end gap-2">
-                    <Button variant="outline" onClick={onClose}>
-                        ยกเลิก
-                    </Button>
-                    <Button 
-                        onClick={handleSave}
-                        disabled={saveMutation.isPending}
-                        className="bg-blue-600 hover:bg-blue-700"
-                    >
-                        {saveMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
-                        บันทึก
-                    </Button>
+                    {/* Actions */}
+                    <div className="flex justify-end gap-2">
+                        <Button variant="outline" onClick={onClose}>
+                            ยกเลิก
+                        </Button>
+                        <Button 
+                            onClick={handleSave}
+                            disabled={saveMutation.isPending}
+                            className="bg-green-600 hover:bg-green-700"
+                        >
+                            {saveMutation.isPending ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
+                            บันทึกและอนุมัติเอกสาร
+                        </Button>
+                    </div>
                 </div>
             </DialogContent>
         </Dialog>
