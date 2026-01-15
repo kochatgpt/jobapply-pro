@@ -199,7 +199,7 @@ export default function SPSFormPage() {
         );
     }
 
-    const spsType = applicant?.admin_data?.sps_form_type || '1-03';
+    const spsType = spsTypeFromUrl;
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 p-6">
