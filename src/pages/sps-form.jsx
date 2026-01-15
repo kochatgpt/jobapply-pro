@@ -537,11 +537,54 @@ export default function SPSFormPage() {
                                                     />
                                                 </div>
                                                 <div>
-                                                    <Label>เลขที่นายจ้าง (10 หลัก)</Label>
+                                                    <Label>เลขที่บัญชี (10 หลัก)</Label>
                                                     <Input
-                                                        value={formData.employerId}
-                                                        onChange={(e) => setFormData({ ...formData, employerId: e.target.value })}
-                                                        placeholder="เลข 10 หลัก"
+                                                        value={formData.accountNumber}
+                                                        onChange={(e) => {
+                                                            const value = e.target.value.replace(/\D/g, '');
+                                                            if (value.length <= 10) {
+                                                                setFormData({ ...formData, accountNumber: value });
+                                                            }
+                                                        }}
+                                                        placeholder="เลขที่บัญชี (10 หลัก)"
+                                                        maxLength="10"
+                                                    />
+                                                    {formData.accountNumber && formData.accountNumber.length !== 10 && (
+                                                        <p className="text-red-500 text-sm mt-1">ต้องเป็น 10 หลัก ({formData.accountNumber.length}/10)</p>
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <Label>ลำดับที่สาขา (5 หลัก)</Label>
+                                                    <Input
+                                                        value={formData.branchNumber}
+                                                        onChange={(e) => {
+                                                            const value = e.target.value.replace(/\D/g, '');
+                                                            if (value.length <= 5) {
+                                                                setFormData({ ...formData, branchNumber: value });
+                                                            }
+                                                        }}
+                                                        placeholder="ลำดับที่สาขา (5 หลัก)"
+                                                        maxLength="5"
+                                                    />
+                                                    {formData.branchNumber && formData.branchNumber.length !== 5 && (
+                                                        <p className="text-red-500 text-sm mt-1">ต้องเป็น 5 หลัก ({formData.branchNumber.length}/5)</p>
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <Label>เข้างานเมื่อวันที่</Label>
+                                                    <Input
+                                                        type="date"
+                                                        value={formData.employmentStartDate || (applicant?.start_work_date ? new Date(applicant.start_work_date).toISOString().split('T')[0] : '')}
+                                                        onChange={(e) => setFormData({ ...formData, employmentStartDate: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Label>ได้รับค่าจ้างงวดสุดท้ายเมื่อเดือน</Label>
+                                                    <Input
+                                                        type="month"
+                                                        value={formData.lastSalaryMonth}
+                                                        onChange={(e) => setFormData({ ...formData, lastSalaryMonth: e.target.value })}
+                                                        placeholder="เลือกเดือนและปี"
                                                     />
                                                 </div>
                                                 <div>
@@ -550,6 +593,7 @@ export default function SPSFormPage() {
                                                         value={formData.salary}
                                                         onChange={(e) => setFormData({ ...formData, salary: e.target.value })}
                                                         placeholder="เงินเดือน"
+                                                        type="number"
                                                     />
                                                 </div>
                                             </div>
