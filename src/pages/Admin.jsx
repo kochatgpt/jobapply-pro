@@ -823,7 +823,8 @@ export default function AdminPage() {
                          onReviewFMHRD27={setReviewingFMHRD27Doc}
                          onReviewFMHRD30={setReviewingFMHRD30}
                          onSetCriminalCheckDoc={setReviewingCriminalCheckDoc}
-                         onReviewSPS={setReviewingSPSDoc}
+                         onReviewSPS103={setReviewingSPS103Doc}
+                         onReviewSPS902={setReviewingSPS902Doc}
                          onReviewInsurance={setReviewingInsuranceDoc}
                      />
                 ) : (
