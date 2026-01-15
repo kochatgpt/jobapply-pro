@@ -163,17 +163,27 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             <div className="text-xs">
                                 <div className="mb-1">
                                     <span>เข้างานเมื่อวันที่</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                                        {formData.employmentStartDate ? new Date(formData.employmentStartDate).toLocaleDateString('th-TH').split('/')[0] : '\u00A0'}
+                                    </span>
                                     <span>เดือน</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                                        {formData.employmentStartDate ? new Date(formData.employmentStartDate).toLocaleDateString('th-TH').split('/')[1] : '\u00A0'}
+                                    </span>
                                     <span>พ.ศ.</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                                        {formData.employmentStartDate ? (new Date(formData.employmentStartDate).getFullYear() + 543) : '\u00A0'}
+                                    </span>
                                 </div>
                                 <div>
                                     <span>ได้รับค่าจ้างงวดสุดท้ายเมื่อเดือน</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                                        {formData.lastSalaryMonth ? new Date(formData.lastSalaryMonth).toLocaleDateString('th-TH', { month: 'long' }) : '\u00A0'}
+                                    </span>
                                     <span>พ.ศ.</span>
-                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                    <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                                        {formData.lastSalaryMonth ? (new Date(formData.lastSalaryMonth).getFullYear() + 543) : '\u00A0'}
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -221,7 +231,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             {/* Last Employer */}
                             <div className="text-xs">
                                 <span>ชื่อสถานประกอบการสุดท้ายที่ทำงาน</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[200px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{formData.lastEmployerName || '\u00A0'}</span>
                             </div>
 
                             {/* Account and Branch */}
@@ -257,11 +267,17 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             {/* End Date */}
                             <div className="text-xs mb-0.5">
                                 <span>สิ้นสภาพความเป็นลูกจ้างเมื่อวันที่</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                                    {formData.employmentEndDate ? new Date(formData.employmentEndDate).toLocaleDateString('th-TH').split('/')[0] : '\u00A0'}
+                                </span>
                                 <span>เดือน</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[60px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                                    {formData.employmentEndDate ? new Date(formData.employmentEndDate).toLocaleDateString('th-TH').split('/')[1] : '\u00A0'}
+                                </span>
                                 <span>พ.ศ.</span>
-                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>{'\u00A0'}</span>
+                                <span className={`border-b border-dotted border-slate-400 inline-block min-w-[40px] text-center px-2 pb-1 mx-1`} style={{ verticalAlign: 'baseline', minHeight: '1.2em' }}>
+                                    {formData.employmentEndDate ? (new Date(formData.employmentEndDate).getFullYear() + 543) : '\u00A0'}
+                                </span>
                             </div>
                         </div>
                     </div>
