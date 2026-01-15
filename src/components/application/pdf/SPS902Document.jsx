@@ -330,14 +330,9 @@ export default function SPS902Document({ applicant, formData = {} }) {
                                         <PDFCheckbox checked={formData.changeReasonDetail === 'other'} checkType={'check'}/>
                                         <span className="mb-0">อื่นๆ (ระบุ)</span>
                                         <span className={`border-b border-dotted border-slate-400 inline-block w-20 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
-                                            {'' || '\u00A0'}
-                                        </span>
-                                    </label>
-                                    {formData.changeReasonDetail === 'other' && (
-                                        <span className={`border-b border-dotted border-slate-400 inline-block w-48 text-center px-2 pb-1 ml-6`} style={{ minHeight: '1.2em' }}>
                                             {formData.otherReason || '\u00A0'}
                                         </span>
-                                    )}
+                                    </label>
                                 </div>
                             </div>
                         </div>
