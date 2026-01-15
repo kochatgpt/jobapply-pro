@@ -80,34 +80,33 @@ export default function EmploymentContractReviewModal({ applicant, isOpen, onClo
     };
 
     const handleGeneratePDF = async (action) => {
+        const pages = document.querySelectorAll('.pdpa-page');
+        if (!pages || pages.length === 0) {
+            toast.error("ไม่พบเนื้อหาเอกสาร");
+            return;
+        }
+
         setGeneratingPdf(true);
         try {
-            await new Promise(resolve => setTimeout(resolve, 500));
-            
-            const pages = document.querySelectorAll('#employment-contract-pdf-content .pdpa-page');
-            if (!pages.length) {
-                toast.error("ไม่พบเนื้อหาเอกสาร กรุณาลองใหม่");
-                return;
-            }
-
             const pdf = new jsPDF('p', 'mm', 'a4');
             const pdfWidth = pdf.internal.pageSize.getWidth();
-            
+
             for (let i = 0; i < pages.length; i++) {
-                const canvas = await html2canvas(pages[i], {
-                    scale: 1.5,
+                const page = pages[i];
+                const canvas = await html2canvas(page, {
+                    scale: 2,
                     useCORS: true,
                     logging: false,
-                    windowWidth: 1200,
-                    backgroundColor: '#ffffff',
-                    allowTaint: true
+                    windowWidth: 1200
                 });
 
-                const imgData = canvas.toDataURL('image/png', 0.8);
+                const imgData = canvas.toDataURL('image/png');
                 const imgWidth = pdfWidth;
                 const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-                if (i > 0) pdf.addPage();
+                if (i > 0) {
+                    pdf.addPage();
+                }
                 pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
             }
 
