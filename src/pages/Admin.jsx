@@ -730,7 +730,8 @@ export default function AdminPage() {
     const [reviewingEmploymentContract, setReviewingEmploymentContract] = useState(null);
     const [reviewingFMHRD27Doc, setReviewingFMHRD27Doc] = useState(null);
     const [reviewingFMHRD30, setReviewingFMHRD30] = useState(null);
-    const [reviewingSPSDoc, setReviewingSPSDoc] = useState(null);
+    const [reviewingSPS103Doc, setReviewingSPS103Doc] = useState(null);
+    const [reviewingSPS902Doc, setReviewingSPS902Doc] = useState(null);
     const [reviewingInsuranceDoc, setReviewingInsuranceDoc] = useState(null);
 
     useEffect(() => {
