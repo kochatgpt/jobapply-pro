@@ -15,6 +15,7 @@ import toast from 'react-hot-toast';
 
 export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfData }) {
     const queryClient = useQueryClient();
+    const [generatingPdf, setGeneratingPdf] = useState(false);
     const [formData, setFormData] = useState({
         staffDecision: '',
         reasonLine1: '',
