@@ -17,7 +17,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
             }}
         >
             {/* Header */}
-            <div className="flex items-center justify-between mb-1 pb-2">
+            <div className="flex items-center justify-between mb-1">
                 <img 
                     src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6937c0bd189dcfc8f3a84e3b/7e3f209fb_image.png" 
                     alt="สำนักงานประกันสังคม" 
