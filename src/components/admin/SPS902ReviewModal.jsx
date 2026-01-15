@@ -44,7 +44,21 @@ export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfData 
                 reasonLine1: pdfData.data.reasonLine1 || '',
                 reasonLine2: pdfData.data.reasonLine2 || '',
                 staffSignature: pdfData.data.staffSignature || '',
-                staffSignatureDate: pdfData.data.staffSignatureDate || ''
+                staffSignatureDate: pdfData.data.staffSignatureDate || '',
+                socialSecurityNumber: pdfData.data.socialSecurityNumber || '',
+                documents: pdfData.data.documents || {
+                    idCard: false,
+                    housRegistration: false,
+                    alienCard: false,
+                    passport: false,
+                    workPermit: false,
+                    other: false
+                },
+                employerName: pdfData.data.employerName || '',
+                employerFullName: pdfData.data.employerFullName || '',
+                employerPosition: pdfData.data.employerPosition || '',
+                employerSignatureDate: pdfData.data.employerSignatureDate || '',
+                employerSignature: pdfData.data.employerSignature || ''
             }));
         }
     }, [pdfData]);
