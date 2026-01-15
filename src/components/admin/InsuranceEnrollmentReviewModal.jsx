@@ -57,11 +57,21 @@ export default function InsuranceEnrollmentReviewModal({ applicant, pdfDoc, isOp
     });
 
     const handleGeneratePDF = async (action) => {
-        const pages = document.querySelectorAll('.insurance-enrollment-review-page');
-        if (!pages || pages.length === 0) return;
+        const container = document.querySelector('.insurance-enrollment-review-page');
+        if (!container) {
+            toast.error("ไม่พบเนื้อหาเอกสาร");
+            return;
+        }
 
         setGeneratingPdf(true);
         try {
+            const pages = container.querySelectorAll('.pdpa-page');
+            if (pages.length === 0) {
+                toast.error("ไม่พบเนื้อหาเอกสาร");
+                setGeneratingPdf(false);
+                return;
+            }
+
             const pdf = new jsPDF('p', 'mm', 'a4');
             const pdfWidth = pdf.internal.pageSize.getWidth();
 
