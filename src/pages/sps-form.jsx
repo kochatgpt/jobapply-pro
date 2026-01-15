@@ -58,7 +58,24 @@ export default function SPSFormPage() {
 
         // For SPS 9-02 - Section 39
         section39AccountNumber: '',
-        section39BranchNumber: ''
+        section39BranchNumber: '',
+
+        // For SPS 9-02 - Hospital Selection
+        hospitalSelection: '',
+        changeReason: '',
+        changeReasonDetail: '',
+        otherReason: '',
+        selectHospital: '',
+        hospital1: '',
+        hospital1Code: '',
+        hospital2: '',
+        hospital2Code: '',
+        hospital3: '',
+        hospital3Code: '',
+        disabledPerson: '',
+        staffDecision: '',
+        reasonLine1: '',
+        reasonLine2: ''
         });
 
     useEffect(() => {
@@ -746,6 +763,222 @@ export default function SPSFormPage() {
                                                 value={formData.signatureDate}
                                                 onChange={(e) => setFormData({ ...formData, signatureDate: e.target.value })}
                                             />
+                                        </div>
+
+                                        <div className="border-t pt-4">
+                                            <h3 className="font-semibold text-slate-800 mb-3">2. การเลือกสถานพยาบาล</h3>
+                                            <div className="space-y-3">
+                                                <div>
+                                                    <label className="flex items-center gap-2">
+                                                        <input
+                                                            type="radio"
+                                                            name="hospitalSelection"
+                                                            checked={formData.hospitalSelection === 'not_selected'}
+                                                            onChange={() => setFormData({ ...formData, hospitalSelection: 'not_selected' })}
+                                                            className="w-4 h-4"
+                                                        />
+                                                        <span className="text-sm font-medium">ยังไม่ได้เลือกสถานพยาบาล</span>
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <label className="flex items-center gap-2">
+                                                        <input
+                                                            type="radio"
+                                                            name="hospitalSelection"
+                                                            checked={formData.hospitalSelection === 'use_old'}
+                                                            onChange={() => setFormData({ ...formData, hospitalSelection: 'use_old' })}
+                                                            className="w-4 h-4"
+                                                        />
+                                                        <span className="text-sm font-medium">ขอใช้สถานพยาบาลเดิม (กรณี มาตรา 38 และ 41)</span>
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <label className="flex items-center gap-2">
+                                                        <input
+                                                            type="radio"
+                                                            name="hospitalSelection"
+                                                            checked={formData.hospitalSelection === 'change'}
+                                                            onChange={() => setFormData({ ...formData, hospitalSelection: 'change' })}
+                                                            className="w-4 h-4"
+                                                        />
+                                                        <span className="text-sm font-medium">ขอเปลี่ยนสถานพยาบาล (โปรดระบุเหตุผล)</span>
+                                                    </label>
+                                                </div>
+
+                                                {formData.hospitalSelection === 'change' && (
+                                                    <div className="ml-6 space-y-3 p-3 bg-yellow-50 border border-yellow-200 rounded">
+                                                        <div>
+                                                            <label className="flex items-center gap-2">
+                                                                <input
+                                                                    type="radio"
+                                                                    name="changeReason"
+                                                                    checked={formData.changeReason === 'annual'}
+                                                                    onChange={() => setFormData({ ...formData, changeReason: 'annual' })}
+                                                                    className="w-4 h-4"
+                                                                />
+                                                                <span className="text-sm">เปลี่ยนสถานพยาบาลประจำปี</span>
+                                                            </label>
+                                                        </div>
+                                                        <div>
+                                                            <label className="flex items-center gap-2">
+                                                                <input
+                                                                    type="radio"
+                                                                    name="changeReason"
+                                                                    checked={formData.changeReason === 'during_year'}
+                                                                    onChange={() => setFormData({ ...formData, changeReason: 'during_year' })}
+                                                                    className="w-4 h-4"
+                                                                />
+                                                                <span className="text-sm">เปลี่ยนสถานพยาบาลระหว่างปี</span>
+                                                            </label>
+                                                        </div>
+
+                                                        {formData.changeReason && (
+                                                            <div className="ml-6 space-y-3 p-3 bg-orange-50 border border-orange-200 rounded">
+                                                                <div>
+                                                                    <label className="flex items-center gap-2">
+                                                                        <input
+                                                                            type="radio"
+                                                                            name="changeReasonDetail"
+                                                                            checked={formData.changeReasonDetail === 'address'}
+                                                                            onChange={() => setFormData({ ...formData, changeReasonDetail: 'address' })}
+                                                                            className="w-4 h-4"
+                                                                        />
+                                                                        <span className="text-sm">ย้ายที่อยู่</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label className="flex items-center gap-2">
+                                                                        <input
+                                                                            type="radio"
+                                                                            name="changeReasonDetail"
+                                                                            checked={formData.changeReasonDetail === 'workplace'}
+                                                                            onChange={() => setFormData({ ...formData, changeReasonDetail: 'workplace' })}
+                                                                            className="w-4 h-4"
+                                                                        />
+                                                                        <span className="text-sm">เปลี่ยนสถานที่ทำงาน</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label className="flex items-center gap-2">
+                                                                        <input
+                                                                            type="radio"
+                                                                            name="changeReasonDetail"
+                                                                            checked={formData.changeReasonDetail === 'other'}
+                                                                            onChange={() => setFormData({ ...formData, changeReasonDetail: 'other' })}
+                                                                            className="w-4 h-4"
+                                                                        />
+                                                                        <span className="text-sm">อื่นๆ (ระบุ)</span>
+                                                                    </label>
+                                                                </div>
+                                                                {formData.changeReasonDetail === 'other' && (
+                                                                    <div>
+                                                                        <Label>ระบุรายละเอียด</Label>
+                                                                        <Input
+                                                                            value={formData.otherReason}
+                                                                            onChange={(e) => setFormData({ ...formData, otherReason: e.target.value })}
+                                                                            placeholder="ระบุเหตุผลอื่นๆ"
+                                                                        />
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <div className="border-t pt-4">
+                                            <h3 className="font-semibold text-slate-800 mb-3">การเลือกสถานพยาบาล</h3>
+                                            <div className="space-y-3">
+                                                <div>
+                                                    <label className="flex items-center gap-2">
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={formData.selectHospital === 'yes'}
+                                                            onChange={(e) => setFormData({ ...formData, selectHospital: e.target.checked ? 'yes' : '' })}
+                                                            className="w-4 h-4 rounded"
+                                                        />
+                                                        <span className="text-sm font-medium">ข้าพเจ้าขอเลือกสถานพยาบาล</span>
+                                                    </label>
+                                                </div>
+
+                                                {formData.selectHospital === 'yes' && (
+                                                    <div className="ml-6 space-y-3 p-3 bg-blue-50 border border-blue-200 rounded">
+                                                        <div>
+                                                            <Label>ลำดับที่ 1 ชื่อสถานพยาบาล</Label>
+                                                            <Input
+                                                                value={formData.hospital1}
+                                                                onChange={(e) => setFormData({ ...formData, hospital1: e.target.value })}
+                                                                placeholder="ชื่อสถานพยาบาล"
+                                                            />
+                                                            <Label className="mt-2">รหัสสถานพยาบาล (7 หลัก)</Label>
+                                                            <Input
+                                                                value={formData.hospital1Code}
+                                                                onChange={(e) => {
+                                                                    const value = e.target.value.replace(/\D/g, '');
+                                                                    if (value.length <= 7) {
+                                                                        setFormData({ ...formData, hospital1Code: value });
+                                                                    }
+                                                                }}
+                                                                placeholder="รหัสสถานพยาบาล"
+                                                                maxLength="7"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Label>ลำดับที่ 2 ชื่อสถานพยาบาล</Label>
+                                                            <Input
+                                                                value={formData.hospital2}
+                                                                onChange={(e) => setFormData({ ...formData, hospital2: e.target.value })}
+                                                                placeholder="ชื่อสถานพยาบาล"
+                                                            />
+                                                            <Label className="mt-2">รหัสสถานพยาบาล (7 หลัก)</Label>
+                                                            <Input
+                                                                value={formData.hospital2Code}
+                                                                onChange={(e) => {
+                                                                    const value = e.target.value.replace(/\D/g, '');
+                                                                    if (value.length <= 7) {
+                                                                        setFormData({ ...formData, hospital2Code: value });
+                                                                    }
+                                                                }}
+                                                                placeholder="รหัสสถานพยาบาล"
+                                                                maxLength="7"
+                                                            />
+                                                        </div>
+                                                        <div>
+                                                            <Label>ลำดับที่ 3 ชื่อสถานพยาบาล</Label>
+                                                            <Input
+                                                                value={formData.hospital3}
+                                                                onChange={(e) => setFormData({ ...formData, hospital3: e.target.value })}
+                                                                placeholder="ชื่อสถานพยาบาล"
+                                                            />
+                                                            <Label className="mt-2">รหัสสถานพยาบาล (7 หลัก)</Label>
+                                                            <Input
+                                                                value={formData.hospital3Code}
+                                                                onChange={(e) => {
+                                                                    const value = e.target.value.replace(/\D/g, '');
+                                                                    if (value.length <= 7) {
+                                                                        setFormData({ ...formData, hospital3Code: value });
+                                                                    }
+                                                                }}
+                                                                placeholder="รหัสสถานพยาบาล"
+                                                                maxLength="7"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                )}
+
+                                                <div>
+                                                    <label className="flex items-center gap-2">
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={formData.disabledPerson === 'yes'}
+                                                            onChange={(e) => setFormData({ ...formData, disabledPerson: e.target.checked ? 'yes' : '' })}
+                                                            className="w-4 h-4 rounded"
+                                                        />
+                                                        <span className="text-sm font-medium">ข้าพเจ้าคนพิการ ขอรับบริการจาก สปสช.</span>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 )}
