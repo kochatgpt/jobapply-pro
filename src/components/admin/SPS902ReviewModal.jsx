@@ -13,11 +13,27 @@ import toast from 'react-hot-toast';
 export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfData }) {
     const queryClient = useQueryClient();
     const [formData, setFormData] = useState({
+        // Staff section
         staffDecision: '',
         reasonLine1: '',
         reasonLine2: '',
         staffSignature: '',
-        staffSignatureDate: ''
+        staffSignatureDate: '',
+        socialSecurityNumber: '',
+        documents: {
+            idCard: false,
+            housRegistration: false,
+            alienCard: false,
+            passport: false,
+            workPermit: false,
+            other: false
+        },
+        // Employer section
+        employerName: '',
+        employerFullName: '',
+        employerPosition: '',
+        employerSignatureDate: '',
+        employerSignature: ''
     });
 
     useEffect(() => {
