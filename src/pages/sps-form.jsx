@@ -966,13 +966,27 @@ export default function SPSFormPage() {
 
                                         <div className="border-t pt-4">
                                             <h3 className="font-semibold text-slate-800 mb-3">ลายเซ็นและวันที่</h3>
-                                            <div className="space-y-3">
+                                            <div className="space-y-4">
+                                                <div>
+                                                    <SignaturePadField
+                                                        label="ลายเซ็นผู้ประกันตน"
+                                                        value={formData.declarationSignature}
+                                                        onChange={(sig) => setFormData({ ...formData, declarationSignature: sig })}
+                                                    />
+                                                </div>
                                                 <div>
                                                     <Label>ลงวันที่ประกาศ</Label>
                                                     <Input
                                                         type="date"
                                                         value={formData.declarationSignatureDate}
                                                         onChange={(e) => setFormData({ ...formData, declarationSignatureDate: e.target.value })}
+                                                    />
+                                                </div>
+                                                <div className="border-t pt-4">
+                                                    <SignaturePadField
+                                                        label="ลายเซ็นเจ้าหน้าที่"
+                                                        value={formData.staffSignature}
+                                                        onChange={(sig) => setFormData({ ...formData, staffSignature: sig })}
                                                     />
                                                 </div>
                                                 <div>
