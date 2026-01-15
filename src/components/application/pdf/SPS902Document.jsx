@@ -398,7 +398,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                         {/* Disabled Person Section */}
                         <div className="text-xs">
                             <label className="flex items-start gap-2">
-                                <PDFCheckbox checked={formData.disabledPerson === 'yes'} />
+                                <PDFCheckbox checked={formData.disabledPerson === 'yes'} checkType={'check'}/>
                                 <span className="mb-1">ข้าพเจ้าคนพิการซึ่งเป็นผู้ประกันตน ขอรับบริการสาธารณสุขจาก สำนักงานหลักประกันสุขภาพแห่งชาติ (สปสช.)</span>
                             </label>
                         </div>
@@ -444,11 +444,11 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     <div className="text-xs font-bold mb-1">ความเห็นเจ้าหน้าที่</div>
                     <div className="space-y-1 mb-1">
                         <label className="flex items-center gap-2 text-xs">
-                            <PDFCheckbox checked={formData.staffDecision === 'approve'} />
+                            <PDFCheckbox checked={formData.staffDecision === 'approve'} checkType={'check'}/>
                             <span className="mb-1">เห็นสมควรจัดสถานพยาบาล</span>
                         </label>
                         <div className="flex items-baseline gap-2 text-xs mb-1">
-                            <PDFCheckbox checked={formData.staffDecision === 'disapprove'} />
+                            <PDFCheckbox checked={formData.staffDecision === 'disapprove'} checkType={'check'}/>
                             <span className="mb-1">ไม่เห็นสมควรจัดสถานพยาบาล ระบุเหตุผล</span>
                             <div className={`border-b border-dotted border-slate-400 flex-1 pb-0.5`} style={{ minHeight: '1.2em' }}>{formData.reasonLine1 || '\u00A0'}</div>
                         </div>
