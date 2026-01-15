@@ -735,28 +735,6 @@ export default function SPSFormPage() {
                                                     )}
 
                                         <div>
-                                            <h3 className="font-semibold text-slate-800 mb-3">วุฒิการศึกษา</h3>
-                                            <div className="space-y-3">
-                                                <div>
-                                                    <Label>ระดับการศึกษาสูงสุด</Label>
-                                                    <Input
-                                                        value={formData.educationLevel}
-                                                        onChange={(e) => setFormData({ ...formData, educationLevel: e.target.value })}
-                                                        placeholder="เช่น ปริญญาตรี, ปวส."
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Label>สาขาวิชา</Label>
-                                                    <Input
-                                                        value={formData.educationMajor}
-                                                        onChange={(e) => setFormData({ ...formData, educationMajor: e.target.value })}
-                                                        placeholder="เช่น บริหารธุรกิจ, คอมพิวเตอร์"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div>
                                             <Label>วันที่ลงนาม</Label>
                                             <Input
                                                 type="date"
