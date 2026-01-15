@@ -83,8 +83,7 @@ export default function SPSFormPage() {
         staffDecision: '',
         staffSignatureDate: '',
         staffSignature: '',
-        reasonLine1: '',
-        reasonLine2: ''
+        reasonLine1: ''
         });
 
     useEffect(() => {
