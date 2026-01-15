@@ -600,6 +600,28 @@ export default function SPSFormPage() {
                                         </div>
 
                                         <div>
+                                            <h3 className="font-semibold text-slate-800 mb-3">ข้อมูลการทำงานเดิม (ถ้ามี)</h3>
+                                            <div className="space-y-3">
+                                                <div>
+                                                    <Label>ชื่อสถานประกอบการสุดท้ายที่ทำงาน</Label>
+                                                    <Input
+                                                        value={formData.lastEmployerName}
+                                                        onChange={(e) => setFormData({ ...formData, lastEmployerName: e.target.value })}
+                                                        placeholder="ชื่อบริษัทที่ทำงานเดิม"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Label>สิ้นสภาพความเป็นลูกจ้างเมื่อวันที่</Label>
+                                                    <Input
+                                                        type="date"
+                                                        value={formData.employmentEndDate}
+                                                        onChange={(e) => setFormData({ ...formData, employmentEndDate: e.target.value })}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
                                             <h3 className="font-semibold text-slate-800 mb-3">วุฒิการศึกษา</h3>
                                             <div className="space-y-3">
                                                 <div>
