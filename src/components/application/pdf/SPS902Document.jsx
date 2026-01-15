@@ -450,7 +450,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     <div className="text-xs font-bold mb-1">ความเห็นเจ้าหน้าที่</div>
                     <div className="space-y-0.5 mb-1">
                         <label className="flex items-center gap-2 text-xs">
-                            <PDFCheckbox checked={formData.staffDecision === 'approve'} checkType={'check'} checkboxClass={'mt-1'}/>
+                            <PDFCheckbox checked={formData.staffDecision === 'approve'} checkType={'check'} checkboxClass={'items-end'}/>
                             <span className="mb-1">เห็นสมควรจัดสถานพยาบาล</span>
                         </label>
                         <div className="flex items-baseline gap-2 text-xs mb-1">
