@@ -80,7 +80,11 @@ export default function SPSFormPage() {
         staffSignatureDate: '',
         staffSignature: '',
         reasonLine1: '',
-        reasonLine2: ''
+        reasonLine2: '',
+        receiptNumber: '',
+        receiptDate: '',
+        receiptTime: '',
+        receiverName: ''
         });
 
     useEffect(() => {
