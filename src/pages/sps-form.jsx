@@ -958,31 +958,30 @@ export default function SPSFormPage() {
                                                         <span className="text-sm font-medium">ข้าพเจ้าคนพิการ ขอรับบริการจาก สปสช.</span>
                                                     </label>
                                                 </div>
-                                                </div>
-                                                </div>
-                                                </div>
+                                            </div>
+                                        </div>
 
-                                                <div className="border-t pt-4">
-                                                <h3 className="font-semibold text-slate-800 mb-3">ลายเซ็นและวันที่</h3>
-                                                <div className="space-y-3">
+                                        <div className="border-t pt-4">
+                                            <h3 className="font-semibold text-slate-800 mb-3">ลายเซ็นและวันที่</h3>
+                                            <div className="space-y-3">
                                                 <div>
-                                                <Label>ลงวันที่ประกาศ</Label>
-                                                <Input
-                                                    type="date"
-                                                    value={formData.declarationSignatureDate}
-                                                    onChange={(e) => setFormData({ ...formData, declarationSignatureDate: e.target.value })}
-                                                />
+                                                    <Label>ลงวันที่ประกาศ</Label>
+                                                    <Input
+                                                        type="date"
+                                                        value={formData.declarationSignatureDate}
+                                                        onChange={(e) => setFormData({ ...formData, declarationSignatureDate: e.target.value })}
+                                                    />
                                                 </div>
                                                 <div>
-                                                <Label>ลงวันที่เจ้าหน้าที่</Label>
-                                                <Input
-                                                    type="date"
-                                                    value={formData.staffSignatureDate}
-                                                    onChange={(e) => setFormData({ ...formData, staffSignatureDate: e.target.value })}
-                                                />
+                                                    <Label>ลงวันที่เจ้าหน้าที่</Label>
+                                                    <Input
+                                                        type="date"
+                                                        value={formData.staffSignatureDate}
+                                                        onChange={(e) => setFormData({ ...formData, staffSignatureDate: e.target.value })}
+                                                    />
                                                 </div>
-                                                </div>
-                                                </div>
+                                            </div>
+                                        </div>
                                 )}
 
                                 <div className="flex justify-end gap-2 pt-4">
