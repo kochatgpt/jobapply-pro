@@ -982,21 +982,6 @@ export default function SPSFormPage() {
                                                         onChange={(e) => setFormData({ ...formData, declarationSignatureDate: e.target.value })}
                                                     />
                                                 </div>
-                                                <div className="border-t pt-4">
-                                                    <SignaturePadField
-                                                        label="ลายเซ็นเจ้าหน้าที่"
-                                                        value={formData.staffSignature}
-                                                        onChange={(sig) => setFormData({ ...formData, staffSignature: sig })}
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Label>ลงวันที่เจ้าหน้าที่</Label>
-                                                    <Input
-                                                        type="date"
-                                                        value={formData.staffSignatureDate}
-                                                        onChange={(e) => setFormData({ ...formData, staffSignatureDate: e.target.value })}
-                                                    />
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
