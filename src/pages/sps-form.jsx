@@ -968,10 +968,11 @@ export default function SPSFormPage() {
                                             <h3 className="font-semibold text-slate-800 mb-3">ลายเซ็นและวันที่</h3>
                                             <div className="space-y-4">
                                                 <div>
-                                                    <SignaturePadField
+                                                    <Label className="mb-2 block">ลายเซ็นผู้ประกันตน</Label>
+                                                    <SignaturePad
+                                                        signatureUrl={formData.declarationSignature}
+                                                        onSave={(sig) => setFormData({ ...formData, declarationSignature: sig })}
                                                         label="ลายเซ็นผู้ประกันตน"
-                                                        value={formData.declarationSignature}
-                                                        onChange={(sig) => setFormData({ ...formData, declarationSignature: sig })}
                                                     />
                                                 </div>
                                                 <div>
