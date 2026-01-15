@@ -8,7 +8,6 @@ import {
     FileText, Phone, MapPin, Calendar, Mail, FileDown, Eye, Loader2
 } from "lucide-react";
 import InfoGrid from './InfoGrid';
-import ApplicantSummary from './ApplicantSummary';
 import PDFLayoutType2 from './pdf/PDFLayoutType2';
 import AdminDataForm from './AdminDataForm';
 import ResponsesModal from './ResponsesModal';
@@ -246,9 +245,6 @@ export default function ApplicantDetail({ applicant: initialApplicant }) {
             <div className="flex-1 overflow-hidden">
                 <ScrollArea className="h-full">
                     <div className="p-8 max-w-5xl mx-auto">
-                        {/* Summary Cards */}
-                        <ApplicantSummary applicant={applicant} />
-
                         <Tabs defaultValue="personal" className="w-full">
                             <TabsList className="w-full justify-start bg-white border border-slate-200 p-1 mb-6 h-auto flex-wrap">
                                 <TabsTrigger value="personal" className="gap-2 px-4 py-2"><User className="w-4 h-4"/> ข้อมูลส่วนตัว</TabsTrigger>
