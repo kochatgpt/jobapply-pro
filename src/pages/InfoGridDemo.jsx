@@ -102,6 +102,76 @@ const DefinitionList = ({ data, title, icon: Icon }) => (
     </Card>
 );
 
+// Template 5: Accent Left Border
+const AccentBorder = ({ data, title, icon: Icon }) => (
+    <Card className="border-slate-200 shadow-sm">
+        {(title || Icon) && (
+            <CardHeader className="pb-3">
+                <CardTitle className="text-base font-semibold flex items-center gap-2 text-slate-800">
+                    {Icon && <Icon className="w-4 h-4 text-indigo-500" />}
+                    {title}
+                </CardTitle>
+            </CardHeader>
+        )}
+        <CardContent className="p-4 space-y-2">
+            {Object.entries(data).map(([key, value]) => (
+                <div key={key} className="border-l-4 border-indigo-500 pl-4 py-2">
+                    <p className="text-xs text-slate-500 font-semibold uppercase mb-1">{key.replace(/_/g, ' ')}</p>
+                    <p className="text-sm font-semibold text-slate-800">{value || '-'}</p>
+                </div>
+            ))}
+        </CardContent>
+    </Card>
+);
+
+// Template 6: Badge Style
+const BadgeStyle = ({ data, title, icon: Icon }) => (
+    <Card className="border-slate-200 shadow-sm">
+        {(title || Icon) && (
+            <CardHeader className="pb-3 border-b border-slate-50 bg-slate-50/50">
+                <CardTitle className="text-base font-semibold flex items-center gap-2 text-slate-800">
+                    {Icon && <Icon className="w-4 h-4 text-indigo-500" />}
+                    {title}
+                </CardTitle>
+            </CardHeader>
+        )}
+        <CardContent className="p-4">
+            <div className="flex flex-wrap gap-3">
+                {Object.entries(data).map(([key, value]) => (
+                    <div key={key} className="inline-block bg-indigo-50 border border-indigo-200 rounded-full px-4 py-2">
+                        <p className="text-xs text-slate-500 font-semibold uppercase mb-0.5">{key.replace(/_/g, ' ')}</p>
+                        <p className="text-sm font-bold text-indigo-600">{value || '-'}</p>
+                    </div>
+                ))}
+            </div>
+        </CardContent>
+    </Card>
+);
+
+// Template 7: Split Panel
+const SplitPanel = ({ data, title, icon: Icon }) => (
+    <Card className="border-slate-200 shadow-sm">
+        {(title || Icon) && (
+            <CardHeader className="pb-3 border-b border-slate-50 bg-slate-50/50">
+                <CardTitle className="text-base font-semibold flex items-center gap-2 text-slate-800">
+                    {Icon && <Icon className="w-4 h-4 text-indigo-500" />}
+                    {title}
+                </CardTitle>
+            </CardHeader>
+        )}
+        <CardContent className="p-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2">
+                {Object.entries(data).map(([key, value], idx) => (
+                    <div key={key} className={`px-6 py-4 ${idx % 2 === 0 ? 'bg-slate-50 border-r border-b border-slate-100' : 'border-b border-slate-100'} ${idx === Object.entries(data).length - 1 ? 'border-b-0' : ''}`}>
+                        <p className="text-xs font-semibold text-slate-500 uppercase mb-2">{key.replace(/_/g, ' ')}</p>
+                        <p className="text-base font-bold text-slate-800">{value || '-'}</p>
+                    </div>
+                ))}
+            </div>
+        </CardContent>
+    </Card>
+);
+
 export default function InfoGridDemo() {
     const sampleData = {
         first_name: 'นาย',
