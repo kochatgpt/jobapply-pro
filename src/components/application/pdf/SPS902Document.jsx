@@ -71,15 +71,15 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     <div className="flex gap-2 items-center text-xs mb-1">
                         <span className="mb-1">ข้าพเจ้า</span>
                         <label className="flex items-center gap-1">
-                            <PDFCheckbox checked={personalData.prefix === 'นาย'} checkType={'check'}/>
+                            <PDFCheckbox checked={personalData.prefix === 'นาย'} checkType={'check'} checkboxClass={'items-end'}/>
                             <span className="text-xs mb-1">นาย</span>
                         </label>
                         <label className="flex items-center gap-1">
-                            <PDFCheckbox checked={personalData.prefix === 'นางสาว'} checkType={'check'}/>
+                            <PDFCheckbox checked={personalData.prefix === 'นางสาว'} checkType={'check'} checkboxClass={'items-end'}/>
                             <span className="text-xs mb-1">นางสาว</span>
                         </label>
                         <label className="flex items-center gap-1">
-                            <PDFCheckbox checked={personalData.prefix === 'นาง'} checkType={'check'}/>
+                            <PDFCheckbox checked={personalData.prefix === 'นาง'} checkType={'check'} checkboxClass={'items-end'}/>
                             <span className="text-xs mb-1">นาง</span>
                         </label>
                         <span className={`border-b border-dotted border-slate-400 inline-block flex-1 text-center px-2 pb-1 mx-1 ${personalData.first_name}`} style={{ verticalAlign: 'baseline', ...(!personalData.first_name && { minHeight: '1.2em' }) }}>
@@ -302,39 +302,39 @@ export default function SPS902Document({ applicant, formData = {} }) {
                     <div className="col-span-2 px-2 py-1">
                         <div className="text-xs">
                             <label className="flex items-start gap-2">
-                                <PDFCheckbox checked={formData.hospitalSelection === 'not_selected'} checkType={'check'}/>
+                                <PDFCheckbox checked={formData.hospitalSelection === 'not_selected'} checkType={'check'} checkboxClass={'items-end'}/>
                                 <span className="mb-1">ยังไม่ได้เลือกสถานพยาบาล</span>
                             </label>
                             <label className="flex items-start gap-2">
-                                <PDFCheckbox checked={formData.hospitalSelection === 'use_old'} checkType={'check'}/>
+                                <PDFCheckbox checked={formData.hospitalSelection === 'use_old'} checkType={'check'} checkboxClass={'items-end'}/>
                                 <span className="mb-1">ขอใช้สถานพยาบาลเดิม (กรณี มาตรา 38 และ 41)</span>
                             </label>
                             <label className="flex items-start gap-2">
-                                <PDFCheckbox checked={formData.hospitalSelection === 'change'} checkType={'check'}/>
+                                <PDFCheckbox checked={formData.hospitalSelection === 'change'} checkType={'check'} checkboxClass={'items-end'}/>
                                 <span className="mb-1">ขอเปลี่ยนสถานพยาบาล (โปรดระบุเหตุผล)</span>
                             </label>
                             <div className="ml-4 space-y-1">
                                 <div className="font-bold mb-1">เหตุผล</div>
                                 <label className="flex items-start gap-2">
-                                    <PDFCheckbox checked={formData.changeReason === 'annual'} checkType={'check'}/>
+                                    <PDFCheckbox checked={formData.changeReason === 'annual'} checkType={'check'} checkboxClass={'items-end'}/>
                                     <span className="mb-1">เปลี่ยนสถานพยาบาลประจำปี</span>
                                 </label>
                                 <label className="flex items-start gap-2">
-                                    <PDFCheckbox checked={formData.changeReason === 'during_year'} checkType={'check'}/>
+                                    <PDFCheckbox checked={formData.changeReason === 'during_year'} checkType={'check'} checkboxClass={'items-end'}/>
                                     <span className="mb-1">เปลี่ยนสถานพยาบาลระหว่างปี</span>
                                 </label>
                                 <div className="ml-4 space-y-1">
                                     <div className="font-bold mb-1">เนื่องจาก</div>
                                     <label className="flex items-start gap-2">
-                                        <PDFCheckbox checked={formData.changeReasonDetail === 'address'} checkType={'check'}/>
+                                        <PDFCheckbox checked={formData.changeReasonDetail === 'address'} checkType={'check'} checkboxClass={'items-end'}/>
                                         <span className="mb-1">ย้ายที่อยู่</span>
                                     </label>
                                     <label className="flex items-start gap-2">
-                                        <PDFCheckbox checked={formData.changeReasonDetail === 'workplace'} checkType={'check'}/>
+                                        <PDFCheckbox checked={formData.changeReasonDetail === 'workplace'} checkType={'check'} checkboxClass={'items-end'}/>
                                         <span className="mb-1">เปลี่ยนสถานที่ทำงาน</span>
                                     </label>
                                     <label className="flex items-center gap-1">
-                                        <PDFCheckbox checked={formData.changeReasonDetail === 'other'} checkType={'check'}/>
+                                        <PDFCheckbox checked={formData.changeReasonDetail === 'other'} checkType={'check'} checkboxClass={'items-end'}/>
                                         <span className="mb-1">อื่นๆ (ระบุ)</span>
                                         <span className={`border-b border-dotted border-slate-400 inline-block w-28 text-center px-2 pb-1`} style={{ minHeight: '1.2em' }}>
                                             {formData.otherReason || '\u00A0'}
@@ -350,7 +350,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                         {/* Hospital Selection */}
                         <div className="mb-3 text-xs">
                             <label className="flex items-start gap-2 mb-1">
-                                <PDFCheckbox checked={formData.selectHospital === 'yes'} checkType={'check'}/>
+                                <PDFCheckbox checked={formData.selectHospital === 'yes'} checkType={'check'} checkboxClass={'items-end'}/>
                                 <span className=" mb-1">ข้าพเจ้า (ผู้ประกันตน/คนพิการซึ่งเป็นผู้ประกันตน/ผู้มีสิทธิ)ขอเลือกสถานพยาบาล</span>
                             </label>
                             <div className="space-y-2 ml-1">
@@ -400,7 +400,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                         {/* Disabled Person Section */}
                         <div className="text-xs">
                             <label className="flex items-start gap-2">
-                                <PDFCheckbox checked={formData.disabledPerson === 'yes'} checkType={'check'}/>
+                                <PDFCheckbox checked={formData.disabledPerson === 'yes'} checkType={'check'} checkboxClass={'items-end'}/>
                                 <span className="mb-1">ข้าพเจ้าคนพิการซึ่งเป็นผู้ประกันตน ขอรับบริการสาธารณสุขจาก สำนักงานหลักประกันสุขภาพแห่งชาติ (สปสช.)</span>
                             </label>
                         </div>
@@ -454,7 +454,7 @@ export default function SPS902Document({ applicant, formData = {} }) {
                             <span className="mb-1">เห็นสมควรจัดสถานพยาบาล</span>
                         </label>
                         <div className="flex items-baseline gap-2 text-xs mb-1">
-                            <PDFCheckbox checked={formData.staffDecision === 'disapprove'} checkType={'check'}/>
+                            <PDFCheckbox checked={formData.staffDecision === 'disapprove'} checkType={'check'} checkboxClass={'items-end'}/>
                             <span className="mb-1">ไม่เห็นสมควรจัดสถานพยาบาล ระบุเหตุผล</span>
                             <div className={`border-b border-dotted border-slate-400 flex-1 pb-1`} style={{ minHeight: '1.2em' }}>{formData.reasonLine1 || '\u00A0'}</div>
                         </div>
