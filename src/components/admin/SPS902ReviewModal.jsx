@@ -239,8 +239,8 @@ export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfDoc }
                             </div>
                         </div>
                         
-                        <div className="max-h-[600px] overflow-auto bg-white p-4 flex justify-center">
-                            <div id="sps902-review-content">
+                        <div className="max-h-[600px] overflow-auto bg-white p-4 flex justify-center w-full">
+                            <div id="sps902-review-content" className="w-full">
                                 <SPS902Document 
                                     applicant={applicant}
                                     formData={previewFormData}
