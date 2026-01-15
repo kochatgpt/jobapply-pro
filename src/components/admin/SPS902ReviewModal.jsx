@@ -4,10 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2 } from "lucide-react";
+import { Loader2, FileDown, Eye } from "lucide-react";
 import SignaturePad from './SignaturePad';
+import SPS902Document from '@/components/application/pdf/SPS902Document';
 import { base44 } from '@/api/base44Client';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 import toast from 'react-hot-toast';
 
 export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfData }) {
