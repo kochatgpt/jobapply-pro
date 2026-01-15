@@ -206,54 +206,11 @@ export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfDoc }
                         {/* Date Section */}
                         <div className="space-y-2">
                             <Label className="font-semibold">วันที่ลงนาม</Label>
-                            <div className="grid grid-cols-3 gap-3">
-                                <div>
-                                    <Input
-                                        type="number"
-                                        min="1"
-                                        max="31"
-                                        placeholder="วัน"
-                                        value={formData.staffSignatureDate ? new Date(formData.staffSignatureDate).getDate() : ''}
-                                        onChange={(e) => {
-                                            const date = new Date(formData.staffSignatureDate || new Date());
-                                            date.setDate(parseInt(e.target.value) || 1);
-                                            setFormData({ ...formData, staffSignatureDate: date.toISOString().split('T')[0] });
-                                        }}
-                                    />
-                                </div>
-                                <div>
-                                    <select
-                                        value={formData.staffSignatureDate ? new Date(formData.staffSignatureDate).getMonth() : ''}
-                                        onChange={(e) => {
-                                            const date = new Date(formData.staffSignatureDate || new Date());
-                                            date.setMonth(parseInt(e.target.value) || 0);
-                                            setFormData({ ...formData, staffSignatureDate: date.toISOString().split('T')[0] });
-                                        }}
-                                        className="w-full px-3 py-2 border border-slate-300 rounded-md text-sm"
-                                    >
-                                        <option value="">-- เลือก --</option>
-                                        {['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 
-                                          'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'].map((m, i) => (
-                                            <option key={i} value={i}>{m}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div>
-                                    <Input
-                                        type="number"
-                                        min="2500"
-                                        max="2700"
-                                        placeholder="ปี พ.ศ."
-                                        value={formData.staffSignatureDate ? new Date(formData.staffSignatureDate).getFullYear() + 543 : ''}
-                                        onChange={(e) => {
-                                            const buddhistYear = parseInt(e.target.value) || new Date().getFullYear() + 543;
-                                            const date = new Date(formData.staffSignatureDate || new Date());
-                                            date.setFullYear(buddhistYear - 543);
-                                            setFormData({ ...formData, staffSignatureDate: date.toISOString().split('T')[0] });
-                                        }}
-                                    />
-                                </div>
-                            </div>
+                            <Input
+                                type="date"
+                                value={formData.staffSignatureDate || ''}
+                                onChange={(e) => setFormData({ ...formData, staffSignatureDate: e.target.value })}
+                            />
                         </div>
                     </div>
 
