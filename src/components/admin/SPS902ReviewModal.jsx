@@ -120,7 +120,7 @@ export default function SPS902ReviewModal({ isOpen, onClose, applicant, pdfDoc }
     };
 
     const previewFormData = {
-        ...(pdfData?.data || {}),
+        ...(pdfDoc?.data || {}),
         ...formData
     };
 
