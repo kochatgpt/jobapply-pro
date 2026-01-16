@@ -512,6 +512,15 @@ export default function InfoGridDemo() {
                         </div>
                         <CompactInline data={sampleData} title="ข้อมูลพื้นฐาน" icon={User} />
                     </div>
+
+                    {/* Template 14 */}
+                    <div className="col-span-full">
+                        <div className="flex items-center gap-2 mb-4">
+                            <div className="w-8 h-8 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-sm">14</div>
+                            <h2 className="text-xl font-bold text-slate-800">A4 Document Style (PDF-like)</h2>
+                        </div>
+                        <A4Document data={sampleData} title="ข้อมูลพื้นฐาน" icon={User} />
+                    </div>
                 </div>
             </div>
         </div>
