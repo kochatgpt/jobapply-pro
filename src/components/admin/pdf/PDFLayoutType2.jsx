@@ -179,7 +179,7 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
                 </div>
 
-                <div className="text-center font-bold text-[18px] my-2">ประวัติส่วนตัว</div>
+                <div className="text-center font-bold text-[18px] my-1">ประวัติส่วนตัว</div>
 
                 {/* --- Main Info Box --- */}
                 <div className="border-[0.5px] border-black rounded-sm">
