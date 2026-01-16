@@ -688,7 +688,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <span className="relative top-[1px]">ท่านมีโรคติดต่อร้ายแรงหรือไม่ เช่น กาฬโรค/ไข้ทรพิษหรือฝีดาษ/วัณโรค /HIV/Covid-19 อื่นๆ โปรดระบุให้ชัดเจน...............................</span>
                             </div>
 
-                            <div className="space-y-1">
+                            <div className="space-y-0.5">
                                 <div className="flex items-center gap-1 flex-wrap">
                                     <span className="w-5 shrink-0 relative top-[1px]">9.</span>
                                     <span className="whitespace-nowrap relative top-[1px]">ท่านมีข้อบกพร่องเกี่ยวกับร่างกาย หรือไม่</span>
