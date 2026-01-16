@@ -55,7 +55,7 @@ export default function InfoGrid({ data, title, icon: Icon }) {
                 </CardHeader>
             )}
             <CardContent className="p-4">
-                <div className="grid grid-cols-1 gap-y-4 gap-x-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-8">
                     {Object.entries(data).map(([key, value]) => {
                          // Skip bulky nested objects from the main grid, handled separately if needed, 
                          // or let RenderValue handle them if they are small. 
