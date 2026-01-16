@@ -174,7 +174,7 @@ export default function PDFLayoutType2({ applicant }) {
                 <div className="border-[0.5px] border-black rounded-sm">
                     {/* Position Row */}
                     <div className="p-3 border-b-[0.5px] border-black bg-slate-50/50">
-                        <div className="flex gap-4 items-end text-[16px] leading-tight">
+                        <div className="flex gap-1 items-end text-[16px] leading-tight">
                             <div className="font-bold whitespace-nowrap pb-1">สมัครงานในตำแหน่ง 1</div>
                             <div className="border-b-[1.5px] border-dotted border-black flex-1 px-2 pb-1 text-center font-medium truncate">{p.position_1}</div>
                             <div className="font-bold whitespace-nowrap pb-1">2</div>
@@ -185,7 +185,7 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
 
                     {/* Personal Data & Photo */}
-                    <div className="p-3 grid grid-cols-12 gap-2">
+                    <div className="p-3 grid grid-cols-12 gap-1">
                         <div className="col-span-10 space-y-3">
                             <div className="flex gap-2">
                                  <Field label="ชื่อ-สกุล (ภาษาไทย)" value={`${p.prefix || ''} ${p.first_name || ''} ${p.last_name || ''}`} className="flex-[3]" />
