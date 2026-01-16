@@ -22,6 +22,17 @@ export default function PDFLayoutType2({ applicant }) {
     const par = applicant.parents_data || { father: {}, mother: {} };
     const admin = applicant.admin_data || { hr_systems: {}, hr_info: {}, documents: {}, test_results: {}, interview: {}, approvals: { recruiter: {}, committee: {}, hr_manager: {}, department_head: {}, final_decision: {} } };
 
+    // Helper function to format date as DD/MM/YYYY
+    const formatDate = (dateString) => {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) return dateString; // Return original if invalid
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    };
+
     // --- Helpers ---
     const DottedLine = ({ value, className = "", center = false }) => (
         <div className={`border-b-[1.5px] border-dotted border-black px-1 pb-2 min-h-[1.4em] ${center ? 'text-center' : ''} ${className}`}>
@@ -196,7 +207,7 @@ export default function PDFLayoutType2({ applicant }) {
                                  <Field label="เบอร์โทรศัพท์" value={p.mobile_phone} className="flex-[2]" />
                             </div>
                             <div className="flex gap-2">
-                                <Field label="วันเดือนปีเกิด" value={p.dob} className="flex-[2]" />
+                                <Field label="วันเดือนปีเกิด" value={formatDate(p.dob)} className="flex-[2]" />
                                 <Field label="อายุ" value={p.age} className="flex-1" />
                                 <Field label="ส่วนสูง" value={p.height} className="flex-1" />
                                 <Field label="น้ำหนัก" value={p.weight} className="flex-1" />
@@ -924,12 +935,12 @@ export default function PDFLayoutType2({ applicant }) {
                             
                             <div className="flex justify-end items-end gap-2">
                                 <span className="relative top-[1px]">วันที่</span>
-                                <DottedLine value={applicant.signature_date} className="w-[120px] relative top-[4px] text-center" />
+                                <DottedLine value={formatDate(applicant.signature_date)} className="w-[120px] relative top-[4px] text-center" />
                             </div>
                             
                             <div className="flex justify-end items-end gap-2">
                                 <span className="relative top-[1px]">ข้าพเจ้าพร้อมปฏิบัติงานกับบริษัทฯ ในวันที่</span>
-                                <DottedLine value={applicant.start_work_date} className="w-[120px] relative top-[1px] text-center" />
+                                <DottedLine value={formatDate(applicant.start_work_date)} className="w-[120px] relative top-[1px] text-center" />
                             </div>
                         </div>
                     </div>
