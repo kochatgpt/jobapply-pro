@@ -191,58 +191,7 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
                     )}
                 </div>
 
-                {/* PDPA Documents */}
-                <div>
-                    <h2 className="text-2xl font-bold text-slate-800 mb-4">เอกสาร PDPA</h2>
-                    {pdpaDocs.length === 0 ? (
-                        <Card>
-                            <CardContent className="p-8 text-center text-slate-500">
-                                ยังไม่มีเอกสารที่ส่งมา
-                            </CardContent>
-                        </Card>
-                    ) : (
-                        <div className="grid grid-cols-1 gap-4">
-                            {pdpaDocs.map(applicant => (
-                                <Card key={applicant.id} className="hover:shadow-md transition-shadow">
-                                    <CardContent className="p-6">
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
-                                                    <FileCheck className="w-6 h-6 text-purple-600" />
-                                                </div>
-                                                <div>
-                                                    <h3 className="font-semibold text-lg">{applicant.full_name}</h3>
-                                                    <p className="text-sm text-slate-500">
-                                                        ส่งเมื่อ: {applicant.pdpa_document?.submitted_date ? 
-                                                            new Date(applicant.pdpa_document.submitted_date).toLocaleDateString('th-TH', {
-                                                                year: 'numeric',
-                                                                month: 'long',
-                                                                day: 'numeric',
-                                                                hour: '2-digit',
-                                                                minute: '2-digit'
-                                                            }) : '-'
-                                                        }
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="flex items-center gap-3">
-                                                <Badge variant={applicant.pdpa_document?.status === 'completed' ? 'success' : 'default'}>
-                                                    {applicant.pdpa_document?.status === 'completed' ? 'เสร็จสิ้น' : 'รอดำเนินการ'}
-                                                </Badge>
-                                                <Button 
-                                                    onClick={() => onReviewPDPA(applicant)}
-                                                    size="sm"
-                                                >
-                                                    กรอกข้อมูลพยาน
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            ))}
-                        </div>
-                    )}
-                </div>
+
 
                 {/* FM-HRD-19 Documents - Card View */}
                 <div>
