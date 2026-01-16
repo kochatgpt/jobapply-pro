@@ -358,7 +358,7 @@ export default function PDFLayoutType2({ applicant }) {
 
 
                     {/* --- Family Status --- */}
-                    <div className="border-[0.5px] border-black p-2 rounded-sm text-[15px]">
+                    <div className="border-[0.5px] border-black px-2 py-1 rounded-sm text-[15px]">
                         <div className="flex items-center gap-2 mb-2">
                              <span className="font-bold underline">สถานะทางครอบครัว</span>
                              <div className="flex gap-4 ml-4 items-end">
