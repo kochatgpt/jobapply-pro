@@ -145,105 +145,42 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
             const zip = new JSZip();
             const documentsFolder = zip.folder(selectedApplicant.full_name);
             
-            // Helper function to generate PDF from component
-            const generatePDFBlob = async (componentId) => {
-                const element = document.getElementById(componentId);
-                if (!element) return null;
-                
-                const canvas = await html2canvas(element, {
-                    scale: 2,
-                    useCORS: true,
-                    logging: false,
-                    windowWidth: 1200
-                });
-                
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = pdf.internal.pageSize.getHeight();
-                const imgWidth = pdfWidth;
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                
-                let heightLeft = imgHeight;
-                let position = 0;
-                
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pdfHeight;
-                
-                while (heightLeft >= 0) {
-                    position = heightLeft - imgHeight;
-                    pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pdfHeight;
-                }
-                
-                return pdf.output('blob');
+            // Collect all document data as JSON
+            const allDocuments = {
+                applicant_info: {
+                    full_name: selectedApplicant.full_name,
+                    email: selectedApplicant.personal_data?.email,
+                    phone: selectedApplicant.personal_data?.mobile_phone,
+                    submission_date: selectedApplicant.submission_date
+                },
+                nda_documents: filteredFMHRD27.map(doc => ({ id: doc.id, data: doc.data, status: doc.status })),
+                fmhrd19_documents: filteredFMHRD19.map(doc => ({ id: doc.id, data: doc.data, status: doc.status })),
+                sps103_documents: filteredSPS103.map(doc => ({ id: doc.id, data: doc.data, status: doc.status })),
+                sps902_documents: filteredSPS902.map(doc => ({ id: doc.id, data: doc.data, status: doc.status })),
+                insurance_documents: filteredInsurance.map(doc => ({ id: doc.id, data: doc.data, status: doc.status })),
+                employment_contracts: filteredEmploymentContract.map(doc => ({ id: doc.id, data: doc.data, status: doc.status })),
+                fmhrd30_documents: filteredFMHRD30.map(doc => ({ id: doc.id, data: doc.data, status: doc.status })),
+                criminal_check_documents: filteredCriminalCheck.map(doc => ({ id: doc.id, data: doc.data, status: doc.status }))
             };
             
-            // Load document components dynamically and generate PDFs
-            const documentTypes = [
-                { docs: filteredFMHRD27, name: 'NDA', component: 'NDADocument' },
-                { docs: filteredFMHRD19, name: 'FM-HRD-19', component: 'FMH19Document' },
-                { docs: filteredSPS103, name: 'SPS-1-03', component: 'SPS103Document' },
-                { docs: filteredSPS902, name: 'SPS-9-02', component: 'SPS902Document' },
-                { docs: filteredInsurance, name: 'Insurance', component: 'InsuranceEnrollmentDocument' },
-                { docs: filteredEmploymentContract, name: 'Employment-Contract', component: 'EmploymentContractDocument' },
-                { docs: filteredFMHRD30, name: 'FM-HRD-30', component: 'FMHRD30Document' },
-                { docs: filteredCriminalCheck, name: 'Criminal-Check', component: 'CriminalCheckDocument' }
-            ];
+            // Add summary JSON
+            documentsFolder.file('summary.json', JSON.stringify(allDocuments, null, 2));
             
-            // Create temporary container for rendering documents
-            const tempContainer = document.createElement('div');
-            tempContainer.style.position = 'fixed';
-            tempContainer.style.left = '-9999px';
-            tempContainer.style.top = '0';
-            document.body.appendChild(tempContainer);
+            // Create a text summary
+            let textSummary = `สรุปเอกสารของ ${selectedApplicant.full_name}\n`;
+            textSummary += `=`.repeat(50) + '\n\n';
+            textSummary += `จำนวนเอกสารทั้งหมด:\n`;
+            textSummary += `- NDA (FM-HRD-27): ${filteredFMHRD27.length} เอกสาร\n`;
+            textSummary += `- FM-HRD-19: ${filteredFMHRD19.length} เอกสาร\n`;
+            textSummary += `- SPS 1-03: ${filteredSPS103.length} เอกสาร\n`;
+            textSummary += `- SPS 9-02: ${filteredSPS902.length} เอกสาร\n`;
+            textSummary += `- ใบสมัครประกัน: ${filteredInsurance.length} เอกสาร\n`;
+            textSummary += `- สัญญาจ้างงาน: ${filteredEmploymentContract.length} เอกสาร\n`;
+            textSummary += `- FM-HRD-30: ${filteredFMHRD30.length} เอกสาร\n`;
+            textSummary += `- หนังสือมอบอำนาจ: ${filteredCriminalCheck.length} เอกสาร\n\n`;
+            textSummary += `หมายเหตุ: กรุณาเข้าระบบเพื่อดูและดาวน์โหลดเอกสาร PDF แต่ละฉบับ\n`;
             
-            for (const docType of documentTypes) {
-                for (let i = 0; i < docType.docs.length; i++) {
-                    const doc = docType.docs[i];
-                    
-                    // Dynamically import and render component
-                    try {
-                        const componentModule = await import(`../components/application/pdf/${docType.component}.jsx`);
-                        const DocumentComponent = componentModule.default;
-                        
-                        // Create a temporary div to render the component
-                        const tempDiv = document.createElement('div');
-                        tempDiv.id = `temp-doc-${docType.name}-${i}`;
-                        tempContainer.appendChild(tempDiv);
-                        
-                        // Render component using React
-                        const { createRoot } = await import('react-dom/client');
-                        const root = createRoot(tempDiv);
-                        
-                        await new Promise((resolve) => {
-                            root.render(
-                                React.createElement(DocumentComponent, {
-                                    applicant: selectedApplicant,
-                                    formData: doc.data || {},
-                                    previewMode: true
-                                })
-                            );
-                            setTimeout(resolve, 1000); // Wait for rendering
-                        });
-                        
-                        // Generate PDF
-                        const blob = await generatePDFBlob(`temp-doc-${docType.name}-${i}`);
-                        if (blob) {
-                            documentsFolder.file(`${docType.name}_${i + 1}.pdf`, blob);
-                        }
-                        
-                        root.unmount();
-                        tempDiv.remove();
-                    } catch (error) {
-                        console.error(`Failed to generate ${docType.name}:`, error);
-                    }
-                }
-            }
-            
-            // Cleanup
-            document.body.removeChild(tempContainer);
+            documentsFolder.file('README.txt', textSummary);
             
             // Generate and download ZIP
             const zipBlob = await zip.generateAsync({ type: 'blob' });
@@ -253,6 +190,8 @@ function DocumentsView({ selectedApplicant, onReviewNDA, onReviewPDPA, onReviewF
             link.download = `${selectedApplicant.full_name}_Documents.zip`;
             link.click();
             URL.revokeObjectURL(url);
+            
+            alert(`ดาวน์โหลดข้อมูลเอกสารเรียบร้อยแล้ว\nรวม ${filteredFMHRD27.length + filteredFMHRD19.length + filteredSPS103.length + filteredSPS902.length + filteredInsurance.length + filteredEmploymentContract.length + filteredFMHRD30.length + filteredCriminalCheck.length} เอกสาร`);
             
         } catch (error) {
             console.error('Error downloading documents:', error);
