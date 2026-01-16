@@ -355,8 +355,6 @@ export default function PDFLayoutType2({ applicant }) {
             {/* ================= PAGE 2 ================= */}
             <PageContainer pageNum={2} totalPages={4}>
                 <div className="mt-[5mm] space-y-0.5">
-
-
                     {/* --- Family Status --- */}
                     <div className="border-[0.5px] border-black px-2 py-1 rounded-sm text-[15px]">
                         <div className="flex items-center gap-2 mb-2">
