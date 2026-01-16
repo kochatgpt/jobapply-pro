@@ -137,13 +137,13 @@ export default function PDFLayoutType2({ applicant }) {
 
                 {/* --- HR Section --- */}
                 <div className="border-[0.5px] border-black p-3 mb-3 rounded-sm relative">
-                    <div className="absolute -top-2 left-2 bg-white px-1 font-bold text-[16px]">(สำหรับ จนท.)</div>
-                    <div className="grid grid-cols-12 gap-2 mb-3 mt-1">
+                    <div className="absolute left-2 bg-white px-1 font-bold text-[16px]">(สำหรับ จนท.)</div>
+                    <div className="grid grid-cols-12 gap-2 mb-1 mt-1">
                         <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">รหัสพนักงาน</span><DottedLine value={admin.hr_info?.employee_id} className="flex-1" /></div>
                         <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">วันที่เริ่มงานจริง</span><DottedLine value={admin.hr_info?.actual_start_date} className="flex-1" /></div>
                         <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">หน่วยงาน/สังกัด</span><DottedLine value={admin.hr_info?.department} className="flex-1" /></div>
                     </div>
-                    <div className="flex gap-4 mb-3">
+                    <div className="flex gap-4 mb-1">
                         <div className="flex items-end gap-2"><span className="font-bold pb-1">ไซด์เสื้อ</span><DottedLine value={admin.hr_info?.shirt_size} className="w-16 text-center" /></div>
                         <div className="flex items-end gap-2"><span className="font-bold pb-1">จำนวน</span><DottedLine value={admin.hr_info?.shirt_quantity} className="w-16 text-center" /></div>
                     </div>
