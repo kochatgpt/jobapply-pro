@@ -88,7 +88,7 @@ export default function PDFLayoutType2({ applicant }) {
                 {/* Footer */}
                 {pageNum < 5 && (
                     <div className={`absolute ${footerBottom} right-[10mm] text-slate-500`}>
-                        {pageNum} | {totalPages}
+                        {pageNum} | {4}
                     </div>
                 )}
                 {pageNum < 5 && (
