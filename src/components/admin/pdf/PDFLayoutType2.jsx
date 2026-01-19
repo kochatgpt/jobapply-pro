@@ -376,18 +376,18 @@ export default function PDFLayoutType2({ applicant }) {
                              </div>
                         </div>
                         <div className="flex gap-2 mb-1">
-                            <span className="font-bold whitespace-nowrap underline">กรุณาระบุ</span>
+                            <span className="font-bold underline">กรุณาระบุ</span>
                             <Field label="ชื่อ-สกุล สามี/ภรรยา/แฟน (ถ้ามี)" value={f.spouse_name} className="flex-1" />
                             <Field label="อาชีพ" value={f.spouse_occupation} className="w-[150px]" />
                         </div>
                         <div className="flex gap-2 mb-1">
-                            <Field label="สถานที่ทำงาน" value={f.spouse_workplace} className="flex-1" />
+                            <Field label="สถานที่ทำงาน" value={f.spouse_workplace} className="w-[250px]" />
                             <Field label="เบอร์โทรศัพท์ที่สามารถติดต่อได้สะดวก" value={f.spouse_phone} className="w-[250px]" />
                         </div>
                          <div className="flex gap-2">
-                            <span className="font-bold whitespace-nowrap">กรณีมีบุตรแล้ว</span>
+                            <span className="font-bold">กรณีมีบุตรแล้ว</span>
                             <Field label="จำนวนบุตร" value={f.children_count} className="w-[80px]" labelWidth="auto" />
-                            <span className="text-[16px] pt-1">คน</span>
+                            <span className="">คน</span>
                             <Field label="ปัจจุบันบุตรอยู่ในความดูแลของบุคคลใด เช่น คุณยาย / คุณย่า หรือตนเอง" value={f.children_caretaker} className="flex-1" />
                         </div>
                     </div>
