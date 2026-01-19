@@ -768,15 +768,15 @@ export default function PDFLayoutType2({ applicant }) {
                      {/* --- Referral --- */}
                      <div className="border-[0.5px] border-black px-2 pb-1 space-y-1">
                          <div className="flex items-end">
-                            <span className="">ข้าพเจ้ายื่นใบสมัครโดยการแนะนำของ</span>
+                            <span className="relative top-[2px]">ข้าพเจ้ายื่นใบสมัครโดยการแนะนำของ</span>
                             <DottedLine value={ref.referred_by} className="flex-1 text-center relative top-2" />
-                            <span className="">ความสัมพันธ์</span>
+                            <span className="relative top-[2px]">ความสัมพันธ์</span>
                             <DottedLine value={ref.referred_by_relationship} className="w-[40mm] text-center relative top-2" />
                          </div>
                          <div className="flex items-end">
-                            <span className="">บุคคลในองค์กรนี้ที่ข้าพเจ้ารู้จักคุ้นเคย</span>
+                            <span className="relative top-[2px]">บุคคลในองค์กรนี้ที่ข้าพเจ้ารู้จักคุ้นเคย</span>
                             <DottedLine value={ref.acquaintance_name} className="flex-1 text-center relative top-2" />
-                            <span className="">ความสัมพันธ์</span>
+                            <span className="relative top-[2px]">ความสัมพันธ์</span>
                             <DottedLine value={ref.acquaintance_relationship} className="w-[40mm] text-center relative top-2" />
                          </div>
                      </div>
