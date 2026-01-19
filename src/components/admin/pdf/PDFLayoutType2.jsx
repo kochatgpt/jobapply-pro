@@ -166,7 +166,7 @@ export default function PDFLayoutType2({ applicant }) {
                         <CheckBox label="สำเนาทะเบียนบ้าน" checked={admin.documents?.house_registration} />
                         <CheckBox label="สำเนาวุฒิการศึกษา" checked={admin.documents?.education_cert} />
                         <CheckBox label="หนังสือรับรองการศึกษา" checked={admin.documents?.education_confirmation} />
-                        <CheckBox label="หลักฐานการเปลี่ยนชื่อ-นามสกุล (ถ้ามี)" checked={admin.documents?.name_change_proof} /
+                        <CheckBox label="หลักฐานการเปลี่ยนชื่อ-นามสกุล (ถ้ามี)" checked={admin.documents?.name_change_proof} />
                         <CheckBox label="สำเนาใบเกณฑ์ทหาร (ชาย)" checked={admin.documents?.military_cert} />
                         <CheckBox label="สัญญาจ้าง" checked={admin.documents?.employment_contract} />
                         <CheckBox label="บันทึกข้อตกลงเข้ารับการฝึกอบรม" checked={admin.documents?.training_agreement} />
@@ -825,8 +825,8 @@ export default function PDFLayoutType2({ applicant }) {
                          <div className="flex flex-wrap items-end gap-1">
                              <span>ชื่อ-สกุล มารดา</span>
                              <DottedLine value={par.mother?.name} className="w-[48mm] relative top-[3px]" />
-                             <CheckBox label="ถึงแก่กรรม" checked={par.mother?.status === 'deceased'} width="w-[22mm]" textSize="text-[15px]" />
-                             <CheckBox label="มีชีวิตอยู่" checked={par.mother?.status === 'alive'} width="w-[22mm]" textSize="text-[15px]" />
+                             <CheckBox label="ถึงแก่กรรม" checked={par.mother?.status === 'deceased'} width="w-[22mm]" />
+                             <CheckBox label="มีชีวิตอยู่" checked={par.mother?.status === 'alive'} width="w-[22mm]" />
                              <span>อายุ</span>
                              <DottedLine value={par.mother?.age} className="w-[12mm] text-center relative top-[3px]" />
                              <span>ปี</span>
