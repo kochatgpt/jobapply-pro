@@ -932,7 +932,7 @@ export default function PDFLayoutType2({ applicant }) {
                             <div className="font-bold mb-2">ข้าพเจ้าขอลงนามรับรองการให้ข้อมูลตามจริงทุกประการ</div>
                         </div>
 
-                        <div className="text-right space-y-2">
+                        <div className="text-right space-y-1">
                             <div className="flex justify-end items-center gap-2">
                                 <span>ลงชื่อ</span>
                                 {applicant.signature_url ? (
