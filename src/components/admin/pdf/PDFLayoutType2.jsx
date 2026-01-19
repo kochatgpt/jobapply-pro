@@ -718,13 +718,13 @@ export default function PDFLayoutType2({ applicant }) {
                                     <span className="relative top-[1px]">ท่านมีข้อบกพร่องเกี่ยวกับร่างกาย หรือไม่</span>
                                 </div>
                                 <div className="flex items-center gap-1 ml-6 flex-wrap">
-                                    <CheckBox label="สายตาปกติ" checked={st.physical_conditions?.eyes === 'normal'} width="w-[90px] textSize=[12px]" />
+                                    <CheckBox label="สายตาปกติ" checked={st.physical_conditions?.eyes === 'normal'} width="w-[120px] textSize=[12px]" />
                                     <CheckBox label="สายตาไม่ปกติ ระบุ.........." checked={st.physical_conditions?.eyes === 'abnormal'} width="w-auto textSize=[12px]" />
-                                    <CheckBox label="การฟังปกติ" checked={st.physical_conditions?.hearing === 'normal'} width="w-[90px] textSize=[12px]" />
+                                    <CheckBox label="การฟังปกติ" checked={st.physical_conditions?.hearing === 'normal'} width="w-[120px] textSize=[12px]" />
                                     <CheckBox label="การฟังไม่ปกติ ระบุ.........." checked={st.physical_conditions?.hearing === 'abnormal'} width="w-auto textSize=[12px]" />
                                 </div>
                                 <div className="flex items-center gap-1 ml-6 flex-wrap">
-                                    <CheckBox label="การพูดปกติ" checked={st.physical_conditions?.speaking === 'normal'} width="w-[90px] textSize=[12px]" />
+                                    <CheckBox label="การพูดปกติ" checked={st.physical_conditions?.speaking === 'normal'} width="w-[120px] textSize=[12px]" />
                                     <CheckBox label="การพูดไม่ปกติ ระบุ............................" checked={st.physical_conditions?.speaking === 'abnormal'} width="w-auto textSize=[12px]" />
                                     <CheckBox label="การเคลื่อนไหวปกติ" checked={st.physical_conditions?.movement === 'normal'} width="w-[120px] textSize=[12px]" />
                                     <CheckBox label="การเคลื่อนไหวไม่ปกติ ระบุ............." checked={st.physical_conditions?.movement === 'abnormal'} width="w-auto textSize=[12px]" />
