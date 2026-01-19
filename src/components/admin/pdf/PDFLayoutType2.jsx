@@ -287,33 +287,33 @@ export default function PDFLayoutType2({ applicant }) {
                                             <div className={`absolute left-0 top-2 w-3 h-3 border border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                                 {p.military_status === 'exempted' && <Check className="w-2.5 h-2.5" />}
                                             </div>
-                                            <span className="text-[15px] text-slate-900">ได้รับการยกเว้นทางทหาร</span>
+                                            <span className="text-slate-900">ได้รับการยกเว้นทางทหาร</span>
                                          </div>
                                          <div className="relative pl-5 h-4 flex items-center">
                                             <div className={`absolute left-0 top-2 w-3 h-3 border border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                                 {p.military_status === 'served' && <Check className="w-2.5 h-2.5" />}
                                             </div>
-                                            <span className="text-[15px] text-slate-900">เกณฑ์ทหารแล้ว</span>
+                                            <span className="text-slate-900">เกณฑ์ทหารแล้ว</span>
                                          </div>
                                      </div>
                                      <div className="relative pl-5 h-4 flex items-center">
                                         <div className={`absolute left-0 top-2 w-3 h-3 border border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                             {p.military_status === 'not_served' && <Check className="w-2.5 h-2.5" />}
                                         </div>
-                                        <span className="text-[15px] text-slate-900">ยังไม่ได้รับการเกณฑ์</span>
+                                        <span className="text-slate-900">ยังไม่ได้รับการเกณฑ์</span>
                                      </div>
                                      <div className="flex gap-4">
                                          <div className="relative pl-5 h-4 flex items-center mr-4">
                                             <div className={`absolute left-0 top-2 w-3 h-3 border border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                                 {f.marital_status === 'single' && <Check className="w-2.5 h-2.5" />}
                                             </div>
-                                            <span className="text-[15px] text-slate-900">ยังไม่สมรส</span>
+                                            <span className="text-slate-900">ยังไม่สมรส</span>
                                          </div>
                                          <div className="relative pl-5 h-4 flex items-center">
                                             <div className={`absolute left-0 top-2 w-3 h-3 border border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                                 {f.marital_status === 'married' && <Check className="w-2.5 h-2.5" />}
                                             </div>
-                                            <span className="text-[15px] text-slate-900">สมรสแล้ว</span>
+                                            <span className="text-slate-900">สมรสแล้ว</span>
                                          </div>
                                      </div>
                                  </div>
@@ -325,7 +325,7 @@ export default function PDFLayoutType2({ applicant }) {
                                          <div className="relative pl-5 h-4 flex items-center w-[250px]">
                                             <div className={`absolute left-0 top-2 w-3 h-3 border border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                             </div>
-                                            <span className="text-[15px] text-slate-900">ไม่อยู่ระหว่างการตั้งครรภ์</span>
+                                            <span className="text-slate-900">ไม่อยู่ระหว่างการตั้งครรภ์</span>
                                          </div>
                                      </div>
                                      <div className="flex gap-4">
@@ -333,19 +333,19 @@ export default function PDFLayoutType2({ applicant }) {
                                             <div className={`absolute left-0 top-2 w-3 h-3 border border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                                 {f.has_children === 'yes' && <Check className="w-2.5 h-2.5" />}
                                             </div>
-                                            <span className="text-[15px] text-slate-900">มีบุตรแล้ว</span>
+                                            <span className="text-slate-900">มีบุตรแล้ว</span>
                                          </div>
                                          <div className="relative pl-5 h-4 flex items-center">
                                             <div className={`absolute left-0 top-2 w-3 h-3 border border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                                 {f.has_children === 'no' && <Check className="w-2.5 h-2.5" />}
                                             </div>
-                                            <span className="text-[15px] text-slate-900">ยังไม่มีบุตร</span>
+                                            <span className="text-slate-900">ยังไม่มีบุตร</span>
                                          </div>
                                      </div>
                                      <div className="relative pl-5 h-4 flex items-center">
                                         <div className={`absolute left-0 top-2 w-3 h-3 border border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                         </div>
-                                        <span className="text-[15px] text-slate-900">อยู่ระหว่างการตั้งครรภ์ ระบุ สัปดาห์ที่ตั้งครรภ์</span>
+                                        <span className="text-slate-900">อยู่ระหว่างการตั้งครรภ์ ระบุ สัปดาห์ที่ตั้งครรภ์</span>
                                      </div>
                                  </div>
                             </div>
