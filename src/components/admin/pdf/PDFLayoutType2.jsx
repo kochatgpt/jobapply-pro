@@ -180,13 +180,13 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
                 </div>
 
-                <div className="text-center font-bold text-[18px] my-1">ประวัติส่วนตัว</div>
+                <div className="text-center font-bold text-[14px] my-1">ประวัติส่วนตัว</div>
 
                 {/* --- Main Info Box --- */}
                 <div className="border-[0.5px] border-black rounded-sm">
                     {/* Position Row */}
                     <div className="p-3 border-b-[0.5px] border-black bg-slate-50/50">
-                        <div className="flex gap-1 items-end text-[16px] leading-tight">
+                        <div className="flex gap-1 items-end leading-tight">
                             <div className="font-bold whitespace-nowrap pb-1">สมัครงานในตำแหน่ง 1</div>
                             <div className="border-b-[1.5px] border-dotted border-black flex-1 px-2 pb-1 text-center font-medium truncate">{p.position_1}</div>
                             <div className="font-bold whitespace-nowrap pb-1">2</div>
@@ -564,7 +564,7 @@ export default function PDFLayoutType2({ applicant }) {
                             <thead>
                                 <tr>
                                     <th colSpan={5} className="border-r-[0.5px] border-b-[0.5px] border-black p-2 align-top">
-                                        <div className="text-center font-bold text-[16px] underline mb-1">ประวัติการทำงาน</div>
+                                        <div className="text-center font-bold underline mb-1">ประวัติการทำงาน</div>
                                         <div className="flex justify-center gap-6 font-normal">
                                             <div className="relative pl-5 h-4 flex items-center">
                                                 <div className={`absolute left-0 top-2.5 w-3 h-3 border-[0.5px] border-black flex items-center justify-center rounded-[1px] bg-white`}>
@@ -766,7 +766,7 @@ export default function PDFLayoutType2({ applicant }) {
 
                      {/* --- Parents --- */}
                      <div className="border-[0.5px] border-black p-2 text-[15px] space-y-2.5">
-                         <div className="font-bold underline text-center text-[16px]">ประวัติครอบครัว</div>
+                         <div className="font-bold underline text-center">ประวัติครอบครัว</div>
                          
                          {/* Father - 3 lines */}
                          <div className="flex flex-wrap items-end gap-1">
