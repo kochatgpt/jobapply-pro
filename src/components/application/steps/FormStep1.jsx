@@ -273,6 +273,30 @@ export default function FormStep1({ data, updateData, photo }) {
                         </div>
                     </>
                 )}
+
+                {data.gender === 'female' && (
+                    <div className="space-y-2 md:col-span-2">
+                        <Label>สถานภาพ (หญิง)</Label>
+                        <div className="space-y-1">
+                            <div className="flex items-center space-x-2">
+                                <Checkbox id="not_pregnant" checked={data.pregnancy_status === 'not_pregnant'} onCheckedChange={() => updateData('personal_data', 'pregnancy_status', 'not_pregnant')} />
+                                <label htmlFor="not_pregnant" className="text-sm cursor-pointer">ไม่อยู่ระหว่างการตั้งครรภ์</label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <Checkbox id="pregnant" checked={data.pregnancy_status === 'pregnant'} onCheckedChange={() => updateData('personal_data', 'pregnancy_status', 'pregnant')} />
+                                <label htmlFor="pregnant" className="text-sm cursor-pointer">อยู่ระหว่างการตั้งครรภ์</label>
+                            </div>
+                            {data.pregnancy_status === 'pregnant' && (
+                                <Input 
+                                    placeholder="ระบุสัปดาห์ที่ตั้งครรภ์" 
+                                    className="ml-6 h-9 w-48"
+                                    value={data.pregnancy_weeks || ''}
+                                    onChange={(e) => updateData('personal_data', 'pregnancy_weeks', e.target.value)}
+                                />
+                            )}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
 
