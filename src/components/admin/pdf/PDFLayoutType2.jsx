@@ -766,7 +766,7 @@ export default function PDFLayoutType2({ applicant }) {
                      </div>
 
                      {/* --- Referral --- */}
-                     <div className="border-[0.5px] border-black px-2 pb-1 space-y-1">
+                     <div className="border-[0.5px] border-black px-2 pb-1 space-y-0.5">
                          <div className="flex items-end">
                             <span className="relative top-[2px]">ข้าพเจ้ายื่นใบสมัครโดยการแนะนำของ</span>
                             <DottedLine value={ref.referred_by} className="flex-1 text-center relative top-2" />
@@ -782,7 +782,7 @@ export default function PDFLayoutType2({ applicant }) {
                      </div>
 
                      {/* --- Parents --- */}
-                     <div className="border-[0.5px] border-black p-2 space-y-1">
+                     <div className="border-[0.5px] border-black p-2 space-y-0.5">
                          <div className="font-bold underline text-center">ประวัติครอบครัว</div>
                          
                          {/* Father - 3 lines */}
@@ -821,7 +821,7 @@ export default function PDFLayoutType2({ applicant }) {
                          </div>
 
                          {/* Mother - 3 lines */}
-                         <div className="flex flex-wrap items-end gap-1 pt-2">
+                         <div className="flex flex-wrap items-end gap-1">
                              <span>ชื่อ-สกุล มารดา</span>
                              <DottedLine value={par.mother?.name} className="w-[48mm] relative top-[3px]" />
                              <CheckBox label="ถึงแก่กรรม" checked={par.mother?.status === 'deceased'} width="w-[22mm]" textSize="text-[15px]" />
