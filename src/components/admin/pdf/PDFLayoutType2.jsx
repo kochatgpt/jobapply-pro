@@ -1054,7 +1054,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ไม่รับ" checked={admin.approvals?.hr_manager?.decision === 'rejected'} width="w-auto" textSize="text-[12px]" />
                             </div>
                             <div className="flex flex-col items-center gap-1 mb-1">
-                                <span className="text-[12px]">ลงชื่อ</span>
+                                <span>ลงชื่อ</span>
                                 {admin.approvals?.hr_manager?.signature ? (
                                     <div className="flex flex-col items-center w-32">
                                         <img src={admin.approvals.hr_manager.signature} alt="Signature" crossOrigin="anonymous" className="max-h-10 object-contain mb-1" />
@@ -1076,7 +1076,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ไม่รับ" checked={admin.approvals?.department_head?.decision === 'rejected'} width="w-auto" textSize="text-[12px]" />
                             </div>
                             <div className="flex flex-col items-center gap-1 mb-1">
-                                <span className="text-[12px]">ลงชื่อ</span>
+                                <span>ลงชื่อ</span>
                                 {admin.approvals?.department_head?.signature ? (
                                     <div className="flex flex-col items-center w-32">
                                         <img src={admin.approvals.department_head.signature} alt="Signature" crossOrigin="anonymous" className="max-h-10 object-contain mb-1" />
