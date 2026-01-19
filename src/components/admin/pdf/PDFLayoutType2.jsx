@@ -613,7 +613,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 {/* Footer / Consent Row */}
                                 <tr>
                                     <td colSpan={7} className="p-2 align-top">
-                                        <div className="text-[14px] space-y-1">
+                                        <div className="space-y-1">
                                             <div>
                                                 <span>ท่านจะขัดข้องหรือไม่ถ้าหากทางบริษัทฯ จะติดต่อสอบถามไปยังบริษัทฯ(เดิม)หรือบริษัทฯปัจจุบัน</span>
                                                 <span className="ml-4 inline-block align-middle"><CheckBox label="ไม่ขัดข้อง" checked={exp.contact_previous_employer?.status === 'allowed'} width="w-[100px] textSize=12px"/></span>
