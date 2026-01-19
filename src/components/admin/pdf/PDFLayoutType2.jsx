@@ -937,7 +937,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <span>ลงชื่อ</span>
                                 {applicant.signature_url ? (
                                     <div className="inline-flex flex-col items-center w-[200px]">
-                                        <img src={applicant.signature_url} alt="Signature" crossOrigin="anonymous" className="max-h-[40px] object-contain mb-1" />
+                                        <img src={applicant.signature_url} alt="Signature" crossOrigin="anonymous" className="max-h-12 object-contain mb-1" />
                                         <div className="border-b-[1.5px] border-dotted border-black w-full"></div>
                                     </div>
                                 ) : (
