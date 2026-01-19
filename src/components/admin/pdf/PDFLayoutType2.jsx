@@ -150,7 +150,7 @@ export default function PDFLayoutType2({ applicant }) {
                 {/* --- HR Section --- */}
                 <div className="border-[0.5px] border-black p-3 mb-1 rounded-sm relative">
                     <div className="absolute -top-3 left-2 px-1 font-bold text-[14px]">(สำหรับ จนท.)</div>
-                    <div className="absolute -top-1 left-2 px-1 bg-white font-bold text-[14px] hidden">.........</div>
+                    <div className="absolute -top-1 left-2 px-1 bg-white font-bold text-[14px] invisible ">.........</div>
                     <div className="grid grid-cols-12 gap-2 mb-1">
                         <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">รหัสพนักงาน</span><DottedLine value={admin.hr_info?.employee_id} className="flex-1" /></div>
                         <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">วันที่เริ่มงานจริง</span><DottedLine value={admin.hr_info?.actual_start_date} className="flex-1" /></div>
@@ -166,7 +166,7 @@ export default function PDFLayoutType2({ applicant }) {
                         <CheckBox label="สำเนาทะเบียนบ้าน" checked={admin.documents?.house_registration} />
                         <CheckBox label="สำเนาวุฒิการศึกษา" checked={admin.documents?.education_cert} />
                         <CheckBox label="หนังสือรับรองการศึกษา" checked={admin.documents?.education_confirmation} />
-                        <CheckBox label="หลักฐานการเปลี่ยนชื่อ-นามสกุล (ถ้ามี)" checked={admin.documents?.name_change_proof} />
+                        <CheckBox label="หลักฐานการเปลี่ยนชื่อ-นามสกุล (ถ้ามี)" checked={admin.documents?.name_change_proof} /
                         <CheckBox label="สำเนาใบเกณฑ์ทหาร (ชาย)" checked={admin.documents?.military_cert} />
                         <CheckBox label="สัญญาจ้าง" checked={admin.documents?.employment_contract} />
                         <CheckBox label="บันทึกข้อตกลงเข้ารับการฝึกอบรม" checked={admin.documents?.training_agreement} />
