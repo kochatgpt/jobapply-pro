@@ -9,7 +9,7 @@ import { format } from 'date-fns';
 
 export default function ApplicantList({ onSelect, selectedId }) {
     const [filterDate, setFilterDate] = useState(format(new Date(), 'yyyy-MM-dd'));
-    const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState("พีรพล สมชาย");
 
     const { data: applicants, isLoading } = useQuery({
         queryKey: ['applicants_list'],
@@ -36,7 +36,7 @@ export default function ApplicantList({ onSelect, selectedId }) {
                     <Input 
                         placeholder="ค้นหาชื่อ..." 
                         className="pl-9 bg-white"
-                        value={'พีรพล สมชาย'}
+                        value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                 </div>
