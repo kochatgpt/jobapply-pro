@@ -283,17 +283,27 @@ export default function FormStep1({ data, updateData, photo }) {
                                 <label htmlFor="not_pregnant" className="text-sm cursor-pointer">ไม่อยู่ระหว่างการตั้งครรภ์</label>
                             </div>
                             <div className="flex items-center space-x-2">
-                                <Checkbox id="pregnant" checked={data.pregnancy_status === 'pregnant'} onCheckedChange={() => updateData('personal_data', 'pregnancy_status', 'pregnant')} />
-                                <label htmlFor="pregnant" className="text-sm cursor-pointer">อยู่ระหว่างการตั้งครรภ์</label>
+                                <Checkbox id="has_children" checked={data.has_children_status === 'yes'} onCheckedChange={() => updateData('personal_data', 'has_children_status', 'yes')} />
+                                <label htmlFor="has_children" className="text-sm cursor-pointer">มีบุตรแล้ว</label>
                             </div>
-                            {data.pregnancy_status === 'pregnant' && (
-                                <Input 
-                                    placeholder="ระบุสัปดาห์ที่ตั้งครรภ์" 
-                                    className="ml-6 h-9 w-48"
-                                    value={data.pregnancy_weeks || ''}
-                                    onChange={(e) => updateData('personal_data', 'pregnancy_weeks', e.target.value)}
-                                />
-                            )}
+                            <div className="flex items-center space-x-2">
+                                <Checkbox id="no_children" checked={data.has_children_status === 'no'} onCheckedChange={() => updateData('personal_data', 'has_children_status', 'no')} />
+                                <label htmlFor="no_children" className="text-sm cursor-pointer">ยังไม่มีบุตร</label>
+                            </div>
+                            <div className="space-y-2">
+                                <div className="flex items-center space-x-2">
+                                    <Checkbox id="pregnant" checked={data.pregnancy_status === 'pregnant'} onCheckedChange={() => updateData('personal_data', 'pregnancy_status', 'pregnant')} />
+                                    <label htmlFor="pregnant" className="text-sm cursor-pointer">อยู่ระหว่างการตั้งครรภ์ ระบุ สัปดาห์/เดือน</label>
+                                </div>
+                                {data.pregnancy_status === 'pregnant' && (
+                                    <Input 
+                                        placeholder="เช่น 12 สัปดาห์ หรือ 3 เดือน" 
+                                        className="ml-6 h-9 w-64"
+                                        value={data.pregnancy_weeks || ''}
+                                        onChange={(e) => updateData('personal_data', 'pregnancy_weeks', e.target.value)}
+                                    />
+                                )}
+                            </div>
                         </div>
                     </div>
                 )}
