@@ -49,12 +49,12 @@ export default function PDFLayoutType2({ applicant }) {
         </div>
     );
 
-    const CheckBox = ({ label, checked, width="w-[300px]" }) => (
+    const CheckBox = ({ label, checked,, width="w-[300px]" }) => (
         <div className={`relative pl-5 h-4 flex items-center ${width}`}>
             <div className={`absolute left-0 top-2.5 w-3 h-3 border-[0.5px] border-black rounded-[1px] bg-white flex items-center justify-center`}>
                 {checked && <Check className="w-2.5 h-2.5" />}
             </div>
-            <span className="text-slate-900 pt-1">{label}</span>
+            <span className={`${textSize} text-slate-900 pt-1`}>{label}</span>
         </div>
     );
 
@@ -64,7 +64,7 @@ export default function PDFLayoutType2({ applicant }) {
             <div 
                 className="bg-white text-slate-900 p-[10mm] mx-auto relative mb-8 shadow-sm print:shadow-none print:mb-0"
                 style={{ 
-                    fontSize: '14px',
+                    fontSize: '12px',
                     width: '210mm', 
                     minHeight: pageHeight,
                     height: pageHeight,
@@ -138,18 +138,18 @@ export default function PDFLayoutType2({ applicant }) {
                 </div>
 
                 {/* Application Date */}
-                <div className="mb-1 font-bold text-[16px]">
+                <div className="mb-1 font-bold text-[14px]">
                     วันที่เขียนใบสมัครงาน &nbsp;&nbsp; {p.application_date || "____________________"}
                 </div>
 
                 {/* Disclaimer */}
-                <div className="text-[14px] text-justify leading-snug mb-3">
+                <div className="text-justify leading-snug mb-3">
                     ใบสมัครงานเป็นส่วนหนึ่งในการพิจารณา โปรดกรอกข้อความตามจริงด้วยตัวเองให้ครบถ้วน อนึ่งในกรณีที่ท่าน ไม่ผ่านการพิจารณา รับเข้าทำงาน ข้อมูลในใบสมัครจะถูกเก็บรักษาไว้เป็นระยะเวลา 1 เดือน หากมีการพิจารณาตำแหน่งอื่นๆ อีกครั้งตามความเหมาะสม อนึ่งในกรณีที่ท่านผ่าน การพิจารณารับเข้าทำงาน ข้อมูลในใบสมัครจะถูกเก็บรักษาไว้ตลอดระยะเวลาการเป็นพนักงาน/ลูกจ้างของ บริษัทฯและหากท่านพ้นสภาพจากการเป็นพนักงาน/ลูกจ้างแล้วนั้น บริษัทฯจะเก็บรักษาไว้ต่อเนื่องอีกเป็นระยะเวลา 2 ปี หากมีกรณี ต้องใช้เป็นหลักฐานประกอบการพิจารณาตามกฎหมาย พนักงานหรือผู้มาติดต่อสมัครงาน ยินยอมให้เก็บรวบรวมข้อมูลส่วนบุคคลใน นามของบริษัท เค แอนด์ โอ ซิสเต็มส์ แอนด์ คอนซัลติ้ง จำกัด เป็นผู้ควบคุมข้อมูลส่วนบุคคล ประมวลผลเก็บรวบรวมหรือเปิดเผยข้อมูล ส่วนบุคคล (PDPA) รวมถึงข้อมูลอื่นใดตามที่ได้ระบุไว้ใน พรบ.คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 "กฎหมายคุ้มครองข้อมูลส่วน บุคคล" และ "ข้อมูลส่วนบุคคลที่มีความอ่อนไหวเป็นพิเศษ"เพื่อเป็นส่วนหนึ่งของการพิจารณาบุคลากรตามเงื่อนไขบริษัทฯ
                 </div>
 
                 {/* --- HR Section --- */}
                 <div className="border-[0.5px] border-black p-3 mb-1 rounded-sm relative">
-                    <div className="absolute -top-4 left-2 bg-white px-1 pt-0 mt-0 font-bold text-[16px]">(สำหรับ จนท.)</div>
+                    <div className="absolute -top-4 left-2 bg-white px-1 pt-0 mt-0 font-bold text-[14px]">(สำหรับ จนท.)</div>
                     <div className="grid grid-cols-12 gap-2 mb-1">
                         <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">รหัสพนักงาน</span><DottedLine value={admin.hr_info?.employee_id} className="flex-1" /></div>
                         <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">วันที่เริ่มงานจริง</span><DottedLine value={admin.hr_info?.actual_start_date} className="flex-1" /></div>
@@ -159,7 +159,7 @@ export default function PDFLayoutType2({ applicant }) {
                         <div className="flex items-end gap-2"><span className="font-bold pb-1">ไซด์เสื้อ</span><DottedLine value={admin.hr_info?.shirt_size} className="w-16 text-center" /></div>
                         <div className="flex items-end gap-2"><span className="font-bold pb-1">จำนวน</span><DottedLine value={admin.hr_info?.shirt_quantity} className="w-16 text-center" /></div>
                     </div>
-                    <div className="grid grid-cols-3 gap-x-1 gap-y-1 text-[15px]">
+                    <div className="grid grid-cols-3 gap-x-1 gap-y-1">
                         <CheckBox label="รูปถ่าย 1-3 รูป" checked={admin.documents?.photos} />
                         <CheckBox label="สำเนาบัตรประชาชน 3 ฉบับ" checked={admin.documents?.id_card_copy} />
                         <CheckBox label="สำเนาทะเบียนบ้าน" checked={admin.documents?.house_registration} />
