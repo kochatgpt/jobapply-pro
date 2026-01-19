@@ -5,10 +5,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Save, X } from "lucide-react";
+import { Save, X, Loader2 } from "lucide-react";
 import SignaturePad from './SignaturePad';
 
-export default function AdminDataForm({ applicant, onSave, onCancel }) {
+export default function AdminDataForm({ applicant, onSave, onCancel, isSaving = false }) {
     const [adminData, setAdminData] = useState(applicant.admin_data || {
         hr_systems: {},
         hr_info: {},
@@ -549,12 +549,21 @@ export default function AdminDataForm({ applicant, onSave, onCancel }) {
                 </div>
 
                 <div className="sticky bottom-0 bg-white border-t border-slate-200 px-6 py-4 flex justify-end gap-3 rounded-b-lg">
-                    <Button variant="outline" onClick={onCancel}>
+                    <Button variant="outline" onClick={onCancel} disabled={isSaving}>
                         ยกเลิก
                     </Button>
-                    <Button onClick={handleSave} className="bg-indigo-600 hover:bg-indigo-700">
-                        <Save className="w-4 h-4 mr-2" />
-                        บันทึก
+                    <Button onClick={handleSave} className="bg-indigo-600 hover:bg-indigo-700" disabled={isSaving}>
+                        {isSaving ? (
+                            <>
+                                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                กำลังบันทึก...
+                            </>
+                        ) : (
+                            <>
+                                <Save className="w-4 h-4 mr-2" />
+                                บันทึก
+                            </>
+                        )}
                     </Button>
                 </div>
             </div>

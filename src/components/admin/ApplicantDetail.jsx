@@ -35,6 +35,7 @@ export default function ApplicantDetail({ applicant: initialApplicant }) {
         mutationFn: ({ id, adminData }) => base44.entities.Applicant.update(id, { admin_data: adminData }),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['applicants'] });
+            queryClient.invalidateQueries({ queryKey: ['applicants_detail', applicant.id] });
             setShowAdminForm(false);
         }
     });
@@ -349,6 +350,7 @@ export default function ApplicantDetail({ applicant: initialApplicant }) {
                     applicant={applicant}
                     onSave={handleSaveAdminData}
                     onCancel={() => setShowAdminForm(false)}
+                    isSaving={updateAdminDataMutation.isPending}
                 />
             )}
 
