@@ -365,13 +365,13 @@ export default function PDFLayoutType2({ applicant }) {
                                     <div className={`absolute left-0 top-2.5 w-3 h-3 border-[0.5px] border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                         {f.marital_status === 'single' && <Check className="w-2.5 h-2.5" />}
                                     </div>
-                                    <span className="text-[15px] text-slate-900 pt-1">โสด</span>
+                                    <span className="text-slate-900 pt-1">โสด</span>
                                 </div>
                                 <div className="relative pl-5 h-4 flex items-center w-[100px]">
                                     <div className={`absolute left-0 top-2.5 w-3 h-3 border-[0.5px] border-black flex items-center justify-center rounded-[1px] bg-white`}>
                                         {f.marital_status === 'married' && <Check className="w-2.5 h-2.5" />}
                                     </div>
-                                    <span className="text-[15px] text-slate-900 pt-1">แต่งงานแล้ว</span>
+                                    <span className="text-slate-900 pt-1">แต่งงานแล้ว</span>
                                 </div>
                              </div>
                         </div>
