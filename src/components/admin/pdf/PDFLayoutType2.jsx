@@ -970,7 +970,7 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
 
                     {/* Test Results */}
-                    <div className="border-[0.5px] border-black p-2 text-[14px]">
+                    <div className="border-[0.5px] border-black p-2">
                         <div className="font-bold mb-1">(ทดสอบผู้สมัครงาน)</div>
                         <div className="space-y-1 ml-4">
                             <div className="flex items-end gap-2">
@@ -993,7 +993,7 @@ export default function PDFLayoutType2({ applicant }) {
                     </div>
 
                     {/* Interview Notes */}
-                    <div className="border-[0.5px] border-black border-t-0 p-2 text-[14px]">
+                    <div className="border-[0.5px] border-black p-2">
                         <div className="flex items-start gap-2 mb-1">
                             <span className="font-bold">(บันทึกการผู้สัมภาษณ์)</span>
                             <span>: ลงชื่อ ผู้สัมภาษณ์</span>
