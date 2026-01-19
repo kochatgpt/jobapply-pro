@@ -616,8 +616,8 @@ export default function PDFLayoutType2({ applicant }) {
                                         <div className="text-[14px] space-y-1">
                                             <div>
                                                 <span>ท่านจะขัดข้องหรือไม่ถ้าหากทางบริษัทฯ จะติดต่อสอบถามไปยังบริษัทฯ(เดิม)หรือบริษัทฯปัจจุบัน</span>
-                                                <span className="ml-4 inline-block align-middle"><CheckBox label="ไม่ขัดข้อง" checked={exp.contact_previous_employer?.status === 'allowed'} width="w-[100px]"/></span>
-                                                <span className="ml-4 inline-block align-middle"><CheckBox label="ขัดข้อง" checked={exp.contact_previous_employer?.status === 'not_allowed'} width="w-[80px]"/></span>
+                                                <span className="ml-4 inline-block align-middle"><CheckBox label="ไม่ขัดข้อง" checked={exp.contact_previous_employer?.status === 'allowed'} width="w-[100px] textSize=12px"/></span>
+                                                <span className="ml-4 inline-block align-middle"><CheckBox label="ขัดข้อง" checked={exp.contact_previous_employer?.status === 'not_allowed'} width="w-[80px] textSize=12px"/></span>
                                             </div>
                                             <div className="flex">
                                                 <span className="relative top-[-2px]">เพราะ</span>
@@ -637,8 +637,8 @@ export default function PDFLayoutType2({ applicant }) {
                             <div className="flex gap-1 items-center flex-nowrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">1.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านสามารถปฏิบัติงานล่วงเวลาได้หรือไม่</span>
-                                <CheckBox label="ได้" checked={st.can_work_overtime === 'yes'} width="w-[50px]" />
-                                <CheckBox label="ไม่ได้" checked={st.can_work_overtime === 'no'} width="w-[60px]" />
+                                <CheckBox label="ได้" checked={st.can_work_overtime === 'yes'} width="w-[50px] textSize=[12px]" />
+                                <CheckBox label="ไม่ได้" checked={st.can_work_overtime === 'no'} width="w-[60px] textSize=[12px]" />
                                 <span className="whitespace-nowrap relative top-[1px]">เพราะ</span>
                                 <span className="border-b border-dotted border-black flex-1 min-w-0 px-1 pb-1 relative top-2">{st.can_work_overtime === 'no' ? st.can_work_overtime_reason : ''}</span>
                             </div>
@@ -646,8 +646,8 @@ export default function PDFLayoutType2({ applicant }) {
                             <div className="flex gap-1 items-center flex-wrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">2.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านเคยเป็นผู้ต้องหาหรือต้องคำพิพากษาในคดีอาญา/แพ่งหรือไม่</span>
-                                <CheckBox label="ไม่เคย" checked={st.has_legal_cases === 'never'} width="w-[60px]" />
-                                <CheckBox label="เคย" checked={st.has_legal_cases === 'ever'} width="w-[50px]" />
+                                <CheckBox label="ไม่เคย" checked={st.has_legal_cases === 'never'} width="w-[60px] textSize=[12px]" />
+                                <CheckBox label="เคย" checked={st.has_legal_cases === 'ever'} width="w-[50px] textSize=[12px]" />
                                 <span className="relative top-[1px]">ด้วยคดี</span>
                                 <span className="border-b border-dotted border-black min-w-[150px] px-1 pb-1 relative top-2">{st.has_legal_cases === 'ever' ? st.has_legal_cases_details : ''}</span>
                                 <span className="relative top-[1px]">เมื่อปี พ.ศ.</span>
@@ -657,8 +657,8 @@ export default function PDFLayoutType2({ applicant }) {
                             <div className="flex gap-1 items-center flex-wrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">3.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านเคยเสพสารเสพติดหรือเคยรับการบำบัด</span>
-                                <CheckBox label="ไม่เคย" checked={st.has_drug_history === 'never'} width="w-[60px]" />
-                                <CheckBox label="เคย" checked={st.has_drug_history === 'ever'} width="w-[50px]" />
+                                <CheckBox label="ไม่เคย" checked={st.has_drug_history === 'never'} width="w-[60px] textSize=[12px]" />
+                                <CheckBox label="เคย" checked={st.has_drug_history === 'ever'} width="w-[50px] textSize=[12px]" />
                                 <span className="relative top-[1px]">ระบุประเภท</span>
                                 <span className="border-b border-dotted border-black min-w-[80px] px-1 pb-1 relative top-2">{st.has_drug_history === 'ever' ? st.has_drug_history_type : ''}</span>
                                 <span className="relative top-[1px]">สถานที่บำบัด</span>
@@ -670,35 +670,35 @@ export default function PDFLayoutType2({ applicant }) {
                             <div className="flex gap-1 items-center flex-wrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">4.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ในปัจจุบันท่านสูบบุหรี่หรือไม่</span>
-                                <CheckBox label="ไม่สูบ" checked={st.smoking_habit?.status === 'no'} width="w-[60px]" />
-                                <CheckBox label="สูบประจำเฉลี่ยต่อวันระบุ.......ม้วน/กล่อง" checked={st.smoking_habit?.status === 'regular'} width="w-auto" />
-                                <CheckBox label="สูบเฉพาะเที่ยว" checked={st.smoking_habit?.status === 'social'} width="w-[120px]" />
-                                <CheckBox label="สูบบ้างบางครั้ง" checked={st.smoking_habit?.status === 'occasional'} width="w-[120px]" />
+                                <CheckBox label="ไม่สูบ" checked={st.smoking_habit?.status === 'no'} width="w-[60px] textSize=[12px]" />
+                                <CheckBox label="สูบประจำเฉลี่ยต่อวันระบุ.......ม้วน/กล่อง" checked={st.smoking_habit?.status === 'regular'} width="w-auto textSize=[12px]" />
+                                <CheckBox label="สูบเฉพาะเที่ยว" checked={st.smoking_habit?.status === 'social'} width="w-[120px] textSize=[12px]" />
+                                <CheckBox label="สูบบ้างบางครั้ง" checked={st.smoking_habit?.status === 'occasional'} width="w-[120px] textSize=[12px]" />
                             </div>
 
                             <div className="flex gap-1 items-center flex-nowrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">5.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านดื่มแอลกอฮอล์หรือไม่</span>
-                                <CheckBox label="ไม่ดื่ม" checked={st.alcohol_habit === 'no'} width="w-[60px]" />
-                                <CheckBox label="ดื่ม" checked={st.alcohol_habit === 'yes'} width="w-[50px]" />
-                                <CheckBox label="ดื่มบ้าง" checked={st.alcohol_habit === 'occasional'} width="w-[70px]" />
+                                <CheckBox label="ไม่ดื่ม" checked={st.alcohol_habit === 'no'} width="w-[60px] textSize=[12px]" />
+                                <CheckBox label="ดื่ม" checked={st.alcohol_habit === 'yes'} width="w-[50px] textSize=[12px]" />
+                                <CheckBox label="ดื่มบ้าง" checked={st.alcohol_habit === 'occasional'} width="w-[70px] textSize=[12px]" />
                                 <span className="whitespace-nowrap relative top-[1px]">ความถี่................วัน/ต่อสัปดาห์</span>
                             </div>
                             
                             <div className="flex gap-1 items-center flex-wrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">6.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">สุขภาพของท่าน</span>
-                                <CheckBox label="แข็งแรงสมบูรณ์ดีทุกอย่าง" checked={st.health_status?.status === 'good'} width="w-auto" />
-                                <CheckBox label="ไม่มีโรคประจำตัว" checked={st.health_status?.status === 'no_disease'} width="w-[130px]" />
-                                <CheckBox label="มีโรคประจำตัว ระบุ" checked={st.health_status?.status === 'has_disease'} width="w-auto" />
+                                <CheckBox label="แข็งแรงสมบูรณ์ดีทุกอย่าง" checked={st.health_status?.status === 'good'} width="w-auto textSize=[12px]" />
+                                <CheckBox label="ไม่มีโรคประจำตัว" checked={st.health_status?.status === 'no_disease'} width="w-[130px] textSize=[12px]" />
+                                <CheckBox label="มีโรคประจำตัว ระบุ" checked={st.health_status?.status === 'has_disease'} width="w-auto textSize=[12px]" />
                                 <span className="border-b border-dotted border-black flex-1 min-w-[100px] pb-1 relative top-2">{st.health_status?.details}</span>
                             </div>
 
                             <div className="flex gap-1 items-center flex-wrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">7.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านเคยเจ็บป่วยมากกว่า 3 วันติดต่อกันในรอบ 12 เดือนที่ผ่านมาหรือไม่</span>
-                                <CheckBox label="ไม่เคย" checked={st.recent_major_illness === 'never'} width="w-[60px]" />
-                                <CheckBox label="เคย" checked={st.recent_major_illness === 'ever'} width="w-[50px]" />
+                                <CheckBox label="ไม่เคย" checked={st.recent_major_illness === 'never'} width="w-[60px] textSize=[12px]" />
+                                <CheckBox label="เคย" checked={st.recent_major_illness === 'ever'} width="w-[50px] textSize=[12px]" />
                                 <span className="relative top-[1px]">ระบุโรค</span>
                                 <span className="border-b border-dotted border-black min-w-[150px] px-1 pb-1 relative top-2">{st.recent_major_illness === 'ever' ? st.recent_major_illness_details : ''}</span>
                             </div>
@@ -706,8 +706,8 @@ export default function PDFLayoutType2({ applicant }) {
                             <div className="flex gap-1 items-center flex-wrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">8.</span>
                                 <span className="relative top-[1px]">ท่านมีโรคติดต่อร้ายแรงหรือไม่ เช่น กาฬโรค/ไข้ทรพิษหรือฝีดาษ/วัณโรค /HIV/Covid-19</span>
-                                <CheckBox label="ไม่มี" checked={st.has_contagious_disease === 'no'} width="w-[60px]" />
-                                <CheckBox label="มี" checked={st.has_contagious_disease === 'yes'} width="w-[50px]" />
+                                <CheckBox label="ไม่มี" checked={st.has_contagious_disease === 'no'} width="w-[60px] textSize=[12px]" />
+                                <CheckBox label="มี" checked={st.has_contagious_disease === 'yes'} width="w-[50px] textSize=[12px]" />
                                 <span className="relative top-[1px]">อื่นๆ โปรดระบุให้ชัดเจน</span>
                                 <span className="border-b border-dotted border-black flex-1 min-w-[100px] px-1 pb-1 relative top-2">{st.has_contagious_disease === 'yes' ? st.has_contagious_disease_details : ''}</span>
                             </div>
@@ -716,16 +716,16 @@ export default function PDFLayoutType2({ applicant }) {
                                 <div className="flex items-center gap-1 flex-wrap">
                                     <span className="w-5 shrink-0 relative top-[1px]">9.</span>
                                     <span className="whitespace-nowrap relative top-[1px]">ท่านมีข้อบกพร่องเกี่ยวกับร่างกาย หรือไม่</span>
-                                    <CheckBox label="สายตาปกติ" checked={st.physical_conditions?.eyes === 'normal'} width="w-[90px]" />
-                                    <CheckBox label="สายตาไม่ปกติ ระบุ.........." checked={st.physical_conditions?.eyes === 'abnormal'} width="w-auto" />
-                                    <CheckBox label="การฟังปกติ" checked={st.physical_conditions?.hearing === 'normal'} width="w-[90px]" />
-                                    <CheckBox label="การฟังไม่ปกติ ระบุ.........." checked={st.physical_conditions?.hearing === 'abnormal'} width="w-auto" />
+                                    <CheckBox label="สายตาปกติ" checked={st.physical_conditions?.eyes === 'normal'} width="w-[90px] textSize=[12px]" />
+                                    <CheckBox label="สายตาไม่ปกติ ระบุ.........." checked={st.physical_conditions?.eyes === 'abnormal'} width="w-auto textSize=[12px]" />
+                                    <CheckBox label="การฟังปกติ" checked={st.physical_conditions?.hearing === 'normal'} width="w-[90px] textSize=[12px]" />
+                                    <CheckBox label="การฟังไม่ปกติ ระบุ.........." checked={st.physical_conditions?.hearing === 'abnormal'} width="w-auto textSize=[12px]" />
                                 </div>
                                 <div className="flex items-center gap-1 ml-6 flex-wrap">
-                                    <CheckBox label="การพูดปกติ" checked={st.physical_conditions?.speaking === 'normal'} width="w-[90px]" />
-                                    <CheckBox label="การพูดไม่ปกติ ระบุ............................" checked={st.physical_conditions?.speaking === 'abnormal'} width="w-auto" />
-                                    <CheckBox label="การเคลื่อนไหวปกติ" checked={st.physical_conditions?.movement === 'normal'} width="w-[120px]" />
-                                    <CheckBox label="การเคลื่อนไหวไม่ปกติ ระบุ............." checked={st.physical_conditions?.movement === 'abnormal'} width="w-auto" />
+                                    <CheckBox label="การพูดปกติ" checked={st.physical_conditions?.speaking === 'normal'} width="w-[90px] textSize=[12px]" />
+                                    <CheckBox label="การพูดไม่ปกติ ระบุ............................" checked={st.physical_conditions?.speaking === 'abnormal'} width="w-auto textSize=[12px]" />
+                                    <CheckBox label="การเคลื่อนไหวปกติ" checked={st.physical_conditions?.movement === 'normal'} width="w-[120px] textSize=[12px]" />
+                                    <CheckBox label="การเคลื่อนไหวไม่ปกติ ระบุ............." checked={st.physical_conditions?.movement === 'abnormal'} width="w-auto textSize=[12px]" />
                                 </div>
                             </div>
 
@@ -733,14 +733,14 @@ export default function PDFLayoutType2({ applicant }) {
                                 <div className="flex gap-1 items-center flex-wrap">
                                     <span className="w-5 shrink-0 relative top-[1px]">10.</span>
                                     <span className="whitespace-nowrap relative top-[1px]">ท่านมีหนี้สินหรือภาระด้านใด อาทิ</span>
-                                    <CheckBox label="กู้นอกระบบ" checked={st.debt_status?.outside_system} width="w-[90px]" />
-                                    <CheckBox label="กู้ในระบบ บัตรเครดิต/สินเชื่อต่างๆ" checked={st.debt_status?.inside_system} width="w-auto" />
-                                    <CheckBox label="ภาระการผ่อนส่งบ้าน/คอนโด" checked={st.debt_status?.house} width="w-auto" />
+                                    <CheckBox label="กู้นอกระบบ" checked={st.debt_status?.outside_system} width="w-[90px] textSize=[12px]" />
+                                    <CheckBox label="กู้ในระบบ บัตรเครดิต/สินเชื่อต่างๆ" checked={st.debt_status?.inside_system} width="w-auto textSize=[12px]" />
+                                    <CheckBox label="ภาระการผ่อนส่งบ้าน/คอนโด" checked={st.debt_status?.house} width="w-auto textSize=[12px]" />
                                 </div>
                                 <div className="flex items-center ml-6 gap-1 flex-wrap">
-                                    <CheckBox label="ภาระการผ่อนส่งรถยนต์ / รถมอเตอร์ไซค์" checked={st.debt_status?.car} width="w-auto" />
-                                    <CheckBox label="เงินกู้ยืมเพื่อการศึกษา กยศ." checked={st.debt_status?.student_loan} width="w-auto" />
-                                    <CheckBox label="อื่นๆ ระบุ................" checked={st.debt_status?.other} width="w-auto" />
+                                    <CheckBox label="ภาระการผ่อนส่งรถยนต์ / รถมอเตอร์ไซค์" checked={st.debt_status?.car} width="w-auto textSize=[12px]" />
+                                    <CheckBox label="เงินกู้ยืมเพื่อการศึกษา กยศ." checked={st.debt_status?.student_loan} width="w-auto textSize=[12px]" />
+                                    <CheckBox label="อื่นๆ ระบุ................" checked={st.debt_status?.other} width="w-auto textSize=[12px]" />
                                     <span className="whitespace-nowrap relative top-[1px]">รวมภาระต่อเดือน.................บาท</span>
                                 </div>
                             </div>
@@ -748,8 +748,8 @@ export default function PDFLayoutType2({ applicant }) {
                             <div className="flex gap-1 items-center flex-wrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">11.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านยินยอมให้บริษัทฯตรวจสอบประวัติอาชญากรรมหรือไม่</span>
-                                <CheckBox label="ยินยอม" checked={st.criminal_record_check_consent === 'agree'} width="w-[70px]" />
-                                <CheckBox label="ไม่ยินยอม" checked={st.criminal_record_check_consent === 'disagree'} width="w-[80px]" />
+                                <CheckBox label="ยินยอม" checked={st.criminal_record_check_consent === 'agree'} width="w-[70px] textSize=[12px]" />
+                                <CheckBox label="ไม่ยินยอม" checked={st.criminal_record_check_consent === 'disagree'} width="w-[80px] textSize=[12px]" />
                                 <span className="relative top-[1px]">เพราะ</span>
                                 <span className="border-b border-dotted border-black flex-1 min-w-[150px] px-1 pb-1 relative top-2">{st.criminal_record_check_consent === 'disagree' ? st.criminal_record_check_consent_reason : ''}</span>
                             </div>
@@ -757,8 +757,8 @@ export default function PDFLayoutType2({ applicant }) {
                             <div className="flex gap-1 items-center flex-wrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">12.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านยินยอมให้บริษัทฯตรวจสอบเครดิตบูโรหรือไม่</span>
-                                <CheckBox label="ยินยอม" checked={st.credit_bureau_check_consent === 'agree'} width="w-[70px]" />
-                                <CheckBox label="ไม่ยินยอม" checked={st.credit_bureau_check_consent === 'disagree'} width="w-[80px]" />
+                                <CheckBox label="ยินยอม" checked={st.credit_bureau_check_consent === 'agree'} width="w-[70px] textSize=[12px]" />
+                                <CheckBox label="ไม่ยินยอม" checked={st.credit_bureau_check_consent === 'disagree'} width="w-[80px] textSize=[12px]" />
                                 <span className="relative top-[1px]">เพราะ</span>
                                 <span className="border-b border-dotted border-black flex-1 min-w-[150px] px-1 pb-1 relative top-2">{st.credit_bureau_check_consent === 'disagree' ? st.credit_bureau_check_consent_reason : ''}</span>
                             </div>
@@ -790,8 +790,8 @@ export default function PDFLayoutType2({ applicant }) {
                          <div className="flex flex-wrap items-end gap-1">
                              <span>ชื่อ-สกุล บิดา</span>
                              <DottedLine value={par.father?.name} className="w-[50mm] relative top-[3px]" />
-                             <CheckBox label="ถึงแก่กรรม" checked={par.father?.status === 'deceased'} width="w-[22mm]" />
-                             <CheckBox label="มีชีวิตอยู่" checked={par.father?.status === 'alive'} width="w-[22mm]" />
+                             <CheckBox label="ถึงแก่กรรม" checked={par.father?.status === 'deceased'} width="w-[22mm] textSize=[12px]" />
+                             <CheckBox label="มีชีวิตอยู่" checked={par.father?.status === 'alive'} width="w-[22mm] textSize=[12px]" />
                              <span>อายุ</span>
                              <DottedLine value={par.father?.age} className="w-[12mm] text-center relative top-[3px]" />
                              <span>ปี</span>
@@ -825,8 +825,8 @@ export default function PDFLayoutType2({ applicant }) {
                          <div className="flex flex-wrap items-end gap-1">
                              <span>ชื่อ-สกุล มารดา</span>
                              <DottedLine value={par.mother?.name} className="w-[48mm] relative top-[3px]" />
-                             <CheckBox label="ถึงแก่กรรม" checked={par.mother?.status === 'deceased'} width="w-[22mm]" textSize="text-[15px]" />
-                             <CheckBox label="มีชีวิตอยู่" checked={par.mother?.status === 'alive'} width="w-[22mm]" textSize="text-[15px]" />
+                             <CheckBox label="ถึงแก่กรรม" checked={par.mother?.status === 'deceased'} width="w-[22mm]" textSize="text-[12px]" />
+                             <CheckBox label="มีชีวิตอยู่" checked={par.mother?.status === 'alive'} width="w-[22mm]" textSize="text-[12px]" />
                              <span>อายุ</span>
                              <DottedLine value={par.mother?.age} className="w-[12mm] text-center relative top-[3px]" />
                              <span>ปี</span>
