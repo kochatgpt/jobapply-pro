@@ -876,7 +876,7 @@ export default function PDFLayoutType2({ applicant }) {
                 <div className="mt-[-15mm] space-y-1">
                     
                     {/* Emergency Contact Table */}
-                    <div className="text-[45px] mb-1">
+                    <div className="text-[14px] mb-1">
                         <span className="font-bold">กรณี <span className="underline">ฉุกเฉิน เร่งด่วน</span> สามารถติดต่อบุคคลอ้างอิงได้ที่</span>
                     </div>
                     <table className="w-full border-collapse">
