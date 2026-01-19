@@ -632,7 +632,7 @@ export default function PDFLayoutType2({ applicant }) {
                      {/* --- Statement --- */}
                      <div>
                         <div className="text-center font-bold text-[14px] border-[0.5px] border-black bg-slate-50 py-1 mb-[-0.5px]">คำแถลง (กรุณาระบุตามจริงเท่านั้น)</div>
-                        <div className="border-[0.5px] border-black p-3 space-y-2">
+                        <div className="border-[0.5px] border-black p-3 space-y-0.5">
                             <div className="flex gap-1 items-center flex-nowrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">1.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านสามารถปฏิบัติงานล่วงเวลาได้หรือไม่</span>
@@ -766,7 +766,7 @@ export default function PDFLayoutType2({ applicant }) {
                      </div>
 
                      {/* --- Referral --- */}
-                     <div className="border-[0.5px] border-black p-2 pb-3 space-y-2.5">
+                     <div className="border-[0.5px] border-black p-2 pb-3 space-y-1">
                          <div className="flex items-end">
                             <span className="relative top-[1px]">ข้าพเจ้ายื่นใบสมัครโดยการแนะนำของ</span>
                             <DottedLine value={ref.referred_by} className="flex-1 text-center relative top-2" />
@@ -782,7 +782,7 @@ export default function PDFLayoutType2({ applicant }) {
                      </div>
 
                      {/* --- Parents --- */}
-                     <div className="border-[0.5px] border-black p-2 space-y-2.5">
+                     <div className="border-[0.5px] border-black p-2 space-y-1">
                          <div className="font-bold underline text-center">ประวัติครอบครัว</div>
                          
                          {/* Father - 3 lines */}
