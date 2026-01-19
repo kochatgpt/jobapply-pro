@@ -1012,7 +1012,7 @@ export default function PDFLayoutType2({ applicant }) {
                             <div className="font-bold text-center mb-1 pb-1 border-b border-black">เจ้าหน้าที่สรรหาว่าจ้าง</div>
                             <div className="text-center mb-2">ผู้ดำเนินการ</div>
                             <div className="flex flex-col items-center gap-1 mb-1">
-                                <span className="text-[11px]">ลงชื่อ</span>
+                                <span>ลงชื่อ</span>
                                 {admin.approvals?.recruiter?.signature ? (
                                     <div className="flex flex-col items-center w-32">
                                         <img src={admin.approvals.recruiter.signature} alt="Signature" crossOrigin="anonymous" className="max-h-10 object-contain mb-1" />
@@ -1021,9 +1021,9 @@ export default function PDFLayoutType2({ applicant }) {
                                 ) : (
                                     <div className="border-b-[1px] border-dotted border-black w-32 h-10"></div>
                                 )}
-                                <div className="text-center text-[12px]">({admin.approvals?.recruiter?.name || "..........................................."})</div>
+                                <div className="text-center">({admin.approvals?.recruiter?.name || "..........................................."})</div>
                             </div>
-                            <div className="text-center text-[12px]">วันที่ {admin.approvals?.recruiter?.date || ".........../.........../..........."}</div>
+                            <div className="text-center">วันที่ {admin.approvals?.recruiter?.date || ".........../.........../..........."}</div>
                         </div>
                         
                         <div className="border-[0.5px] border-black border-l-0 p-1.5">
@@ -1033,7 +1033,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ไม่รับ" checked={admin.approvals?.committee?.decision === 'rejected'} width="w-auto" textSize="text-[12px]" />
                             </div>
                             <div className="flex flex-col items-center gap-1 mb-1">
-                                <span className="text-[12px]">ลงชื่อ</span>
+                                <span>ลงชื่อ</span>
                                 {admin.approvals?.committee?.signature ? (
                                     <div className="flex flex-col items-center w-32">
                                         <img src={admin.approvals.committee.signature} alt="Signature" crossOrigin="anonymous" className="max-h-10 object-contain mb-1" />
@@ -1042,9 +1042,9 @@ export default function PDFLayoutType2({ applicant }) {
                                 ) : (
                                     <div className="border-b-[1px] border-dotted border-black w-32 h-10"></div>
                                 )}
-                                <div className="text-center text-[12px]">({admin.approvals?.committee?.name || "..........................................."})</div>
+                                <div className="text-center">({admin.approvals?.committee?.name || "..........................................."})</div>
                             </div>
-                            <div className="text-center text-[12px]">วันที่ {admin.approvals?.committee?.date || ".........../.........../..........."}</div>
+                            <div className="text-center">วันที่ {admin.approvals?.committee?.date || ".........../.........../..........."}</div>
                         </div>
                         
                         <div className="border-[0.5px] border-black border-l-0 p-1.5">
@@ -1063,9 +1063,9 @@ export default function PDFLayoutType2({ applicant }) {
                                 ) : (
                                     <div className="border-b-[1px] border-dotted border-black w-32 h-10"></div>
                                 )}
-                                <div className="text-center text-[12px]">({admin.approvals?.hr_manager?.name || "..........................................."})</div>
+                                <div className="text-center">({admin.approvals?.hr_manager?.name || "..........................................."})</div>
                             </div>
-                            <div className="text-center text-[12px]">วันที่ {admin.approvals?.hr_manager?.date || ".........../.........../..........."}</div>
+                            <div className="text-center">วันที่ {admin.approvals?.hr_manager?.date || ".........../.........../..........."}</div>
                         </div>
 
                         {/* Second Row - 2 columns */}
@@ -1085,9 +1085,9 @@ export default function PDFLayoutType2({ applicant }) {
                                 ) : (
                                     <div className="border-b-[1px] border-dotted border-black w-32 h-10"></div>
                                 )}
-                                <div className="text-center text-[12px]">({admin.approvals?.department_head?.name || "..........................................."})</div>
+                                <div className="text-center">({admin.approvals?.department_head?.name || "..........................................."})</div>
                             </div>
-                            <div className="text-center text-[12px]">วันที่ {admin.approvals?.department_head?.date || ".........../.........../..........."}</div>
+                            <div className="text-center">วันที่ {admin.approvals?.department_head?.date || ".........../.........../..........."}</div>
                         </div>
 
                         <div className="border-[0.5px] border-black border-l-0 border-t-0 p-1.5 col-span-2">
