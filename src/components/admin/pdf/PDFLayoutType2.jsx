@@ -149,8 +149,8 @@ export default function PDFLayoutType2({ applicant }) {
 
                 {/* --- HR Section --- */}
                 <div className="border-[0.5px] border-black p-3 mb-1 rounded-sm relative">
-                    <div className="absolute -top-3 left-2 px-1 font-bold text-[14px]">(สำหรับ จนท.)</div>
-                    <div className="absolute -top-1 left-2 px-1 bg-white font-bold text-[14px] invisible ">.........</div>
+                    <div className="absolute -top-4 left-2 px-1 font-bold text-[14px]">(สำหรับ จนท.)</div>
+                    <div className="absolute -top-2 left-2 px-1 bg-white font-bold text-[14px] invisible ">.........</div>
                     <div className="grid grid-cols-12 gap-2 mb-1">
                         <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">รหัสพนักงาน</span><DottedLine value={admin.hr_info?.employee_id} className="flex-1" /></div>
                         <div className="col-span-4 flex items-end"><span className="font-bold mr-2 pb-1">วันที่เริ่มงานจริง</span><DottedLine value={admin.hr_info?.actual_start_date} className="flex-1" /></div>
@@ -825,8 +825,8 @@ export default function PDFLayoutType2({ applicant }) {
                          <div className="flex flex-wrap items-end gap-1">
                              <span>ชื่อ-สกุล มารดา</span>
                              <DottedLine value={par.mother?.name} className="w-[48mm] relative top-[3px]" />
-                             <CheckBox label="ถึงแก่กรรม" checked={par.mother?.status === 'deceased'} width="w-[22mm]" />
-                             <CheckBox label="มีชีวิตอยู่" checked={par.mother?.status === 'alive'} width="w-[22mm]" />
+                             <CheckBox label="ถึงแก่กรรม" checked={par.mother?.status === 'deceased'} width="w-[22mm]" textSize="text-[15px]" />
+                             <CheckBox label="มีชีวิตอยู่" checked={par.mother?.status === 'alive'} width="w-[22mm]" textSize="text-[15px]" />
                              <span>อายุ</span>
                              <DottedLine value={par.mother?.age} className="w-[12mm] text-center relative top-[3px]" />
                              <span>ปี</span>
