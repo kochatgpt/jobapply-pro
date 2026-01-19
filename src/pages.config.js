@@ -12,7 +12,6 @@ import pdpaForm from './pages/pdpa-form';
 import spsForm from './pages/sps-form';
 import userDashboard from './pages/user-dashboard';
 import userLogin from './pages/user-login';
-import ApplicationPreview from './pages/ApplicationPreview';
 import __Layout from './Layout.jsx';
 
 
@@ -31,7 +30,6 @@ export const PAGES = {
     "sps-form": spsForm,
     "user-dashboard": userDashboard,
     "user-login": userLogin,
-    "ApplicationPreview": ApplicationPreview,
 }
 
 export const pagesConfig = {
