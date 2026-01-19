@@ -86,9 +86,11 @@ export default function PDFLayoutType2({ applicant }) {
                 {children}
 
                 {/* Footer */}
-                <div className={`absolute ${footerBottom} right-[10mm] text-slate-500`}>
-                    {pageNum} | {totalPages}
-                </div>
+                {pageNum < 5 && (
+                    <div className={`absolute ${footerBottom} right-[10mm] text-slate-500`}>
+                        {pageNum} | {totalPages}
+                    </div>
+                )}
                 {pageNum < 5 && (
                     <div className={`absolute ${footerBottom} left-1/2 -translate-x-1/2 text-slate-400 text-center`}>
                         FM-HRD-10 Rev.03 10/10/66 <br />
