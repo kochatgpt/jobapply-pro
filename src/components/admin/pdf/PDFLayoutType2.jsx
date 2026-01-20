@@ -104,7 +104,7 @@ export default function PDFLayoutType2({ applicant }) {
                  {/* --- Top Section --- */}
                 <div className="flex justify-between items-start mb-1">
                     {/* Top Left Box */}
-                    <div className="border-[0.5px] border-black p-2 w-[40mm] space-y-1">
+                    <div className="border-[0.5px] border-black py-2 px-1 w-[40mm] space-y-1">
                         <div className="relative pl-5 h-4 flex items-center">
                             <div className={`absolute left-0 top-0.5 w-3 h-3 border border-black rounded-[1px] bg-white flex items-center justify-center`}>
                                 {admin.hr_systems?.web_hr && <Check className="w-2.5 h-2.5" />}
