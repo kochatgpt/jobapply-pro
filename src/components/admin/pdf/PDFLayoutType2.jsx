@@ -640,7 +640,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ได้" checked={st.can_work_overtime === 'yes'} width="w-[50px] textSize=[12px]" />
                                 <CheckBox label="ไม่ได้" checked={st.can_work_overtime === 'no'} width="w-[60px] textSize=[12px]" />
                                 <span className="whitespace-nowrap relative top-[1px]">เพราะ</span>
-                                <span className="border-b border-dotted border-black flex-1 min-w-0 px-1 pb-1 relative top-1">{st.can_work_overtime === 'no' ? st.can_work_overtime_reason : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black flex-1 min-w-0 px-1 pb-1 relative top-1">{st.can_work_overtime === 'no' ? st.can_work_overtime_reason : ''}</span>
                             </div>
 
                             <div className="flex gap-1 items-center flex-wrap space-y-1">
@@ -649,9 +649,9 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ไม่เคย" checked={st.has_legal_cases === 'never'} width="w-[60px] textSize=[12px]" />
                                 <CheckBox label="เคย" checked={st.has_legal_cases === 'ever'} width="w-[50px] textSize=[12px]" />
                                 <span className="relative top-[1px]">ด้วยคดี</span>
-                                <span className="border-b border-dotted border-black min-w-[150px] px-1 pb-1 relative top-1">{st.has_legal_cases === 'ever' ? st.has_legal_cases_details : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black min-w-[150px] px-1 pb-1 relative top-1">{st.has_legal_cases === 'ever' ? st.has_legal_cases_details : ''}</span>
                                 <span className="relative top-[1px]">เมื่อปี พ.ศ.</span>
-                                <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.has_legal_cases === 'ever' ? st.has_legal_cases_year : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.has_legal_cases === 'ever' ? st.has_legal_cases_year : ''}</span>
                             </div>
 
                             <div className="flex gap-1 items-center flex-wrap space-y-1">
@@ -660,11 +660,11 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ไม่เคย" checked={st.has_drug_history === 'never'} width="w-[60px] textSize=[12px]" />
                                 <CheckBox label="เคย" checked={st.has_drug_history === 'ever'} width="w-[50px] textSize=[12px]" />
                                 <span className="relative top-[1px]">ระบุประเภท</span>
-                                <span className="border-b border-dotted border-black min-w-[80px] px-1 pb-1 relative top-1">{st.has_drug_history === 'ever' ? st.has_drug_history_type : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black min-w-[80px] px-1 pb-1 relative top-1">{st.has_drug_history === 'ever' ? st.has_drug_history_type : ''}</span>
                                 <span className="relative top-[1px]">สถานที่บำบัด</span>
-                                <span className="border-b border-dotted border-black min-w-[80px] px-1 pb-1 relative top-1">{st.has_drug_history === 'ever' ? st.has_drug_history_place : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black min-w-[80px] px-1 pb-1 relative top-1">{st.has_drug_history === 'ever' ? st.has_drug_history_place : ''}</span>
                                 <span className="relative top-[1px]">เมื่อปี พ.ศ.</span>
-                                <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.has_drug_history === 'ever' ? st.has_drug_history_year : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.has_drug_history === 'ever' ? st.has_drug_history_year : ''}</span>
                             </div>
 
                             <div className="flex gap-0.2 items-center flex-wrap space-y-1">
@@ -672,7 +672,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <span className="whitespace-nowrap relative top-[1px]">ในปัจจุบันท่านสูบบุหรี่หรือไม่</span>
                                 <CheckBox label="ไม่สูบ" checked={st.smoking_habit?.status === 'no'} width="w-[60px] textSize=[12px]" />
                                 <CheckBox label="สูบประจำเฉลี่ยต่อวันระบุ" checked={st.smoking_habit?.status === 'regular'} width="w-auto textSize=[12px]" />
-                                <span className="border-b border-dotted border-black min-w-[40px] px-1 pb-1 relative top-1">{st.smoking_habit?.status === 'regular' ? st.smoking_habit?.amount : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black min-w-[40px] px-1 pb-1 relative top-1">{st.smoking_habit?.status === 'regular' ? st.smoking_habit?.amount : ''}</span>
                                 <span className="relative top-[1px]">ม้วน/กล่อง</span>
                                 <CheckBox label="สูบเฉพาะเที่ยว" checked={st.smoking_habit?.status === 'social'} width="w-[90px] textSize=[12px]" />
                                 <CheckBox label="สูบบ้างบางครั้ง" checked={st.smoking_habit?.status === 'occasional'} width="w-[80px] textSize=[12px]" />
@@ -685,7 +685,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ดื่ม" checked={st.alcohol_habit === 'yes'} width="w-[50px] textSize=[12px]" />
                                 <CheckBox label="ดื่มบ้าง" checked={st.alcohol_habit === 'occasional'} width="w-[70px] textSize=[12px]" />
                                 <span className="whitespace-nowrap relative top-[1px]">ความถี่</span>
-                                <span className="border-b border-dotted border-black min-w-[40px] px-1 pb-1 relative top-1">{st.alcohol_habit_frequency || '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black min-w-[40px] px-1 pb-1 relative top-1">{st.alcohol_habit_frequency || ''}</span>
                                 <span className="whitespace-nowrap relative top-[1px]">วัน/ต่อสัปดาห์</span>
                             </div>
                             
@@ -695,7 +695,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="แข็งแรงสมบูรณ์ดีทุกอย่าง" checked={st.health_status?.status === 'good'} width="w-auto textSize=[12px]" />
                                 <CheckBox label="ไม่มีโรคประจำตัว" checked={st.health_status?.status === 'no_disease'} width="w-[130px] textSize=[12px]" />
                                 <CheckBox label="มีโรคประจำตัว ระบุ" checked={st.health_status?.status === 'has_disease'} width="w-auto textSize=[12px]" />
-                                <span className="border-b border-dotted border-black flex-1 min-w-[100px] pb-1 relative top-1">{st.health_status?.details || '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black flex-1 min-w-[100px] pb-1 relative top-1">{st.health_status?.details}</span>
                             </div>
 
                             <div className="flex gap-1 items-center flex-wrap space-y-0.1">
@@ -704,7 +704,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ไม่เคย" checked={st.recent_major_illness === 'never'} width="w-[60px] textSize=[12px]" />
                                 <CheckBox label="เคย" checked={st.recent_major_illness === 'ever'} width="w-[50px] textSize=[12px]" />
                                 <span className="relative top-[1px]">ระบุโรค</span>
-                                <span className="border-b border-dotted border-black min-w-[100px] px-1 pb-1 relative top-1">{st.recent_major_illness === 'ever' ? st.recent_major_illness_details : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black min-w-[100px] px-1 pb-1 relative top-1">{st.recent_major_illness === 'ever' ? st.recent_major_illness_details : ''}</span>
                             </div>
 
                             <div className="flex gap-1 items-center flex-wrap space-y-0.1">
@@ -713,7 +713,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ไม่มี" checked={st.has_contagious_disease === 'no'} width="w-[60px] textSize=[12px]" />
                                 <CheckBox label="มี" checked={st.has_contagious_disease === 'yes'} width="w-[50px] textSize=[12px]" />
                                 <span className="relative top-[1px]">อื่นๆ โปรดระบุให้ชัดเจน</span>
-                                <span className="border-b border-dotted border-black flex-1 min-w-[100px] px-1 pb-1 relative top-1">{st.has_contagious_disease === 'yes' ? st.has_contagious_disease_details : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black flex-1 min-w-[100px] px-1 pb-1 relative top-1">{st.has_contagious_disease === 'yes' ? st.has_contagious_disease_details : ''}</span>
                             </div>
 
                             <div className="space-y-0.1">
@@ -722,23 +722,23 @@ export default function PDFLayoutType2({ applicant }) {
                                     <span className="relative top-[1px]">ท่านมีข้อบกพร่องเกี่ยวกับร่างกาย หรือไม่</span>
                                     <CheckBox label="สายตาปกติ" checked={st.physical_conditions?.eyes === 'normal'} width="w-[80px] textSize=[12px]" />
                                     <CheckBox label="สายตาไม่ปกติ ระบุ" checked={st.physical_conditions?.eyes === 'abnormal'} width="w-auto textSize=[12px]" />
-                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.physical_conditions?.eyes === 'abnormal' ? st.physical_conditions?.eyes_details : '\u00A0'}</span>
+                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.physical_conditions?.eyes === 'abnormal' ? st.physical_conditions?.eyes_details : ''}</span>
                                 </div>
                                 <div className="flex items-center gap-1 flex-wrap">
                                     <CheckBox label="การฟังปกติ" checked={st.physical_conditions?.hearing === 'normal'} width="w-[80px] textSize=[12px]" />
                                     <CheckBox label="การฟังไม่ปกติ ระบุ" checked={st.physical_conditions?.hearing === 'abnormal'} width="w-auto textSize=[12px]" />
-                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.physical_conditions?.hearing === 'abnormal' ? st.physical_conditions?.hearing_details : '\u00A0'}</span>
+                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.physical_conditions?.hearing === 'abnormal' ? st.physical_conditions?.hearing_details : ''}</span>
                                     <CheckBox label="การพูดปกติ" checked={st.physical_conditions?.speaking === 'normal'} width="w-[80px] textSize=[12px]" />
                                     <CheckBox label="การพูดไม่ปกติ ระบุ" checked={st.physical_conditions?.speaking === 'abnormal'} width="w-auto textSize=[12px]" />
-                                    <span className="border-b border-dotted border-black min-w-[80px] px-1 pb-1 relative top-1">{st.physical_conditions?.speaking === 'abnormal' ? st.physical_conditions?.speaking_details : '\u00A0'}</span>
+                                    <span className="border-b border-dotted border-black min-w-[80px] px-1 pb-1 relative top-1">{st.physical_conditions?.speaking === 'abnormal' ? st.physical_conditions?.speaking_details : ''}</span>
                                     <CheckBox label="การเคลื่อนไหวปกติ" checked={st.physical_conditions?.movement === 'normal'} width="w-[120px] textSize=[12px]" />
                                     <CheckBox label="การเคลื่อนไหวไม่ปกติ ระบุ" checked={st.physical_conditions?.movement === 'abnormal'} width="w-auto textSize=[12px]" />
-                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.physical_conditions?.movement === 'abnormal' ? st.physical_conditions?.movement_details : '\u00A0'}</span>
+                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.physical_conditions?.movement === 'abnormal' ? st.physical_conditions?.movement_details : ''}</span>
                                 </div>
                             </div>
 
                             <div className="space-y-0.1">
-                                <div className="flex gap-1 items-center flex-wrap">
+                                <div className="flex items-center gap-1 flex-wrap">
                                     <span className="w-2 shrink-0 relative top-[1px]">10.</span>
                                     <span className="whitespace-nowrap relative top-[1px]">ท่านมีหนี้สินหรือภาระด้านใด อาทิ</span>
                                     <CheckBox label="กู้นอกระบบ" checked={st.debt_status?.outside_system} width="w-[90px] textSize=[12px]" />
@@ -749,9 +749,9 @@ export default function PDFLayoutType2({ applicant }) {
                                     <CheckBox label="ภาระการผ่อนส่งรถยนต์ / รถมอเตอร์ไซค์" checked={st.debt_status?.car} width="w-auto textSize=[12px]" />
                                     <CheckBox label="เงินกู้ยืมเพื่อการศึกษา กยศ." checked={st.debt_status?.student_loan} width="w-auto textSize=[12px]" />
                                     <CheckBox label="อื่นๆ ระบุ" checked={st.debt_status?.other} width="w-auto textSize=[12px]" />
-                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.debt_status?.other ? st.debt_status?.other_details : '\u00A0'}</span>
+                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.debt_status?.other ? st.debt_status?.other_details : ''}</span>
                                     <span className="whitespace-nowrap relative top-[1px]">รวมภาระต่อเดือน</span>
-                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.debt_status?.monthly_payment || '\u00A0'} บาท</span>
+                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.debt_status?.monthly_payment || ''} บาท</span>
                                 </div>
                             </div>
 
@@ -761,7 +761,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ยินยอม" checked={st.criminal_record_check_consent === 'agree'} width="w-[70px] textSize=[12px]" />
                                 <CheckBox label="ไม่ยินยอม" checked={st.criminal_record_check_consent === 'disagree'} width="w-[80px] textSize=[12px]" />
                                 <span className="relative top-[1px]">เพราะ</span>
-                                <span className="border-b border-dotted border-black flex-1 min-w-[150px] px-1 pb-1 relative top-1">{st.criminal_record_check_consent === 'disagree' ? st.criminal_record_check_consent_reason : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black flex-1 min-w-[150px] px-1 pb-1 relative top-1">{st.criminal_record_check_consent === 'disagree' ? st.criminal_record_check_consent_reason : ''}</span>
                             </div>
 
                             <div className="flex gap-1 items-center flex-wrap space-y-0.1">
@@ -770,7 +770,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="ยินยอม" checked={st.credit_bureau_check_consent === 'agree'} width="w-[70px] textSize=[12px]" />
                                 <CheckBox label="ไม่ยินยอม" checked={st.credit_bureau_check_consent === 'disagree'} width="w-[80px] textSize=[12px]" />
                                 <span className="relative top-[1px]">เพราะ</span>
-                                <span className="border-b border-dotted border-black flex-1 min-w-[150px] px-1 pb-1 relative top-1">{st.credit_bureau_check_consent === 'disagree' ? st.credit_bureau_check_consent_reason : '\u00A0'}</span>
+                                <span className="border-b border-dotted border-black flex-1 min-w-[150px] px-1 pb-1 relative top-1">{st.credit_bureau_check_consent === 'disagree' ? st.credit_bureau_check_consent_reason : ''}</span>
                             </div>
 
                         </div>
