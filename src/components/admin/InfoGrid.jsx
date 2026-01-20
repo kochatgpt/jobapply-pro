@@ -1,9 +1,22 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { format } from 'date-fns';
 
 const RenderValue = ({ value, label }) => {
     if (value === null || value === undefined || value === '') return <span className="text-slate-300">-</span>;
+    
+    // Date detection and formatting
+    if (typeof value === 'string' && /^\d{4}-\d{2}-\d{2}/.test(value)) {
+        try {
+            const date = new Date(value);
+            if (!isNaN(date.getTime())) {
+                return <span className="text-slate-700 break-words">{format(date, 'dd/MMM/yyyy')}</span>;
+            }
+        } catch (e) {
+            // Not a valid date, continue to other checks
+        }
+    }
     
     // Boolean mapping
     if (value === true) return <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">Yes</Badge>;
