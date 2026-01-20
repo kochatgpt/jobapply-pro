@@ -738,14 +738,14 @@ export default function PDFLayoutType2({ applicant }) {
                             </div>
 
                             <div className="space-y-0.1">
-                                <div className="flex gap-0.1 items-center flex-wrap">
+                                <div className="flex gap-1 items-center flex-wrap">
                                     <span className="w-5 shrink-0 relative top-[1px]">10.</span>
                                     <span className="whitespace-nowrap relative top-[1px]">ท่านมีหนี้สินหรือภาระด้านใด อาทิ</span>
                                     <CheckBox label="กู้นอกระบบ" checked={st.debt_status?.outside_system} width="w-[90px] textSize=[12px]" />
                                     <CheckBox label="กู้ในระบบ บัตรเครดิต/สินเชื่อต่างๆ" checked={st.debt_status?.inside_system} width="w-auto textSize=[12px]" />
                                     <CheckBox label="ภาระการผ่อนส่งบ้าน/คอนโด" checked={st.debt_status?.house} width="w-auto textSize=[12px]" />
                                 </div>
-                                <div className="flex items-center gap-0.1 flex-wrap">
+                                <div className="flex items-center gap-1 flex-wrap">
                                     <CheckBox label="ภาระการผ่อนส่งรถยนต์ / รถมอเตอร์ไซค์" checked={st.debt_status?.car} width="w-auto textSize=[12px]" />
                                     <CheckBox label="เงินกู้ยืมเพื่อการศึกษา กยศ." checked={st.debt_status?.student_loan} width="w-auto textSize=[12px]" />
                                     <CheckBox label="อื่นๆ ระบุ" checked={st.debt_status?.other} width="w-auto textSize=[12px]" />
