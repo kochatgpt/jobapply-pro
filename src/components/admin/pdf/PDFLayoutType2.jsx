@@ -671,7 +671,9 @@ export default function PDFLayoutType2({ applicant }) {
                                 <span className="w-5 shrink-0 relative top-[1px]">4.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ในปัจจุบันท่านสูบบุหรี่หรือไม่</span>
                                 <CheckBox label="ไม่สูบ" checked={st.smoking_habit?.status === 'no'} width="w-[60px] textSize=[12px]" />
-                                <CheckBox label="สูบประจำเฉลี่ยต่อวันระบุ.......ม้วน/กล่อง" checked={st.smoking_habit?.status === 'regular'} width="w-auto textSize=[12px]" />
+                                <CheckBox label="สูบประจำเฉลี่ยต่อวันระบุ" checked={st.smoking_habit?.status === 'regular'} width="w-auto textSize=[12px]" />
+                                <span className="border-b border-dotted border-black min-w-[60px] px-1 relative top-2">{st.smoking_habit?.status === 'regular' ? st.smoking_habit?.amount : ''}</span>
+                                <span className="relative top-[1px]">ม้วน/กล่อง</span>
                                 <CheckBox label="สูบเฉพาะเที่ยว" checked={st.smoking_habit?.status === 'social'} width="w-[120px] textSize=[12px]" />
                                 <CheckBox label="สูบบ้างบางครั้ง" checked={st.smoking_habit?.status === 'occasional'} width="w-[120px] textSize=[12px]" />
                             </div>
