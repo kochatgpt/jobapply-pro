@@ -796,7 +796,7 @@ export default function PDFLayoutType2({ applicant }) {
                      </div>
 
                      {/* --- Parents --- */}
-                     <div className="border-[0.5px] border-black p-2 space-y-0.5">
+                     <div className="border-[0.5px] border-black px-2 space-y-0.5">
                          <div className="font-bold underline text-center">ประวัติครอบครัว</div>
                          
                          {/* Father - 3 lines */}
