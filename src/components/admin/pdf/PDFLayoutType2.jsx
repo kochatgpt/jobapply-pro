@@ -633,7 +633,7 @@ export default function PDFLayoutType2({ applicant }) {
                      {/* --- Statement --- */}
                      <div>
                         <div className="text-center font-bold text-[14px] border-[0.5px] border-black bg-slate-50 py-1 mb-[-0.5px]">คำแถลง (กรุณาระบุตามจริงเท่านั้น)</div>
-                        <div className="border-[0.5px] border-black px-3 space-y-0.1">
+                        <div className="border-[0.5px] border-black px-3 pb-2 space-y-0.1">
                             <div className="flex gap-1 items-center flex-nowrap">
                                 <span className="w-5 shrink-0 relative top-[1px]">1.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านสามารถปฏิบัติงานล่วงเวลาได้หรือไม่</span>
@@ -793,7 +793,7 @@ export default function PDFLayoutType2({ applicant }) {
                      </div>
 
                      {/* --- Parents --- */}
-                     <div className="border-[0.5px] border-black px-2 space-y-0.5">
+                     <div className="border-[0.5px] border-black px-2 pb-2 space-y-0.5">
                          <div className="font-bold underline text-center">ประวัติครอบครัว</div>
                          
                          {/* Father - 3 lines */}
@@ -832,7 +832,7 @@ export default function PDFLayoutType2({ applicant }) {
                          </div>
 
                          {/* Mother - 3 lines */}
-                         <div className="flex flex-wrap items-end gap-1 pb-1">
+                         <div className="flex flex-wrap items-end gap-1">
                              <span>ชื่อ-สกุล มารดา</span>
                              <DottedLine value={par.mother?.name} className="w-[48mm] relative top-[3px]" />
                              <CheckBox label="ถึงแก่กรรม" checked={par.mother?.status === 'deceased'} width="w-[22mm]" textSize="text-[12px]" />
