@@ -11,6 +11,10 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
 
     const appLogo = settings?.find(s => s.key === 'app_logo')?.value;
     const p = applicant?.personal_data || {};
+    
+    // Construct full name from personal_data if not provided
+    const fullName = applicant?.full_name || 
+        `${p.prefix || ''}${p.first_name || ''} ${p.last_name || ''}`.trim();
 
     return (
         <>
@@ -55,7 +59,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
             {/* Applicant Information */}
             <div className="mb-4">
                 <p className="mb-3">
-                    ข้าพเจ้า (นาย/นาง/นางสาว) <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${applicant?.full_name ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!applicant?.full_name && { minHeight: '1.2em' }) }}>{applicant?.full_name || '\u00A0'}</span> 
+                    ข้าพเจ้า (นาย/นาง/นางสาว) <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${fullName ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!fullName && { minHeight: '1.2em' }) }}>{fullName || '\u00A0'}</span> 
                     เลขบัตรประจำตัวประชาชน <span className={`border-b border-dotted border-slate-400 inline-block w-[150px] text-center ${p.id_card ? 'pb-1' : ''}`} style={{ verticalAlign: 'baseline', ...(!p.id_card && { minHeight: '1.2em' }) }}>{p.id_card || '\u00A0'}</span>
                 </p>
                 <p>
@@ -359,7 +363,7 @@ export default function PDPADocument({ applicant, signatureUrl, signatureDate, f
                         )}
                         ผู้ยินยอม
                     </div>
-                    <p className="mt-2">({applicant?.full_name || '...........................................................'})</p>
+                    <p className="mt-2">({fullName || '...........................................................'})</p>
                 </div>
 
                 <div className="text-center mt-6">
