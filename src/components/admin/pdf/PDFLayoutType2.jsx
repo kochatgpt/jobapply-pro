@@ -747,7 +747,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 </div>
                             </div>
 
-                            <div className="flex gap-1 items-center flex-wrap">
+                            <div className="flex gap-1 items-center flex-wrap space-y-0.1">
                                 <span className="w-5 shrink-0 relative top-[1px]">11.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านยินยอมให้บริษัทฯตรวจสอบประวัติอาชญากรรมหรือไม่</span>
                                 <CheckBox label="ยินยอม" checked={st.criminal_record_check_consent === 'agree'} width="w-[70px] textSize=[12px]" />
@@ -756,7 +756,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <span className="border-b border-dotted border-black flex-1 min-w-[150px] px-1 pb-1 relative top-1">{st.criminal_record_check_consent === 'disagree' ? st.criminal_record_check_consent_reason : ''}</span>
                             </div>
 
-                            <div className="flex gap-1 items-center flex-wrap">
+                            <div className="flex gap-1 items-center flex-wrap space-y-0.1">
                                 <span className="w-5 shrink-0 relative top-[1px]">12.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ท่านยินยอมให้บริษัทฯตรวจสอบเครดิตบูโรหรือไม่</span>
                                 <CheckBox label="ยินยอม" checked={st.credit_bureau_check_consent === 'agree'} width="w-[70px] textSize=[12px]" />
