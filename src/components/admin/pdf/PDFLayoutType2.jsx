@@ -703,7 +703,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <span className="border-b border-dotted border-black min-w-[100px] px-1 pb-1 relative top-1">{st.recent_major_illness === 'ever' ? st.recent_major_illness_details : ''}</span>
                             </div>
 
-                            <div className="flex gap-1 items-center flex-wrap">
+                            <div className="flex gap-1 items-center flex-wrap space-y-0.1">
                                 <span className="w-5 shrink-0 relative top-[1px]">8.</span>
                                 <span className="relative top-[1px]">ท่านมีโรคติดต่อร้ายแรงหรือไม่ เช่น กาฬโรค/ไข้ทรพิษหรือฝีดาษ/วัณโรค /HIV/Covid-19</span>
                                 <CheckBox label="ไม่มี" checked={st.has_contagious_disease === 'no'} width="w-[60px] textSize=[12px]" />
@@ -712,7 +712,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <span className="border-b border-dotted border-black flex-1 min-w-[100px] px-1 pb-1 relative top-1">{st.has_contagious_disease === 'yes' ? st.has_contagious_disease_details : ''}</span>
                             </div>
 
-                            <div className="space-y-1">
+                            <div className="space-y-0.1">
                                 <div className="flex items-center gap-1 flex-wrap">
                                     <span className="w-5 shrink-0 relative top-[1px]">9.</span>
                                     <span className="relative top-[1px]">ท่านมีข้อบกพร่องเกี่ยวกับร่างกาย หรือไม่</span>
@@ -731,7 +731,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 </div>
                             </div>
 
-                            <div className="space-y-1">
+                            <div className="space-y-0.1">
                                 <div className="flex gap-1 items-center flex-wrap">
                                     <span className="w-5 shrink-0 relative top-[1px]">10.</span>
                                     <span className="whitespace-nowrap relative top-[1px]">ท่านมีหนี้สินหรือภาระด้านใด อาทิ</span>
