@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { format } from 'date-fns';
 
 export default function ApplicantList({ onSelect, selectedId }) {
-    const [filterDate, setFilterDate] = useState(format(new Date(), '2026-01-08'));
+    const [filterDate, setFilterDate] = useState(format(new Date(), 'yyyy-MM-dd'));
     const [searchTerm, setSearchTerm] = useState("");
 
     const { data: applicants, isLoading } = useQuery({
