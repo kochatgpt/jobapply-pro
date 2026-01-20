@@ -59,7 +59,7 @@ export default function PDFLayoutType2({ applicant }) {
     );
 
     const PageContainer = ({ children, pageNum, totalPages = 4, pageHeight = '297mm', showLogo = true, logoTopOffset = "top-[-2mm]" }) => {
-        const footerBottom = pageNum === 2 ? 'bottom-[20mm]' : pageNum === 3 || pageNum === 4 ? 'bottom-[2mm]' : 'bottom-[10mm]';
+        const footerBottom = pageNum === 2 ? 'bottom-[20mm]' : pageNum === 3 || pageNum === 4 ? 'bottom-[25mm]' : 'bottom-[10mm]';
         return (
             <div 
                 className="bg-white text-slate-900 p-[10mm] mx-auto relative mb-8 shadow-sm print:shadow-none print:mb-0"
@@ -556,7 +556,7 @@ export default function PDFLayoutType2({ applicant }) {
             </PageContainer>
 
             {/* ================= PAGE 3 ================= */}
-            <PageContainer pageNum={3} totalPages={4} logoTopOffset="top-[-50px]">
+            <PageContainer pageNum={3} totalPages={4} logoTopOffset="top-[-50px]" pageHeight="285px">
                 <div className="mt-[1px] space-y-1 top-[20px]">
 
                      {/* --- Work History --- */}
