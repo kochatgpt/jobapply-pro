@@ -16,6 +16,7 @@ import html2canvas from 'html2canvas';
 import { useState } from 'react';
 import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { base44 } from '@/api/base44Client';
+import { format } from 'date-fns';
 
 export default function ApplicantDetail({ applicant: initialApplicant }) {
     const [generatingPdf, setGeneratingPdf] = useState(false);
@@ -158,7 +159,7 @@ export default function ApplicantDetail({ applicant: initialApplicant }) {
                             )}
                             {applicant.submission_date && (
                                 <div className="flex items-center gap-1.5">
-                                    <Calendar className="w-4 h-4" /> สมัครเมื่อ {applicant.submission_date}
+                                    <Calendar className="w-4 h-4" /> สมัครเมื่อ {format(new Date(applicant.submission_date), 'dd/MMM/yyyy')}
                                 </div>
                             )}
                         </div>
@@ -310,11 +311,11 @@ export default function ApplicantDetail({ applicant: initialApplicant }) {
                                             <div className="space-y-4 text-sm">
                                                 <div className="flex justify-between border-b pb-2">
                                                     <span className="text-slate-500">วันที่ลงนาม</span>
-                                                    <span className="font-medium">{applicant.signature_date}</span>
+                                                    <span className="font-medium">{applicant.signature_date ? format(new Date(applicant.signature_date), 'dd/MMM/yyyy') : '-'}</span>
                                                 </div>
                                                 <div className="flex justify-between border-b pb-2">
                                                     <span className="text-slate-500">วันที่เริ่มงานได้</span>
-                                                    <span className="font-medium">{applicant.start_work_date}</span>
+                                                    <span className="font-medium">{applicant.start_work_date ? format(new Date(applicant.start_work_date), 'dd/MMM/yyyy') : '-'}</span>
                                                 </div>
                                                 <div className="flex justify-between border-b pb-2">
                                                     <span className="text-slate-500">ทัศนคติ</span>
