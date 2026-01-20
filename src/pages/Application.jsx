@@ -7,10 +7,11 @@ import { CheckCircle2 } from "lucide-react";
 import AgreementStep from '@/components/application/AgreementStep';
 import PhotoStep from '@/components/application/PhotoStep';
 import DataFormWizard from '@/components/application/DataFormWizard';
+import PDPAStep from '@/components/application/PDPAStep';
 import VideoInterviewStep from '@/components/application/VideoInterviewStep';
 
 export default function ApplicationPage() {
-    const [mainStep, setMainStep] = useState(0); // 0: Agreement, 1: Photo, 2: Form, 3: Video
+    const [mainStep, setMainStep] = useState(0); // 0: Agreement, 1: Photo, 2: Form, 3: PDPA, 4: Video
     // Get local date string in YYYY-MM-DD format
     const getLocalDate = () => {
         const d = new Date();
@@ -141,10 +142,10 @@ export default function ApplicationPage() {
     });
 
     const handleCompletion = () => {
-        setMainStep(4); // Success screen
+        setMainStep(5); // Success screen
     };
 
-    if (mainStep === 4) {
+    if (mainStep === 5) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
                 <Card className="w-full max-w-md text-center p-8">
@@ -184,6 +185,16 @@ export default function ApplicationPage() {
                     </motion.div>
                 )}
                 {mainStep === 3 && (
+                    <motion.div key="pdpa" initial={{opacity:0, x:20}} animate={{opacity:1, x:0}} exit={{opacity:0, x:-20}}>
+                        <PDPAStep 
+                            globalData={globalData} 
+                            setGlobalData={setGlobalData}
+                            onNext={() => setMainStep(4)}
+                            onBack={() => setMainStep(2)}
+                        />
+                    </motion.div>
+                )}
+                {mainStep === 4 && (
                     <motion.div key="video" initial={{opacity:0, x:20}} animate={{opacity:1, x:0}} exit={{opacity:0, x:-20}}>
                         <VideoInterviewStep globalData={globalData} onFinish={handleCompletion} />
                     </motion.div>
