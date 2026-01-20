@@ -667,7 +667,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.has_drug_history === 'ever' ? st.has_drug_history_year : ''}</span>
                             </div>
 
-                            <div className="flex gap-0.1 items-center flex-wrap space-y-0.1">
+                            <div className="flex gap-1 items-center flex-wrap space-y-1">
                                 <span className="w-5 shrink-0 relative top-[1px]">4.</span>
                                 <span className="whitespace-nowrap relative top-[1px]">ในปัจจุบันท่านสูบบุหรี่หรือไม่</span>
                                 <CheckBox label="ไม่สูบ" checked={st.smoking_habit?.status === 'no'} width="w-[60px] textSize=[12px]" />
