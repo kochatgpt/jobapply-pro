@@ -751,8 +751,7 @@ export default function PDFLayoutType2({ applicant }) {
                                     <CheckBox label="อื่นๆ ระบุ" checked={st.debt_status?.other} width="w-auto textSize=[12px]" />
                                     <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.debt_status?.other ? st.debt_status?.other_details : ''}</span>
                                     <span className="whitespace-nowrap relative top-[1px]">รวมภาระต่อเดือน</span>
-                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.debt_status?.monthly_payment || ''}</span>
-                                    <span className="whitespace-nowrap relative top-[1px]">บาท</span>
+                                    <span className="border-b border-dotted border-black min-w-[60px] px-1 pb-1 relative top-1">{st.debt_status?.monthly_payment || ''} บาท</span>
                                 </div>
                             </div>
 
