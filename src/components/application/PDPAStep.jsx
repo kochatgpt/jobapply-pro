@@ -54,8 +54,8 @@ export default function PDPAStep({ globalData, setGlobalData, onNext, onBack }) 
                     </CardHeader>
                     <CardContent className="p-6 space-y-6">
                         {/* PDPA Document Preview */}
-                        <ScrollArea className="h-[600px] border rounded-lg bg-slate-100 p-8">
-                            <div className="flex justify-center">
+                        <div className="border rounded-lg bg-slate-100 p-8 max-h-[700px] overflow-y-auto">
+                            <div className="flex flex-col items-center gap-8">
                                 <PDPADocument 
                                     applicant={{
                                         full_name: `${globalData.personal_data?.first_name} ${globalData.personal_data?.last_name}`,
@@ -66,7 +66,7 @@ export default function PDPAStep({ globalData, setGlobalData, onNext, onBack }) 
                                     formData={formData}
                                 />
                             </div>
-                        </ScrollArea>
+                        </div>
 
                         {/* Form Fields */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t">
