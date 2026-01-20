@@ -674,8 +674,8 @@ export default function PDFLayoutType2({ applicant }) {
                                 <CheckBox label="สูบประจำเฉลี่ยต่อวันระบุ" checked={st.smoking_habit?.status === 'regular'} width="w-auto textSize=[12px]" />
                                 <span className="border-b border-dotted border-black min-w-[40px] px-1 pb-1 relative top-1">{st.smoking_habit?.status === 'regular' ? st.smoking_habit?.amount : ''}</span>
                                 <span className="relative top-[1px]">ม้วน/กล่อง</span>
-                                <CheckBox label="สูบเฉพาะเที่ยว" checked={st.smoking_habit?.status === 'social'} width="w-[90px] textSize=[12px]" />
-                                <CheckBox label="สูบบ้างบางครั้ง" checked={st.smoking_habit?.status === 'occasional'} width="w-[80px] textSize=[12px]" />
+                                <CheckBox label="สูบเฉพาะเที่ยว" checked={st.smoking_habit?.status === 'social'} width="w-[100px] textSize=[12px]" />
+                                <CheckBox label="สูบบ้างบางครั้ง" checked={st.smoking_habit?.status === 'occasional'} width="w-[100px] textSize=[12px]" />
                             </div>
 
                             <div className="flex gap-1 items-center flex-nowrap space-y-0.1">
