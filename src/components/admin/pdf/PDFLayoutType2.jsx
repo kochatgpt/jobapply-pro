@@ -89,7 +89,7 @@ export default function PDFLayoutType2({ applicant }) {
                 <div className={`absolute ${footerBottom} right-[10mm] text-slate-500`}>
                     {pageNum} | {totalPages}
                 </div>
-                <div className={`absolute ${footerBottom} left-[50%] top-[1px] text-[10px] -translate-x-1/2 text-slate-400 text-center`}>
+                <div className={`absolute ${footerBottom} left-[50%] mt-[2px] text-[10px] -translate-x-1/2 text-slate-400 text-center`}>
                      FM-HRD-10 Rev.03 10/10/66 <br/>
                      www.ko.in.th Strategy . AI . DX . Sustainability
                 </div>
