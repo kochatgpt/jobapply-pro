@@ -726,7 +726,7 @@ export default function PDFLayoutType2({ applicant }) {
                                 <div className="flex items-center gap-1 ml-6 flex-wrap">
                                     <CheckBox label="การพูดปกติ" checked={st.physical_conditions?.speaking === 'normal'} width="w-[110px] textSize=[12px]" />
                                     <CheckBox label="การพูดไม่ปกติ ระบุ................" checked={st.physical_conditions?.speaking === 'abnormal'} width="w-auto textSize=[12px]" />
-                                    <CheckBox label="การเคลื่อนไหวปกติ" checked={st.physical_conditions?.movement === 'normal'} width="w-[110px] textSize=[12px]" />
+                                    <CheckBox label="การเคลื่อนไหวปกติ" checked={st.physical_conditions?.movement === 'normal'} width="w-[120px] textSize=[12px]" />
                                     <CheckBox label="การเคลื่อนไหวไม่ปกติ ระบุ................" checked={st.physical_conditions?.movement === 'abnormal'} width="w-auto textSize=[12px]" />
                                 </div>
                             </div>
