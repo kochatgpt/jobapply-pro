@@ -5,8 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Checkbox } from "@/components/ui/checkbox";
 
 export default function AgreementStep({ onNext }) {
-  const [agreed1, setAgreed1] = useState(false);
-  const [agreed2, setAgreed2] = useState(false);
+  const [consent1, setConsent1] = useState(null); // null, 'agree', 'disagree'
+  const [consent2, setConsent2] = useState(null); // null, 'agree', 'disagree'
 
   return (
     <div className="max-w-5xl mx-auto py-10 px-4">
@@ -65,29 +65,55 @@ export default function AgreementStep({ onNext }) {
             </div>
           </div>
           
-          <div className="space-y-4 pt-4 border-t">
-            <div className="flex items-start space-x-3">
-              <Checkbox id="term1" checked={agreed1} onCheckedChange={setAgreed1} className="mt-1" />
-              <div className="grid gap-1.5 leading-none">
-                  <Label htmlFor="term1" className="text-sm font-medium leading-snug cursor-pointer">
-                      ยินยอมให้เก็บข้อมูล
-                  </Label>
+          <div className="space-y-6 pt-4 border-t">
+            <div className="space-y-2">
+              <Label className="text-sm font-medium">ยินยอมให้เก็บข้อมูล</Label>
+              <div className="flex gap-4">
+                <Button
+                  type="button"
+                  variant={consent1 === 'agree' ? 'default' : 'outline'}
+                  onClick={() => setConsent1('agree')}
+                  className={consent1 === 'agree' ? 'bg-green-600 hover:bg-green-700' : ''}
+                >
+                  ยินยอม
+                </Button>
+                <Button
+                  type="button"
+                  variant={consent1 === 'disagree' ? 'default' : 'outline'}
+                  onClick={() => setConsent1('disagree')}
+                  className={consent1 === 'disagree' ? 'bg-red-600 hover:bg-red-700' : ''}
+                >
+                  ไม่ยินยอม
+                </Button>
               </div>
             </div>
 
-            <div className="flex items-start space-x-3">
-              <Checkbox id="term2" checked={agreed2} onCheckedChange={setAgreed2} className="mt-1" />
-              <div className="grid gap-1.5 leading-none">
-                  <Label htmlFor="term2" className="text-sm font-medium leading-snug cursor-pointer">
-                      ยินยอมให้บันทึกวิดีโอและเก็บข้อมูลเพื่อวัตถุประสงค์ในการคัดเลือกบุคลากร ตามนโยบายความเป็นส่วนตัวของบริษัท
-                  </Label>
+            <div className="space-y-2">
+              <Label className="text-sm font-medium">ยินยอมให้บันทึกวิดีโอและเก็บข้อมูลเพื่อวัตถุประสงค์ในการคัดเลือกบุคลากร ตามนโยบายความเป็นส่วนตัวของบริษัท</Label>
+              <div className="flex gap-4">
+                <Button
+                  type="button"
+                  variant={consent2 === 'agree' ? 'default' : 'outline'}
+                  onClick={() => setConsent2('agree')}
+                  className={consent2 === 'agree' ? 'bg-green-600 hover:bg-green-700' : ''}
+                >
+                  ยินยอม
+                </Button>
+                <Button
+                  type="button"
+                  variant={consent2 === 'disagree' ? 'default' : 'outline'}
+                  onClick={() => setConsent2('disagree')}
+                  className={consent2 === 'disagree' ? 'bg-red-600 hover:bg-red-700' : ''}
+                >
+                  ไม่ยินยอม
+                </Button>
               </div>
             </div>
           </div>
 
           <Button 
             onClick={onNext} 
-            disabled={!agreed1 || !agreed2} 
+            disabled={consent1 !== 'agree' || consent2 !== 'agree'} 
             className="w-full mt-4 bg-indigo-600 hover:bg-indigo-700"
           >
             ยืนยันและดำเนินการต่อ
